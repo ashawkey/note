@@ -1,0 +1,790 @@
+# Dynamic Programming
+
+###### Student Attendance Record II (leetcode 552)
+
+输入一个数。求可生成满足条件的字符串的数量，子问题是不同的结尾。
+
+```c++
+class Solution {
+public:
+    int checkRecord(int n) {
+        int m = 1e9+7;
+        int* P = new int[n+1];
+        int* L = new int[n+1];
+        int* A = new int[n+1];
+        
+        P[1] = L[1] = A[1] = 1;
+        P[2] = L[2] = 3;
+        A[2] = 2;
+        A[3] = 4;
+        
+        for(int i=2; i<=n; i++){
+            P[i-1] %= m;
+            L[i-1] %= m;
+            A[i-1] %= m;
+            
+            P[i] = ((P[i-1] + L[i-1])%m + A[i-1])%m;
+            if(i>2) L[i] = ((P[i-1]+A[i-1])%m+(P[i-2]+A[i-2])%m)%m;
+            if(i>3) A[i] = ((A[i-1]+A[i-2])%m+A[i-3])%m;
+        }
+        
+        return ((P[n]+L[n])%m+A[n])%m;
+    }
+};
+```
+
+A sillier yet straight answer:
+
+```c++
+class Solution {
+public:
+    int checkRecord(int n) {
+        int m = 1e9+7;
+        int* P = new int[n+1]; // no A
+        int* L = new int[n+1]; // no A, single L
+        int* LL = new int[n+1];
+        int* A = new int[n+1];
+        int* AP = new int[n+1];
+        int* AL = new int[n+1];
+        int* ALL = new int[n+1];
+        
+        P[1] = L[1] = A[1] = 1;
+        LL[1] = AP[1] = AL[1] = ALL[1] = 0;
+        
+        for(int i=2; i<=n; i++){
+            P[i] = ((P[i-1] + L[i-1])%m + LL[i-1])%m;
+            L[i] = P[i-1];
+            LL[i] = L[i-1];
+            A[i] = ((P[i-1] + L[i-1])%m + LL[i-1])%m;
+            AL[i] = (AP[i-1] + A[i-1])%m;
+            AP[i] = (((A[i-1] + AL[i-1])%m + ALL[i-1])%m + AP[i-1])%m;
+            ALL[i] = AL[i-1];
+        }
+        
+        return ((((((P[n]+L[n])%m+A[n])%m+LL[n])%m+AP[n])%m+AL[n])%m+ALL[n])%m;
+    }
+};
+```
+
+###### Knight 935
+
+类似的输入一个数的题目。
+
+```c++
+class Solution {
+public:
+    int knightDialer(int N) {
+        int m = 1e9+7;
+        vector<vector<int>> dp(N+1, vector<int>(10,0));
+        for(int i=0; i<10; i++) dp[1][i]=1;
+        for(int i=2; i<=N; i++){
+            dp[i][1] = (dp[i-1][6] + dp[i-1][8])%m;
+            dp[i][2] = (dp[i-1][7] + dp[i-1][9])%m;
+            dp[i][3] = (dp[i-1][4] + dp[i-1][8])%m;
+            dp[i][4] = ((dp[i-1][3] + dp[i-1][9])%m + dp[i-1][0])%m;
+            dp[i][5] = 0;
+            dp[i][6] = ((dp[i-1][1] + dp[i-1][7])%m + dp[i-1][0])%m;
+            dp[i][7] = (dp[i-1][2] + dp[i-1][6])%m;
+            dp[i][8] = (dp[i-1][1] + dp[i-1][3])%m;
+            dp[i][9] = (dp[i-1][2] + dp[i-1][4])%m;
+            dp[i][0] = (dp[i-1][4] + dp[i-1][6])%m;
+        }
+        int ans = 0;
+        for(int i=0; i<10; i++) ans = (ans + dp[N][i])%m;
+        return ans;
+    }
+};
+```
+
+
+
+$O(lg N)$ exponentiation by sequaring (矩阵快速幂) 
+
+```python
+def knightDialer(self, N):
+    mod = 10**9 + 7
+    if N == 1: return 10
+    M = np.matrix([[0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+                   [0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+                   [0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+                   [0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+                   [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                   [1, 1, 0, 0, 0, 0, 0, 1, 0, 0],
+                   [0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+                   [0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+                   [0, 0, 1, 0, 1, 0, 0, 0, 0, 0]])
+    res, N = 1, N - 1
+    while N:
+        if N % 2: res = res * M % mod
+        M = M * M % mod
+        N /= 2
+    return int(np.sum(res)) % mod
+```
+
+
+
+
+
+###### Remove Boxes (leetcode 546)
+
+输入一维数组。简单的二维端点DP缺失信息，故拓展维度到三维DP，记录区间[i, j]以及i**左侧（区间外）**与i同色的方块数k。k值并非固定，而在消除方块的过程中会变化，所以可以作为一个维度。
+
+```c++
+// Top-Down DP (memorization)
+class Solution {
+public:
+    int dp[105][105][105];
+    vector<int> boxes;
+    
+    int solve(int i, int j, int k){
+        if(dp[i][j][k]!=-1) return dp[i][j][k];
+        if(j<i) return 0;
+        int res = (k+1)*(k+1) + solve(i+1, j, 0);
+        for(int m=i+1; m<=j; m++){
+            if(boxes[i] == boxes[m]){
+                res = max(res, solve(i+1, m-1, 0)+solve(m, j, k+1));
+            }
+        }
+        return dp[i][j][k]=res;
+    }
+    
+    int removeBoxes(vector<int>& Boxes) {
+        boxes = Boxes;
+        memset(dp, -1, sizeof(dp));
+        return solve(0, boxes.size()-1, 0);
+    }
+};
+```
+
+
+
+###### Burst Balloons (leetcode 312)
+
+输入一维数组。`dp[i][j]`代表`[i, j]`气球爆炸到只剩i与j时的最高得分。
+
+每次区间dp时，设m为最后爆炸的那一个气球，遍历`(i, j)`。
+
+```c++
+// Top-Down
+class Solution {
+public:
+    int dp[505][505];
+    vector<int> ns;
+    
+    int solve(int i, int j){
+        if(dp[i][j]!=-1) return dp[i][j];
+        if(i+1 >= j) return dp[i][j] = 0;
+        int res = 0;
+        for(int m=i+1; m<j; m++){
+            res = max(res, solve(i, m)+solve(m, j)+ns[i]*ns[m]*ns[j]);
+        }
+        return dp[i][j] = res;
+    }
+    
+    int maxCoins(vector<int>& nums) {
+        ns.push_back(1);
+        for(int x:nums) ns.push_back(x);
+        ns.push_back(1);
+        memset(dp, -1, sizeof(dp));
+        return solve(0, ns.size()-1);
+    }
+};
+
+// Bottum-up
+class Solution {
+public:
+    int maxCoins(vector<int>& nums) {
+        vector<int> ns;
+        ns.push_back(1);
+        for(int x:nums) ns.push_back(x);
+        ns.push_back(1);
+        int N = ns.size();
+        int dp[505][505];
+        memset(dp, 0, sizeof(dp));
+        
+        for(int l=2; l<N; l++){
+            for(int j=l; j<N; j++){
+                int i = j-l;
+                for(int m=i+1; m<j; m++){
+                    dp[i][j] = max(dp[i][j], ns[i]*ns[m]*ns[j]+dp[i][m]+dp[m][j]);
+                }
+            }
+        }
+        
+        return dp[0][N-1];
+    }
+};
+```
+
+
+
+###### Stickers to Spell Word (691)
+
+minimum string coverage problem, the following is a slow silly version. Converting string to vector\<int\> caused the map to be very slow. 状态压缩DP。
+
+```c++
+class Solution {
+public:
+    map<vector<int>, int> dp;
+    vector<vector<int>> Stickers;
+    
+    vector<int> str2vec(string s){
+        vector<int> cnt(26, 0);
+        for(char c:s) cnt[c-'a']++;
+        return cnt;
+    }
+    
+    bool allNeg(vector<int>& v){
+        for(int i:v) if(i>0) return false;
+        return true;
+    }
+    
+    bool allEq(vector<int>& a, vector<int>& b){
+        for(int i=0; i<26; i++) if(a[i]!=b[i]) return false;
+        return true;
+    }
+    
+    vector<int> allSub(vector<int>& a, vector<int>& b){
+        vector<int> ans;
+        for(int i=0; i<a.size(); i++)
+            ans.push_back((a[i]-b[i]<=0)?0:a[i]-b[i]);
+        return ans;
+    }
+    
+    int solve(vector<int> s){
+        if(dp.count(s)) return dp[s];
+        if(allNeg(s)) return dp[s]=0;
+        int res = 0x3f3f3f3f;
+        for(vector<int> p:Stickers){
+            vector<int> q = allSub(s, p);
+            // necessary
+            if(!allEq(s, q))
+                res = min(res, 1+solve(q));
+        }
+        return dp[s]=res;
+    }
+    
+    int minStickers(vector<string>& stickers, string target) {
+        int len = target.size();
+        for(string s:stickers)
+            Stickers.push_back(str2vec(s));
+        int ans = solve(str2vec(target));
+        return ans==0x3f3f3f3f?-1:ans;
+    }
+};
+```
+
+
+
+###### Partition Equal Subset Sum 416
+
+判断一维数组是否能被划分为两个子集，使两个子集各自的和相等。只是判断，故只需要二维动归。
+
+* `dp[i][j]` means the first i nums can make up j.
+
+  ```c++
+  class Solution {
+  public:  
+      bool canPartition(vector<int>& nums) {
+          int N = nums.size();
+          int sum = 0;
+          for(int i=0; i<N; i++) sum+=nums[i];
+          
+          if(sum%2!=0) return false;
+          sum /= 2;
+          
+          vector<vector<int>> dp(N+1, vector<int>(sum+1, 0));
+          
+          for(int i=0; i<=N; i++) dp[i][0]=1;
+          for(int i=1; i<=N; i++){
+              for(int j=1; j<=sum; j++){
+                  dp[i][j] = dp[i-1][j];
+                  if(j >= nums[i-1] && dp[i-1][j-nums[i-1]]) dp[i][j]=1;
+              }
+          }
+          
+          return dp[N][sum];
+      }
+  };
+  ```
+
+* Note that we only use dp[i-1] in the formula, we can save space by:
+
+  ```c++
+  class Solution {
+  public:  
+      bool canPartition(vector<int>& nums) {
+          int N = nums.size();
+          int sum = 0;
+          for(int i=0; i<N; i++) sum+=nums[i];
+          
+          if(sum%2!=0) return false;
+          sum /= 2;
+          
+          vector<int> dp(sum+1, 0);
+          
+          dp[0] = 1;
+          for(int i=1; i<=N; i++){
+              // reversely, since the formula use left information.
+              for(int j=sum; j>=1; j--){
+                  if(j >= nums[i-1] && dp[j-nums[i-1]]) dp[j]=1;
+              }
+          }
+          
+          return dp[sum];
+      }
+  };
+  ```
+
+
+###### Target Sum 494
+
+输入一维数组，每个数字前添加+/-号，求能够凑出target的种类数。
+
+神の答え：
+
+```c++
+class Solution {
+public:
+    // 与上一题相同的内核，求数组凑出target的子集的种类数，一维数组优化。
+    int solve(vector<int>& nums, int target){
+        vector<int> dp(target+1, 0); // 不用求cumsum
+        dp[0] = 1;
+        for(int i=0; i<nums.size(); i++)
+            for(int j=target; j>=nums[i]; j--) // 逆序
+                dp[j] += dp[j-nums[i]];
+        return dp[target];
+    }
+    /*
+    即把nums分为两个子集N（前添负号），P（前添正号）。
+    sum(N)+sum(P) = sum(nums)
+    sum(P)-sum(N) = S
+    --> 2*sum(P) = S + sum(nums)
+    */
+    int findTargetSumWays(vector<int>& nums, int S) {
+        int sum = accumulate(nums.begin(), nums.end(), 0);
+        if(sum<S || (sum+S)%2!=0) return 0;
+        else return solve(nums, (sum+S)/2);
+    }
+    
+};
+```
+
+
+
+###### Ones and Zeros 474
+
+some what like a backpack problem, but i failed to figure it out again.
+
+```c++
+Input: Array = {"10", "0", "1"}, m = 1, n = 1
+Output: 2
+```
+
+```c++
+class Solution {
+public:
+    int cnt(string& s, char c){
+        int res = 0;
+        for(char i:s) if(i==c) res++;
+        return res;
+    }
+    
+    int findMaxForm(vector<string>& strs, int m, int n) {
+        vector<vector<int>> dp(m+1, vector<int>(n+1, 0));
+        // order of strs is of no care
+        for(int l=0; l<strs.size(); l++){
+            int cnt0 = cnt(strs[l], '0');
+            int cnt1 = cnt(strs[l], '1');
+            // since the formula uses left-top information, we have to go from right-bottom to left-top, to avoid using duplicated information from this iteration.
+            for(int i=m; i>=cnt0; i--){
+                for(int j=n; j>=cnt1; j--){
+                    dp[i][j] = max(dp[i][j], 1 + dp[i-cnt0][j-cnt1]);
+                }
+            }
+        }
+        return dp[m][n];
+    }
+};
+```
+
+
+
+###### Non-negative integers without Consecutive Ones 600
+
+```c++
+class Solution {
+public:
+    int findIntegers(int num) {
+        int len = 1, tmp = num;
+        while(tmp){
+            tmp>>=1;
+            len++;
+        }
+        
+        int* A = new int[len+1];
+        int* B = new int[len+1];
+        A[1] = B[1] = 1;
+        
+        for(int i=2; i<len; i++){
+            A[i] = A[i-1] + B[i-1] ;
+            B[i] = A[i-1];
+        }
+        
+        int res = A[len-1] + B[len-1];
+        
+        // later processing, crazy.
+        for(int i=len-2; i>=0; i--){
+            if(((num>>i)&1) && ((num>>(i-1))&1)) break;
+            if(!((num>>i)&1) && !((num>>(i-1))&1)) res-=B[i];
+        }
+        
+        return res;
+    }
+};
+```
+
+
+
+###### Running 贝茜的晨练计划 
+
+ 一言难尽的转移方程，目前还是超过了我的能力啊。。。
+
+```c++
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+const int maxn = 10005;
+const int maxm = 505;
+int dist[maxn];
+int dp[maxn][maxm];
+
+int N, M;
+int main() {
+	cin >> N >> M;
+	for (int i = 1; i <= N; i++) cin >> dist[i];
+	memset(dp, 0, sizeof(dp));
+	// start from minute 1
+	for (int i = 1; i <= N; i++) {
+		// tiredness 0 is modified differently
+		for (int j = 1; j <= M; j++) {
+			dp[i][j] = max(dp[i][j], dp[i - 1][j - 1] + dist[i]); // run at i
+			if (i >= j) dp[i][0] = max(dp[i][0], dp[i - j][j]); // rest at i-j
+		}
+		dp[i][0] = max(dp[i][0], dp[i - 1][0]); // rest at i-1
+	}
+	cout << dp[N][0] << endl;
+}
+```
+
+
+
+###### Longest Palindromic SubSequence 516
+
+子问题虽然看上去很显然，但是递推公式不好想，总之又跪了。
+
+```c++
+class Solution {
+public:
+    int longestPalindromeSubseq(string s) {
+        int len = s.size();
+        if(len==0) return 0;
+        vector<vector<int>> dp(len, vector<int>(len, 0));
+        
+        for(int l=1; l<=len; l++){
+            for(int i=0; i<=len-l; i++){
+                int j = i+l-1;
+                // init
+                if(j==i) dp[i][j] = 1;
+                else if(j==i+1){
+                    if(s[i]==s[j]) dp[i][j] = 2;
+                    else dp[i][j] = 1;
+                }
+                // transfer 
+                else{
+                    if(s[i]==s[j]) dp[i][j] = dp[i+1][j-1]+2;
+                    else dp[i][j] = max(dp[i+1][j], dp[i][j-1]);
+                }
+            }
+        }
+        
+        return dp[0][len-1];
+    }
+};
+```
+
+
+
+###### Nearby cows 
+
+DP in a tree.
+
+```c++
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+
+const int maxn = 100005;
+const int maxk = 25;
+int N, K;
+int M[maxn][maxk];
+
+struct edge {
+	int f, t;
+	edge() {}
+	edge(int f, int t) :f(f), t(t) {}
+};
+
+vector<edge> G[maxn];
+
+void solve() {
+    // aggregating information from k-nearest neighbours.
+    for (int k = 1; k <= K; k++) {
+		for (int i = 1; i <= N; i++) {
+			int deg = G[i].size();
+			for (int j = 0; j < deg; j++) {
+				edge& e = G[i][j];
+				M[i][k] += M[e.t][k - 1];
+			}
+			if (k == 1) M[i][k] += M[i][0];
+			else M[i][k] -= M[i][k - 2] * (deg - 1);
+		}
+	}
+}
+
+int x, y;
+int main() {
+	cin >> N >> K;
+	for (int i = 1; i < N; i++) {
+		cin >> x >> y;
+		G[x].push_back(edge(x, y));
+		G[y].push_back(edge(y, x));
+	}
+	for (int i = 1; i <= N; i++) cin >> M[i][0];
+	solve();
+	for (int i = 1; i <= N; i++) cout << M[i][K] << endl;
+}
+```
+
+
+
+###### Tallest BillBoard 956
+
+与【是否存在和为某个值的子集】类似，但思路很不同，相当于是找【是否存在两个和为某个值的子集，只需求这个最大值】。这样题目就复杂了起来。
+
+```c++
+class Solution {
+public:
+    // the equivalent problem: 
+    // assign +/-/0 before each rod, find out the max value of 'the sum of +s or -s' we can get to make the final expression equals zero.
+    static const int inf = 0x3f3f3f3f;
+    int tallestBillboard(vector<int>& rods) {
+        if(rods.empty()) return 0;
+        
+        int len = rods.size();
+        int sum = accumulate(rods.begin(), rods.end(), 0);
+        
+        // dp[i][s]: using the first i nums, having written `sum+s` (s may be negative, so we use sum+s to force it positive) out, the maximum score we can get using the remaining numbers to make the final sum is 0.
+        vector<vector<int>> dp(len+1, vector<int>(2*sum+1, -inf));
+        
+        dp[len][sum] = 0;
+        for(int i=len-1; i>=0; i--){
+            for(int j=0; j<=2*sum; j++){
+                // 0
+                dp[i][j] = max(dp[i][j], dp[i+1][j]);
+                // -
+                if(j>=rods[i]) 
+                    dp[i][j] = max(dp[i][j], dp[i+1][j-rods[i]]);
+                // +
+                if(j<=2*sum-rods[i]) 
+                    dp[i][j] = max(dp[i][j], dp[i+1][j+rods[i]] + rods[i]);
+            }
+        }
+        
+        return dp[0][sum];
+    }
+};
+```
+
+
+
+###### Delete to make sorted  960
+
+Clear!
+
+```c++
+class Solution {
+public:
+    int minDeletionSize(vector<string>& A) {
+        int len = A.size();
+        if(!len) return 0;
+        int slen = A[0].size();
+        
+        vector<int> dp(slen, INT_MAX);
+        dp[0]=0;
+        for(int i=1; i<slen; i++){
+            for(int j=0; j<i; j++){
+                bool flag = true;
+                for(int k=0; k<len; k++){
+                    if(A[k][i] < A[k][j]){        
+                        flag = false;
+                        break;
+                    }
+                }
+                if(flag) dp[i] = min(dp[i], dp[j] + i-j-1);
+                else dp[i] = min(dp[i], i);
+            }
+        }
+        int ans = INT_MAX;
+        for(int i=0; i<slen; i++) ans = min(ans, dp[i]+slen-i-1);
+        return ans;
+    }
+};
+```
+
+
+
+###### Distinct SubSequences 115
+
+find all subseqs equal to `t` in `s`. SIMPLE !
+
+```c++
+class Solution {
+public:
+    int numDistinct(string s, string t) {
+        int slen = s.size();
+        int tlen = t.size();
+        
+        vector<vector<int>> dp(tlen+1, vector<int>(slen+1, 0));
+        
+        for(int i=0; i<slen; i++) dp[0][i] = 1;
+        
+        for(int i=0; i<tlen; i++){
+            for(int j=0; j<slen; j++){
+                if(t[i]==s[j]) dp[i+1][j+1] = dp[i+1][j] + dp[i][j];
+                else dp[i+1][j+1] = dp[i+1][j];
+            }
+        }
+        
+        return dp[tlen][slen];
+    }
+};
+```
+
+
+
+###### Distince SubSequences II 940
+
+dp[i] means distinct subseqs in the first i characters. Transfer formula is incredible.
+
+`dp[i] = 2*dp[i-1] - dp[last[s[i]]-1]`
+
+```c++
+class Solution {
+public:
+    #define ll long long
+    int distinctSubseqII(string S) {
+        ll m = 1e9 + 7;
+        int len = S.size();
+        vector<ll> dp(len+1, 0);
+        map<char, int> last;
+        // empty string, need to be subtracted in the end (due to the definition here)
+        dp[0] = 1;
+        // transfer
+        for(int i=0; i<len; i++){
+            dp[i+1] = (2*dp[i])%m;
+            if(last.count(S[i])) dp[i+1] -= dp[last[S[i]]];
+            dp[i+1] %= m;
+            last[S[i]] = i;
+        }
+        // note the minus in transfer formula, so add m for security.
+        return (dp[len]-1+m)%m;
+    }
+};
+```
+
+
+
+###### Length of Longest Fibo Subsequence 873
+
+map accelerated DP. 用Map查找唯一的特定值，而不是循环检验，始终是降低复杂度的重要技巧。
+
+```c++
+class Solution {
+public:
+    int lenLongestFibSubseq(vector<int>& A) {
+        int len = A.size();
+        // map construction
+        map<int, int> m;
+        for(int i=0; i<len; i++) m[A[i]]=i;
+        // dp[i][j]: LFSL of FS ending with A[i], A[j].
+        vector<vector<int>> dp(len, vector<int>(len, 2));
+        // transfer
+        int ans = 0;
+        for(int i=0; i<len; i++){
+            for(int j=i; j<len; j++){
+                // m[A[j]-A[i]]<i is necessary
+                if(m.count(A[j]-A[i]) && m[A[j]-A[i]]<i)
+                    dp[i][j] = max(dp[i][j], dp[m[A[j]-A[i]]][i]+1);
+                ans = max(ans, dp[i][j]);
+            }
+        }
+        // due to problem definition
+        return ans>2 ? ans : 0;
+    }
+};
+```
+
+
+
+###### Coin Change 322
+
+Infinite knapsack. Very Orthodox and Effective DP Problem!
+
+```c++
+class Solution {
+public:
+    #define inf 0x3f3f3f3f
+    int coinChange(vector<int>& coins, int amount) {
+        // infinite knapsack
+        int len = coins.size();
+        vector<int> dp(amount+1, inf);
+        dp[0] = 0;
+        for(int j=0; j<=amount; j++){
+            for(int i=0; i<len; i++){
+                if(j>=coins[i]) dp[j] = min(dp[j], dp[j-coins[i]]+1);
+            }
+        }
+        
+        return dp[amount]==inf?-1:dp[amount];
+    }
+};
+```
+
+
+
+###### Count bits 338
+
+Interesting DP formula, just for fun!
+
+```c++
+class Solution {
+public:
+    vector<int> countBits(int num) {
+        vector<int> ans(num+1, 0);        
+        for(int i=0; i<=num; i++) ans[i] = ans[i>>1] + (i&1);
+        return ans;
+    }
+};
+```
+
