@@ -20,6 +20,7 @@
     ```c++
     char* s[L] // capacity is L-1. ('\0' is reserved for the last place.)
     int strlen(char* s)
+    char* strstr(char* str1, char* str2) // find str2 in str1, if not found, return NULL
     char* strcpy(char* to, char* from)  // return `to`
     char* strcat(char* to, char* from)
     int strcmp(char* a, char* b)  // 0 for ==
@@ -34,7 +35,10 @@
     s2 = s.substr(start, count); // shrink count automatically
     s3 = s + s2;
     int l = s.length();
-    string(1, 'a') // single char to string. to_string() is wrong.
+    string s = string(1, 'a'); // single char to string. to_string() is wrong.
+    string s = to_string(123); // s="123"
+    int a = stoi(s); // stof, stoll, stod, ...
+    s.find(s2) // int index to s2, or -1 if not found
     ```
 
 

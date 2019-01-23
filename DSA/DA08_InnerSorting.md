@@ -1,6 +1,6 @@
 # 内排序
 
-### 概念
+### Concepts
 
 * Record, Key, Sort key, Sequence.
 
@@ -10,7 +10,7 @@
 
 * Space Cost: **Additional** space used.
 
-* Time Cost: Best ~ Average ~ Worst
+* Time Cost: **Best ~ Average ~ Worst**
 
 ### Simple Sorting Algorithms
 
@@ -119,7 +119,9 @@ void selectsort(int arr[], int n){
 }
 ```
 
-Unstable. (Since selection of the smallest record always select the first or last met record, but swap may change the order of records with the same key.)
+Unstable. (Swap may change the order of records with the same key.)
+
+​	交换过程会破坏原来的顺序。`(25,25',16,25'') -> (16,25',25,25'')`
 
 Space: $O(1)$
 
@@ -158,6 +160,12 @@ Different Delta sequence (here we use `{n/2, n/4, ..., 1}`) has different comple
 Hibbard sequence $\{2^k-1, .., 3, 1\}$ 's Time complexity is $O(n^{\frac 3 2 })$
 
 Space: $O(1)$
+
+![1546675194838](E:\aa\junior1\DSAlgo\DA08_InnerSorting.assets\1546675194838.png)
+
+​	交换次数计算：(1+1+1)+(1+1)+(4) = 9
+
+
 
 ### Divide-and-conquer 
 
@@ -210,7 +218,9 @@ Space: $O(1)$
 
 Time: $O(nlogn) \sim O(nlogn) \sim O(n^2)$
 
-when pivot is selected such that it always in nearly middle, the height of corresponding BST is smallest (logn).
+When pivot is selected such that it always in nearly middle, the height of corresponding BST is smallest (logn). 
+
+When the sequence is already ordered, it reaches the worst Time complexity of n^2.
 
 Analysis of average time complexity: (Similar to that of Random BST)
 $$
@@ -226,9 +236,11 @@ $$
 
 * Variant: **Find the first k smallest elements, or Find the k-th smallest element.**
 
-  They are the same question, and quicksort variant can give 
+  They are the same question, and quicksort variant can give the best **Average Time Complexity**: $O( n )$
 
-  **the best Average Time Complexity**: $O( n )$
+  (并不要求找到的前k个最小元素有序，只保证找到了第k小的元素，以及比它小的k-1个元素。从而可以避免k出现在复杂度公式中，严格的达到O(n))
+
+  `std::nth_element(begin, kth, start)` implements this.
 
   ```c++
   void quicksort_k(int arr[], int l, int r, int k){
@@ -241,15 +253,17 @@ $$
               if(i<j) arr[j--] = arr[i];
           }
           arr[i]=x;
-          int ordered = i-l+1; // num of the smaller part of elements 
-          if(k == ordered) return;
-          else if(k < ordered) quicksort_k(arr, l, i-1, k);
-          else quicksort_k(arr, i+1, r, k-ordered);
+          int tmp = i-l+1; // num of the smaller part of elements 
+          if(k == tmp) return;
+          else if(k < tmp) quicksort_k(arr, l, i-1, k);
+          else quicksort_k(arr, i+1, r, k-tmp);
       }
   }
   ```
 
   Other methods to solve this question:
+
+  （这些方法都是找到**有序的前k个最小元素**，所以复杂度都含有k）
 
   * Naive quicksort: $O(n log n)$
 
@@ -268,7 +282,7 @@ $$
         for(int i=k; i<n; i++){
             if(arr[i] < q.top()){ // smaller than max
     			q.pop();
-                q.push(arr[i]);
+                 q.push(arr[i]);
             }
         }
         return q;
@@ -353,9 +367,8 @@ Advanced version of Selection sort.
 
 ```c++
 void heapsort(int arr[], int n){
-    build_heap(arr, n); // in-place
-    for(int i=0; i<n-1; i++) que.removeMax();
-    return que;
+    priority_queue<int> que(arr, arr+n); 
+    for(int i=0; i<n; i++) arr[i] = que.top(), que.pop(); // greater to less
 }
 ```
 
@@ -543,7 +556,7 @@ void radixsort(vector<string>& s,int k=0)
 
 Time Complexity: $O(\sum_i s_i)$
 
-Alphabetial String sort has the property that sorting from the first letter, no matter how long the stirng is, the latter buket sorting will not change the rank of the former bucket sorting.
+Alphabetial String sort has the property that sorting from the first letter, no matter how long the string is, the latter buket sorting will not change the rank of the former bucket sorting.
 
 #### Index sort
 
@@ -553,7 +566,7 @@ Where am i going? `res[idx1[i]] = arr[i]`
 
 Where am i from? `arr[idx2[i]] = res[i]`
 
-Choose anyone. We use idx2 in the following code:
+Choose either. We use idx2 in the following code:
 
 ```c++
 template<class record>
@@ -597,4 +610,14 @@ void adjust(record arr[], int idx[], int n){
 ## Summary
 
 ![1542768830443](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1542768830443.png)
+
+
+
+**排序算法的下界分析：判定树。**
+
+有n个记录，生成的判定树有n!个叶节点，树深为$O(lg(n!)) \sim O(nlogn)$。
+
+最坏情况下比较次数为根到叶的最长距离，即树深。
+
+最好情况下比较次数为根到叶的最短距离，即n-1。
 

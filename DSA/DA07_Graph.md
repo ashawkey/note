@@ -6,7 +6,7 @@ $$
 G = (V, E)
 $$
 
-We only considers graphs that have **No self-Connection, No duplicated edge.**
+We only considers **simple graphs** that have **No self-Connection, No parallel edge.**
 
 * Complete graph: contains all possible edges, $E = \frac {V(V-1)}{2}$
 
@@ -16,10 +16,9 @@ We only considers graphs that have **No self-Connection, No duplicated edge.**
 * path: $V_p \rightarrow ... \rightarrow V_q$
 
 * simple path: 除了起点终点，其他顶点无重复。
-* Cycle: 路径某个顶点与自身连接。
 * Simple cycle：起点终点相同的简单路径。
 
-* DAG：Directed acyclic graph. 有向无环图。
+* DAG：Directed Acyclic Graph. 有向无环图。
 * 有根图：有向图中，从顶点V可以抵达其他所有顶点，则称之为根。
 * 连通图：无向图任意两个顶点连通，则称为连通图。
 * 强连通图：有向图任意两个顶点强联通，则成为强连通图。
@@ -30,7 +29,7 @@ We only considers graphs that have **No self-Connection, No duplicated edge.**
 
 ### Storage
 
-* 相邻矩阵 Adjacency Matrix
+* 邻接矩阵 Adjacency Matrix
 
   空间代价$O(|V|^2)$. （可以稀疏矩阵优化）
 
@@ -38,6 +37,8 @@ We only considers graphs that have **No self-Connection, No duplicated edge.**
   * 有向图：不一定对称。
 
 * 邻接表
+
+  最常使用的结构，空间代价小，但失去了邻接矩阵的性质。
 
   * 无向图空间代价$O(|V|+2|E|)$.
 
@@ -63,9 +64,11 @@ We only considers graphs that have **No self-Connection, No duplicated edge.**
 
 * 拓扑排序
 
-  A **Linear order** that can finish the task as well as satisfying all pre request. **Usually Not Unique.**
+  A **Linear order** that can finish the task as well as satisfying all pre request. 
 
-  Can be performed on a **DAG**.
+  **Usually Not Unique.**
+
+  Can only be performed on a **DAG**. （有拓扑排序等价于是DAG）
 
 
 ### Shortest Path
@@ -174,19 +177,8 @@ void bfs(int rt) {
 	}
 }
 
-// detect directed loop
-bool isloop(int rt) {
-	int len = G[rt].size();
-	vis[rt] = 1;
-	for (int i = 0; i < len; i++) {
-		if (vis[G[rt][i].t]) return true;
-		if (isloop(G[rt][i].t)) return true;
-	}
-	vis[rt] = 0;
-	return false;
-}
-
 // output one of the toposorts.
+// 有向图判断有无环的方法之一。
 void toposort_bfs() {
 	memset(vis, 0, sizeof(vis));
 	queue<int> q;
@@ -272,30 +264,49 @@ void dijkstra(int s) {
 	}
 }
 
+// Simplified Version !!!
+int d[maxn];
+#define P pair<int,int>
+
+void dijkstra(int s) {
+	memset(d, 0x3f, sizeof(d));
+	priority_queue<P, vector<P>, greater<P>> q; // use pair<int,int> 
+	q.push(P(0, s));
+	d[s] = 0;
+	while (!q.empty()) {
+		P p = q.top(); q.pop();
+		int u = p.second;
+		if (d[u] < p.first) continue; // out of date records
+		for (int i = 0; i < G[u].size(); i++) {
+			edge& e = G[u][i];
+			int v = e.t;
+			if (d[v] > d[u] + e.w) {
+				d[v] = d[u] + e.w;
+				q.push(P(d[v], v));
+			}
+		}
+	}
+}
+
 
 int dist2[maxv][maxv], parent2[maxv][maxv];
 void floyd() {
-    // init, self-connection is set to 0.
-	for (int i = 0; i < V; i++) {
-		for (int j = 0; j < V; j++) {
-            if(i==j) dist2[i][j] = 0;
-            else dist2[i][j] = maxw; 
-			parent2[i][j] = -1;
-		}
-	}
+    memset(dist2, maxw, sizeof(dist2));
+    memset(parent2, -1, sizeof(parent2));
     // init the graph's edge
 	for (int u = 0; u < V; u++) {
+        dist2[u][u] = 0;
 		for (int i = 0; i < G[u].size(); i++) {
 			int v = G[u][i].t;
 			dist2[u][v] = G[u][i].w;
 			parent2[u][v] = u;
 		}
 	}
-    // O(n^3)
+    // O(n^3), the order is i->u->j
 	for (int u = 0; u < V; u++) {
 		for (int i = 0; i < V; i++) {
 			for (int j = 0; j < V; j++) {
-				if (dist2[i][j] > dist2[i][u] + dist2[u][j]) {
+				if (dist2[i][j] != maxw && dist2[i][j] > dist2[i][u] + dist2[u][j]) {
 					dist2[i][j] = dist2[i][u] + dist2[u][j];
 					parent2[i][j] = parent2[u][j];
 				}
@@ -315,59 +326,50 @@ void prim(int s) {
     for(int i=0; i<G[s].size(); i++) que.push(G[s][i]);
 	while (!que.empty()) {
 		edge e = que.top(); que.pop();
-        if (vis[e.t]) continue; // prevent old element
+        if (vis[e.t]) continue; // prevent out of date element
         vis[e.t] = 1;
         MST.push_back(e);
         for(int i=0; i<G[e.t].size(); i++){
             edge ee = G[e.t][i];
-            que.push(ee);
+            if(!vis[ee.t]) que.push(ee);
         }
 	}
 }
 
 // disjoint set for kruskal
-int p[maxv];
-
-void init(int n){
-    for(int i=0; i<n; i++) p[i] = i;
+int par[maxn];
+void init(int n) {
+	for (int i = 0; i <= n; i++) par[i] = i;
 }
-
-int getpar(int a){
-    if(a == p[a]) return a;
-    int fa = p[a];
-    p[a] = getpar(fa);
-    return p[a];
+int getpar(int x) {
+	if (par[x] == x) return x;
+	return par[x] = getpar(par[x]);
 }
-
-void merge(int a, int b){
-    int fa = getpar(a);
-    int fb = getpar(b);
-    p[fa] = fb;
+void merge(int x, int y) {
+	par[getpar(x)] = getpar(y);
 }
-
 bool query(int a, int b){
     return getpar(a) == getpar(b);
 }
+
 
 // kruskal MST, O(ElogE), sparse graph.
 void kruskal(){
     MST.clear();
     priority_queue<edge> que;
     // push all edges
-    for(int i=0; i<V; i++){
-        for(int j=0; j<G[i].size(); j++){
+    for(int i=0; i<V; i++)
+        for(int j=0; j<G[i].size(); j++)
             que.push(G[i][j]);
-        }
-    }
-    int N = V;
-    init(N);
+    int n = V;
+    init(n);
     // merge from shortest edge until only one class left.
-    while(N>1){
+    while(n>1){
         edge e = que.top(); que.pop();
         if(!query(e.f, e.t)){
             merge(e.f, e.t);
             MST.push_back(e);
-            N--;
+            n--;
         }
     }
 }
@@ -392,6 +394,8 @@ int main() {
 ### Examples
 
 * ウサギと桜
+
+  弗洛伊德+路径找回。
 
 ```c++
 #include <iostream>
@@ -433,7 +437,7 @@ void floyd() {
 	memset(dist, 0x3f, sizeof(dist));
 	memset(parent, -1, sizeof(parent));
 	for (int i = 1; i <= V; i++) {
-		dist[i][i] = 0;
+		dist[i][i] = 0; // self-connection
 		for (int j = 0; j < G[i].size(); j++) {
 			int e = G[i][j];
 			int v = edges[e].t;
@@ -497,7 +501,7 @@ int main() {
 
 * 地震之后
 
-  有向图最小树形图，朱刘算法。
+  有向图最小树形图，**朱刘算法。**
 
   ```c++
   #include <iostream>

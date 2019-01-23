@@ -112,11 +112,11 @@
 
     高度为$K$的二叉树最多有$2^K - 1$个节点。($\sum_{i=0}^{K-1}2^i$)
 
-  * N个节点的完全二叉树高度为**$ceil(log_2(N+1))$**
+  * **N个节点的完全二叉树高度为**$ceil(log_2(N+1))$
 
     $2^{k-1}-1  \lt N \le 2^k-1$
 
-    第$n$层的首元素为$2^n-1$ (从零开始编号)
+    第$n$层的首元素为$2^n-1​$ (从零开始编号)
 
   * N个节点的完全二叉树节点从上到下从左到右从零开始编号（数组存储）：
 
@@ -640,7 +640,7 @@
   node* build(vector<int>& weights) {
   	tree.clear();
   	int N = weights.size();
-      // add virtual nodes
+      // add virtual nodes !!!
   	for (int i = 0; i < K - 1 - (N - 1) % (K - 1); i++) weights.push_back(0);
   	priority_queue<node*> q;
   	for (int w : weights) {

@@ -64,104 +64,71 @@
 * Evaluate Infix 
 
   ```c++
-  /***************************************
-   * Infix Expression Calculator
-   *  input: 2 3 * 1 + ( 1 0 - 2 ^ 3 ) / 2
-   *  ouput: 24
-   * ************************************/
   #include <iostream>
-  #include<cstdio>
-  #include<algorithm>
   #include <cstring>
-  #include<stack>
+  #include <algorithm>
+  #include <queue>
   #include <string>
-  #include<math.h>
-  #define MAX 210
-  using namespace  std;
+  #include <vector>
+  #include <stack>
   
-  int domath(char op0, int op1, int op2)
-  {
-  	if (op0 == '*')return op1 * op2;
-  	else if (op0 == '/')return op1 / op2;
-  	else if (op0 == '+')return op1 + op2;
-  	else if (op0 == '-')return op1 - op2;
-  	else return pow(op1, op2);
-  }
-  int getpriority(char a)
-  {
-  	int priority;
-  	if (a == '^')priority = 3;
-  	else if (a == '*' || a == '/')priority = 2;
-  	else if (a == '+' || a == '-')priority = 1;
-  	else if (a == '(')priority = 0;
-  	return priority;
-  }
-  void popcalc(stack<int>& nums, char token) {
-  	int operand2, operand1, result;
-  	operand2 = nums.top();
-  	nums.pop();
-  	operand1 = nums.top();
-  	nums.pop();
-  	result = domath(token, operand1, operand2);
-  	nums.push(result);
+  using namespace std;
+  int N;
+  string e;
+  
+  int prior(char c) {
+  	if (c == '+' || c=='-') return 1;
+  	else if (c == '*' || c=='/') return 2;
+  	else if (c == '(') return 0;
   }
   
-  int main()
-  {
-  	string s;
-  	getline(cin, s);
-  	int n = s.size();
-  	stack<int>nums;
-  	stack<char>op;
-  	for (int i = 0; i < n; ++i)
-  	{
-  		if (s[i] == ' ') continue;
-  		if (isdigit(s[i])) {
-  			string tmp;
+  void popcalc(stack<char>& ops, stack<int>& nums) {
+  	char op = ops.top(); ops.pop();
+  	int b = nums.top(); nums.pop();
+  	int a = nums.top(); nums.pop();
+  	int res = 0;
+  	if (op == '+') res = a + b;
+  	else if (op == '-') res = a - b;
+  	else if (op == '*') res = a * b;
+  	else if (op == '/') res = a / b;
+  	nums.push(res);
+  }
+  
+  int eval(string e) {
+  	stack<char> ops;
+  	stack<int> nums;
+  	for (int i = 0; i < e.size(); i++) {
+  		if (isdigit(e[i])) {
+  			int num = 0;
   			int j = i;
-  			for (j ; j < n; ++j) {
-  				if (s[j] == ' ') continue;
-  				if (!isdigit(s[j])) break;
-  				else tmp += s[j];
+  			for (j; j < e.size(); j++) {
+  				if (isdigit(e[j])) num = num * 10 + e[j] - '0';
+  				else break;
   			}
   			i = j - 1;
-  			nums.push(stoi(tmp));
+  			nums.push(num);
   		}
-  		else if (s[i] == '(')
-  			op.push(s[i]);
-  		else if (s[i] == ')')
-  		{
-  			char token = op.top();
-  			op.pop();
-  			while (token != '(')
-  			{
-  				popcalc(nums, token);
-  				token = op.top();
-  				op.pop();
-  			}
+  		else if (e[i] == '(') ops.push(e[i]);
+  		else if (e[i] == ')') {
+  			while (ops.top() != '(') popcalc(ops, nums);
+  			ops.pop();
   		}
-  		else
-  		{
-  			while (!op.empty() && (op.top() != '(') && (s[i] != ' ') && (getpriority(op.top()) >= getpriority(s[i])))
-  			{
-  				char token = op.top();
-  				op.pop();
-  				popcalc(nums, token);
-  			}
-  			op.push(s[i]);
+  		else {
+  			while (!ops.empty() && prior(ops.top()) >= prior(e[i])) popcalc(ops, nums);
+  			ops.push(e[i]);
   		}
   	}
-  	while (!op.empty())
-  	{
-  		char token = op.top();
-  		op.pop();
-  		popcalc(nums, token);
-  	}
-  	int res = int(nums.top());
-  	cout << res << endl;
-  	return 0;
+  	while (!ops.empty()) popcalc(ops, nums);
+  	return nums.top();
   }
   
+  int main() {
+  	cin >> N;
+  	for (int i = 0; i < N; i++) {
+  		cin >> e;
+  		cout << eval(e) << endl;
+  	}
+  }
   ```
 
 
