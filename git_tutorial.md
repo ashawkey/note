@@ -159,6 +159,8 @@ git pull <shortname> # fetch and merge
 git push <shortname> <branch>
 # eg. git push origin master
 
+# merge unrelated histories (eg. different git projects)
+git merge master --allow-unrelated-histories
 ```
 
 
@@ -225,14 +227,29 @@ git branch -D dev # forcely delete unmerged "dev"
 ### Remote Branching
 
 ```bash
-# fetch from remote server "origin", this will mentain a branch called "origin/master", while you work at "master".
-git fetch origin
+### fetch from remote server "origin", this will mentain a remote branch called "origin/master", while you work at local branch "master".
+git fetch [origin]
+git branch -r # or --remote, show remote branches
 
-# fetch and merge
-git pull origin
+# fetch and merge in one step
+git pull [origin]
 
 # push to remote 
 git push origin master
+
+### sometimes the remote origin got a new branch "exp", and you want to move to that branch:
+git fetch
+git checkout origin/exp
+# at this time, we entered a "detached HEAD" mode, which means there is no branch pointing to this commit at the local machine (origin/exp is not a local branch), and only a HEAD pointer pointing here. Usually then we want to make a local branch here too.
+git checkout -b exp # local exp branch.
+git log --graph # finished.
+
+# one line version
+git checkout -t origin/exp # track, equals above 2 cmds
+git checkout exp # even simpler, equals above cmd
+
+# push to origin/exp
+git push origin/exp exp
 ```
 
 
@@ -264,6 +281,22 @@ While normal merge will generate:
 ![通过合并操作来整合分叉了的历史。](https://git-scm.com/book/en/v2/images/basic-rebase-2.png)
 
 
+
+### Ignore
+
+`.gitignore`
+
+```
+workspace
+*.log
+!important.log
+```
+
+```bash
+# ignore tracked files
+git rm --cached <file>
+git rm -r --cached <folder>
+```
 
 
 

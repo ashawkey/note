@@ -126,9 +126,55 @@
 
 ### 最长回文子串
 
-* Manacher
+* Manacher （c++写法巨大烦人）
 
+  ```c++
+  #include <iostream>
+  #include <string>
+  #include <cstring>
+  #include <algorithm>
+  
+  using namespace std;
+  
+  const int maxl = 105;
+  int r[maxl * 2];
+  
+  string manacher(string s) {
+  	string ss = "^#";
+  	for (int i = 0; i < s.size(); i++) ss += s[i], ss += '#';
+  	ss += '$';
+  	memset(r, 0, sizeof(r));
+  	int p = 0, l = 0;
+  	for (int i = 0; i < ss.size(); i++) {
+  		r[i] = l > i ? min(r[2 * p - i], l - i) : 1;
+  		while (ss[i + r[i]] == ss[i - r[i]]) r[i]++;
+  		if (i + r[i] > l) {
+  			l = i + r[i];
+  			p = i;
+  		}
+  	}
+  	int idx = 0;
+  	for (int i = 1; i < ss.size(); i++) {
+  		if (r[i] > r[idx]) {
+  			idx = i;
+  		}
+  	}
+  	string res = "";
+  	for (int i = idx - r[idx] + 1; i < idx + r[idx]; i++) {
+  		if (ss[i] != '#') res += ss[i];
+  	}
+  	return res;
+  }
+  
+  int main() {
+  	string s;
+  	while (cin >> s) {
+  		cout << manacher(s) << endl;
+  	}
+  }
+  ```
 
+  
 
 ### 最长公共子串
 

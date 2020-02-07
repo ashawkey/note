@@ -1,6 +1,6 @@
 # VS Code 快捷键
 
-### 平移代码块
+### 平移代码
 
 ##### Method 1
 
@@ -11,6 +11,16 @@
 ##### Method 2
 
 选中代码块， `shift+tab` 或 `tab`
+
+
+
+### 块操作
+
+`shift+alt`+鼠标选中
+
+`ctrl+alt`+Up/Down
+
+本质是多光标操作
 
 
 

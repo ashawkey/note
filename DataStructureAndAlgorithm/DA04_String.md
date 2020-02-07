@@ -37,6 +37,7 @@
     int l = s.length();
     string s = string(1, 'a'); // single char to string. to_string() is wrong.
     string s = to_string(123); // s="123"
+    s[0] = 'r' // mutable
     int a = stoi(s); // stof, stoll, stod, ...
     s.find(s2) // int index to s2, or -1 if not found
     ```

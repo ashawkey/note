@@ -240,7 +240,7 @@ $$
 
   (并不要求找到的前k个最小元素有序，只保证找到了第k小的元素，以及比它小的k-1个元素。从而可以避免k出现在复杂度公式中，严格的达到O(n))
 
-  `std::nth_element(begin, kth, start)` implements this.
+  `std::nth_element(begin, kth, end)` implements this.
 
   ```c++
   void quicksort_k(int arr[], int l, int r, int k){

@@ -375,7 +375,7 @@ public:
 
 ###### Ones and Zeros 474
 
-some what like a backpack problem, but i failed to figure it out again.
+some what like a knapsack problem, but i failed to figure it out again.
 
 ```c++
 Input: Array = {"10", "0", "1"}, m = 1, n = 1

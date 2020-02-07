@@ -229,7 +229,7 @@ $$
 
     **双散列探查**：使用两个散列函数$h1, h2$，如果$h1(key) = d$ 冲突，则计算$h2(key)$，根据这个值计算探查序列$(d + k * h2(key)) \% M $ 。
 
-    $h2(key)​$必须与M互素。
+    $h2(key)$必须与M互素。
 
 $$
 d = h_1(key) \\
@@ -238,7 +238,7 @@ p(key, i) = i*h_2(key)
 $$
 
 
-* Implementation：Dictionary
+* Implementation: Dictionary
 
   ```c++
   Elem* HT;
