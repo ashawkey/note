@@ -1,0 +1,341 @@
+# Graph Problems
+
+### Relocation (Luogu 3044)
+
+Dijkstra + State Compression DP
+
+```c++
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <bitset>
+
+using namespace std;
+
+const int maxn = 10005;
+const int maxm = 50005;
+const int maxk = 6;
+const int inf = 0x7f7f7f7f;
+
+int N, M, K;
+int x, y, w;
+int mkt[maxk];
+
+struct edge {
+	int f, t, w;
+	edge() {}
+	edge(int f, int t, int w) :f(f), t(t), w(w) {}
+};
+
+vector<edge> G[maxn];
+
+void insert_edge(int x, int y, int w) {
+	G[x].push_back(edge(x, y, w));
+	G[y].push_back(edge(y, x, w));
+}
+
+int dist[maxk][maxn];
+#define P pair<int,int>
+void dijkstra(int s, int k) {
+	int* d = dist[k];
+	priority_queue<P, vector<P>, greater<P>> q;
+	q.push(P(0, s));
+	d[s] = 0;
+	while (!q.empty()) {
+		P p = q.top(); q.pop();
+		int u = p.second;
+		if (d[u] < p.first) continue;
+		for (int i = 0; i < G[u].size(); i++) {
+			edge& e = G[u][i];
+			int v = e.t;
+			if (d[v] > d[u] + e.w) {
+				d[v] = d[u] + e.w;
+				q.push(P(d[v], v));
+			}
+		}
+	}
+}
+
+int dp[(1<<maxk) + 1][maxk + 1]; // state, last_choosen
+
+int main() {
+	cin >> N >> M >> K;
+	for (int i = 0; i < K; i++) cin >> mkt[i];
+	for (int i = 0; i < M; i++) {
+		cin >> x >> y >> w;
+		insert_edge(x, y, w);
+	}
+
+	memset(dist, 0x3f, sizeof(dist));
+	for (int k = 0; k < K; k++) dijkstra(mkt[k], k);
+
+	int mxSt = (1 << K) - 1;
+
+	int ans = inf;
+	for (int i = 1; i <= N; i++) {
+		bool flag = false;
+		for (int k = 0; k < K; k++) if (mkt[k] == i) flag = true;
+		if (flag) continue;
+
+		//cout << "enumerate city " << i << endl;
+
+		memset(dp, 0x3f, sizeof(dp));
+		for (int k = 0; k < K; k++) dp[1<<k][k] = dist[k][i];
+		for (int st = 0; st < mxSt; st++) {
+			// enumerate possilbe last choosen city j
+			for (int j = 0; j < K; j++) {
+				if ((st >> j) & 1) {
+					// enumerate next choosen city k
+					for (int k = 0; k < K; k++) {
+						if (!((st >> k) & 1)) {
+							int newSt = st | (1 << k);
+							dp[newSt][k] = min(dp[newSt][k], dp[st][j] + dist[j][mkt[k]]);
+							//cout << "dp " <<bitset<8>(st)<<" "<<j<< " -> "<< bitset<8>(newSt) << " " << k << " = " << dp[newSt][k] << endl;
+						}
+					}
+				}
+			}
+		}
+		for (int k = 0; k < K; k++) ans = min(ans, dp[mxSt][k] + dist[k][i]);
+	}
+	cout << ans << endl;
+}
+
+```
+
+
+
+### Full Tank ?
+
+太难了，本质DP，Dijkstra可以操作二维数组。
+
+```c++
+#include <cstdio>
+#include <cstring>
+#include <queue>
+#define rep(i,j,k) for(i=j;i<k;i++)
+using namespace std;
+const int N = 1001, M = 20001, inf = 0x7f7f7f7f;
+int h[N], p[M], v[M], w[M], c[N], cnt = 0;
+int dp[N][101], vis[N][101], s, t, cap;
+struct Data { 
+	int x, o, c; 
+	Data() {}
+	Data(int x, int o, int c) :x(x), o(o), c(c) {}
+};
+bool operator <(Data a, Data b) { return a.c > b.c; }
+
+void add(int x, int y, int z) {
+	p[++cnt] = h[x]; w[cnt] = z; v[cnt] = y; h[x] = cnt;
+}
+
+int dij() {
+	priority_queue<Data> q;
+	memset(dp, 127, sizeof dp);
+	memset(vis, 0, sizeof vis);
+	dp[s][0] = 0;
+	q.push(Data(s, 0, 0));
+	while (!q.empty()) {
+		Data u = q.top(); q.pop();
+		vis[u.x][u.o] = 1;
+		if (u.x == t) return u.c;
+		if (u.o < cap && !vis[u.x][u.o + 1] &&
+			dp[u.x][u.o + 1] > dp[u.x][u.o] + c[u.x]) {
+			dp[u.x][u.o + 1] = dp[u.x][u.o] + c[u.x];
+			q.push(Data(u.x, u.o + 1, dp[u.x][u.o + 1]));
+		}
+		for (int i = h[u.x]; i; i = p[i])
+			if (u.o >= w[i] && !vis[v[i]][u.o - w[i]] &&
+				dp[v[i]][u.o - w[i]] > dp[u.x][u.o]) {
+				dp[v[i]][u.o - w[i]] = dp[u.x][u.o];
+				q.push(Data(v[i], u.o - w[i], dp[v[i]][u.o - w[i]]));
+			}
+	}
+	return -1;
+}
+
+int main() {
+	int n, i, m, q;
+	scanf("%d%d", &n, &m);
+	rep(i, 0, n) scanf("%d", c + i);
+	while (m--) {
+		scanf("%d%d%d", &s, &t, &cap);
+		add(s, t, cap); add(t, s, cap);
+	}
+	scanf("%d", &q);
+	while (q--) {
+		scanf("%d%d%d", &cap, &s, &t);
+		int re = dij();
+		if (re == -1) puts("impossible");
+		else printf("%d\n", re);
+	}
+	return 0;
+}
+```
+
+
+
+### 道路
+
+类似上题。
+
+```c++
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+const int maxn = 105;
+const int maxr = 10005;
+const int maxk = 10005;
+const int inf = 0x3f3f3f3f;
+
+int N, K, R;
+
+struct edge {
+	int f, t, l, c;
+	edge() {}
+	edge(int f, int t, int l, int c) :f(f), t(t), l(l), c(c) {}
+};
+
+vector<edge> G[maxn];
+
+void insert_edge(int f, int t, int l, int c) {
+	G[f].push_back(edge(f, t, l, c));
+	//G[t].push_back(edge(t, f, l, c));
+}
+
+int dist[maxn][maxk];
+
+struct node {
+	int pos, cost, dist;
+	node() {}
+	node(int p, int c, int d) :pos(p), cost(c), dist(d) {}
+	bool operator < (const node& b) const {
+		return dist > b.dist;
+	}
+};
+
+void dijkstra() {
+	memset(dist, 0x3f, sizeof(dist));
+	dist[1][0] = 0;
+	priority_queue<node> q;
+	q.push(node(1, 0, 0));
+	while (!q.empty()) {
+		node p = q.top(); q.pop();
+		if (p.dist != dist[p.pos][p.cost]) continue;
+		for (int i = 0; i < G[p.pos].size(); i++) {
+			edge& e = G[p.pos][i];
+			if (p.cost+e.c <= K && dist[e.t][p.cost+e.c] > dist[p.pos][p.cost] + e.l) {
+				dist[e.t][p.cost+e.c] = dist[p.pos][p.cost] + e.l;
+				q.push(node(e.t, p.cost + e.c, dist[e.t][p.cost+e.c]));
+			}
+		}
+	}
+}
+
+int f, t, l, c;
+int main() {
+	cin >> K >> N >> R;
+	for (int i = 0; i < R; i++) {
+		cin >> f >> t >> l >> c;
+		insert_edge(f, t, l, c);
+	}
+	dijkstra();
+	int ans = inf;
+	for (int k = 0; k <= K; k++) ans = min(ans, dist[N][k]);
+	cout << (ans == inf ? -1 : ans) << endl;
+}
+```
+
+
+
+### Window Pains
+
+Topo sort to find Directed Loops. **有向图判圈，就用拓扑排序！**此外此题如何构图也比较困难。
+
+```c++
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+const int maxn = 10;
+int N = 9;
+
+int G[maxn][maxn];
+int mat[4][4];
+
+void insert_edge(int a, int b) {
+	G[a][b] = 1;
+}
+
+void build() {
+	memset(G, 0, sizeof(G));
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			int val = i * 3 + j + 1;
+			if (mat[i][j] != val) insert_edge(val, mat[i][j]);
+			if (mat[i][j+1] != val) insert_edge(val, mat[i][j+1]);
+			if (mat[i+1][j] != val) insert_edge(val, mat[i+1][j]);
+			if (mat[i+1][j+1] != val) insert_edge(val, mat[i+1][j+1]);
+		}
+	}
+}
+
+int vis[maxn];
+int ind[maxn];
+
+bool checkloop() {
+	memset(vis, 0, sizeof(vis));
+	memset(ind, 0, sizeof(ind));
+    // calc ind[]
+	for (int i = 1; i <= N; i++)
+		for (int j = 1; j <= N; j++)
+			if (G[i][j]) ind[j]++;
+    // bfs
+	queue<int> q;
+	for (int i = 1; i <= N; i++) if (ind[i] == 0) q.push(i);
+	while (!q.empty()) {
+		int p = q.front(); q.pop();
+		vis[p] = 1;
+		for (int i = 1; i <= N; i++) {
+			if (G[p][i]) {
+				if (--ind[i] == 0) q.push(i);
+			}
+		}
+	}
+    // check unvisited points (loops)
+	for (int i = 1; i <= N; i++) if (!vis[i]) return true;
+	return false;
+}
+
+string s;
+int main() {
+	while (cin >> s) {
+		if (s == "START") {
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 4; j++) {
+					cin >> mat[i][j];
+				}
+			}
+			build();
+			if (checkloop()) cout << "THESE WINDOWS ARE BROKEN" << endl;
+			else cout << "THESE WINDOWS ARE CLEAN" << endl;
+		}
+		else if (s == "END") continue;
+		else if (s == "ENDOFINPUT") break;
+	}
+}
+```
+
