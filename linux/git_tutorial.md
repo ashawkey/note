@@ -163,6 +163,24 @@ git push <shortname> <branch>
 git merge master --allow-unrelated-histories
 ```
 
+A usual workflow:
+
+```bash
+# clone
+git clone <repo>
+# set upsteam
+git remote add upstream <repo>
+# update 
+git fetch upstream
+# merge 
+git merge upstream/master
+# commit & push
+git commit -m "my-update"
+git push origin master
+# pull request
+
+```
+
 
 
 ### Tag
