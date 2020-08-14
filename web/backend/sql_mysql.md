@@ -1,6 +1,14 @@
 # MySQL
 
-### Login
+### Install
+
+```bash
+apt install mysql-server
+```
+
+
+
+### CLI
 
 ```bash
  mysql -u root -p
