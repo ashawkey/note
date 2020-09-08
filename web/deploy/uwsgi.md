@@ -1,5 +1,23 @@
 # uWSGI
 
+### Install
+
+```bash
+# error link: gcc version
+update-alternatives --remove-all gcc
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.7 10
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 10
+update-alternatives --config gcc # choose version<5
+
+# install
+pip install uwsgi
+
+# error: libpcre
+ln -s /root/anaconda3/lib/libpcre.so.1 /lib
+```
+
+
+
 ### Config
 
 uwsgi.ini

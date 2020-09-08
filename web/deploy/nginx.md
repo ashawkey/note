@@ -79,17 +79,35 @@ Location: `/etc/nginx/nginx.conf`
   http {
       server {
       	listen 127.0.0.1:8080;
+      	# / will load /data/index.html
           location / {
               root /data; # where to find files 
               index index.html; # index file
           }
       }
   }
-  
-  # listen ip:port;
-  #    if port ommited, use :80
-  #    if ommited, use *:80
   ```
+  
+* Dynamic Website (need backend)
+
+  ```
+  http {
+      server {
+      	listen 127.0.0.1:8080;
+      	
+      	# / will redirect to uwsgi port
+  		location / {
+  		  	  include uwsgi_params;
+  			  uwsgi_pass 127.0.0.1:8000;
+  		}
+  		
+      }
+  }
+  
+  
+  ```
+
+  
 
 * Reverse Proxy
 

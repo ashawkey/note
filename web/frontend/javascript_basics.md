@@ -19,8 +19,11 @@ var a = 1; // use ;
   * Convert
 
     ```javascript
+    100.toString()
+    
     parseInt('100', 10); // =100
     parseInt('11', 2); // =3
+    
     +'42'; // unary operator, =42
     parseInt('Hello', 10); // =NaN, isNaN()
     1/0; // =Infinity, isFinite()
@@ -190,6 +193,12 @@ a.push('a', 'b', 'c');
 a.pop();
 a.slice(start[, end]);
 a.sort([cmpfn])
+
+// splice(start, delete_num, append)
+a.splice(5, 1) // delete index=5 element
+a.splice(0, 0, 'x') // insert 'x' at index=0
+a.splice(a.indexOf('x'), 1) // delete 'x'
+
 ```
 
 
@@ -332,6 +341,37 @@ import(".App.js").then(
   var p = makePerson('Tom', 23);
   p.get_name();
   ```
+
+* ES6 class keyword
+
+  ```javascript
+  class A {
+      constructor(x) {
+          this.x = x;
+          // very important!
+          this.method1 = this.method1.bind(this);
+      }
+      
+      method1() {
+      	return this.x;
+      }
+      
+      method2() {
+          this.method1();
+      }
+      
+      static method3() {
+          return True;
+      }
+  }
+  
+  a = new A(10);
+  a.method1();
+  
+  A.method3();
+  ```
+
+  
 
 * `this`
 

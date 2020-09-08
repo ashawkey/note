@@ -16,6 +16,19 @@ apt install mysql-server
 
 
 
+### Set password
+
+```mysql
+USE mysql;
+UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+FLUSH PRIVILEGES;
+exit'
+```
+
+the default password is ''.
+
+
+
 ### Data types
 
 * TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT
