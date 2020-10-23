@@ -17,7 +17,7 @@ auc = metrics.auc(fpr, tpr)
 
 ### Great Illustration
 
-![image-20200717212241528](E:\aa\classNotes\data_science\assets\image-20200717212241528.png)
+![image-20200717212241528](roc_auc_understand.assets/image-20200717212241528.png)
 
 
 

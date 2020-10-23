@@ -63,6 +63,7 @@ using namespace std;
 int main()
 {
    vector<int> vec; 
+    // vector<int> vec(size[, init_value]);
  
    for(int i = 0; i < 5; i++){
       vec.push_back(i);
@@ -168,6 +169,23 @@ char* s = NULL;
 s = new char[20];
 delete [] s;
 ```
+
+
+
+### shared_ptr
+
+a smart pointer class, that manages reference count of the object and automatically deconstruct the object if reference count is 0.
+
+```c++
+#include <memory>
+
+std::shared_ptr<ClassName> p(new ClassName());
+std::shared_ptr<ClassName> p = std::make_shared<ClassName>();
+
+p.reset(new ClassName()); // the first object is deconstructed.
+```
+
+
 
 
 

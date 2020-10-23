@@ -70,6 +70,16 @@ dim3 Dim3(x=1, y=1, z=1);
 ### One-dimensional example
 
 ```c
+/*   
+
+  BlockIdx, ThreadIdx
+<<<GridDim, BlockDim>>>
+
+We can launch at most [4294967295, 65536, 65536] blocks, with each block contains at most [1024, 1024, 64] threads !
+
+*/
+
+
 threadIdx.x  // ranges from 0 to num_threads - 1
 blockDim.x   // = num_threads
 blockIdx.x   // ranges from 0 to num_blocks - 1
@@ -409,6 +419,8 @@ Usually, to access `arr[i, j, k]`, we need `farr[i*(J+K) + j*K + k]`
 
 these functions are guaranteed to be performed without interference from other threads.
 
+(of course, slower than direct operation.)
+
 ```c
 T atomicAdd(T* address, T val); // add val to *address and write back to address (return old *address)
 int atomicSub(int* address, int val);
@@ -418,5 +430,53 @@ int atomicMax(int* address, int val);
 int atomicAnd(int* address, int val);
 int atomicOr(int* address, int val);
 int atomicXor(int* address, int val);
+```
+
+
+
+### Pragma unroll
+
+```c++
+#pragma unroll
+for(int i=0; i<3; i++) {
+    a[i] = i;
+}
+```
+
+this will translate to
+
+```
+a[0] = 0;
+a[1] = 1;
+a[2] = 2;
+```
+
+
+
+
+
+### [Print from kernel](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#formatted-output)
+
+First, use `--gpu-architecture > 20` (this is default to `compute_10`)
+
+```bash
+nvcc -arch=compute_30 program.cu
+```
+
+Or in pytorch CUDA extension:
+
+```python
+extra_compile_args = {
+    'cxx': ['-g', '-O3', '-fopenmp', '-lgomp'],
+    'nvcc': ['-arch=compute_30', '-O3']
+}
+```
+
+then you can `printf()` from kernel directly!
+
+```c++
+__global__ void helloCUDA(float f) {
+    printf("Hello thread %d, f=%f\n", threadIdx.x, f);
+}
 ```
 
