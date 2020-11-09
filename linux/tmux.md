@@ -21,15 +21,19 @@ tmux attach -t session_name
 # kill
 tmux kill-session -t session_name
 tmux kill-server # close all
+# switch 
+<Ctrl + B> + s
 
 ## window
 # create window
 <Ctrl + B> + c
+# delete window
+<Ctrl + B> + d
 # switch window
-<Ctrl + B> + n/p
 <Ctrl + B> + 0~9
 # list and select
-<Ctrl + B> + W
+<Ctrl + B> + w
+
 # close window
 <Ctrl + B> + &
 tmux kill-window
