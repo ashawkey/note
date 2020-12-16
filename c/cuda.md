@@ -480,3 +480,49 @@ __global__ void helloCUDA(float f) {
 }
 ```
 
+
+
+### template
+
+cuda provides `AT_DISPATCH_FLOATING_TYPES` to automatically dispatch & cast type for every input.
+
+(mainly deal with `Float` vs `Double` issue)
+
+```c
+template <typename scalar_t>
+__global__ void lltm_cuda_forward_kernel(
+    const scalar_t* __restrict__ gates,
+    const scalar_t* __restrict__ old_cell,
+    scalar_t* __restrict__ new_h,
+    scalar_t* __restrict__ new_cell,
+    scalar_t* __restrict__ input_gate,
+    scalar_t* __restrict__ output_gate,
+    scalar_t* __restrict__ candidate_cell,
+    size_t state_size) {
+  const int column = blockIdx.x * blockDim.x + threadIdx.x;
+  const int index = blockIdx.y * state_size + column;
+  const int gates_row = blockIdx.y * (state_size * 3);
+  if (column < state_size) {
+    input_gate[index] = sigmoid(gates[gates_row + column]);
+    output_gate[index] = sigmoid(gates[gates_row + state_size + column]);
+    candidate_cell[index] = elu(gates[gates_row + 2 * state_size + column]);
+    new_cell[index] =
+        old_cell[index] + candidate_cell[index] * input_gate[index];
+    new_h[index] = tanh(new_cell[index]) * output_gate[index];
+  }
+}
+
+// macro
+AT_DISPATCH_FLOATING_TYPES(gates.type(), "lltm_forward_cuda", ([&] {
+    lltm_cuda_forward_kernel<scalar_t><<<blocks, threads>>>(
+        gates.data<scalar_t>(),
+        old_cell.data<scalar_t>(),
+        new_h.data<scalar_t>(),
+        new_cell.data<scalar_t>(),
+        input_gate.data<scalar_t>(),
+        output_gate.data<scalar_t>(),
+        candidate_cell.data<scalar_t>(),
+        state_size);
+  }));
+```
+

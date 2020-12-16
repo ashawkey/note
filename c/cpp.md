@@ -1,6 +1,18 @@
 # C++
 
+old name is C with Classes.
 
+Contains 4 parts, each designed with different philosophy.
+
+* C
+
+* Object-oriented programming
+
+* Template (generic programming)
+
+* STL (standard library)
+
+  
 
 ## Tutorial
 
@@ -15,7 +27,7 @@
 
 
 
-### C++ Library
+### C++ Library 
 
 #### #include \<iostream\>
 
@@ -25,10 +37,10 @@
 using namespace std;
  
 int main() {
-   char name[50];
+    char name[50];
 
-   cin >> name;
-   cout << "Name: " << name << endl;
+    cin >> name;
+    cout << "Name: " << name << endl;
  
 }
 ```
@@ -43,13 +55,19 @@ using namespace std;
  
 int main ()
 {
-   string str1 = "Hello";
-   string str2 = "World";
-   string str3;
+    string str1 = "Hello";
+    string str2 = "World";
+    string str3;
  
-   str3 = str1 + str2;
-
-   int len = str3.size();
+    str3 = str1 + str2;
+   
+    int len = str3.size(); // or str3.length()
+    
+	int idx = str3.find("pattern"); // -1 (string::npos) if not found
+    
+    char* cstr3 = str3.c_str();
+        
+    // and all the other vector method, like push_back, insert, pop_back.
 }
 ```
 
@@ -60,10 +78,9 @@ int main ()
 #include <vector>
 using namespace std;
  
-int main()
-{
+int main() {
    vector<int> vec; 
-    // vector<int> vec(size[, init_value]);
+   //vector<int> vec(size[, init_value]);
  
    for(int i = 0; i < 5; i++){
       vec.push_back(i);
@@ -82,6 +99,168 @@ int main()
    }
  
    return 0;
+}
+```
+
+#### #include \<set\>
+
+set implements a binary search tree, so querying existence and order is in `O(log n)`
+
+```c++
+#include <iostream>
+#include <set>
+using namespace std;
+ 
+int main() {
+    set<int> s;
+    
+    // insert element
+    s.insert(1);
+    
+    // count element, can check if an element is in the set.
+    cout << s.count(1) << endl;
+    bool is_in = s.count(1);
+    
+    // find the first element, another way to check is in. (faster than count!)
+    bool is_in2 = s.find(1) != s.end();
+    auto it = s.find(1); // return iterator to the first found element.
+	
+    // [c++20] contains
+    bool is_in3 = s.contains(1);
+    
+    // delete by value
+    s.erase(2); // erase(value)
+    
+    // size
+    cout << s.size() << endl;
+    
+    // clear
+    s.clear();
+    
+    // is empty
+    if (s.empty()) {
+        //...
+    }
+    
+    // loop all elements
+    for (auto it = s.begin(); it != s.end(); it++) {
+        cout << *it << endl;
+    }
+}
+```
+
+#### #include \<map\>
+
+map implements binary search tree to store keys.
+
+```c++
+#include <iostream>
+#include <map>
+using namespace std;
+ 
+int main() {
+    // init
+    map<int, string> m;
+    map<int, int> n = {{0:1}, {1:2}};
+    // insert
+    m[0] = "zero"; // m[key] = val
+    m.insert(pair<int, string>(1, "one")); // m.insert(pair)
+    
+    // get
+	cout << m[-1] << endl; // if not exist, will insert & initialize it ! (here int --> 0)
+    cout << m.at(-1) << endl; // check if exist first, throw an error
+    
+    // size
+    m.size();
+    m.empty();
+    m.clear();
+    
+    // iterator
+    for (auto it = m.begin(); it != m.end(); it++) {
+        //...
+    }
+    // delete
+    m.erase(0); // erase(key)
+    // find
+    auto it = m.find(2);
+    if (it != m.end()) {
+        m.erase(it);
+    }
+    
+    // check if a key is in map
+	bool is_in = m.find(0) != m.end();
+    bool is_in2 = m.count(0); // also work in map
+    
+}
+```
+
+#### #include \<unordered_set\>
+
+unordered_set implements a hash table, thus faster than ordered set.
+
+API is the same with set.
+
+```c++
+#include <iostream>
+#include <unordered_set>
+using namespace std;
+ 
+int main() {
+    unordered_set<int> s;
+    s.insert(1);
+    s.erase(1);
+    s.empty();
+    s.clear();
+    s.find(1);
+    s.count(1);
+    
+    // regular use to check duplicate
+    unordered_set<int> vis;
+    while(...) {
+    	if (vis.count(x)) return true;
+		else vis.insert(x);
+    }
+    return false;
+}
+```
+
+#### #include \<unordered_map\>
+
+unordered_map implements a hash table. 
+
+API is the same with map.
+
+#### #include \<queue\>
+
+```c++
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    queue<int> q;
+    q.push(1);
+    while (!q.empty()) {
+        int x = q.pop(); // access and remove
+		int y = q.front(); // just access
+        int z = q.back(); // just access
+        cout << q.size() << endl;
+    }
+}
+```
+
+#### #include \<stack\>
+
+```c++
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> s;
+    s.push(2);
+	int x = s.pop();
+    s.empty();
 }
 ```
 
@@ -123,14 +302,24 @@ printf("%d", a.a);
 a.setA(1);
 ```
 
-Inherit
+Inheritance
 
 ```c++
 class B: public A {
 public:
-    void printA() { printf("%d", a); }
+    void printA() { printf("%d", a); } // member a is inherited from class A
 }
 ```
+
+operator overload
+
+```c++
+
+```
+
+
+
+
 
 
 
@@ -191,12 +380,30 @@ p.reset(new ClassName()); // the first object is deconstructed.
 
 ### Reference
 
+less powerful but safer than pointer. it works like an alias.
+
+* reference must be initialized as soon as created.
+
+* reference cannot be made to refer to another object once created. (cannot be re-initialized)
+
+  > in fact it is impossible to do so.
+
+* reference cannot be null. (thus there is no container of references.)
+
+###### ref as an alias:
+
 ```c++
 int i = 0;
 int & j = i; // j is an alias of i
+j = 1; // i == 1 is true
+
+int & k; // error, not initialized !
+
+int f() { return 42 ; };
+int (& rf)() = f; // reference to a func
 ```
 
-ref as function return value:
+###### ref as function return value:
 
 ```c++
 double vals[] = {10.1, 12.6, 33.1, 24.1, 50.0};
@@ -204,7 +411,7 @@ double& setValues(int i) { return vals[i]; }
 setValues(0) = 0; // okay
 ```
 
-ref as function args:
+###### ref as function args:
 
 ```c++
 void swap(int& x, int& y) {

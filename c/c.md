@@ -82,7 +82,14 @@ gcc -o hello.out hello.c
 |                                                              | `&=` `^=` `|=`     | Assignment by bitwise AND, XOR, and OR                       |               |
 |                              15                              | `,`                | Comma                                                        | Left-to-right |
 
-
+> * `%` in c keeps the sign:
+>
+>   ```c++
+>   -1 % 3 = -1
+>   -2 % 3 = -2
+>   ```
+>
+>   (different from python, which always return a positive integer)
 
 ### Implicit type conversion
 
@@ -114,7 +121,7 @@ int a[5]; // a is a ptr to the first element in this array.
 int* pa = &a[0]; // *pa == *a == a[0]
 
 int b[3][3]; // b is a ptr to ptr
-int** pb = &b[0][0];
+int** pb = &b[0][0]; // **pb == **b == b[0]
 
 // initalize
 int x[] = {1,2,3};  // x has type int[3] and holds 1,2,3
@@ -126,9 +133,9 @@ int z[3] = {0};     // z has type int[3] and holds all zeroes
 
 ### Strings
 
-```
+```c
 char* s;
-s = "string";
+s = "string"; // allocate in heap.
 
 char s[] = "string";
 ```
@@ -229,10 +236,10 @@ int main() {
     char* s = "string";
     printf("%s", s);
     
-   char str[100];
-   int i;
-   scanf("%s %d", str, &i);
-   printf( "\nYou entered: %s %d \n", str, i);
+    char str[100];
+    int i;
+    scanf("%s %d", str, &i);
+    printf( "\nYou entered: %s %d \n", str, i);
 }
 ```
 

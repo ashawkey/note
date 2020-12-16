@@ -69,6 +69,20 @@ int search(vector<int>& nums, int target) {
     return -1;
 }
 
+// another [,] format
+{
+    while (l < r) {
+        int m = (l + r + 1) / 2;
+        if (test(s, m)) {
+            l = m;
+        }
+        else {
+            r = m - 1;
+        }
+    }
+    return l;
+}
+
 // examples
 /* find the minimal value that is good.
 assume isgood(int) is incremental. */
@@ -132,10 +146,8 @@ cout<<l<<endl;
 
 * Find Peak Element (leetcode 162)
 
-  还能这么用！
-
   ```c++
-  class Solution {
+class Solution {
   public:
       int findPeakElement(vector<int>& nums) {
           int l=0, r=nums.size()-1;
@@ -148,7 +160,7 @@ cout<<l<<endl;
       }
   };
   ```
-
+  
 * Use `std` correctly, especially when not found.
 
   leetcode 34.
@@ -174,10 +186,8 @@ cout<<l<<endl;
 
 * Split Array Largest Sum leetcode 410
 
-  二分鬼题。二分太强大了，就是不知道该什么时候用。
-
   ```c++
-  class Solution {
+class Solution {
   public:
       #define ll long long
       bool check(vector<int>& nums, ll mid, int m){
@@ -212,13 +222,11 @@ cout<<l<<endl;
       }
   };
   ```
-
+  
 * 寻找最近数
 
-  很迷。lower_bound不对，upper_bound要检验idx==end时减一，还要和idx-1比较一些谁更近。
-
   ```python
-  T = int(input())
+T = int(input())
   
   data = input()
   S = [int(ele) for ele in data.split()]
