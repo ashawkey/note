@@ -60,14 +60,17 @@ int main ()
     string str3;
  
     str3 = str1 + str2;
+    s = s + 'c';
    
     int len = str3.size(); // or str3.length()
     
 	int idx = str3.find("pattern"); // -1 (string::npos) if not found
     
     char* cstr3 = str3.c_str();
-        
-    // and all the other vector method, like push_back, insert, pop_back.
+    
+    // erase
+    s.erase(s.begin() + i); // erase one char
+    s.erase(start, num); // erase from start for num chars
 }
 ```
 
@@ -79,26 +82,47 @@ int main ()
 using namespace std;
  
 int main() {
-   vector<int> vec; 
-   //vector<int> vec(size[, init_value]);
- 
-   for(int i = 0; i < 5; i++){
-      vec.push_back(i);
-   }
+    // init
+    vector<int> vec; 
+    vector<int> vec = {1, 2, 3};
+    vector<int> vec(size[, init_value]);
     
-   cout << vec.size() << endl;
+    // 2d init: [N, M], -inf
+    vector<vector<int>> dp(N, vector<int>(M, -0x3f3f3f3f));
+    
+ 	// push_back
+    for(int i = 0; i < 5; i++){
+       vec.push_back(i);
+    }
+    
+    // size
+    cout << vec.size() << endl;
+ 	
+    // access by index
+    for(i = 0; i < 5; i++){
+       cout << i << " = " << vec[i] << endl;
+    }
+ 	
+    // iterator
+    vector<int>::iterator v = vec.begin();
+    while(v != vec.end()) {
+       cout << *v << endl;
+       v++;
+    }
+    
+    // erase i-th element
+    v.erase(v.begin() + i);
+    
+    // copy another vector
+    vector<int> v2(v1);
+    
+    // insert x at i-th position
+    v.insert(v.begin() + i, x);
+    
+    // extend
+    v1.insert(v1.end(), v2.begin(), v2.end());
  
-   for(i = 0; i < 5; i++){
-      cout << i << " = " << vec[i] << endl;
-   }
- 
-   vector<int>::iterator v = vec.begin();
-   while(v != vec.end()) {
-      cout << *v << endl;
-      v++;
-   }
- 
-   return 0;
+    return 0;
 }
 ```
 
@@ -146,6 +170,9 @@ int main() {
     for (auto it = s.begin(); it != s.end(); it++) {
         cout << *it << endl;
     }
+    
+    // custom cmp function
+    
 }
 ```
 
@@ -264,6 +291,96 @@ int main() {
 }
 ```
 
+#### #include \<priority_queue\>
+
+```c++
+#include <iostream>
+#include <priority_queue>
+using namespace std;
+
+// <表示大的在前。
+struct cmp {
+    bool operator()(int a, int b) {
+        return a < b;
+    }
+};
+
+int main() {
+    // heap, large-first
+    priority_queue<int> pq;
+    pq.push(1);
+    pq.push(2);
+    pq.push(0);
+    p.top(); // 2
+    
+    // smaller-first
+    priority_queue<int, vector<int>, greater<int>> pq;
+    
+    
+    // custom cmp function
+	set<int, cmp> s;
+	priority_queue<int, vector<int>, cmp> pq;
+}
+```
+
+#### #include \<algorithm\>
+
+```c++
+//// quick sort
+vector<int> v = {0, 2, 1, 3};
+sort(v.begin(), v.end()); // small -> large
+
+int v[4] = {4, 2, 3, 1};
+sort(v, v + 4);
+
+// sort with custom funciton / object.
+bool cmp(int i, int j) {return i < j;} // True -> [i, j]
+struct cmp {
+    bool operator < (int i, int j) {
+        return i < j;
+    }
+}
+sort(v, v + 4, cmp); // same as default, small -> large
+    
+//// merge sort
+stable_sort(v, v + 4);
+
+//// swap
+swap(x, y);
+
+//// min/max_element
+cout << *min_element(v, v+4) << " ~ " << *max_element(v, v+4) << endl; // return pointer/iterator
+
+//// nth_element, O(n) quick sort
+nth_element(v, v+2, v+4); // rearrange v[2] as the second element if ordered.
+cout << v[2] << endl;
+
+//// prev/next_permutation
+int xs[3] = {1, 2, 3};
+do {
+    for (int i=0; i<3; i++) cout << xs[i] << " ";
+    cout << endl;
+} while (next_permutation(xs, xs+3));
+
+//// unique
+auto end = unique(v.begin(), v.end());
+int new_size = end - v.begin();
+v.erase(end, v.end());
+
+int new_size = unique(v, v+4) - v;
+
+//// lower/upper_bound
+// check out of bound conditions!
+int l = lower_bound(v.begin(), v.end(), 10) - v.begin();
+int r = upper_bound(v.begin(), v.end(), 10) - v.begin();
+
+//// reverse
+string s = "string";
+reverse(s.begin(), s.end()); // inplace
+```
+
+
+
 
 
 ### Class
@@ -293,7 +410,7 @@ public:
     
     // method
     void setA(int _a) { a = _a; }
-}
+};
 
 A a;
 A a(0);
@@ -302,16 +419,90 @@ printf("%d", a.a);
 a.setA(1);
 ```
 
-Inheritance
+#### Inheritance
 
 ```c++
 class B: public A {
 public:
     void printA() { printf("%d", a); } // member a is inherited from class A
-}
+};
 ```
 
-operator overload
+#### operator overload
+
+```c++
+class A {
+public:
+    int x;
+    // constructor 
+    A (int x):x(x) {}
+    
+    // A = 1
+    void operator= (int rhs) {
+        x = rhs;
+    }
+    
+    // ++A
+    A& operator++ () {
+        x++;
+        return this;
+    }
+    // A++, use a fake parameter
+    A operator++ (int) {
+        A tmp(*this);
+        x++;
+        return tmp;
+    }
+    
+    // -A
+    A operator- () {
+        return A(-x);
+    }
+    
+    // A + A
+    A operator+ (const A& rhs) {
+        return A(x + rhs.x);
+    }
+    // A + 1
+    A operator+ (const int rhs) {
+        return A(x + rhs);
+    }
+    // 1 + A
+    friend A operator+ (const int lhs, const A& rhs) {
+        return A(lhs + rhs.x);
+    }
+    
+    // A < 1
+    bool operator< (const int rhs) {
+        return x < rhs;
+    }
+    
+    // A[i]
+    int& operator[] (int i) {
+        return arr[i];
+    }
+    
+    // A(a)
+    void operator() (int a) {
+		return a + x;
+    }
+    
+    // cout << A;
+    friend ostream &operator << (ostream& output, const A& a) {
+        output << a.x;
+        return output;
+    }
+    
+    // cin >> A;
+    friend istream &operator >> (istream& input, A& a) {
+        input >> a.x;
+        return input;
+    }
+    
+};
+```
+
+#### polymorphism
 
 ```c++
 

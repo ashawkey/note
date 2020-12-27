@@ -8,25 +8,34 @@ docker image ls
 docker images 
 docker search <image>
 docker pull <library/>hello-world
+
 # run container
 docker run hello-world
 docker run ubuntu echo "Hello World"
-docker run -it ubuntu bash # i=input,t=terminal, exit or <C-d> to quit.
+docker run -it ubuntu bash # i=input,t=terminal, type exit or <C-d> to quit.
 docker run -d ubuntu bash -c "yes" # d=detach
 docker run -d --name <name> <image/cmd> # assign name (else generating random name)
-docker run --rm --volume "$PWD/":/var/www/html <image> # rm=remove container after finish running, volume=mapping directories.
+
+# map data
+docker run -v /host:/container -it ubuntu bash # 
+docker run --rm -v "$PWD/":/var/www/html <image> # rm=remove container after finish running, volume=mapping directories.
+
 docker kill <ID>
 docker stop <ID>
 docker start <ID>
 docker top <ID>
+
 # ps
 docker ps # name, ID, port, ...
 # log
 docker logs <ID> # see stdout
+
 # container
 docker container ls # running
 docker container ls --all # all 
+docker container run ... # the same as docker run
 docker rm <ID> # must stop first
+
 # port mapping
 docker run -P <image/cmd> # -P: inner port map to random high outer port.
 docker run -p 5000:5000 <image/cmd> # -p: assign port mapping manually (out:in)
@@ -35,7 +44,7 @@ docker port <ID> <inner_port> # return outer_port
 
 
 
-### Dockerfile
+### Docker file
 
 ```dockerfile
 FROM centos:6.7
@@ -47,7 +56,11 @@ RUN /bin/echo "hello!"
 ```bash
 # build
 docker build -t <name:tag> . # . means the context! (dockerfile, and other needed files. Usually an empty folder.)
+# all the files in . will be packed to docker container.
+
+# build from a specific dockerfile
 docker build -t <name:tag> -f dockerfile . # assign dockerfile
+
 # add tag
 docker tag <ID> <name:new_tag>
 ```
@@ -90,10 +103,6 @@ EXPOSE <port> # only declare! use -p out:in to do mapping.
 WORKDIR <path> # change working directory of building
 RUN cd /workdir # totally wrong, no effect to later workdir.
 USER <user> # change user of building
-
-
-
-
 
 ```
 

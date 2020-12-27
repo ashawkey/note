@@ -82,14 +82,23 @@ gcc -o hello.out hello.c
 |                                                              | `&=` `^=` `|=`     | Assignment by bitwise AND, XOR, and OR                       |               |
 |                              15                              | `,`                | Comma                                                        | Left-to-right |
 
-> * `%` in c keeps the sign:
->
->   ```c++
->   -1 % 3 = -1
->   -2 % 3 = -2
->   ```
->
->   (different from python, which always return a positive integer)
+* `%` in c keeps the sign:
+
+  ```c++
+  -1 % 3 = -1
+  -2 % 3 = -2
+  ```
+
+  (different from python, which always return a positive integer)
+
+* bit operators are even slower than compare operator !
+
+  ```c++
+  a|b == c; // a | (b == c)
+  (a|b) == c; // (a|b) == c    
+  ```
+
+  
 
 ### Implicit type conversion
 
@@ -127,7 +136,112 @@ int** pb = &b[0][0]; // **pb == **b == b[0]
 int x[] = {1,2,3};  // x has type int[3] and holds 1,2,3
 int y[5] = {1,2,3}; // y has type int[5] and holds 1,2,3,0,0
 int z[3] = {0};     // z has type int[3] and holds all zeroes
+
+int z[2][2] = {0, 1, 2, 3}; // {{0, 1}, {2, 3}}
+
+int y[4][3] = { // array of 4 arrays of 3 ints each (4x3 matrix)
+    { 1 },      // row 0 initialized to {1, 0, 0}
+    { 0, 1 },   // row 1 initialized to {0, 1, 0}
+    { [2]=1 },  // row 2 initialized to {0, 0, 1}
+};              // row 3 initialized to {0, 0, 0}
 ```
+
+##### Size of c arrays:
+
+```c++
+
+// pitfall: sizeof
+// sizeof only works if the array is on the stack (declared in the same namespace)
+// if the array is passed to a function, it will be recognized as a pointer, thus losing size information.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void printSizeOf(int intArray[]);
+void printLength(int intArray[]);
+
+int main(int argc, char* argv[])
+{
+    int array[] = { 0, 1, 2, 3, 4, 5, 6 };
+	
+    printf("sizeof of array: %d\n", (int) sizeof(array)); 
+    // sizeof of array: 28
+    printSizeOf(array); 
+    // sizeof of parameter: 8
+
+    printf("Length of array: %d\n", (int)( sizeof(array) / sizeof(array[0]) )); 
+    // Length of array: 7
+    printLength(array); 
+    // Length of parameter: 2
+}
+
+void printSizeOf(int intArray[])
+{
+    printf("sizeof of parameter: %d\n", (int) sizeof(intArray));
+}
+
+void printLength(int intArray[])
+{
+    printf("Length of parameter: %d\n", (int)( sizeof(intArray) / sizeof(intArray[0]) ));
+}
+
+```
+
+##### Pass & Return array in c function:
+
+* pass: pointer + size is the most recommended way.
+
+* return: can only return dynamically allocated array's pointer.
+
+  instead of return a pointer, it's better to pass the return value as parameter and **return void**.
+
+* 2d array can be folded as 1d, and fix index liike `i * N + j`
+
+```c++
+const int M = 3;
+const int N = 3;
+
+// pass 1d
+void f(int* arr, int size) {}
+void f(int arr[], int size) {} // same
+void f(int arr[2]) {}
+
+// return 1d
+int* f(int size) {
+    // malloc 1d array
+    int* res = (int*)malloc(size * sizeof(int)); // don't forget free(res)
+    return res; 
+}
+
+// wrong! never use stack
+int* f(int size) {
+    int res[size];
+    return res; // buggy, res is only valid inside the function!
+}
+
+// pass 2d
+void f(int arr[][N]) {} // the second dim is necessary!
+void f(int arr[M][N]) {}
+void f(int** arr) {}
+
+// return 2d
+int** f(int h, int w) {...}
+
+
+int main() {
+    // declare 2d array in stack
+    int a[M][N];
+    
+    // malloc 2d array in heap
+    int** b;
+    b = (int**)malloc(M * sizeof(int*));
+    for (int i = 0; i < M; i++) 
+        b[i] = (int*)malloc(N * sizeof(int));
+    
+}
+```
+
+
 
 
 
