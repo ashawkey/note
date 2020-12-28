@@ -63,6 +63,9 @@ docker build -t <name:tag> -f dockerfile . # assign dockerfile
 
 # add tag
 docker tag <ID> <name:new_tag>
+
+# run 
+docker run <name:new_tag>
 ```
 
 ```dockerfile
@@ -103,8 +106,4 @@ EXPOSE <port> # only declare! use -p out:in to do mapping.
 WORKDIR <path> # change working directory of building
 RUN cd /workdir # totally wrong, no effect to later workdir.
 USER <user> # change user of building
-
 ```
-
-
-
