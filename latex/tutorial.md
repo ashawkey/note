@@ -71,14 +71,20 @@
   \newcommand{\water}{H$_2$O}
   
   the formula of water is \water.
-  \water\ is the formula of water. % \space is needed.
+  \water\ is the formula of water. % latex ignore space after command, so a \space is needed.
+  
+  \newcommand{\R}{\mathbb{R}}
+  use \R.
+  
+  \newcommand{\bb}[1]{\mathbb{#1}}
+  use \bb{R}.
   
   % \renewcommand{cmd}[args][opt]{def}, cmd must have been defined.
   % usually used to change default behaviour.
   \renewcommand{\familydefault}{\sfdefault}
   ```
 
-* space
+* force space
 
   ```latex
   % manual adjust
@@ -281,6 +287,25 @@ RQSZ \\
 
 
 ### Bibliography
+
+```latex
+\bibliography{ref} % ref.bib
+\bibliographystyle{ieeetr} % ieeetr.bst
+```
+
+##### `.bib` file
+
+```bibtex
+@book{DUMMY:1,
+AUTHOR="Who",
+TITLE={"Chat"},
+YEAR="3200",
+}
+```
+
+##### `.bst` file
+
+Bibliography style file.
 
 
 

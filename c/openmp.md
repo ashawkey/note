@@ -1,5 +1,7 @@
 # openmp
 
+[document](https://www.openmp.org/wp-content/uploads/OpenMP-API-Specification-5.0.pdf)
+
 ### Code example
 
 ```c++

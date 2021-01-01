@@ -75,7 +75,8 @@ dim3 Dim3(x=1, y=1, z=1);
   BlockIdx, ThreadIdx
 <<<GridDim, BlockDim>>>
 
-We can launch at most [4294967295, 65536, 65536] blocks, with each block contains at most [1024, 1024, 64] threads !
+We can launch at most 4294967295=65536*65536 (x/y/z: 4294967295/65536/65536) blocks, 
+with each block contains at most 1024 (x/y/z: 1024/1024/64) threads !
 
 */
 
@@ -119,8 +120,9 @@ __global__ void vector_add(float *out, float *a, float *b, int n) {
 }
 
 int block_size = 256;
-int grid_size = ((N + block_size) / block_size); // allocate enough blocks
-vector_add<<<grid_size,block_size>>>(d_out, d_a, d_b, N);
+int grid_size = ((N + block_size - 1) / block_size); // allocate enough blocks
+// !!! different from the previous impl, this assumes we have enough blocks. (we always have ???)
+vector_add<<<grid_size, block_size>>>(d_out, d_a, d_b, N);
 ```
 
 
@@ -524,5 +526,198 @@ AT_DISPATCH_FLOATING_TYPES(gates.type(), "lltm_forward_cuda", ([&] {
         candidate_cell.data<scalar_t>(),
         state_size);
   }));
+```
+
+
+
+
+
+### Cuda example: find max value & index in an array
+
+https://www.apriorit.com/dev-blog/614-cpp-cuda-accelerate-algorithm-cpu-gpu
+
+Local memory version: 
+
+```cpp
+__global__ void reduceMaxIdxOptimized(const float* __restrict__ input, const int size, float* maxOut, int* maxIdxOut)
+{
+    float localMax = 0.f;
+    int localMaxIdx = 0;
+  
+    for (int i = threadIdx.x; i < size; i += blockDim.x)
+    {
+        float val = input[i];
+  
+        if (localMax < abs(val))
+        {
+            localMax = abs(val);
+            localMaxIdx = i;
+        }
+    }
+  
+    atomicMax(maxOut, localMax);
+  
+    __syncthreads();
+  
+    if (*maxOut == localMax)
+    {
+        *maxIdxOut = localMaxIdx;
+    }
+}
+
+// impl of atomic operation
+__device__ void atomicMax(float* const address, const float value)
+{
+    if (*address >= value)
+    {
+        return;
+    }
+  
+    int* const addressAsI = (int*)address;
+    int old = *addressAsI, assumed;
+  
+    do
+    {
+        assumed = old;
+        if (__int_as_float(assumed) >= value)
+        {
+            break;
+        }
+  
+        old = atomicCAS(addressAsI, assumed, __float_as_int(value));
+    } while (assumed != old);
+}
+```
+
+Shared memory version.
+
+```c
+__global__ void reduceMaxIdxOptimizedShared(const float* __restrict__ input, const int size, float* maxOut, int* maxIdxOut)
+{
+    __shared__ float sharedMax;
+    __shared__ int sharedMaxIdx;
+  
+    if (0 == threadIdx.x)
+    {
+        sharedMax = 0.f;
+        sharedMaxIdx = 0;
+    }
+  
+    __syncthreads();
+  
+    float localMax = 0.f;
+    int localMaxIdx = 0;
+  
+    for (int i = threadIdx.x; i < size; i += blockDim.x)
+    {
+        float val = input[i];
+  
+        if (localMax < abs(val))
+        {
+            localMax = abs(val);
+            localMaxIdx = i;
+        }
+    }
+  
+    atomicMax(&sharedMax, localMax);
+  
+    __syncthreads();
+  
+    if (sharedMax == localMax)
+    {
+        sharedMaxIdx = localMaxIdx;
+    }
+  
+    __syncthreads();
+  
+    if (0 == threadIdx.x)
+    {
+        *maxOut = sharedMax;
+        *maxIdxOut = sharedMaxIdx;
+    }
+}
+```
+
+Optimized thread blocks
+
+```c
+__global__ void reduceMaxIdxOptimizedBlocks(const float* __restrict__ input, const int size, float* maxOut, int* maxIdxOut)
+{
+    __shared__ float sharedMax;
+    __shared__ int sharedMaxIdx;
+  
+    if (0 == threadIdx.x)
+    {
+        sharedMax = 0.f;
+        sharedMaxIdx = 0;
+    }
+  
+    __syncthreads();
+  
+    float localMax = 0.f;
+    int localMaxIdx = 0;
+  
+    for (int i = threadIdx.x + blockIdx.x * blockDim.x; i < size; i += blockDim.x)
+    {
+        float val = input[i];
+  
+        if (localMax < abs(val))
+        {
+            localMax = abs(val);
+            localMaxIdx = i;
+        }
+    }
+  
+    atomicMax(&sharedMax, localMax);
+  
+    __syncthreads();
+  
+    if (sharedMax == localMax)
+    {
+        sharedMaxIdx = localMaxIdx;
+    }
+  
+    __syncthreads();
+  
+    if (0 == threadIdx.x)
+    {
+        maxOut[blockIdx.x] = sharedMax;
+        maxIdxOut[blockIdx.x] = sharedMaxIdx;
+    }
+}
+```
+
+Warp optimized
+
+```c
+__global__ void reduceMaxIdxOptimizedWarp(const float* __restrict__ input, const int size, float* maxOut, int* maxIdxOut)
+{
+    float localMax = 0.f;
+    int localMaxIdx = 0;
+  
+    for (int i = threadIdx.x; i < size; i += blockDim.x)
+    {
+        float val = input[i];
+  
+        if (localMax < abs(val))
+        {
+            localMax = abs(val);
+            localMaxIdx = i;
+        }
+    }
+  
+    const float warpMax = warpReduceMax(localMax);
+  
+    const int warpMaxIdx = warpBroadcast(localMaxIdx, warpMax == localMax);
+  
+    const int lane = threadIdx.x % warpSize;
+  
+    if (lane == 0)
+    {
+        int warpIdx = threadIdx.x / warpSize;
+        maxOut[warpIdx] = warpMax;
+        maxIdxOut[warpIdx] = warpMaxIdx;
+    }
+}
 ```
 
