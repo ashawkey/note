@@ -19,3 +19,21 @@
 when the dataset returns a dictionary containing your data, always use `deepcopy ` when you save some values elsewhere.
 
 https://github.com/pytorch/pytorch/issues/973#issuecomment-459398189
+
+
+
+## Cuda-device assert triggered
+
+### Features
+
+Trigger this error once you access the tensor's data.
+
+But you can view its shape, modify the shape, etc.
+
+
+
+### True fix
+
+This is usually caused by un-intended modification of your data.
+
+Usually caused by out-of-index accession of another data that violates the data in this tensor.

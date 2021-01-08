@@ -196,6 +196,32 @@
   \end{equation}
   ```
 
+
+
+##### parentheses
+
+```latex
+% use \left and \right to auto-adjust size
+\begin{equation}
+F = G \left( \frac{m_1 m_2}{r^2} \right)
+\end{equation}
+
+% vertical bar in set
+\begin{equation}
+s = \left\{ x \middle| x < 10 \right\}
+\end{equation}
+
+% invisible \right for multi-lines 
+% \notag: treat as one equation
+\begin{align}
+s & = \left\{ x \middle| x < 10 \notag \right. \\
+  &	  \left. \& y < 10 \right\}
+\end{align}
+
+```
+
+
+
 ##### Align (package amsmath)
 
 ```latex

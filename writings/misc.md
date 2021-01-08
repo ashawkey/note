@@ -1,3 +1,30 @@
+### Misc
+
 * w.l.o.g. = without loss of generality.
+
+
+
+### Abstract
+
+* It is of increasing importance for ...  and draws increasing attention.
+* Further ablation study and analysis gives more insights into the proposed method and demonstrate the generalization capability and stability of our model.
+
+
+
+### Intro
+
+* ... remains an important open challenge in ...
+* Recently, there has been progress in ...
+* due to the difficulty of the task, these methods still have significant limitations. In particular, early efforts focused on ...
 * 
 
+
+
+### junction
+
+* In this section we investigate the relationship between ...
+* In particular, we show that ..., thus motivating ...
+* For the sake of simplicity and w.l.o.g, hereafter we ...
+* Let us consider a ...
+* Equivalently, ...
+* 
