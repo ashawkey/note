@@ -24,7 +24,6 @@
   find . -maxdepth 2 | sort
   ```
 
-  
 
 
 
@@ -50,3 +49,18 @@
 
   
 
+* delete recursively a certain patterned file
+
+  ```sh
+  # first find them and print them
+  find . -name "pattern" | xargs
+  
+  # delete them
+  find . -name "pattern" | xargs rm -rf
+  
+  # delete with exclusion
+  find . -name "pattern" | grep -v "dont.delete.me" | xargs rm -rf
+  
+  ```
+
+  
