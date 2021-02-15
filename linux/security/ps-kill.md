@@ -1,8 +1,11 @@
 ### ps
 
 ```bash
-# most usual usecase:
-ps -aux | grep <pattern>
+# find by name
+ps aux | grep <name>
+
+# find by pid
+ps aux | grep <pid>
 ```
 
 

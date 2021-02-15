@@ -67,5 +67,12 @@ chmod -R 777 <dir>
 
 
 
+### note the escaped space!
+
+```bash
+`python\ ` looks the same as `python ` in default ls and top.
+but `ls --escape` will reveal it!
+```
+
 
 
