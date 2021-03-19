@@ -174,7 +174,11 @@
   systemctl status trojan
   ```
 
+* If use Cloudflare CDN:
+
+  change the trojan record to `DNS Only` status. (do not proxy)
   
+  ![image-20210305154420993](trojan_nginx_server.assets/image-20210305154420993.png)
 
 
 

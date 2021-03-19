@@ -9,9 +9,11 @@
 * exclude sub-directory
 
   ```bash
-  zip -r out.zip <dir> -x <dir-to-exclude-1> <dir-to-exclude-2>
-  # should use "dir-to-exclude" 
-  # or escape asterisk by \*
+  zip -r out.zip <dir> -x "dir/subdir1"  "dir/subdir1/*"
+  # should use "", or escape asterisk by \*
+  
+  # example
+zip drn.zip -r drn-master/ -x "drn-master/pretrained/*"
   ```
-
+  
   

@@ -73,11 +73,13 @@ Collapse edges and minimize quadric error.
 
 A pixel NOT in shadow must be seen both by the light and camera.
 
-Two pass search algorithm:
+##### Two pass search algorithm:
 
-* compute depth of light to source.
-* compute depth of camera to source.
-* project camera-visible points to light. (shadow: light-occluded, not shadow: light-visible)
+* compute depth from light to object.
+* compute depth from camera to object.
+* project camera-visible area to light. (shadow: light-occluded, not shadow: light-visible)
+
+![image-20210318190725656](geometry.assets/image-20210318190725656.png)
 
 
 

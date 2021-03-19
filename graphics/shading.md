@@ -55,16 +55,16 @@ Direct shade each triangle. Not smooth.
 
 ##### Gouraud Shading: Each Vertex
 
-DEF: vertex normal is the average of surrounding face normals.
+DEF: **vertex normal** is defined as the average of surrounding face normals.
 
 * compute vertex normals.
 * compute color for each vertex.
-* interpolate color for each pixel inside each triangle.
+* interpolate **color** for each pixel inside each triangle.
 
 ##### Phong Shading: Each Pixel
 
 * compute vertex normals.
-* interpolate normals for each pixel inside each triangle.
+* interpolate **normals** for each pixel inside each triangle.
 * compute color for each pixel.
 
 

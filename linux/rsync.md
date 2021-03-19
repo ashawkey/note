@@ -5,6 +5,9 @@
   ```bash
   # copy source to destination, excluding source/folder
   rsync -av --progress source/ destination --exclude folder
+  
+  # exclude multiple
+  rsync -av --progress source/ destination --exclude folder --exclude folder2
   ```
 
   
