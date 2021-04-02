@@ -75,7 +75,58 @@ The Rendering Equation:
 
 Whitted-Style Ray Tracing's assumptions are too simple (in fact wrong).
 
+e.g. Glossy materials reflection, diffuse materials reflection.
+
+We can numerically solve the rendering function by Monte Carlo Integration.
+
+```bash
+# Distributed Ray Tracing
+shade(p, wo)
+	Randomly choose N directions wi~pdf
+	Lo = 0.0
+	For each wi
+		Trace a ray r(p, wi)
+		If ray r hit the light
+			Lo += (1 / N) * L_i * f_r * cosine / pdf(wi)
+		Else If ray r hit an object at q
+			Lo += (1 / N) * shade(q, -wi) * f_r * cosine / pdf(wi)
+	Return Lo
+```
+
+But the #ray explodes after many bounces. Also, the recursion never ends (light never stop bouncing).
+
+So we decide to **only choose one random direction** each time, and use Russian Roulette (RR) method to randomly stop light bouncing.
+
+```bash
+# Path Tracing (N == 1)
+shade(p, wo, P_RR) # P_RR is a parameter to control RR stop.
+	# Random stop 
+	Randomly select ksi from U[0, 1].
+	If ksi > P_RR
+		Return 0
+	# Random Path
+	Randomly choose ONE direction wi~pdf(w)
+	Trace a ray r(p, wi)
+		If ray r hit the light
+			Return L_i * f_r * cosine / pdf(wi)
+		Else If ray r hit an object at q
+			Return shade(q, -wi) * f_r * cosine / pdf(wi)
+```
+
+However, this randomness will be very noisy. 
+
+So we trace multiple paths for each pixel and average them.
+
+```bash
+ray_generation(camPos, pixel)
+	Uniformly choose N sample positions within the pixel
+	pixel_radiance = 0.0
+	For each sample in the pixel
+		Shoot a ray r(camPos, cam_to_sample)
+		If ray r hit the scene at p
+			pixel_radiance += 1 / N * shade(p, sample_to_cam)
+	Return pixel_radiance
+```
 
 
-We can approximate the rendering function by Monte Carlo Integration.
 

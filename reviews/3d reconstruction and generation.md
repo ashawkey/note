@@ -1,4 +1,4 @@
-# Image based 3D Reconstruction and Generation
+# Single View 3D Reconstruction and Generation
 
 
 
@@ -9,11 +9,11 @@
 > * Inference:
 >
 >   * Single-view RGB
->   * Multiple-view RGB
 > * Train in addition:
->
->   * 3D GT
->   * semantic / instance segmentation
+> 
+>  * 3D GT
+>   * Multiple-view RGB
+>   * semantic / instance segmentation (can be generated from pretrained Mask R-CNN)
 >   * camera pose 
 >
 > * Output Representation: 
@@ -97,6 +97,7 @@
 
 
 
+#### 
 #### [ECCV 2018] Pixel2Mesh: Generating 3D Mesh Models from Single RGB Images
 
 [paper](https://arxiv.org/pdf/1804.01654.pdf) | [code](https://github.com/nywang16/Pixel2Mesh)
@@ -138,6 +139,28 @@
 
 
 
+#### [ECCV 2014] OpenDR: An approximate differentiable renderer.
+#### [CVPR 2018] Neural 3D mesh renderer.
+
+#### [ICCV 2019] A differentiable renderer for image-based 3d reasoning.
+
+#### [NIPS 2019] Learning to predict 3d objects with an interpolation-based differentiable renderer
+
+[paper](https://arxiv.org/pdf/1908.01210.pdf) | [code](https://github.com/nv-tlabs/DIB-R)
+
+##### Problem
+
+* Input: Mesh, Texture, Camera Pose
+* Output: rendered Image
+
+##### Contribution
+
+* view foreground rasterization as a weighted interpolation of local properties and background rasterization as a distance-based aggregation of global geometry
+
+![image-20210402101531055](3d reconstruction and generation.assets/image-20210402101531055.png)
+
+
+
 #### [NIPS 2019] DISN: Deep Implicit Surface Network for High-quality Single-view 3D Reconstruction
 
 [paper](https://arxiv.org/pdf/1905.10711.pdf) | [code](https://github.com/laughtervv/DISN)
@@ -146,6 +169,43 @@
 
 * Input: Single RGB Image + 3D GT
 * Output: Implicit Function
+
+
+
+#### [ECCV 2020] Shape and viewpoint without keypoints.
+
+[paper](https://arxiv.org/abs/2007.10982) | [code](https://github.com/shubham-goel/ucmr)
+
+##### Problem
+
+* Input: Single RGB Image, Instance Segmentation, categorical mesh templates
+* Output: Camera Pose, Mesh, Texture
+
+##### Contribution
+
+* keypoint-free, by using a canonical mesh template for each category, and estimate pose by fitting silhouette. (template based)
+
+![image-20210402103603482](3d reconstruction and generation.assets/image-20210402103603482.png)
+
+![image-20210402103514003](3d reconstruction and generation.assets/image-20210402103514003.png)
+
+
+
+#### [ECCV 2020] Self-supervised single-view 3d reconstruction via semantic consistency
+[paper](https://arxiv.org/pdf/2003.06473.pdf)
+
+##### Problem
+
+* Input: Single RGB Image, Instance Segmentation
+* Output: Camera Pose, Mesh, Texture
+
+##### Contribution
+
+* keypoint-free, by using self-supervised part segmentations (SCOPS) to infer a 3d semantic template. (semantic based)
+* Leverage the semantic part invariance property of object instances of a category as a deformable parts model
+* Learn a category-level 3D shape template from scratch via iterative learning
+
+![image-20210402102613777](3d reconstruction and generation.assets/image-20210402102613777.png)
 
 
 
@@ -165,7 +225,7 @@
 ##### Problem
 
 * Input: Single RGB Image
-* Output: Point Cloud
+* Output: Camera Pose, Point Cloud
 
 ![image-20210401221826288](3d reconstruction and generation.assets/image-20210401221826288.png)
 
@@ -220,12 +280,110 @@
 
 ##### Problem
 
+* Input: Single view RGB image, categorical mesh template.
+* Output: Camera Pose, Mesh, Texture
+
+##### Contributions
+
+* keypoint-free, combines template-based and semantic-based approaches.
+* single GAN for all categories.
+
+![image-20210402101050945](3d reconstruction and generation.assets/image-20210402101050945.png)
+
+![image-20210402101126321](3d reconstruction and generation.assets/image-20210402101126321.png)
+
+##### 
+
+#### [Arxiv 2021] NeuTex: Neural Texture Mapping for Volumetric Neural Rendering
+
+[paper](https://arxiv.org/abs/2103.00762)
+
+##### Contribution
+
+* Disentangled NeRF, regress a UV coordinate before predicting RGB.
+
+* Can Extract View-Independent Mesh.
+
+![image-20210402105216141](3d reconstruction and generation.assets/image-20210402105216141.png)
+
+
+
+
+
+> What can be done:
+>
+> * Totally avoid using Mesh Template (e.g. topologically different shapes)
+> * Extract mesh from implicit functions --> Marching Cubes
+>   * How to extract mesh from NeRF? (view-dependent to independent)
+
+
+
+## Scene Level
+
+#### [CVPR 2018] ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans
+
+[paper](https://arxiv.org/pdf/1712.10215.pdf)
+
+##### Problem
+
 * Input: 
 * Output: 
 
 ##### Contributions
 
+![img](https://github.com/angeladai/ScanComplete/raw/master/images/teaser_mesh.jpg)
 
+
+
+#### [CVPR 2020] SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans
+
+``
+
+[paper]()
+
+##### Problem
+
+* Input: 
+* Output: 
+
+##### Contributions
+
+![img](https://github.com/angeladai/sgnn/raw/master/sgnn.jpg)
+
+
+
+#### [Arxiv 2021] SPSG: Self-Supervised Photometric Scene Generation from RGB-D Scans
+
+``
+
+[paper](https://arxiv.org/pdf/2006.14660)
+
+##### Problem
+
+* Input: 
+* Output: 
+
+##### Contributions
+
+![img](https://github.com/angeladai/spsg/raw/master/spsg.jpg)
+
+
+
+> What can be done:
+>
+> * Unsupervised SSC
+>   * Input: Single view RGB (+D ?), Output: voxels
+>   * How: 
+>     * Unsupervised Single-view Novel View Synthesis (e.g. MPI Model, Pixel-NeRF)
+>     * Use the novel views (and depths) to reconstruct voxels.
+> * Mesh Representation
+>   * Hard. It's better to divide and conquer, by first detecting objects and layout.
+
+
+
+
+
+-------
 
 
 
@@ -241,12 +399,3 @@
 * Output: 
 
 ##### Contributions
-
-
-
-
-
-## Scene Level
-
-
-
