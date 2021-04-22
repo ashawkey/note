@@ -1,5 +1,13 @@
 # React
 
+### start
+
+```bash
+npx create-react-app <name>
+```
+
+
+
 ### JSX
 
 Use </> in code. Place expressions inside {}.

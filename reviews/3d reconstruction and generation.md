@@ -1,4 +1,10 @@
-# Single View 3D Reconstruction and Generation
+# Single-/Multi- view 3D Reconstruction and Generation
+
+
+
+We focus on the problem of 3D reconstruction / generation from single or multiple (but not too many) RGB (D)s.
+
+The problem is usually ill-posed (ambiguous), and needs to guess / generate some content.
 
 
 
@@ -8,20 +14,33 @@
 >
 > * Inference:
 >
->   * Single-view RGB
+>   * Single-view RGB (D)
+>   * Multiple-view RGB (D)
 > * Train in addition:
-> 
->  * 3D GT
->   * Multiple-view RGB
->   * semantic / instance segmentation (can be generated from pretrained Mask R-CNN)
->   * camera pose 
+>
+>    * 3D GT
+>     * Multiple-view RGB
+>     * semantic / instance segmentation (can be generated from pretrained Mask R-CNN)
+>     * camera pose 
 >
 > * Output Representation: 
 >
 >   * Voxels
 >   * Point Cloud
->   * Implicit Function
+>   * Implicit Function (Signed Distance Function, Radiance Field)
 >   * Mesh
+>
+> 
+>
+> Trend:
+>
+> * Input: Multi-view --> Single view
+> * Input: RGBD --> RGB
+> * Train: w/ 3D GT --> w/o 3D GT
+> * Train: w/ camera pose --> w/o camera pose
+> * Output: Voxels --> Point Cloud / Implicit Function / Mesh
+
+
 
 
 
@@ -97,7 +116,6 @@
 
 
 
-#### 
 #### [ECCV 2018] Pixel2Mesh: Generating 3D Mesh Models from Single RGB Images
 
 [paper](https://arxiv.org/pdf/1804.01654.pdf) | [code](https://github.com/nywang16/Pixel2Mesh)
@@ -140,9 +158,54 @@
 
 
 #### [ECCV 2014] OpenDR: An approximate differentiable renderer.
+
+[paper](https://files.is.tue.mpg.de/black/papers/OpenDR.pdf)
+
+Inverse graphics: reverse-engineer the physical process that produced a real image.
+
+##### Problem
+
+* body shape estimation from image and range data.
+
+##### Contributions
+
+* We define a differentiable renderer (DR) as a process that (1) supplies pixels as a function of model parameters to simulate a physical imaging system and (2) supplies derivatives of the pixel values with respect to those parameters. To be practical, the DR also has to be fast; this means it must have hardware support. Consequently we work directly with OpenGL. Because we make it publicly available, we call our framework OpenDR (http://open-dr.org).
+
+* Our goal is not rendering, but inverse rendering
+
+  
+
 #### [CVPR 2018] Neural 3D mesh renderer.
 
-#### [ICCV 2019] A differentiable renderer for image-based 3d reasoning.
+[paper](http://arxiv.org/abs/1711.07566)
+
+##### Problem
+
+* single-image unsupervised 3D mesh reconstruction
+* 2D-to-3D style transfer
+
+##### Contributions
+
+* we propose an approximate gradient for rasterization that enables the integration of rendering into neural networks.
+
+
+
+#### [ICCV 2019] Soft Rasterizer: A differentiable renderer for image-based 3d reasoning.
+
+[paper](https://arxiv.org/abs/1904.01786) | [code](https://github.com/ShichenLiu/SoftRas)
+
+##### Problem
+
+* 3D unsupervised single-view reconstruction
+* image-based shape fitting
+
+##### Contributions
+
+* Unlike the state-of-the-art differentiable renderers [opendr, neural 3d mesh renderer], which only approximate the rendering gradient in the back propagation, we propose a truly differentiable rendering framework that is able to (1) directly render colorized mesh using differentiable functions and (2) back-propagate efficient supervision signals to mesh vertices and their attributes from various forms of image representations, including silhouette, shading and color images.
+
+* The key to our framework is a novel formulation that views rendering as an aggregation function that fuses the probabilistic contributions of all mesh triangles with respect to the rendered pixels.
+
+![image-20210413224908057](3d reconstruction and generation.assets/image-20210413224908057.png)
 
 #### [NIPS 2019] Learning to predict 3d objects with an interpolation-based differentiable renderer
 
@@ -151,11 +214,11 @@
 ##### Problem
 
 * Input: Mesh, Texture, Camera Pose
-* Output: rendered Image
+* Output: rendered Image & gradient 
 
 ##### Contribution
 
-* view foreground rasterization as a weighted interpolation of local properties and background rasterization as a distance-based aggregation of global geometry
+* Key to our approach is to view foreground rasterization as a weighted interpolation of local properties and background rasterization as a distance-based aggregation of global geometry
 
 ![image-20210402101531055](3d reconstruction and generation.assets/image-20210402101531055.png)
 
@@ -196,7 +259,7 @@
 
 ##### Problem
 
-* Input: Single RGB Image, Instance Segmentation
+* Input: Single RGB Image, Part Segmentation
 * Output: Camera Pose, Mesh, Texture
 
 ##### Contribution
@@ -228,8 +291,6 @@
 * Output: Camera Pose, Point Cloud
 
 ![image-20210401221826288](3d reconstruction and generation.assets/image-20210401221826288.png)
-
-#### 
 
 
 
@@ -292,91 +353,197 @@
 
 ![image-20210402101126321](3d reconstruction and generation.assets/image-20210402101126321.png)
 
-##### 
+
 
 #### [Arxiv 2021] NeuTex: Neural Texture Mapping for Volumetric Neural Rendering
 
+```
+@article{Xiang2021NeuTexNT,
+  title={NeuTex: Neural Texture Mapping for Volumetric Neural Rendering},
+  author={Fanbo Xiang and Zexiang Xu and Milovs Havsan and Yannick Hold-Geoffroy and Kalyan Sunkavalli and Hao Su},
+  journal={ArXiv},
+  year={2021},
+  volume={abs/2103.00762}
+}
+```
+
 [paper](https://arxiv.org/abs/2103.00762)
+
+##### Problem
+
+* Input: Multi-view RGB Images, Camera Pose, point cloud from COLMAP.
+* Output: Radiance Field, Texture.
 
 ##### Contribution
 
-* Disentangled NeRF, regress a UV coordinate before predicting RGB.
-
-* Can Extract View-Independent Mesh.
+* Disentangled NeRF ($F_{\sigma}: \mathbf{x} \rightarrow \sigma, F_{\mathbf c}: (\mathbf{x}, \mathbf d) \rightarrow \mathbf c$)
+* regress coordinate ($u,v$) of a Texture map ($F_{\mathbf c}(\mathbf{x}, \mathbf d) = F_{tex}(F_{uv}(x), \mathbf d)$)
+* Inverse Mapping $F_{uv}^{-1}$: can refine the COLMAP point cloud.
 
 ![image-20210402105216141](3d reconstruction and generation.assets/image-20210402105216141.png)
 
 
 
+#### [Arxiv 2021] Putting NeRF on a Diet: Semantically Consistent Few-Shot View Synthesis 
+
+[paper](https://arxiv.org/pdf/2104.00677.pdf)
+
+##### Contributions
+
+*  Scenes share high-level semantic properties across viewpoints, and pre-trained 2D visual encoders can extract these semantics. *"An X is an X from any viewpoint."*
+
+<img src="3d reconstruction and generation.assets/image-20210402142103260.png" alt="image-20210402142103260" style="zoom:50%;" />
 
 
-> What can be done:
+
+
+
+> Remaining Problems:
 >
-> * Totally avoid using Mesh Template (e.g. topologically different shapes)
+> * Avoid using topologically fixed Mesh Template
+>   * BSP-Net: but it is a global model inborn, maybe hard to model complicated scenes.
+>   * Piecewise Bezier Surface ? 
 > * Extract mesh from implicit functions --> Marching Cubes
+>   * Faster Extraction.
 >   * How to extract mesh from NeRF? (view-dependent to independent)
 
 
 
 ## Scene Level
 
+
+
 #### [CVPR 2018] ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans
+
+```
+@article{Dai2018ScanCompleteLS,
+  title={ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans},
+  author={Angela Dai and Daniel Ritchie and Martin Bokeloh and Scott E. Reed and J{\"u}rgen Sturm and M. Nie{\ss}ner},
+  journal={2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2018},
+  pages={4578-4587}
+}
+```
 
 [paper](https://arxiv.org/pdf/1712.10215.pdf)
 
 ##### Problem
 
-* Input: 
-* Output: 
+* Input: Multi-view RGBD Images (Scan) --> TSDF + 3D GT
+* Output: Voxels, Semantics
 
 ##### Contributions
+
+* In fact Multi-view SSC.
 
 ![img](https://github.com/angeladai/ScanComplete/raw/master/images/teaser_mesh.jpg)
 
 
 
+#### [CVPR 2020] SynSin: End-to-end View Synthesis from a Single Image
+
+[paper](https://arxiv.org/abs/1912.08804) | [code](https://github.com/facebookresearch/synsin)
+
+##### Problem
+
+* Input: Single-view RGB, Camera Pose + Multiple-view RGB
+* Output: Novel-view RGB
+
+##### Contribution
+
+* differentiable point cloud render
+
+![image-20210402151112751](3d reconstruction and generation.assets/image-20210402151112751.png)
+
+
+
 #### [CVPR 2020] SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans
 
-``
+```
+@article{Dai2020SGNNSG,
+  title={SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans},
+  author={Angela Dai and Christian Diller and M. Nie{\ss}ner},
+  journal={2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2020},
+  pages={846-855}
+}
+```
 
 [paper]()
 
 ##### Problem
 
-* Input: 
-* Output: 
+* Input: Multi-view Depth Images (Scan) --> TSDF
+* Output: Voxels
 
 ##### Contributions
+
+* Self-supervised Scene Completion.
 
 ![img](https://github.com/angeladai/sgnn/raw/master/sgnn.jpg)
 
 
 
+#### [TPAMI 2020] Semantic Scene Completion using Local Deep Implicit Functions on LiDAR Data
+
+[paper](https://arxiv.org/abs/2011.09141)
+
+##### Problem
+
+* Input: Single view LiDAR --> Point Cloud
+* Output: Implicit Function with semantics.
+
+
+
 #### [Arxiv 2021] SPSG: Self-Supervised Photometric Scene Generation from RGB-D Scans
 
-``
+```
+@article{Dai2020SPSGSP,
+  title={SPSG: Self-Supervised Photometric Scene Generation from RGB-D Scans},
+  author={Angela Dai and Yawar Siddiqui and Justus Thies and Julien P. C. Valentin and M. Nie{\ss}ner},
+  journal={ArXiv},
+  year={2020},
+  volume={abs/2006.14660}
+}
+```
 
 [paper](https://arxiv.org/pdf/2006.14660)
 
 ##### Problem
 
-* Input: 
-* Output: 
+* Input: Multi-view RGBD Images (Scan) --> TSDF
+* Output: Voxels (with color, high resolution)
 
 ##### Contributions
 
+* Self-supervised Geometry and Color Completion
+* 2D view guided synthesis for RGB, by rendering TSDF to the original views. (a differentiable TSDF render)
+* GAN model.
+
 ![img](https://github.com/angeladai/spsg/raw/master/spsg.jpg)
 
+![image-20210402133455770](3d reconstruction and generation.assets/image-20210402133455770.png)
 
 
-> What can be done:
+
+
+
+> Remaining Problems:
 >
-> * Unsupervised SSC
->   * Input: Single view RGB (+D ?), Output: voxels
+> * Self-supervised SSC
+>   * Input: Single/Multi view RGB (+D ?), Output: still in voxels
 >   * How: 
->     * Unsupervised Single-view Novel View Synthesis (e.g. MPI Model, Pixel-NeRF)
->     * Use the novel views (and depths) to reconstruct voxels.
+>     * Novel View Synthesis
+>       * Single-view: unsupervised (pixel-NeRF)
+>       * Multiple-view: supervised (SynSin)
+>     * Use the novel views (and depths) to reconstruct voxel volumes.
+>     * Semantic Cues is crucial for success. How ?
+> * Generative model
+>   * Single view SSC is highly ill-posed. 
+>   * How to generate high resolution voxels / Mesh ?
+>   * GAN prefers 2D data, differentiable rendering ?
 > * Mesh Representation
+>   * Low-resolution Voxels are unable for rendering purpose (e.g. RGB, light).
 >   * Hard. It's better to divide and conquer, by first detecting objects and layout.
 
 
