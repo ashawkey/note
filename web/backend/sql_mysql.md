@@ -4,6 +4,12 @@
 
 ```bash
 apt install mysql-server
+
+systemctl start mysql
+systemctl status mysql
+
+# config:
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 
 
@@ -11,8 +17,47 @@ apt install mysql-server
 ### CLI
 
 ```bash
- mysql -u root -p
+# login
+mysql -u root -p
+# show databases
+show databases; # = show schemas;
+# select database
+use <db>;
+# show tables
+show tables; # from the current db
+show tables from <db>; # from <db>
+# describe table
+describe <tb>; # = desc <tb>; = explain <tb>; = show columns from <tb>;
+# display first <num> rows
+select * from <tb> order by <col> [asc | desc] limit <num>;
+
+# show mysql databases location
+select @@datadir; # default: /var/lib/mysql
+
+# show size of all dbs
+SELECT table_schema AS "Database", SUM(data_length + index_length) / 1024 / 1024 AS "Size (MB)" FROM information_schema.TABLES GROUP BY table_schema
+
 ```
+
+
+
+### backup & recovery
+
+```bash
+# backup
+# ref: https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/mysqldump-sql-format.html
+mysqldump --all-databases > backup.sql
+mysqldump -databases <db1> [db2 db3 ...] > backup.sql
+mysqldump <db> [table1 table2 ...] > backup.sql
+
+# load
+shell $ mysql < backup.sql
+mysql $ source backup.sql;
+```
+
+
+
+
 
 
 
@@ -22,7 +67,7 @@ apt install mysql-server
 USE mysql;
 UPDATE user SET plugin='mysql_native_password' WHERE User='root';
 FLUSH PRIVILEGES;
-exit'
+exit;
 ```
 
 the default password is ''.

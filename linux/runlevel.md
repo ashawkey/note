@@ -24,6 +24,8 @@
 # show previous and current runlevel
 runlevel 
 # e.g. `N 5`, `5 3`
+
+sudo systemctl get-default
 ```
 
 
@@ -31,8 +33,12 @@ runlevel
 ### change current runlevel
 
 ```bash
-sudo systemctl isolate multi-user.target
-# will stop all the graphic processes
+sudo systemctl isolate multi-user.target # will stop all the graphic processes
+
+# or
+sudo telinit 3
+
+# do remember to reboot!
 ```
 
 
