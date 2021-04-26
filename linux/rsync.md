@@ -25,13 +25,13 @@
 
 
 
-* replace `scp`
+* alternative of `scp`
 
   ```bash
-  # d
-  rsync -avP -e ssh local_file user@root:remote_file
+  # default port 22
+  rsync -avP -e ssh local_file user@ip:remote_file
   # custom ssh port
-  rsync -avP -e "ssh -p 23" local_file user@root:remote_file
+  rsync -avP -e "ssh -p 23" local_file user@ip:remote_file
   ```
 
   

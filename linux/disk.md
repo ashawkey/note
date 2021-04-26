@@ -272,8 +272,13 @@ A way of storing data inside the partitions.
 
   ```bash
   sudo vim /etc/fstab
-  # add a line:
-  # /dev/sdb /data2 ext4 defaults 0 2
+  # add a line: 
+  
+  # <disk> <mount> <filesystem> <option> 
+  # <dump, should be 0> 
+  # <pass, root disk shoule be 1, other disk should be 2>
+  
+  /dev/sdb /data2 ext4 defaults 0 2
   ```
 
 * check auto-mount
@@ -296,7 +301,7 @@ TestDisk can undelete
 - [files from ext2 filesystem](https://www.cgsecurity.org/wiki/TestDisk:_undelete_file_for_ext2),
 - [files from NTFS partition](https://www.cgsecurity.org/wiki/Undelete_files_from_NTFS_with_TestDisk) since version [6.11](https://www.cgsecurity.org/wiki/TestDisk_6.11_Release).
 
-If it doesn't work or for other filesystem!
+If it doesn't work or for other filesystem! (which means the most used ext4 cannot use it.)
 
 
 
@@ -304,11 +309,11 @@ If it doesn't work or for other filesystem!
 
 Need to unmount the device.
 
-Usually we need a live-USB boot.
+Usually we need a live-USB boot. (very difficult, not recommended)
 
 
 
-### if the process is not killed
+### if the process is not killed (the only practical way)
 
 > ref: https://www.jianshu.com/p/662293f12a47
 
