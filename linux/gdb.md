@@ -39,6 +39,17 @@ $gdb info stack # show traceback
 
 
 
-# cgdb
+### seg fault in python that calls c
 
-Curses gdb.
+```bash
+gdb --args python main.py
+....................
+......greetings.....
+....................
+run
+....................
+... the seg fault...
+....................
+bt
+```
+
