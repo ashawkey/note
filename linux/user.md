@@ -36,6 +36,7 @@
 * add sudoer
 
   ```bash
+  # recommend use this!
   usermod -aG sudo hawkey
   ```
 
