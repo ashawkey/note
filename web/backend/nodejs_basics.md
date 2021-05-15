@@ -103,12 +103,23 @@ npm uninstall -S <pkg>  # --save, also remove ref in package.json
 npm uninstall -D <pkg>  # --save-dev, also remove dev-dependencies in package.json
 npm uninstall -g <pkg>  # global
 
-npm update # all
-npm update <pkg> # specific
+# check package installed versions
+npm list # list all installed packages with version. (recursive! maybe very long)
+npm list --depth 0 # use this instead.
 
-npm list # list all installed packages with version.
-npm list <pkg> # list <pkg> with version.
-npm list -g --depth 0
+# check package installed/wanted/latest versions
+npm outdated
+
+# update packages only to the wanted version!!! 
+npm update # all
+npm update <pkg> # a specific
+
+# update to the latest versions
+npm install <pkg>@latest
+
+# force update all package to latest versions
+npx npm-check-updates -u 
+npm install
 ```
 
 ```json

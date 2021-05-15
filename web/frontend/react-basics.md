@@ -298,7 +298,7 @@ Only use `setState()` to update state.
 * Return null to avoid rendering.
 
   ```javascript
-function WarningBanner(props) {
+  function WarningBanner(props) {
     if (!props.warn) {
       return null;
     }
@@ -658,6 +658,21 @@ Cannot be used in **class components**.
       </div>
     );
   }
+  
+  // async timer example
+  function AsyncExample() {
+  
+    const [count, setCount] = useState(0);
+  
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>
+          Click me
+        </button>
+      </div>
+    );
+  }
   ```
 
   
@@ -686,7 +701,7 @@ Cannot be used in **class components**.
       return 'Loading...';
     }
     return isOnline ? 'Online' : 'Offline';
-}
+  }
   ```
 
   this equals to:
