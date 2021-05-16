@@ -51,7 +51,7 @@ Physically correct manner of light calculation.
 * Incident Radiance
 * Exiting Radiance
 
-Irradiance vs radiance: 
+Irradiance （辐射照度） vs radiance （辐射亮度）: 
 
 ![image-20210314221805847](raytracing.assets/image-20210314221805847.png)
 

@@ -86,5 +86,45 @@ print(a[s_odd])
 
 
 
+### meshgrid
+
+```python
+# default behaviour
+np.meshgrid(np.arange(3), np.arange(4)) # or indexing='xy'
+'''
+[array([[0, 1, 2],
+        [0, 1, 2],
+        [0, 1, 2],
+        [0, 1, 2]]),
+ array([[0, 0, 0],
+        [1, 1, 1],
+        [2, 2, 2],
+        [3, 3, 3]])]
+'''
+
+np.meshgrid(np.arange(3), np.arange(4), indexing='ij')
+'''
+[array([[0, 0, 0, 0],
+        [1, 1, 1, 1],
+        [2, 2, 2, 2]]),
+ array([[0, 1, 2, 3],
+        [0, 1, 2, 3],
+        [0, 1, 2, 3]])]
+'''
+
+# different from torch !!!
+torch.meshgrid(torch.arange(3), torch.arange(4))
+'''
+(tensor([[0, 0, 0, 0],
+         [1, 1, 1, 1],
+         [2, 2, 2, 2]]),
+ tensor([[0, 1, 2, 3],
+         [0, 1, 2, 3],
+         [0, 1, 2, 3]]))
+'''
+```
+
+
+
 
 
