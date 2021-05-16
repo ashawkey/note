@@ -13,7 +13,7 @@
 
 * compile `cpp` implementation into `objects`. 
 
-  This only uses the `cpp` and the included `cpps/libs`.
+  This only uses the `cpp` and the included `cpps/libs` files.
 
 * linking all the `objects` to create the final binary executable / library.
 
@@ -45,7 +45,7 @@ Generally, any code you include can be viewed as a library.
 
 ##### Using at Compiling
 
-This is the case when you have the source code of the library.
+This is the case when you **have the source code of the library**.
 
 You have both `libxxx.cpp` and `libxxx.h`.
 
@@ -69,7 +69,7 @@ g++ main.cpp libxxx.cpp
   To compile:
 
   ```bash
-  g++ main.cpp -I ./path/to/include/ 
+  g++ main.cpp -I /path/to/include/ 
   # -I: directory that contains the header file.
   ```
 
@@ -124,7 +124,7 @@ You only have `libxxx.h` , and a compiled library file. (static or dynamic)
 Both kind of library should be compiled & linked by:
 
 ```bash
-g++ main.cpp -I . -L . -lunuseful
+g++ main.cpp -I /path/to/include -L /path/to/lib -lunuseful
 
 # -I tells where to find the header (.h)
 # -L tells where to search the library (.so/.a)
@@ -285,14 +285,3 @@ display.o insert.o search.o files.o : buffer.h
 clean :
     rm edit $(objects)
 ```
-
-
-
-
-
-### cmake
-
-Auto-generate `makefile` for `make`.
-
-Simplify `makefile` by using `CMakeLists.txt`.
-
