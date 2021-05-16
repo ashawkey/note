@@ -1,0 +1,159 @@
+# Transformations
+
+### Affine transformation
+
+#### 2D
+
+The transformation matrix is **translate (and scale) then rotate.**
+$$
+\begin{bmatrix}
+\cos\theta & -\sin\theta & t_x \\
+\sin\theta &  \cos\theta & t_y \\
+0&0&1 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & t_x \\
+0 & 1 & t_y \\
+0&0&1 \\
+\end{bmatrix}
+\begin{bmatrix}
+\cos\theta & -\sin\theta & 0 \\
+\sin\theta &  \cos\theta & 0 \\
+0&0&1 \\
+\end{bmatrix}
+$$
+
+#### 3D
+
+Main difference from 2D is the three rotation matrices **along three axes**:
+$$
+\mathbf R_x(\alpha) = 
+\begin{bmatrix}
+1&0&0&0\\
+0&\cos\alpha & -\sin\alpha &0 \\
+0&\sin\alpha & \cos\alpha &0 \\
+0&0&0 &1
+\end{bmatrix} \\
+
+\mathbf R_y(\alpha) = 
+\begin{bmatrix}
+\cos\alpha &0 & -\sin\alpha &0 \\
+0&1&0&0\\
+\sin\alpha &0 & \cos\alpha &0 \\
+0&0&0 &1
+\end{bmatrix} \\
+
+\mathbf R_z(\alpha) = 
+\begin{bmatrix}
+
+\cos\alpha & -\sin\alpha &0&0 \\
+\sin\alpha & \cos\alpha &0&0 \\
+0&0&1&0 \\
+0&0&0&1\\
+\end{bmatrix} \\
+$$
+With the final form:
+$$
+\mathbf R_{xyz}(\alpha) = \mathbf R_x(\alpha)\mathbf R_y(\alpha)\mathbf R_z(\alpha)
+$$
+Rodrigues' Rotation Formula for rotation along any axis $\mathbf n$:
+$$
+\mathbf R(\mathbf n, \alpha) = \cos\alpha\mathbf I + (1 - \cos\alpha)\mathbf n\mathbf n^T + \sin\alpha
+\begin{bmatrix}
+0 & -n_x &n_y \\
+n_z & 0 & -n_x \\
+-n_y & n_x & 0
+\end{bmatrix}
+$$
+
+
+
+
+### View/Camera Transformation
+
+It transform both the camera and objects, until **the camera is at the origin, up at Y axis and look at -Z axis.** (from world coordinate system to camera coordinate system)
+
+We should first apply this view transformation before we further apply projection transformation.
+
+
+
+### Projection Transformation
+
+It projects 3D objects into a 2D plane. 
+
+To achieve this, we in fact project the objects (from camera coordinate system) into a canonical cuboid $[-1,1]^3$ (the normalized device coordinate system, NDC), then simply look at -Z and get the 2D projection plane.
+
+
+
+#### Orthographic projection
+
+![](transformations.assets/gl_projectionmatrix02.png)
+
+* Ignore Z axis.
+* Translate & Scale X/Y axes to $[-1,1]^2$
+
+In implementation, we simply translate & scale the object's bounding box **from $[l,r]\times[b,t]\times[f,n]$ into $[-1, 1]^3$**:
+$$
+\mathbf M_{ortho} = 
+\begin{bmatrix}
+\frac 2 {r-l} & 0 & 0 & -\frac{r+l}{2} \\
+0 & \frac 2 {t-b} & 0 & -\frac{t+b}{2} \\
+0 & 0 & \frac 2 {n-f} & -\frac{n+f}{2} \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+(Note: in the figure, we use $-n$, where $n < f$.  But in the formula, we use $n > f$, since we look at -Z.)
+
+
+
+#### Perspective projection
+
+![](transformations.assets/gl_projectionmatrix01.png)
+
+Further objects should look smaller!
+
+* squish the frustum into a cuboid.
+* do orthographic projection.
+
+In implementation, we should find the relationship between the transformed points and original points:
+$$
+y' = \frac n z y\\
+x' = \frac n z x\\
+$$
+For Z axis, we observe:
+
+* any point on the near plane will not change.
+* any point's z on the far plane will not change.
+
+Solve the equations and we have:
+$$
+\mathbf M_{persp\rightarrow ortho} = 
+\begin{bmatrix}
+n & 0 & 0 & 0 \\ 
+0 & n & 0 & 0 \\
+0 & 0 & n+f & -nf\\
+0 & 0 & 1 & 0 \\
+\end{bmatrix}
+$$
+And finally:
+$$
+\mathbf M_{persp} = \mathbf{M}_{ortho}\mathbf M_{persp\rightarrow ortho} = \\
+\begin{bmatrix}
+\frac{2n}{r-l} & 0 & -\frac{r+l}{2} & 0 \\
+0 & \frac {2n} {t-b} & -\frac{t+b}{2} & 0 \\
+0 & 0 & (n+f)(\frac{2}{n-f}-\frac12) & \frac{2fn}{n-f} \\
+0 & 0 & 1 & 0
+\end{bmatrix}
+$$
+
+
+In cases the view is symmetric ($l= -r, b = -t$), we have:
+$$
+\begin{bmatrix}
+\frac{2n}{r-l} & 0 & -\frac{r+l}{2} & 0 \\
+0 & \frac {2n} {t-b} & -\frac{t+b}{2} & 0 \\
+0 & 0 & (n+f)(\frac{2}{n-f}-\frac12) & \frac{2fn}{n-f} \\
+0 & 0 & 1 & 0
+\end{bmatrix}
+$$
