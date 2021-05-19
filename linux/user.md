@@ -31,6 +31,12 @@
   su # root
   ```
 
+* add user to group
+
+  ```bash
+  usermod -aG g
+  ```
+
   
 
 * add sudoer

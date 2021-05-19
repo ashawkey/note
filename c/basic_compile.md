@@ -285,3 +285,24 @@ display.o insert.o search.o files.o : buffer.h
 clean :
     rm edit $(objects)
 ```
+
+
+
+### compilers
+
+* **Visual C++**: GUI compiler, mainly used in Windows.
+
+* **gcc/g++**: GNU Compiler Collection.
+
+  Standard compiler for Linux C/C++/Fortran/..., with a long history from 1987.
+
+* **clang/clang++**: or Low Level Virtual Machine (LLVM). 
+
+  More modern general compiler, first released in 2003.
+
+  Mainly used to provide (slightly?) better performance than gcc.
+
+  LLVM is also used as the compilation framework for many new languages (Julia, Rust, Swift...).
+
+  Clang is developed by Apple Inc. to replace GCC for better support of LLVM and other new features.
+

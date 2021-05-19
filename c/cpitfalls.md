@@ -16,4 +16,7 @@
   cout << (x % N + N) % N << endl;
   ```
 
-  
+* `.0f` for `float 0`, not `0f`
+
+* 
+

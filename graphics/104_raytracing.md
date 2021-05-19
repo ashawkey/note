@@ -28,9 +28,39 @@ Ray-Surface intersection algorithm:
 
   Need to pre-compute bounding boxes by spatial partitioning (uniform grid, KD-tree) / object partitioning (bounding volume hierarchy).
 
-  
 
-  
+
+
+```c++
+// Moller Trumbore Algorithm
+bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1, const Vector3f& v2, const Vector3f& orig,
+                          const Vector3f& dir, float& tnear, float& u, float& v)
+{
+    auto e1 = v1 - v0;
+    auto e2 = v2 - v0;
+    auto s = orig - v0;
+    auto s1 = crossProduct(dir, e2);
+    auto s2 = crossProduct(s, e1);
+
+    float k = 1.0f / dotProduct(s1, e1);
+    float tnear_ = k * dotProduct(s2, e2);
+    float u_ = k * dotProduct(s1, s);
+    float v_ = k * dotProduct(s2, dir);
+	
+    // don't forget tnear_ > 0 
+    if ((tnear_ > 0) && (u_ > 0) &&  (v_ > 0) && (1 - u_ - v_ >= 0)) {
+        tnear = tnear_;
+        u = u_;
+        v = v_;
+        return true;
+    }
+    else return false;
+}
+```
+
+
+
+
 
 ### Basic Radiometry
 

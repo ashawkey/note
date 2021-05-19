@@ -249,6 +249,21 @@ int main()
 }
 ```
 
+#### norm and normalization of vectors
+
+```c++
+int main() {
+    Vector3f v(1,2,3);
+    v.normalize(); // inplace
+    auto v2 = v.normalized();
+    
+    float n = v.norm();
+    float n2 = v.squaredNorm(); // n^2
+}
+```
+
+
+
 #### Basic reductions
 
 ```c++

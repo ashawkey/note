@@ -49,5 +49,13 @@ tmux kill-pane
 <Ctrl + B> + x
 # zoom
 <Ctrl + B> + z
+
+
+### scroll
+<Ctrl + B> + [
+# jump to top
+Alt + Shift + ,
+# jump to any line in scroll mode
+g 
 ```
 
