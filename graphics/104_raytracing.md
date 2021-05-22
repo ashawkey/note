@@ -32,7 +32,7 @@ Ray-Surface intersection algorithm:
 
 
 ```c++
-// Moller Trumbore Algorithm
+// Moller Trumbore Algorithm: detect ray-triangle intersection 
 bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1, const Vector3f& v2, const Vector3f& orig,
                           const Vector3f& dir, float& tnear, float& u, float& v)
 {
@@ -57,6 +57,16 @@ bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1, const Vector3f
     else return false;
 }
 ```
+
+
+
+#### BVH (Bounding Volume Hierarchy)
+
+BVH partitions **object** directly, compared to KD-Tree/Oct-Tree/BSP-Tree that partitions **space**.
+
+BVH's bounding boxes **may overlap in space, but each object is uniquely contained in bounding box**.
+
+![image-20210521223715017](104_raytracing.assets/image-20210521223715017.png)
 
 
 
