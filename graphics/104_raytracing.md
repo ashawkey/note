@@ -168,5 +168,101 @@ ray_generation(camPos, pixel)
 	Return pixel_radiance
 ```
 
+There are lots of other tricks, e.g., sampling the light, test if light is blocked, ... See the following implementation:
 
+```c++
+// Implementation of Path Tracing
+Vector3f Scene::castRay(const Ray &ray, int depth) const
+{
+	// recursion depth limit
+    if (depth > this->maxDepth) {
+        return Vector3f(0.0f);
+    }
+    // find intersection of ray with scene
+    Intersection intersection = Scene::intersect(ray);
+    Material *m = intersection.m;
+    Object *hitObject = intersection.obj;
+    Vector3f hitColor = this->backgroundColor;
+    Vector2f uv;
+    uint32_t index = 0;
+    // if intersected
+    if (intersection.happened) {
+        // retrieve hitPoint 
+        Vector3f hitPoint = intersection.coords;
+        Vector3f N = intersection.normal; // normal
+        Vector2f st; // st coordinates
+        hitObject->getSurfaceProperties(hitPoint, ray.direction, index, uv, N, st);
+        
+        // prepare variables
+        Vector3f wo = -ray.direction; // light_out direction
+        Vector3f wi; // light_in direction
+        float light_prob; // light_in prob
+	
+        // render!
+        switch (m->getType()) {
+            // only support DIFFUSE now...
+            case DIFFUSE:
+            {
+                /// direct light: sample light sources
+                Intersection light_pos;
+                sampleLight(light_pos, light_prob);
+                Vector3f lightPoint = light_pos.coords;
+                Vector3f lightIntensity = light_pos.emit;
+                Vector3f lightN = light_pos.normal;
+                // test if light is blocked.
+                wi = normalize(hitPoint - lightPoint);
+                Ray ray_light2hit(lightPoint, wi);
+                Intersection light2hit_isect = Scene::intersect(ray_light2hit);
+                Vector3f directColor(0.0f);
+                // if not blocked (the precsion is necessary! 1e-2 is good, but 1e-6 will cause noises)
+                if ((light2hit_isect.coords - hitPoint).norm() <= 1e-2) {
+                    Vector3f f_r = m->eval(wi, wo, N);
+                    float cos_theta = dotProduct(N, -wi);
+                    float cos_theta2 = dotProduct(lightN, wi);
+                    float dist = powf((lightPoint - hitPoint).norm(), 2);
+                    // L_i * f_r * cos \theta * cos \theta' / |x'-p|^2 / pdf_light
+                    directColor = lightIntensity * f_r * cos_theta * cos_theta2 / dist / light_prob;
+                }
+                
+                /// indirect light: Random Russian Roulette
+                Vector3f indirectColor(0.0f);
+                // start RR
+                float ksi = get_random_float();
+                // if RR passed
+                if (ksi <= RussianRoulette) {
+                    // sample light_in direction
+                    wi = -m->sample(ray.direction, N);
+                    light_prob = m->pdf(wi, wo, N);
+                    // test light intersection
+                    Ray ray_rr(hitPoint, -wi);
+                    Intersection rr_isect = Scene::intersect(ray_rr);
+                    // if intersected
+                    if (rr_isect.happened) {
+                        // with non-emit surface
+                        if (!rr_isect.obj->hasEmit()) {
+                            // recursive call to find the intensity !
+                            Vector3f rrIntensity = castRay(ray_rr, depth+1);
+                            Vector3f f_r = m->eval(wi, wo, N);
+                            float cos_theta = dotProduct(N, -wi);
+                            // L_i * f_r * cos \theta / light_prob / RR_prob
+                            indirectColor = rrIntensity * f_r * cos_theta / light_prob / RussianRoulette;
+                        }
+                    }
+                }
+
+                /// if self-emitting
+                Vector3f selfColor(0.0f);
+                if (m->hasEmission()) {
+                    selfColor = m->getEmission();
+                }
+                
+                // final color
+                hitColor = directColor + indirectColor + selfColor;
+                break;
+            }
+        }
+    }
+    return hitColor;
+}
+```
 
