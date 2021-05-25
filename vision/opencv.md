@@ -1,4 +1,15 @@
-# opencv
+# openc
+
+### check version
+
+```bash
+pkg-config --modversion opencv
+# to locate it
+pkg-config --cflags opencv
+pkg-config --libs opencv
+```
+
+
 
 ### install opencv2
 

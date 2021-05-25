@@ -3,11 +3,11 @@
 install:
 
 ```bash
-sudo apt-get update 
-sudo apt-get upgrade
-sudo apt-get install xserver-xorg-core xserver-xorg
-sudo apt-get install xorg 
-sudo apt-get install ubuntu-desktop
+sudo apt update 
+sudo apt upgrade
+sudo apt install xserver-xorg-core xserver-xorg
+sudo apt install xorg 
+sudo apt install ubuntu-desktop
 ```
 
 
@@ -73,6 +73,10 @@ log files:`/var/log/lightdm/lightdm.log`
 
 
 
+
+
+
+
 ### install nvidia-driver
 
 Always use the package manager!!!
@@ -124,3 +128,4 @@ sudo apt purge cuda*
 # runfile install
 # see documentation. 
 ```
+

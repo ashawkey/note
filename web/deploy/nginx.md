@@ -75,14 +75,24 @@ Location: `/etc/nginx/nginx.conf`
 
 * Static Website
 
-  ```
+  ```bash
   http {
       server {
-      	listen 127.0.0.1:8080;
-      	# / will load /data/index.html
+      	listen 80;
           location / {
-              root /data; # where to find files 
-              index index.html; # index file
+              root /data; # root_dir
+              index index.html; # load /data/index.html
+          }
+      }
+  }
+  
+  # to serve the directory like `python -m http.server` http://mysite.com/files
+  http {
+      server {
+      	listen 80;
+          location /files {
+              root /data; # serve /data/files
+  			autoindex on; # automatically show the directory tree (if off, will show 403 Forbidden, but can still access the file using fullname.)
           }
       }
   }
@@ -90,7 +100,7 @@ Location: `/etc/nginx/nginx.conf`
   
 * Dynamic Website (need backend)
 
-  ```
+  ```bash
   http {
       server {
       	listen 127.0.0.1:8080;
@@ -103,15 +113,13 @@ Location: `/etc/nginx/nginx.conf`
   		
       }
   }
-  
-  
   ```
-
+  
   
 
 * Reverse Proxy
 
-  ```
+  ```bash
   http {
       server {
           location / {
@@ -123,7 +131,7 @@ Location: `/etc/nginx/nginx.conf`
 
 * HTTPS
 
-  ```
+  ```bash
   http {
       server {
       	listen 443 ssl; # https usually use 443
@@ -160,7 +168,7 @@ Location: `/etc/nginx/nginx.conf`
 
 * Load Balance
 
-  ```
+  ```bash
   http {
   	upstream load_balance_server {
   		server 192.168.1.11:80   weight=5;
