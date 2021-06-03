@@ -43,6 +43,25 @@ config:
       Option "AllowEmptyInitialConfiguration" "true" # the key line
   EndSection
   ```
+  
+  [Another possible case:](https://bbs.archlinux.org/viewtopic.php?id=258201)
+  
+  ```bash
+  Section "Files"
+  	ModulePath   "/usr/lib/nvidia-<xxx>/xorg" # this line matters !!!
+  	ModulePath   "/usr/lib/xorg/modules"
+  	FontPath     "/usr/share/fonts/X11/misc"
+  	FontPath     "/usr/share/fonts/X11/cyrillic"
+  	FontPath     "/usr/share/fonts/X11/100dpi/:unscaled"
+  	FontPath     "/usr/share/fonts/X11/75dpi/:unscaled"
+  	FontPath     "/usr/share/fonts/X11/Type1"
+  	FontPath     "/usr/share/fonts/X11/100dpi"
+  	FontPath     "/usr/share/fonts/X11/75dpi"
+  	FontPath     "built-ins"
+  EndSection
+  ```
+  
+  It is not recommended to modify `xorg.conf` manually, but this is the only fix for my cases...
 
 
 
