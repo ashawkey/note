@@ -122,20 +122,44 @@ npx npm-check-updates -u
 npm install
 ```
 
+#### init a project
+
+```bash
+npm init -y # --yes
+```
+
+this will create a `package.json`.
+
 ```json
 // package.json
 {
-  "scripts": {
-    "start-dev": "node lib/server-development",
-    "start": "node lib/server-production"
+  "name": "nerf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "source.js",
+  "dependencies": {
+    "three": "^0.129.0"
   },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
+
 ```
 
-```bash
-npm run start-dev # based on scripts in package.json
-npm run start
-```
+
+
+React provides a better init setup by:
+
+`npx create-react-app <name>`
+
+It installs lots of default packages.
+
+
 
 
 
