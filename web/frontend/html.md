@@ -62,6 +62,24 @@
 
 
 
+### Script
+
+basics:
+
+```html
+<!-- include a source file -->
+<script src="file.js"></script>
+
+<!-- directly write in html -->
+<script>
+    console.log('Hello');
+</script>
+
+<!-- type="module" allow us to use "import" -->
+<script type="module">
+    import * as THREE form 'three'
+</script>
+```
 
 
 

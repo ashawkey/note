@@ -50,6 +50,44 @@ var a = 1; // use ;
     'hello, world'.replace('world', 'mars'); // "hello, mars"
     ```
 
+  * template strings
+
+    ```js
+    "" // normal strings 1
+    '' // normal strings 2
+    `` // template strings
+    
+    `\`` === '`' // --> true
+    `string text ${expression} string text` // support variables!
+    `line1
+     line2` // support multi-line
+    
+    // tagged templates. An advanced string manipulation way.
+    let person = 'Mike';
+    let age = 28;
+    
+    function myTag(strings, personExp, ageExp) {
+      let str0 = strings[0]; // "That "
+      let str1 = strings[1]; // " is a "
+      let str2 = strings[2]; // "."
+    
+      let ageStr;
+      if (ageExp > 99){
+        ageStr = 'centenarian';
+      } else {
+        ageStr = 'youngster';
+      }
+    
+      // We can even return a string built using a template literal
+      return `${str0}${personExp}${str1}${ageStr}${str2}`;
+    }
+    
+    let output = myTag`That ${ person } is a ${ age }.`;
+    
+    console.log(output);
+    // That Mike is a youngster.
+    ```
+
     
 
 * `Boolean`
@@ -72,9 +110,9 @@ var a = 1; // use ;
 
 Pass by value.
 
-* `var`
+* `var` 
 
-  **variables**. most common.
+  **variables**. most common. (however deprecated.)
 
   Maybe Global or Local, depending on where we declare it.
 
@@ -129,7 +167,7 @@ Pass by value.
 
 ```javascript
 for (let value of array) {}
-for (let prop in object) {}
+for (let prop in object) {} // depracated
 
 switch (action) {
   case 'draw':
@@ -321,167 +359,6 @@ import(".App.js").then(
 
 
 
-
-### OOP
-
-* JavaScript use Function as Classes.
-
-  ```javascript
-  function makePerson(name, age){
-      return {
-          // Attributes
-          name: name,
-          age: age,
-          // Methods
-          get_name: function() {return this.name;},
-          get_age: function() {return this.age;},
-      };
-  }
-  
-  var p = makePerson('Tom', 23);
-  p.get_name();
-  ```
-
-* ES6 class keyword
-
-  ```javascript
-  class A {
-      constructor(x) {
-          this.x = x;
-          // very important!
-          this.method1 = this.method1.bind(this);
-      }
-      
-      method1() {
-      	return this.x;
-      }
-      
-      method2() {
-          this.method1();
-      }
-      
-      static method3() {
-          return True;
-      }
-  }
-  
-  a = new A(10);
-  a.method1();
-  
-  A.method3();
-  ```
-
-  
-
-* `this`
-
-  * Refers to
-
-    * Function: current object.
-    * Dot/Bracket notation: the leading object.
-    * Else: the global object.
-
-  * `Function.prototype.bind()`
-
-    Bind `this` to an object.
-
-    ```javascript
-    var p = makePerson('Tom', 23);
-    
-    var get_name = p.get_name;
-    get_name(); // undefined, this = the global object
-    
-    var get_name_p = get_name.bind(p); // set this = p
-    get_name_p(); // 'Tom'
-    ```
-
-  * Use `this` to define a class
-
-    ```javascript
-    function Person(name, age) {
-    	this.name = name;
-        this.age = age;
-        this.get_name = function() { return this.name; }
-        this.get_age = function() { return this.age; }
-    } // remember function is an object too.
-    
-    var p = new Person('Tom', 23)
-    ```
-
-    
-
-  * `new`
-
-    It creates a new empty object, then call the function specified, with `this` set to that new object.
-
-    The function returns `undefined`, it's `new` that returns `this` object to the variable.
-
-  
-
-* `prototype`
-
-  `X.prototype` is an object shared by all instances of `X`.
-
-  ```javascript
-  function Person(name, age) {
-  	this.name = name;
-      this.age = age;
-  }
-  
-  Person.prototype.get_name = function() { return this.name; }
-  Person.prototype.get_age = function() { return this.age; }
-  ```
-
-  We can use this to add methods to existing classes at any time!
-
-  ```javascript
-  var s = 'Simon';
-  s.reversed(); // TypeError on line 1: s.reversed is not a function
-  
-  String.prototype.reversed = function() {
-    var r = '';
-    for (var i = this.length - 1; i >= 0; i--) {
-      r += this[i];
-    }
-    return r;
-  };
-  
-  s.reversed(); // nomiS
-  ```
-
-  
-
-* `apply` and `call`
-
-  ```javascript
-  function trivialNew(constructor, ...args) {
-    var o = {}; // Create an object
-    constructor.apply(o, args); // apply(this, args)
-    return o;
-  }
-  ```
-
-  ```javascript
-  function get_name_upper() {return this.name.toUpperCase();}
-  var s = new Person('Tom', 23);
-  get_name_upper.call(s);
-  // Is the same as:
-  s.get_name_upper = get_name_upper;
-  s.get_name_upper(); // 'TOM'
-  ```
-
-* Inheritence
-
-  ```javascript
-  function Teacher(name, age, subject) {
-      Person.call(this, name, age);
-      this.subject = subject;
-  }
-  
-  Teacher.prototype = Object.create(Person.prototype)
-  ```
-
-  
 
 ### Closures
 
