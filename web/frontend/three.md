@@ -94,5 +94,24 @@ function animate() {
 	renderer.render( scene, camera );
 
 }
+
+// we can also get time for animation
+function animate2(time) {
+
+	requestAnimationFrame( animate );
+	
+    time *= 0.001 // milisecond --> second
+	mesh.rotation.x = time;
+	mesh.rotation.y = time;
+
+	renderer.render( scene, camera );
+
+}
 ```
+
+
+
+### app structure
+
+![](https://threejsfundamentals.org/threejs/lessons/resources/images/threejs-structure.svg)
 
