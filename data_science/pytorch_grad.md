@@ -80,3 +80,9 @@ print(x.grad.data)
 
 ![](https://miro.medium.com/max/589/1*viCEZbSODfA8ZA4ECPwHxQ.png)
 
+
+
+### [Implement a simple `autograd`](https://github.com/mattjj/autodidact)
+
+
+

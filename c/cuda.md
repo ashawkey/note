@@ -477,6 +477,8 @@ extra_compile_args = {
 then you can `printf()` from kernel directly!
 
 ```c++
+#include <cstdio>
+
 __global__ void helloCUDA(float f) {
     printf("Hello thread %d, f=%f\n", threadIdx.x, f);
 }

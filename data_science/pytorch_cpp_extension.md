@@ -2,6 +2,16 @@
 
 
 
+## Pitfalls
+
+* always check the input tensor is `contiguous` !!!
+
+  else `.data_ptr<float>()` will generate a mess and you never get the expected values.
+
+* 
+
+
+
 ## Bindings
 
 ### Ahead of Time (setup)
@@ -100,6 +110,8 @@ print(add(one, one))
 
 
 ### Just in Time (load)
+
+Better use this.
 
 ```python
 import os
@@ -247,12 +259,3 @@ struct Net : torch::nn::Module {
   torch::nn::Linear fc2;
 };
 ```
-
-
-
-
-
-## Torch CUDA Extensions
-
-Usually, we need four source files for one extension.
-
