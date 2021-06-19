@@ -110,6 +110,7 @@ __global__ void vector_add(float *out, float *a, float *b, int n) {
 }
 
 vector_add<<<1,256>>>(d_out, d_a, d_b, N);
+// only 1 blocks, use 256 threads to process data.
 ```
 
 ```c
