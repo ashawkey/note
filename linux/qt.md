@@ -34,6 +34,15 @@ The last version that supports a GUI installer.
 
 download at: https://mirrors.tuna.tsinghua.edu.cn/qt/official_releases/qt/5.12/5.12.11/
 
+```bash
+wget -c https://mirrors.tuna.tsinghua.edu.cn/qt/official_releases/qt/5.12/5.12.11/qt-opensource-linux-x64-5.12.11.run
+
+chmod u+x ./qt-opensource-linux-x64-5.12.11.run
+sudo ./qt-opensource-linux-x64-5.12.11.run
+```
+
+
+
 Install the following `[Yes]`, which takes ~ 1.5G:
 
 ```

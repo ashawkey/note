@@ -1,6 +1,6 @@
 # package install 
 
-### package manager
+### apt package manager
 
 ```bash
 sudo apt install <pkg>
@@ -15,8 +15,17 @@ sudo apt purge <pkg> # also clear everything, e.g., configuration files
 sudo apt show <pkg> # show information
 
 sudo apt list --installed
+sudo apt list --upgradable
 
+apt search <pkgname>
+# e.g. apt search ^libxxx*
 ```
+
+apt will read & download sources from `/etc/apt/sources.list`
+
+We recommend to use the [TUNA mirror](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/).
+
+
 
 
 
