@@ -21,6 +21,19 @@
 * We are motivated by these observations to ...
 * Along the line of research that <combines A and B>, ...
 * Could ... ? Prior work is encouraging. [OpenAI CLIP]
+* ... is one of the central tasks in 3D computer vision with many applications. For example, ...
+* The ability to ... is a long-standing goal of computer vision and graphics.
+* 
+
+
+
+### Contributions
+
+* We present a new approach capable of ... from ...
+* We propose XXX, a novel ..., which ...
+* We demonstrate significant performance improvements of our approach compared to prior work.
+
+
 
 
 
@@ -29,6 +42,12 @@
 * We briefly describe related work in <two> major lines of research: ...
 * We are motivated to extend this line of research to a ... setting.
 * This severely curtails their flexibility and limits their ... capabilities.
+* The most related line of research is ...
+* Before the age of deep learning, ...
+* ... have been shown to allow for ...
+* .... has gained popularity in ... To overcome ..., several works ...
+* Several works investigate how ... While many approaches use ..., we focus on ...
+* 
 
 
 
@@ -36,6 +55,14 @@
 
 * In this section, we briefly summarize A, and then describe how we extend it to B.
 * We emphasize that what is common across this line of work is not <any details of the particular methods> but <the appreciation of natural languages as a training signal>. [CLIP]
+* Our goal is .... In the following, we discuss the main components of our method. First, ... (See Sec~\ref{}). Next, ... Finally, ....
+
+
+
+### Experiments
+
+* The improvements potentially come from the design of ... in our method, which can act as a ...
+* 
 
 
 
