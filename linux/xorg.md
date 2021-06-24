@@ -15,7 +15,10 @@ sudo apt install ubuntu-desktop
 log files:
 
 * `/var/log/Xorg.0.log`
+
 * `~/.xsession-error`  to see the recent errors
+
+  
 
 config:
 
@@ -48,7 +51,7 @@ config:
   
   ```bash
   Section "Files"
-  	ModulePath   "/usr/lib/nvidia-<xxx>/xorg" # this line matters !!!
+  	ModulePath   "/usr/lib/nvidia-<xxx>/xorg" # the key line
   	ModulePath   "/usr/lib/xorg/modules"
   	FontPath     "/usr/share/fonts/X11/misc"
   	FontPath     "/usr/share/fonts/X11/cyrillic"
@@ -71,6 +74,8 @@ config:
 
   solution: `sudo rm -rf ~/.Xauthority*`
 
+  
+
 * `~/.xsession`
 
   
@@ -89,10 +94,6 @@ sudo systemctl status display-manager
 ```
 
 log files:`/var/log/lightdm/lightdm.log`
-
-
-
-
 
 
 

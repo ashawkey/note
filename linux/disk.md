@@ -274,13 +274,11 @@ A way of storing data inside the partitions.
   sudo vim /etc/fstab
   # add a line: 
   
-  # <disk> <mount> <filesystem> <option> 
-  # <dump, should be 0> 
-  # <pass, root disk shoule be 1, other disk should be 2>
+  # <disk> <mount> <filesystem> <option> <dump, should be 0> <pass, root disk shoule be 1, other disk should be 2>
   
   /dev/sdb /data2 ext4 defaults 0 2
   ```
-
+  
 * check auto-mount
 
   ```bash

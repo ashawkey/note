@@ -4,7 +4,35 @@ A note on https://github.com/ibraheemdev/modern-unix
 
 
 
-### `mcfly` 
+### `zoxide` (recommend!)
+
+To replace `cd`
+
+Install
+
+```bash
+curl -sS https://webinstall.dev/zoxide | bash
+
+# add in ~/.bashrc
+eval "$(zoxide init bash)"
+
+# restart bash
+```
+
+Use
+
+```bash
+# cd <dir> but auto match
+z <dir>
+# interactive match
+zi <dir>
+```
+
+
+
+
+
+### `mcfly`  (recommend!)
 
 To replace `Ctrl + R`.
 
@@ -36,7 +64,7 @@ mcfly # it takes about one minute to read in history
 
 
 
-### `ag`
+### `ag` (recommend!)
 
 To replace `grep -rnw -e "pattern"`
 
@@ -58,7 +86,7 @@ ag -w "pattern" # whole word
 
 
 
-### `duf`
+### `duf` (recommend!)
 
 To replace `df`
 
@@ -78,7 +106,7 @@ duf
 
 
 
-### `dust`
+### `dust` (recommend!)
 
 To replace `du`
 
@@ -157,30 +185,5 @@ Use
 ```bash
 bat <file>
 ```
-
-
-
-### `zoxide`
-
-To replace `cd`
-
-Install
-
-```bash
-conda install -c conda-forge zoxide
-
-# add in ~/.bashrc
-eval "$(zoxide init bash)"
-```
-
-Use
-
-```bash
-# cd <dir> but auto match
-z <dir>
-# interactive match
-zi <dir>
-```
-
 
 
