@@ -1,3 +1,11 @@
+### I forget `--recursive` when cloning
+
+```bash
+git submodule update --init --recursive
+```
+
+
+
 ### undo `git pull`
 
 **git pull** performs two operations:

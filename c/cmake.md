@@ -13,7 +13,7 @@ cmake --version
 
 ### `CMakeLists.txt`
 
-The rules to generate makefile.
+The rules to generate makefile. (case-sensitive)
 
 #### Single source file
 
@@ -183,9 +183,15 @@ aux_source_directory(路径 变量)
 
 # 给文件名/路径名或其他字符串起别名，用${变量}获取变量内容
 set(变量 文件名/路径/...)
+# e.g., set(CMAKE_CXX_STANDARD 17)
 
 # 添加编译选项
 add_definitions(编译选项)
+# e.g., add_definitions(-O3 -Wall)
+
+# 自动寻找依赖，每个包的用法都不一样
+find_package(PkgName [Version] [REQUIRED])
+# e.g., find_package(Eigen3 3.3 REQUIRED)
 
 # 打印消息
 message(消息)
@@ -198,7 +204,7 @@ add_subdirectory(子文件夹名称)
 add_library(库文件名称 STATIC 文件)
 
 # 将.cpp/.c/.cc文件生成可执行文件
-add_executable(可执行文件名称 文件)
+add_executable(可执行文件名称 文件) # 自动选择这些文件中唯一的main()为入口
 
 # 规定.h头文件路径
 include_directories(路径)
@@ -209,5 +215,27 @@ link_directories(路径)
 # 对add_library或add_executable生成的文件进行链接操作
 # 注意，库文件名称通常为libxxx.so，在这里只要写xxx即可
 target_link_libraries(库文件名称/可执行文件名称 链接的库文件名称)
+```
+
+
+
+### examples
+
+```cmake
+cmake_minimum_required(VERSION 2.8)
+project(asicp)
+
+set (CMAKE_CXX_STANDARD 17)
+
+find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+find_package(nanoflann)
+
+add_definitions(-Ofast -ftree-vectorize -finline-functions -march=native -flto)
+
+aux_source_directory(src SRCS)
+add_executable(asicp ${SRCS})
+target_link_libraries(asicp nanoflann::nanoflann)
+target_link_libraries(asicp Eigen3::Eigen)
+
 ```
 

@@ -14,6 +14,17 @@ or simply symbol link it to `\usr\local\include`.
 
 
 
+> Troubleshooting: `Eigen::all, Eigen::seq` is not a member of Eigen.
+>
+> These operations belong to `dev` branch of Eigen, as you can see from the documentation:
+>
+> * dev: https://eigen.tuxfamily.org/dox-devel/group__TutorialSlicingIndexing.html
+> * stable: https://eigen.tuxfamily.org/dox/ (there is no page about slicing)
+>
+> To use the `dev` branch, download the source at https://eigen.tuxfamily.org/dox/
+
+
+
 ### Examples
 
 simple matrix

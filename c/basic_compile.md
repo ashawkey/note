@@ -192,7 +192,7 @@ gcc main.c -O3 # O0 / O1(default) / O2 / O3
 
 # warning
 gcc main.c -w # no warning
-gcc main.c -Wall # all warning
+gcc main.c -Wall # sall warning
 
 # gdb debug information
 gcc main.c -g
