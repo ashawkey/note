@@ -65,9 +65,98 @@ config:
   ```
   
   It is not recommended to modify `xorg.conf` manually, but this is the only fix for my cases...
-
-
-
+  
+  A full example:
+  
+  ```bash
+  Section "ServerLayout"
+  	Identifier     "X.org Configured"
+  	Screen         0  "Screen0" 0 0
+  	InputDevice    "Mouse0" "CorePointer"
+  	InputDevice    "Keyboard0" "CoreKeyboard"
+  EndSection
+  
+  Section "Files"
+  	ModulePath   "/usr/lib/xorg/modules"
+  	FontPath     "/usr/share/fonts/X11/misc"
+  	FontPath     "/usr/share/fonts/X11/cyrillic"
+  	FontPath     "/usr/share/fonts/X11/100dpi/:unscaled"
+  	FontPath     "/usr/share/fonts/X11/75dpi/:unscaled"
+  	FontPath     "/usr/share/fonts/X11/Type1"
+  	FontPath     "/usr/share/fonts/X11/100dpi"
+  	FontPath     "/usr/share/fonts/X11/75dpi"
+  	FontPath     "built-ins"
+  EndSection
+  
+  Section "Module"
+  	Load  "glx"
+  EndSection
+  
+  Section "InputDevice"
+  	Identifier  "Keyboard0"
+  	Driver      "kbd"
+  EndSection
+  
+  Section "InputDevice"
+  	Identifier  "Mouse0"
+  	Driver      "mouse"
+  	Option	    "Protocol" "auto"
+  	Option	    "Device" "/dev/input/mice"
+  	Option	    "ZAxisMapping" "4 5 6 7"
+  EndSection
+  
+  Section "Monitor"
+  	Identifier   "Monitor0"
+  	VendorName   "Monitor Vendor"
+  	ModelName    "Monitor Model"
+  EndSection
+  
+  Section "Device"
+  	Identifier  "Card0"
+  	Driver      "nvidia"
+  	BusID       "PCI:4:0:0"
+      Option      "AllowEmptyInitialConfiguration" "true"
+  EndSection
+  
+  Section "Screen"
+  	Identifier "Screen0"
+  	Device     "Card0"
+  	Monitor    "Monitor0"
+  	SubSection "Display"
+          Virtual 1920 1080
+  		Viewport   0 0
+  		Depth     1
+  	EndSubSection
+  	SubSection "Display"
+          Virtual 1920 1080
+  		Viewport   0 0
+  		Depth     4
+  	EndSubSection
+  	SubSection "Display"
+          Virtual 1920 1080
+  		Viewport   0 0
+  		Depth     8
+  	EndSubSection
+  	SubSection "Display"
+          Virtual 1920 1080
+  		Viewport   0 0
+  		Depth     15
+  	EndSubSection
+  	SubSection "Display"
+          Virtual 1920 1080
+  		Viewport   0 0
+  		Depth     16
+  	EndSubSection
+  	SubSection "Display"
+          Virtual 1920 1080
+  		Viewport   0 0
+  		Depth     24
+  	EndSubSection
+  EndSection
+  ```
+  
+  
+  
 * `~/.Xauthority`
 
   sometimes the ssh login is super slow, this maybe caused by Xauthority lock.

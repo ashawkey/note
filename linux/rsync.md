@@ -19,7 +19,8 @@
   rsync -avP source/ destination --exclude folder
   
   # exclude multiple
-  rsync -avP source/ destination --exclude folder --exclude folder2
+  rsync -avP source/ destination --exclude=folder --exclude=folder2 # must add =
+  rsync -avP source/ destination --exclude={folder,folder2} # brace expansion, no space after the comma !!!
   ```
 
 
