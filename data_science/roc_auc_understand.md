@@ -1,5 +1,9 @@
 # ROC & AUC
 
+A metric traditionally used for binary classification task.
+
+
+
 ### sklearn API
 
 ```python

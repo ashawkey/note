@@ -202,9 +202,9 @@ const int M = 3;
 const int N = 3;
 
 // pass 1d
-void f(int* arr, int size) {}
+void f(int* arr, int size) {} // dynamic, recommended
 void f(int arr[], int size) {} // same
-void f(int arr[2]) {}
+void f(int arr[2]) {} // must be a const size
 
 // return 1d
 int* f(int size) {
@@ -213,19 +213,36 @@ int* f(int size) {
     return res; 
 }
 
-// wrong! never use stack
+// wrong! never declare stack variable in function
 int* f(int size) {
     int res[size];
     return res; // buggy, res is only valid inside the function!
 }
 
 // pass 2d
-void f(int arr[][N]) {} // the second dim is necessary!
-void f(int arr[M][N]) {}
-void f(int** arr) {}
+void f(int** arr, int m, int n) { // dynamic, recommended.
+    // ...
+}
+
+const int M = 10;
+const int N = 10;
+void f(int arr[M][N]) { // must use two consts
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            // ...
+        }
+    }
+}
+
+const int N = 10;
+void f(int arr[][N], int m) { // the second dim is necessary!
+	// ...    
+} 
 
 // return 2d
-int** f(int h, int w) {...}
+int** f(int h, int w) {
+    // ...
+}
 
 
 int main() {
@@ -243,15 +260,26 @@ int main() {
 
 
 
-
-
-### Strings
+### Chars
 
 ```c
 char* s;
-s = "string"; // allocate in heap.
+s = "string"; 
 
 char s[] = "string";
+
+// char to int
+char c = '1';
+int ic = c; // 49, ascii code of '1'
+int i = c - '0'; // 1
+
+// int to char
+int i = 1;
+char c = i + '0'; // '1'
+
+// chars to int, do not recommend, use c++ string.
+char s[] = "12";
+int i = atoi(s); // 12
 ```
 
 
@@ -381,7 +409,9 @@ int scanf(const char *format, ...);
 
 ```c
 double exp(double x);
-double log(double x);
+double log(double x); // log_e 
+double log2(double x);
+double log10(double x);
 double pow(double x, double y);
 double sqrt(double x);
 double fabs(double x);

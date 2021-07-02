@@ -71,6 +71,29 @@ int main ()
     // erase
     s.erase(s.begin() + i); // erase one char
     s.erase(start, num); // erase from start for num chars
+    
+    // string to int
+    // int stoi(string& s, size_t* idx=0, int base=10)
+    string s = "123";
+    int i = stoi(s); // 123
+    
+    string s = "123 xyz";
+    size_t sz;
+    int i = stoi(s, &sz); // 123, sz = 3
+    
+    string s = "-10010110001";
+    int b = stoi(s, nullptr, 2); // -1201, binary.
+    
+    // string to float
+    string s = "12.34";
+    float f = stof(s); // 12.34
+    
+    // similarly, we have `stol, stoll, stod, stold, stoul, stoull`
+        
+    // int/float/double to string
+    string s = to_string(42); // "42"
+    string s = to_string(12.23); // "12.23"
+    string s = to_string(1e40); // "10000000000000000303786028427003666890752.000000"
 }
 ```
 
@@ -203,9 +226,14 @@ int main() {
     m.clear();
     
     // iterator
+    // auto == std::map<int,string>::iterator == pair<int,string>
     for (auto it = m.begin(); it != m.end(); it++) {
-        //...
+        cout << it->first << ": " << it->second << endl;
     }
+    for (auto& it : m) {
+        cout << it.first << ": " << it.second << endl;
+    }
+    
     // delete
     m.erase(0); // erase(key)
     // find
@@ -329,6 +357,13 @@ int main() {
 //// quick sort
 vector<int> v = {0, 2, 1, 3};
 sort(v.begin(), v.end()); // small -> large
+
+// reverse sort
+sort(v.begin(), v.end(), greater<int>());  // large -> small, c++14
+// or in two steps
+sort(v.begin(), v.end());
+reverse(v.begin(), v.end()); // large -> small
+
 
 int v[4] = {4, 2, 3, 1};
 sort(v, v + 4);
@@ -610,3 +645,75 @@ void swap(int& x, int& y) {
 }
 ```
 
+
+
+### Memory Layout
+
+![img](cpp.assets/memoryLayoutC.jpg)
+
+* Text Segment: the executable program itself. often read-only.
+* Initialized Data Segment (DS, data segment): initialized global variables, static variables.
+* Uninitialized Data Segment (BSS, block started by symbol): uninitialized global variables, static variables.
+* Stack: for normal memory allocation (mostly int x[size]), also contains the program stack, to enable recursive functions.
+* Heap: for dynamic memory allocation.
+
+```cpp
+// C++ code -- non-vector parts are also true for C 
+ 
+char* s = "hello world!"; // DS, read-write
+const int debug = 1; // DS, read-only
+
+int arr1[100000]; // BSS 
+int N; // BSS
+vector<int> arr2; // HEAP 
+ 
+struct DumbStruct { 
+    int someArr[10000]; 
+}; 
+ 
+int main () { 
+    int arr3[100000]; // STACK
+    static int arr7[100000]; // BSS 
+    
+    vector<int> arr4; // HEAP 
+    
+    int* arr5 = new int[100000]; // HEAP 
+    int* arr6 = (int*) malloc(100000 * sizeof(int)); // HEAP 
+
+    DumbStruct struct; // STACK 
+    
+    DumbStruct* struct2 = new DumbStruct(); // HEAP 
+    vector<DumbStruct> structarr; // HEAP 
+    
+    int n; 
+    scanf("%d", &n); 
+    int arr8[n]; // STACK (assuming C99 -- this does not compile in C++) 
+}
+```
+
+
+
+
+
+### Tricks
+
+* [Nested functions](https://stackoverflow.com/questions/4324763/can-we-have-functions-inside-functions-in-c)
+
+  We can use lambdas to nest functions. (c++11)
+
+  ```cpp
+  int main() {
+      // This declares a lambda, which can be called just like a function
+      auto print_message = [](std::string message) 
+      { 
+          std::cout << message << "\n"; 
+      };
+  
+      // Prints "Hello!" 10 times
+      for(int i = 0; i < 10; i++) {
+          print_message("Hello!"); 
+      }
+  }
+  ```
+
+  
