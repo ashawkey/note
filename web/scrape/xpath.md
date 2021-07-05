@@ -5,6 +5,7 @@ Cheat sheet: https://devhints.io/xpath
 ### Examples
 
 ```xquery
+# target                x
 div p	                //div//p
 ul > li	                //ul/li
 a:first-child	        //a[1]

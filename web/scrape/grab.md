@@ -45,11 +45,44 @@ resp.cookies
 ### Selector
 
 ```python
-selectorList = g.doc('xpath') # g.doc.select('xpath')
+selectorList = g.doc('/xpath') # g.doc.select('/xpath')
 selector = selectorList[0]
 
 selector.html()
 selector.text()
+```
+
+
+
+### Example
+
+crawl videos in `yhdm.so` .
+
+```python
+def crawl(keyword):
+    urls = []
+    g = Grab()
+    g.go(f'http://www.yhdm.so/search/{keyword}/')
+    candidate_selectors = g.doc(f'//div[@class="lpic"]/ul/li/a/@href')
+    for candidate in candidate_selectors:
+        g.go(f'http://www.yhdm.so{candidate.text()}')
+        episode_selectors = g.doc('//div[@class="movurl"]/ul/li/a/@href')
+        for episode in episode_selectors:
+            g.go(f'http://www.yhdm.so{episode.text()}')
+            title_selectors = g.doc('//div[@class="gohome l"]/h1')
+            title = title_selectors[0].text()
+            data_selectors = g.doc('//div[@id="playbox"]/@data-vid')
+            url = data_selectors[0].text()
+            if url[-4:] == "$mp4":
+                url = url[:-4]
+                print(f'[INFO] crawled {title} {url}')
+                urls.append({
+                    'formattedUrl': url,
+                    'title': title,
+                    'snipped': '',
+                })
+	return urls
+
 ```
 
 
