@@ -113,6 +113,10 @@ int main() {
     // 2d init: [N, M], -inf
     vector<vector<int>> dp(N, vector<int>(M, -0x3f3f3f3f));
     
+    // reserve v.s. resize
+    vec.reserve(10); // only increase capacity, will not push empty elements! vec.size() == 0
+    vec.resize(10); // push 10 empty elements into vec. vec.size() == 10
+    
  	// push_back
     for(int i = 0; i < 5; i++){
        vec.push_back(i);
@@ -716,4 +720,4 @@ int main () {
   }
   ```
 
-  
+  re

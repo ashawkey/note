@@ -231,7 +231,7 @@ bool cmp(int a, int b) {
 	return dist[a] > dist[b];  // min heap should use greater<>
 }
 
-// O((V+E)logE)
+// O((V+E)logE)，单源最短路，求起点s到任意其他点t的最短距离dist[t]
 /*
 实现方式：最小堆+不删除旧值。
 其他方式：
@@ -276,7 +276,7 @@ void dijkstra(int s) {
 	while (!q.empty()) {
 		P p = q.top(); q.pop();
 		int u = p.second;
-		if (d[u] < p.first) continue; // out of date records
+		if (d[u] < p.first) continue; // outd records
 		for (int i = 0; i < G[u].size(); i++) {
 			edge& e = G[u][i];
 			int v = e.t;
