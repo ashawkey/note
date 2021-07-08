@@ -85,7 +85,7 @@
 
     **Why `k = next[k]`:**
 
-    ![1539151633522](E:\aa\junior1\DSAlgo\DA04_String.assets\1539151633522.png)
+    ![1539151633522](DA04_String.assets\1539151633522.png)
 
     ```c++
     /*******************************
@@ -118,14 +118,14 @@
     int KMP(string t, string p){
         int tlen = t.length();
         int plen = p.length();
-        if(tlen < plen) return -1;
+        if (tlen < plen) return -1;
     	int* next = getNext(p);
     	int i = 0, j = 0;
-        while(i < tlen && j < plen){
-            if(j == -1 || t[i] == p[j]) i++, j++;
+        while (i < tlen && j < plen){
+            if (j == -1 || t[i] == p[j]) i++, j++;
             else j = next[j];  //重新对齐后，仍要比较一次i位置
         }
-        if(j == plen) return i-j;
+        if (j == plen) return i-j;
         else return -1;
     }
     ```
@@ -152,9 +152,7 @@
     | string | a    | a    | b    | a    | a           | c    |
     | next   | -1   | 0    | 1    | 0    | 1           | 2    |
     | next2  | -1   | -1   | 1    | -1   | -1 (not 0!) | 2    |
-
-
-
+    
     eg.
     
     | index  | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    |

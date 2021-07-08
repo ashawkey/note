@@ -237,6 +237,9 @@ int main() {
     for (auto& it : m) {
         cout << it.first << ": " << it.second << endl;
     }
+    for (auto& [k, v]: m) { // c++17
+        cout << k << ": " << v << endl;
+    }
     
     // delete
     m.erase(0); // erase(key)
