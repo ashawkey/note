@@ -121,7 +121,7 @@ int main() {
     for(int i = 0; i < 5; i++){
        vec.push_back(i);
     }
-    
+        
     // size
     cout << vec.size() << endl;
  	
@@ -146,8 +146,18 @@ int main() {
     // insert x at i-th position
     v.insert(v.begin() + i, x);
     
-    // extend
+    // extend another vector (also by insert)
     v1.insert(v1.end(), v2.begin(), v2.end());
+    
+    // emplace_back: in-place push_back  (cpp11, but not supported in msvc10)
+    // use condition: push a complicated object to a vector, but don't want to create a temporary object and then copy it to the vector.
+    // assume we have a Complicated class initialized by Complicated(x, y, z)
+    vec<Complicated> v;
+    v.push_back(Complicated(x, y, z)); // create temporary then copy, slow.
+    v.emplace_back(x, y, z); // no temporary, fast.
+
+    // emplace: in-place insert.
+    v.emplace(v.end(), x, y, z);
  
     return 0;
 }
@@ -301,11 +311,11 @@ using namespace std;
 
 int main() {
     queue<int> q;
-    q.push(1);
+    q.push(1); // not push_back
     while (!q.empty()) {
-        int x = q.pop(); // access and remove
-		int y = q.front(); // just access
-        int z = q.back(); // just access
+		int a = q.front(); 
+        int b = q.back(); 
+        q.pop(); // return void
         cout << q.size() << endl;
     }
 }
@@ -320,8 +330,9 @@ using namespace std;
 
 int main() {
     stack<int> s;
-    s.push(2);
-	int x = s.pop();
+    s.push(2); // not push_back
+	int x = s.top();
+    s.pop(); // return void
     s.empty();
 }
 ```
@@ -413,6 +424,9 @@ int new_size = unique(v, v+4) - v;
 
 //// lower/upper_bound
 // check out of bound conditions!
+// lower_bound( begin,end,num)：从数组的begin位置到end-1位置二分查找第一个大于或等于num的数字，找到返回该数字的地址，不存在则返回end。通过返回的地址减去起始地址begin,得到找到数字在数组中的下标。
+// upper_bound(begin,end,num)：从数组的begin位置到end-1位置二分查找第一个大于num的数字，找到返回该数字的地址，不存在则返回end。通过返回的地址减去起始地址begin,得到找到数字在数组中的下标。
+
 int l = lower_bound(v.begin(), v.end(), 10) - v.begin();
 int r = upper_bound(v.begin(), v.end(), 10) - v.begin();
 
