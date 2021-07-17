@@ -121,6 +121,9 @@ int main() {
     for(int i = 0; i < 5; i++){
        vec.push_back(i);
     }
+    
+    // clear
+    
         
     // size
     cout << vec.size() << endl;
@@ -424,11 +427,36 @@ int new_size = unique(v, v+4) - v;
 
 //// lower/upper_bound
 // check out of bound conditions!
-// lower_bound( begin,end,num)：从数组的begin位置到end-1位置二分查找第一个大于或等于num的数字，找到返回该数字的地址，不存在则返回end。通过返回的地址减去起始地址begin,得到找到数字在数组中的下标。
+// lower_bound(begin,end,num)：从数组的begin位置到end-1位置二分查找第一个大于或等于num的数字，找到返回该数字的地址，不存在则返回end。通过返回的地址减去起始地址begin,得到找到数字在数组中的下标。
 // upper_bound(begin,end,num)：从数组的begin位置到end-1位置二分查找第一个大于num的数字，找到返回该数字的地址，不存在则返回end。通过返回的地址减去起始地址begin,得到找到数字在数组中的下标。
+// lower/upper_bound([1,2,3], 4) --> 3
+// lower/upper_bound([1,2,3], 0) --> 0
 
-int l = lower_bound(v.begin(), v.end(), 10) - v.begin();
-int r = upper_bound(v.begin(), v.end(), 10) - v.begin();
+// the first position >= target
+int l = lower_bound(v.begin(), v.end(), target) - v.begin();
+// the first position > target
+int r = upper_bound(v.begin(), v.end(), target) - v.begin();
+
+// border condition 
+if (l == v.size()) {
+	// v[l-1] < target, non-exist case
+} else {
+    // v[l] >= target
+    if (v[l] == target) {}
+    else {}
+}
+
+// find the last position <= target
+if (l == v.size()) return l-1;
+else if (l == 0) {
+    if (v[l] == target) return l;
+    else return -1; // non-exist case
+}
+else {
+    if (v[l] == target) return l;
+    else return l-1;
+}
+
 
 //// reverse
 string s = "string";
@@ -444,6 +472,8 @@ reverse(s.begin(), s.end()); // inplace
 ```c++
 class A {
 // access modifier (default is private)
+private:
+	int p; // private variable
 public:
     // constructor
     A() {} // default
@@ -470,10 +500,24 @@ public:
 
 A a;
 A a(0);
+A a = A(0);
+A* pa = new A;
+A* pa = new A(0);
 
 printf("%d", a.a);
 a.setA(1);
 ```
+
+Struct is like an default-to-public Class:
+
+```c++
+struct A {
+    int a; // public
+    void setA(int _a) { a = _a; }
+};
+```
+
+
 
 #### Inheritance
 

@@ -51,6 +51,20 @@ int main()
 }
 ```
 
+Tricks: `struct` as a tuple.
+
+```c++
+struct S { int a, b, c; };
+
+S func(int _a, int _b, int c_) {
+    return (S) {_a, _b, _c}; // c++11 list initialization (https://en.cppreference.com/w/cpp/language/list_initialization)
+}
+
+S s = func(0, 1, 2);
+
+cout << s.a << endl;
+```
+
 
 
 ### std::optional (c++17)
