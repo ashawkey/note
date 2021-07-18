@@ -102,6 +102,7 @@ np.meshgrid(np.arange(3), np.arange(4)) # or indexing='xy'
         [3, 3, 3]])]
 '''
 
+# specify indexing = `ij`
 np.meshgrid(np.arange(3), np.arange(4), indexing='ij')
 '''
 [array([[0, 0, 0, 0],
@@ -112,7 +113,7 @@ np.meshgrid(np.arange(3), np.arange(4), indexing='ij')
         [0, 1, 2, 3]])]
 '''
 
-# different from torch !!!
+# note: the default behaviour of numpy (xy) is different from torch (ij) !!!
 torch.meshgrid(torch.arange(3), torch.arange(4))
 '''
 (tensor([[0, 0, 0, 0],
@@ -127,4 +128,52 @@ torch.meshgrid(torch.arange(3), torch.arange(4))
 
 
 
+
+### numpy add by index, with duplicated indices
+
+In numpy >= 1.8, you can also use the `at` method of the addition 'universal function' ('ufunc'). As the [docs note](http://docs.scipy.org/doc/numpy/reference/generated/numpy.ufunc.at.html):
+
+> For addition ufunc, this method is equivalent to a[indices] += b, **except that results are accumulated for elements that are indexed more than once.**
+
+Example:
+
+```python
+a = np.zeros(6)
+b = np.array([3, 2, 5, 2]) # 1d indices
+c = np.array([1, 1, 1, 1]) # values to add at these indices
+
+# extract
+print(a[b])
+
+# manipulate
+a[b] += c          # array([0, 0, 1, 1, 0, 1]), DO NOT USE! a[2] is only added once.
+np.add.at(a, b, c) # array([0, 0, 2, 1, 0, 1]), as expected.
+```
+
+Extending: the `np.ufunc.at` function family.
+
+> Performs **unbuffered in place** operation on operand ‘a’ for elements specified by ‘indices’. 
+
+```python
+np.negative.at(np.array([1,2,3]), [0,2]) # [-1,2,-3]
+```
+
+
+
+### numpy add by 2D (or nD) index 
+
+The desired operation:
+
+```python
+a = np.zeros((3, 3))
+b = np.array([[0,0], [1,1], [2,2], [2,2]]) # [M, 2], 2d indices
+c = np.array([1, 1, 1, 1]) # values to add
+
+# extract
+a[tuple(b.T)]
+
+# manipulate
+a[tuple(b.T)] += c # same, duplicated indices are added once. DO NOT USE!
+np.add.at(a, tuple(b.T), c) # as expected.
+```
 
