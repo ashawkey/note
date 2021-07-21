@@ -1,8 +1,82 @@
 # modern c++
 
+### nullptr
+
+To replace `NULL`.
+
+> `NULL` is interpreted as `0` or `(void*) 0`, which will lead to confusion in overloaded functions:
+>
+> ```c++
+> void f(char*);
+> void f(int);
+> f(NULL) // here NULL is expected as a NULL pointer, but will call f(int)
+> ```
+>
+> `nullptr` has the type of `std::nullptr_t` and can be safely casted to any pointer type:
+>
+> ```c++
+> f(0); // f(int)
+> f(nullptr); // f(char*)
+> ```
 
 
-### std::tuple (c++17)
+
+### constexpr
+
+constant expression is different from constant value. 
+
+Length of an array must be a constant expression.
+
+```cpp
+const int l = 10;
+char a[l]; // Error, though reasonable
+
+constexpr int l2 = l;
+char a[l2]; // OK.
+
+// it even supports recursion (though useless)
+constexpr int fibonacci(const int n) {
+    return n == 1 || n == 2 ? 1 : fibonacci(n-1) + fibonacci(n-2);
+}
+char a[fibonacci(5)]; // OK
+```
+
+
+
+### declare variable inside if (c++17)
+
+```cpp
+if (size_t n = v.size(); n > 10) {
+    // n is only visible inside this block.
+}
+    
+// like in go, and also in python 3.8:
+if (n := len(v)) > 10:
+	pass // but n will be visible since this block!
+```
+
+
+
+### initializer list
+
+```cpp
+class A {
+public:
+    std::vector<int> v;
+    A(std::initializer_list<int> l) {
+        for (int x: l) v.push_basck(x);
+    }
+};
+
+A a{1,2,3,4,5};
+A f() { return {1,2,3}; }
+```
+
+
+
+
+
+### tuple (c++17)
 
 ```cpp
 #include <tuple>
@@ -42,8 +116,8 @@ int main()
               << "grade: " << grade1 << ", "
               << "name: " << name1 << '\n';
  
-    // via C++17 structured binding:
-    auto [ gpa2, grade2, name2 ] = get_student(2);
+    // via C++17 structured binding: (recommend!)
+    auto [gpa2, grade2, name2] = get_student(2);
     std::cout << "ID: 2, "
               << "GPA: " << gpa2 << ", "
               << "grade: " << grade2 << ", "

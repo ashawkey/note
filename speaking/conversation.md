@@ -65,7 +65,6 @@
   * What do your parents do?
   * [familiar only] Are you married? Do you have kids yet?
   
-
 * hobby
   * So, what do you like to do in your spare time?
   * So, what do you like to do to relax?
@@ -77,4 +76,42 @@
 
 
 
+
+### End a topic
+
+* goodbye
+  * [mostly used by children] bye-bye
+  * See you (later)
+  * Have a good (day/night/one)!
+
+* interrupt
+
+  * [will come back] Excuse me for a minute. I'll be right back.
+  * Well, I've got to go.
+  * Well, I should be going.
+  * Hey, I should go, or I'll be late for work/meeting/flight.
+  * Well, I won't bother you anymore.
+  * I should get back to my work. / I should let you get back to your work.
+
+* polite 
+  
+
+  * It was great to talk to you today. / It was really nice to talk to you. / It was really nice meeting you.
+  * I really enjoyed our chat.
+
+* ask for social accounts
+  * Do you have WeChat? Can I add you on WeChat?
+  * Shall I scan you, or do you want to scan me?
+
+* next time
+  * Let's go for a coffee next time.
+  * Are you free any time next week?
+  * Do you have time on Saturday?
+
+* greetings
+  * Say hello to your parents for me.
+  * [formal] Send my regards to your family.
+  * Take care.
+  * Look after yourself.
+  * Keep in touch.
 
