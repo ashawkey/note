@@ -123,7 +123,7 @@ int main() {
     }
     
     // clear
-    
+    v.clear();
         
     // size
     cout << vec.size() << endl;
@@ -161,7 +161,12 @@ int main() {
 
     // emplace: in-place insert.
     v.emplace(v.end(), x, y, z);
- 
+    
+    // slice subvector
+    vector<int> v2(v.begin(), v.begin() + 5); // select and copy [0, 5)
+    v.resize(5); // inplace trick, keep first 5 elements
+    
+ 	
     return 0;
 }
 ```
@@ -385,7 +390,6 @@ sort(v.begin(), v.end(), greater<int>());  // large -> small, c++14
 sort(v.begin(), v.end());
 reverse(v.begin(), v.end()); // large -> small
 
-
 int v[4] = {4, 2, 3, 1};
 sort(v, v + 4);
 
@@ -397,9 +401,13 @@ struct cmp {
     }
 }
 sort(v, v + 4, cmp); // same as default, small -> large
+sort(v, v + 4, [](int i, int j) { return i < j; }) // lambda version
     
-//// merge sort
+//// merge sort O(nlogn)
 stable_sort(v, v + 4);
+
+//// partial sort / topk, in O(klogn)
+partial_sort(v, v + 2, v + 4); // only sort the first two elements
 
 //// swap
 swap(x, y);
@@ -461,6 +469,20 @@ else {
 //// reverse
 string s = "string";
 reverse(s.begin(), s.end()); // inplace
+
+//// argsort (handy implementation)
+vector<pair<int, int>> v2;
+for (int i = 0; i < v.size(); i++) {
+    v2.push_back({v[i], i}); // pair value with indice
+}
+sort(v2.begin(), v2.end(), [](pair<int, int> a, pair<int, int> b) {
+    if (a.first < b.first || (a.first == b.first && a.second < b.second)) return true;
+    else return false;
+});
+vector<int> idx;
+for (int i = 0; i < v2.size(); i++) {
+    idx.push_back(v2[i].second);
+}
 ```
 
 
