@@ -216,8 +216,23 @@ int main() {
         cout << *it << endl;
     }
     
-    // custom cmp function
+	// get the smallest (first) or largest (last) element
+    int mn = *s.begin();
+    int mx = *s.end();
     
+    // get the k-th smallest element
+    auto i = s.begin();
+    advance(i, k); // in-place modification of i
+    int mmn = *i; 
+    // note: i will be destroyed after being accessed, so do not use it again!
+    
+    int mmn = *++s.begin(); // in-place ver for the second element.
+    
+    auto i = s.begin();
+	auto i2 = next(i, 1); // not in-place, so this will not destroy i!
+    auto i3 = prev(i2, 1);
+    
+    int mmn = *next(s.begin(), 1);
 }
 ```
 

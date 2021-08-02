@@ -288,7 +288,29 @@ void dijkstra(int s) {
 	}
 }
 
+// a STL version
+vector<vector<pair<int, int>>> G(n+1);
+for (auto& p: times) {
+    G[p[0]].push_back({p[1], p[2]}); // p = {f, t, w}
+}
+vector<int> d(n+1, 0x7fffffff);
+priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+q.push({0, k});
+d[k] = 0;
+while (!q.empty()) {
+    auto p = q.top(); q.pop();
+    int u = p.second;
+    //cout << "dij " << u << " " << d[u] << endl;
+    if (d[u] < p.first) continue;
+    for (auto& [v, w]: G[u]) {
+        if (d[v] > d[u] + w) {
+            d[v] = d[u] + w;
+            q.push({d[v], v});
+        }
+    }
+}
 
+// floyd
 int dist2[maxv][maxv], parent2[maxv][maxv];
 void floyd() {
     memset(dist2, maxw, sizeof(dist2));
