@@ -194,6 +194,7 @@ void toposort_bfs() {
 			nodes[G[v][i].t].ind--;
 			if (nodes[G[v][i].t].ind == 0) q.push(G[v][i].t);
 		}
+        // vertices in and after loops are not visited.
 		for (int i = 0; i < maxv; i++) {
 			if (!vis[i]) {
 				cout << "Loop Detected" << endl;

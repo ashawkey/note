@@ -794,28 +794,3 @@ int main () {
 ```
 
 
-
-
-
-### Tricks
-
-* [Nested functions](https://stackoverflow.com/questions/4324763/can-we-have-functions-inside-functions-in-c)
-
-  We can use lambdas to nest functions. (c++11)
-
-  ```cpp
-  int main() {
-      // This declares a lambda, which can be called just like a function
-      auto print_message = [](std::string message) 
-      { 
-          std::cout << message << "\n"; 
-      };
-  
-      // Prints "Hello!" 10 times
-      for(int i = 0; i < 10; i++) {
-          print_message("Hello!"); 
-      }
-  }
-  ```
-
-  re

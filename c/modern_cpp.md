@@ -196,3 +196,60 @@ modifying it changed it to Mothra
 */
 ```
 
+
+
+### lambda function (c++11)
+
+Lambdas can be used as an anonymous in-place function, or a nested function.
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+// value catching
+int main() {
+    int a = 0;
+    
+    // do not catch any local variables
+    auto foo = []() { cout << a << endl; }; // error, a not defined.
+    
+    // catch all local variables, pass by value
+    auto foo = [=]() { a = 1; cout << a << endl; }; // 1
+    cout << a << endl; // still 0
+    
+    // catch all local variables, pass by reference
+    auto foo = [&]() { a = 1; cout << a << endl; }; // 1
+    cout << a << endl; // also 1
+    
+    // catch spesific variables
+    auto foo = [&a]() {}; // only catch a
+}
+```
+
+Recursive lambdas: must define the type explicitly!
+
+```cpp
+#include <iostream>
+#include <functional> // to use std::function
+
+using namespace std;
+
+int main() {
+    
+    // examples to use function
+    function<void()> foo = []() {};
+    function<bool(int, int)> foo = [](int a, int b) {};
+    
+    // recursive lambda
+    function<bool(int)> dfs = [&](int x) {
+        for (int y: graph[x]) {
+            dfs(y);
+        }
+    }
+    
+    dfs(0);
+    
+}
+```
+
