@@ -30,6 +30,11 @@ DNS服务商提供域名解析服务。
 
     *(wildcard), **@(primary naked domain)** or subdomain name.
 
+    ```
+    A	kiui.moe	xxx.xxx.xxx.xxx	... (@, naked domain)
+    A	trojan		xxx.xxx.xxx.xxx	... (subdomain)
+    ```
+
   * 记录值（Value）
 
     IPv4 Address.
