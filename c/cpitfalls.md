@@ -18,5 +18,35 @@
 
 * `.0f` for `float 0`, not `0f`
 
-* 
+* `0x80000000` default type is `unsigned (int)`, while `0x7fffffff` is `int`.
+
+  ```cpp
+  #include <iostream>
+  #include <typeinfo>
+  
+  using namespace std;
+  
+  auto x = 0x80000000;
+  cout << typeid(x).name() << " = " << x << endl; // j (unsigned) = 2147483648 
+  
+  int x = 0x80000000;
+  cout << typeid(x).name() << " = " << x << endl; // i (int) = -2147483648
+  
+  long long x = 0x80000000; // unsigned -> long long
+  cout << typeid(x).name() << " = " << x << endl; // x (long long) = 2147483648
+  
+  auto x = 0x7fffffff;
+  cout << typeid(x).name() << " = " << x << endl; // i (int) = 2147483647
+  ```
+
+  So if you want to get a number smaller than `INT_MIN`, you should do this:
+
+  ```cpp
+  long long x = (long long)(int)0x80000000 - 1;
+  
+  // equals
+  long long x = -2147483649;
+  ```
+
+  
 
