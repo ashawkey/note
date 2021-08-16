@@ -56,6 +56,15 @@ sudo systemctl set-default graphical.target
 sudo reboot
 ```
 
+Location of `nvidia-smi`:
+
+```bash
+nvidia-debugdump -> /etc/alternatives/x86_64-linux-gnu_nvidia-debugdump
+nvidia-xconfig -> /etc/alternatives/x86_64-linux-gnu_nvidia_xconfig
+nvidia-smi -> /etc/alternatives/x86_64-linux-gnu_nvidia_smi
+.
+```
+
 
 
 ### switch between intel and nvidia driver

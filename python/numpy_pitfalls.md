@@ -177,3 +177,66 @@ a[tuple(b.T)] += c # same, duplicated indices are added once. DO NOT USE!
 np.add.at(a, tuple(b.T), c) # as expected.
 ```
 
+
+
+### take v.s. take_along_axis
+
+`np.take` is in fact simple indexing.
+
+```python
+### take: some common indices from array.
+a = np.arange(15).reshape(3, 5) # data
+'''
+array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14]])
+
+'''
+
+b = np.array([0, 2]) # indices to take
+
+# take the [0, 2]-th row
+np.take(a, b, axis=0)
+a[b] # the same
+'''
+array([[ 0,  1,  2,  3,  4],
+       [10, 11, 12, 13, 14]])
+'''
+
+# take the [0, 2]-th col
+np.take(a, b, axis=1)
+a[:, b]
+
+'''
+array([[ 0,  2],
+       [ 5,  7],
+       [10, 12]])
+'''
+```
+
+However, sometimes we want to take one exact indexed element from each row (like the `torch.gather` operation). `np.take_along_axis` does this:
+
+```python
+a = np.arange(15).reshape(3, 5) # data
+'''
+array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14]])
+
+'''
+
+b = np.array([0, 2, 4]) # aim: get [0, 7, 14]
+np.take_along_axis(a, b[:, None], axis=1)
+'''
+array([[ 0],
+       [ 7],
+       [14]])
+'''
+
+c = np.array([0, 0, 0, 1, 1]) # aim: get [0, 2, 3, 8, 14]
+np.take_along_axis(a, c[None, :], axis=0)
+'''
+array([[0, 1, 2, 8, 9]])
+'''
+```
+
