@@ -295,7 +295,7 @@ for (auto& p: times) {
     G[p[0]].push_back({p[1], p[2]}); // p = {f, t, w}
 }
 vector<int> d(n+1, 0x7fffffff);
-priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q; // top i smallest
 q.push({0, k});
 d[k] = 0;
 while (!q.empty()) {

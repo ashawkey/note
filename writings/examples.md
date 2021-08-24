@@ -10,6 +10,7 @@
 
 * It is of increasing importance for ...  and draws increasing attention.
 * Further ablation study and analysis gives more insights into the proposed method and demonstrate the generalization capability and stability of our model.
+* Experiments on the ... dataset show that xxx outperforms the state-of-the-arts in xxx, especially for ...
 
 
 
@@ -22,10 +23,13 @@
 * Along the line of research that <combines A and B>, ...
 * Could ... ? Prior work is encouraging. [OpenAI CLIP]
 * ... is one of the central tasks in 3D computer vision with many applications. For example, ...
+* ... is a fundamental problem in computer vision and computer graphics.
+* ... has recently become a highly promising alternative to classical xxx approaches due to its ...
 * The ability to ... is a long-standing goal of computer vision and graphics.
 * ... is a core element in diverse fields of research, including ....
 * We study alternative ways for ... to improve ... beyond ...
 * The benefits from the ... scheme lie in two-fold. On the one hand, ... On the other hand, ....
+* by ..., we make it possible to ..., and thus have the best of both worlds, i.e., ... and ....
 * 
 
 
@@ -50,13 +54,14 @@
 * ... have been shown to allow for ...
 * .... has gained popularity in ... To overcome ..., several works ...
 * Several works investigate how ... While many approaches use ..., we focus on ...
-* 
+* Compared to the xxx approaches, wherein the ... is often suboptimal, yyy approaches are more straightforward and have achieved promising performance.
 
 
 
 ### Methods
 
-* In this section, we briefly summarize A, and then describe how we extend it to B.
+* (directly describe methods) In this section, we briefly summarize A, and then describe how we extend it to B.
+* (first describe problems) Given <the input data>, our goal is to ...
 * We emphasize that what is common across this line of work is not <any details of the particular methods> but <the appreciation of natural languages as a training signal>. [CLIP]
 * Our goal is .... In the following, we discuss the main components of our method. First, ... (See Sec~\ref{}). Next, ... Finally, ....
 
@@ -66,6 +71,14 @@
 
 * The improvements potentially come from the design of ... in our method, which can act as a ...
 * 
+
+
+
+### Appendix
+
+* The proof is given in the Appendix.
+
+* The detailed derivation of this formula is given in the Appendix.
 
 
 

@@ -166,6 +166,14 @@ int main() {
     vector<int> v2(v.begin(), v.begin() + 5); // select and copy [0, 5)
     v.resize(5); // inplace trick, keep first 5 elements
     
+    // iterator
+	auto it = v.begin();
+    auto next = it + 1;
+    auto nnnnext = it + 4; // vector is sequence container, so we can add an int to it.
+    int x = *it; 
+    v.erase(next);
+    v.insert(next, 0);
+    
  	
     return 0;
 }
@@ -211,10 +219,12 @@ int main() {
         //...
     }
     
-    // loop all elements
+    // loop all elements (increasing order)
     for (auto it = s.begin(); it != s.end(); it++) {
         cout << *it << endl;
     }
+    // loop with index (enumerate)
+    for (auto [it, i] = tuple{s.begin(), 0}; it != s.end(); it++, i++) m[*it] = i;
     
 	// get the smallest (first) or largest (last) element
     int mn = *s.begin();
@@ -222,14 +232,13 @@ int main() {
     
     // get the k-th smallest element
     auto i = s.begin();
-    advance(i, k); // in-place modification of i
-    int mmn = *i; 
-    // note: i will be destroyed after being accessed, so do not use it again!
+	cout << *i << endl; // s[0]
+    auto next = ++i; // s[1], DO NOT USE i++, then next is still s[0]
     
-    int mmn = *++s.begin(); // in-place ver for the second element.
+    advance(i, k); // in-place modification of i (since set is an associative container, i + k will not work)
     
     auto i = s.begin();
-	auto i2 = next(i, 1); // not in-place, so this will not destroy i!
+	auto i2 = next(i, 1); // not in-place ver
     auto i3 = prev(i2, 1);
     
     int mmn = *next(s.begin(), 1);
@@ -792,5 +801,4 @@ int main () {
     int arr8[n]; // STACK (assuming C99 -- this does not compile in C++) 
 }
 ```
-
 
