@@ -105,152 +105,133 @@ Request context is expensive.
 
 
 
-### API
+### URL arguments
 
-* `flask.Flask`
+* simple arguments
 
-  ```python
-  app = Flask(__name__)
-  
-  @app.route('/')
-  def index():
-      pass
-  # eqs to
-  def index():
-      pass
-  app.add_url_rule('/', 'index', index)
+  ```js
+  fetch("api/a/1");
   ```
 
   
 
-* `flask.Blueprint`
+  ```python
+  @app.route("api/<arg1>/<arg2>")
+  def func(arg1, args):
+      return jsonify({
+          'arg1': arg1,
+          'arg2': arg2,
+      })
+  ```
 
-* `flask.request`
+* form
 
-  How to get data from `fetch`.
-
-  * `form`
-
-    ```javascript
-    let formData = new FormData();
-    formData.append('username', 'John');
-    formData.append('password', '123');
-    
-    fetch("api/form",
-        {
-            method: "POST",
-        	body: formData,
-        });
-    ```
-
-    ```python
-    @app.route("api/form", methods=('GET','POST'))
-    def login():
-        if request.method == 'POST':
-    	    username = request.form.get('username')
-        	password = request.form.get('password')
-    ```
-
-  * `URL parameters`
-
-    ```javascript
-    fetch("login?username=alex&password=pw1")
-    ```
-
-    ```python
-    @app.route("login", methods=("GET",))
-    def login():
-        username = request.args.get('username')
-        password = request.args.get('password')
-    ```
-
-  * `JSON`
-
-    ```javascript
-    fetch("test", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({name:"Alex"})
-    })
-    ```
-
-    ```python
-    @app.route("test", methods=('GET','POST'))
-    def login():
-        if request.method == 'POST':
-    	    username = request.json.get('username')
-        	password = request.json.get('password')
-    ```
-
-    
-
-  * `files`
-
-    ```python 
-    request.files
-    ```
-
-    
-
-* `flask.session`
-
-  Store data **in different requests from the same client**. (signed cookies)
-
-  It is like a `dict`.
+  ```javascript
+  let formData = new FormData();
+  formData.append('username', 'John');
+  formData.append('password', '123');
+  
+  fetch("api/form",
+      {
+          method: "POST",
+      	body: formData,
+      });
+  ```
 
   ```python
-  session['user_id'] = user['id']
-  
-  session.clear()
+  @app.route("api/form", methods=('GET','POST'))
+  def login():
+      if request.method == 'POST':
+  	    username = request.form.get('username')
+      	password = request.form.get('password')
+  ```
+
+* URL parameters
+
+  ```javascript
+  fetch("login?username=alex&password=pw1")
+  ```
+
+  ```python
+  @app.route("login", methods=("GET",))
+  def login():
+      username = request.args.get('username')
+      password = request.args.get('password')
+  ```
+
+* `JSON`
+
+  ```javascript
+  fetch("test", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({name:"Alex"})
+  })
+  ```
+
+  ```python
+  @app.route("test", methods=('GET','POST'))
+  def login():
+      if request.method == 'POST':
+  	    username = request.json.get('username')
+      	password = request.json.get('password')
   ```
 
   
 
-* `flask.g`
+* `files`
 
-  Store data **in the same request**.
-
-  It works like a `dict`.
-
-  ```python
-  g.user = user
-  
-  if g.user is not None:
-      pass
-  ```
-
-  Usual way to manage resource:
-
-  ```python
-  def get_db():
-      if 'db' not in g:
-          g.db = connect_to_database()
-  
-      return g.db
-  
-  @app.teardown_appcontext
-  def teardown_db():
-      db = g.pop('db', None)
-  
-      if db is not None:
-          db.close()
+  ```python 
+  request.files
   ```
 
   
 
-  
+### flask.session
 
-* `flask.json.jsonify`
+Store data **in different requests from the same client**. (signed cookies)
+
+It is like a `dict`.
+
+```python
+session['user_id'] = user['id']
+
+session.clear()
+```
 
 
 
+### flask.g
 
+Store data **in the same request**.
 
-### Werkzeug (German noun, tool.)
+It works like a `dict`.
 
-A WSGI (Web Server Gateway Interface, a specification that describes how a web server communicates wit web apps.) web app library.
+```python
+g.user = user
+
+if g.user is not None:
+    pass
+```
+
+Usual way to manage resource:
+
+```python
+def get_db():
+    if 'db' not in g:
+        g.db = connect_to_database()
+
+    return g.db
+
+@app.teardown_appcontext
+def teardown_db():
+    db = g.pop('db', None)
+
+    if db is not None:
+        db.close()
+```
 
 
 
