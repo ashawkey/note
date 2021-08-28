@@ -48,5 +48,21 @@
   long long x = -2147483649;
   ```
 
+* `str.erase`
+
+  ```cpp
+  string s = "abc";
+  
+  // str.erase(int pos, int len = npos);
+  s.erase(1); // a
+  s.erase(1, 1); // ac
+  
+  // str.erase(str::iterator it);
+  s.erase(s.begin() + 1); // ac
+  
+  // str.erase(str::iterator begin, str::iterator end);
+  s.erase(s.begin() + 1, s.end()); // a
+  ```
+
   
 
