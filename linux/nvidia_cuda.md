@@ -149,3 +149,12 @@ If you use package manager to install CUDA:
 
 ```bash
 sudo apt purge cuda*
+```
+
+
+
+### pitfalls
+
+* for CUDA 10.1, install the update `10.1.243` directly, instead of the general release `10.1.105` !!! Or you can update from `105` to `243`, just run the new `runfile` and it will prompt.
+
+  
