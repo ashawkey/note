@@ -155,6 +155,16 @@ a[attr*=value] {} /* a with value in attr */
   }
   ```
 
+* override
+
+  sometimes it is just useful.
+
+  ```css
+  code {
+      background-color: #ffffff !important;
+  }
+  ```
+
   
 
 ### References

@@ -37,6 +37,9 @@ select @@datadir; # default: /var/lib/mysql
 # show size of all dbs
 SELECT table_schema AS "Database", SUM(data_length + index_length) / 1024 / 1024 AS "Size (MB)" FROM information_schema.TABLES GROUP BY table_schema
 
+# show full columns desp of table
+show full columns from <tb>;
+
 ```
 
 
