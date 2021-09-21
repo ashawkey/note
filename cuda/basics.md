@@ -456,6 +456,30 @@ a[2] = 2;
 
 
 
+### compute capability
+
+>  实际架构代码必须兼容于虚拟架构代码。在运行时，若二进制代码可直接运行在所在显卡上，则直接运行二进制代码；否则，若文件中包含虚拟架构代码，显卡驱动会尝试将虚拟架构代码在编译时动态编译为二进制代码进行执行。
+
+`nvcc` compilation includes two phases:
+
+* **Virtual** compute arch (PTX generation, `.cu --> .ptx`)
+
+  `-arch` specifies the virtual arch. (only support one, e.g., `-arch=compute_20`)
+
+* **Real** sm arch (cubin generation, `.ptx --> .cubin`)
+
+  `-code` specifies the real arch. (support many, e.g. `-code=sm_20,sm_21`)
+
+We can use `-gencode` to support many virtual archs:
+
+```cpp
+... -gencode=arch=compute_50,code=sm_50 -gencode=arch=compute_52,code=sm_52 ...
+```
+
+
+
+
+
 
 
 ### [Print from kernel](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#formatted-output)
