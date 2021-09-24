@@ -26,6 +26,18 @@ nvprof ./hello.out
 
 
 
+### Compute Capability (SM version)
+
+indicates the features supported by the GPU **hardware** (not to be confused with CUDA **software** version).
+
+> 6 = Pascal
+>
+> 7 = Volta, 7.5 = Turing
+>
+> 8 = Ampere
+
+
+
 ### Call kernel with <<<num_blocks, num_threads>>
 
 **(num_blocks, num_threads can be 1d/2d/3d)**
@@ -168,9 +180,9 @@ global & device function cannot:
 ### Memory Location
 
 ```c
-[__device__] __local__     int LocalVar;  // local memory
-[__device__] __shared__    int SharedVar; // block memory
 __device__                 int GlobalVar; // global memory
+[__device__] __local__     int LocalVar;  // thread local memory
+[__device__] __shared__    int SharedVar; // block shared memory
 [__device__] __constant__  int ConstVar;  // constant memory
 
 int RegVar;     // register (local)
@@ -466,7 +478,7 @@ a[2] = 2;
 
   `-arch` specifies the virtual arch. (only support one, e.g., `-arch=compute_20`)
 
-* **Real** sm arch (cubin generation, `.ptx --> .cubin`)
+* **Real** sm arch (cubin/binary generation, `.ptx --> .cubin`)
 
   `-code` specifies the real arch. (support many, e.g. `-code=sm_20,sm_21`)
 
@@ -474,6 +486,13 @@ We can use `-gencode` to support many virtual archs:
 
 ```cpp
 ... -gencode=arch=compute_50,code=sm_50 -gencode=arch=compute_52,code=sm_52 ...
+```
+
+Some abbreviations:
+
+```cpp
+-arch=sm_70 // -arch=compute_70 -code=compute_70,sm_70
+            // -gencode arch=compute_70,code=\'compute_70,sm_70\'
 ```
 
 

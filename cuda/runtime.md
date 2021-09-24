@@ -1,8 +1,12 @@
 # Runtime
 
-### Memcpy
+### Memory transfer
 
 ```c
+#include <stdio.h>
+#include <cuda_runtime.h>
+#include <helper_cuda.h>
+
 // Device code
 __global__ void VecAdd(float* A, float* B, float* C, int N)
 {
@@ -49,6 +53,31 @@ int main()
     free(h_A);
     free(h_B);
     free(h_C);
+}
+```
+
+### Error check
+
+```cpp
+#include <cuda_runtime.h>
+#include <helper_cuda.h>
+
+int main() {
+    cudaError_t err = cudaSuccess;
+    
+    // functions
+    err = cudaMalloc((void**)&d, size);
+    if (err != cudaSuccess) {
+        fprintf(stderr, "error code %s\n", cudaGetErrorString(err));
+		exit(EXIT_FAILURE);
+    }
+    
+    // kernels
+    vectorAdd<<<blocksPerGrid, threadsPerBlock>>>(d_A, d_B, d_C, numElements);
+    err = cudaGetLastError();
+    
+    // simple way
+	checkCudaErrors(cudaMalloc(.));
 }
 ```
 
