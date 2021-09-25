@@ -574,6 +574,36 @@ AT_DISPATCH_FLOATING_TYPES(gates.type(), "lltm_forward_cuda", ([&] {
   }));
 ```
 
+For `c10::Half`, things are slightly different:
+
+```cpp
+AT_DISPATCH_FLOATING_TYPES_AND_HALF(
+    in_feat.type(), "convolution_forward_cuda", ([&] {
+        scatter_kernel<scalar_t>
+            <<<ceil((double)(in_buffer_size * n_out_channels) / 256), 256>>>(
+            in_buffer_size, n_out_feats, n_out_channels,
+            out_buffer.data_ptr<scalar_t>(),
+            out_feat.data_ptr<scalar_t>(),
+            neighbor_map.data_ptr<int>(), transpose);
+    }));
+```
+
+However, it will not cast `at::Half` to native  `__half` in CUDA. This lead to problems such as we cannot use `atomicAdd()` for `at::Half` (https://discuss.pytorch.org/t/getting-half-out-of-an-fp16-tensor/85743). The offcial implementation is like (https://github.com/pytorch/pytorch/blob/master/aten/src/THC/THCAtomics.cuh#L184):
+
+```cpp
+
+static inline  __device__ at::Half gpuAtomicAdd(at::Half *address, at::Half val) {
+#if ((CUDA_VERSION < 10000) || (defined(__CUDA_ARCH__) && (__CUDA_ARCH__ < 700)))
+  return AtomicFPOp<at::Half>()(address, val,
+                                [](at::Half hsum, at::Half val) {
+                                  return THCNumerics<at::Half>::add(hsum, val);
+                                });
+#else
+  return atomicAdd(reinterpret_cast<__half*>(address), val);
+#endif
+}
+```
+
 
 
 
