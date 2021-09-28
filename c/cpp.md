@@ -177,7 +177,10 @@ int main() {
  	
     return 0;
 }
+
 ```
+
+Note: `vector<bool>` is not a STL container! It optimizes space and use bit to save each bool variable, so many STL operations are not supported. Use `bitset` or `deque<bool>` instead.
 
 #### #include \<set\>
 

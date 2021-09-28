@@ -121,6 +121,12 @@ ptr = NULL;
 int **pptr = &ptr;
 ```
 
+Some concepts:
+
+* null pointer: pointing to NULL. `int *p = NULL; static int* p;`
+* wild pointer: uninitialized pointer, may point to a random address or even not valid. `int *p;`
+* dangling pointer (悬垂指针): pointint to a **deleted** address.
+
 
 
 ### Array

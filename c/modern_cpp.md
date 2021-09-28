@@ -2,7 +2,7 @@
 
 ### nullptr
 
-To replace `NULL`.
+To replace `NULL`'s use as a pointer.
 
 > `NULL` is interpreted as `0` or `(void*) 0`, which will lead to confusion in overloaded functions:
 >
@@ -18,6 +18,106 @@ To replace `NULL`.
 > f(0); // f(int)
 > f(nullptr); // f(char*)
 > ```
+
+
+
+
+
+### cast
+
+* Implicit (Automatic) conversion
+
+  ```cpp
+  int a = 1;
+  float b = a;
+  ```
+
+* Explicit conversion (C-style)
+
+  ```cpp
+  int a = (int) 1.0;
+  
+  float* p;
+  malloc((void*)p, sizeof(float) * 10);
+  ```
+
+* `static_cast`
+
+  attempt to convert between two different data types
+
+  ```cpp
+  int a = 1;
+  float b = static_cast<float>(a);
+  
+  // wont compile! pointer types not related (int* --> float*).
+  float* b = static_cast<float*>(&a);
+  ```
+
+  
+
+* `const_cast`
+
+  [do not use!] change the `const`-ness of the pointer.
+
+  ```cpp
+  int a = 1;
+  // not-const to const
+  int* p = &a;
+  const int* cp = const_cast<int*>(p);
+  
+  // const to not-const
+  const int* cp = &a;
+  int* p = const_cast<int*>(cp);
+  ```
+
+* `reinterpret_cast`
+
+  Converts between types by reinterpreting the underlying bit pattern. powerful but use with care.
+
+  ```cpp
+  struct S1 { int a; } s1;
+  struct S2 { int a; private: int b; } s2; // not standard-layout
+  union U { int a; double b; } u = {0};
+  int arr[2];
+   
+  int* p1 = reinterpret_cast<int*>(&s1); // value of p1 is "pointer to s1.a" because s1.a
+                                         // and s1 are pointer-interconvertible
+   
+  int* p2 = reinterpret_cast<int*>(&s2); // value of p2 is unchanged by reinterpret_cast and
+                                         // is "pointer to s2". 
+   
+  int* p3 = reinterpret_cast<int*>(&u);  // value of p3 is "pointer to u.a": u.a and u are
+                                         // pointer-interconvertible
+   
+  double* p4 = reinterpret_cast<double*>(p3); // value of p4 is "pointer to u.b": u.a and u.b
+                                              // are pointer-interconvertible because both
+                                              // are pointer-interconvertible with u
+   
+  int* p5 = reinterpret_cast<int*>(&arr); // value of p5 is unchanged by reinterpret_cast and
+                                          // is "pointer to arr"
+  ```
+
+* `dynamic_cast`
+
+  to convert classes up, down along the inheritance hierarchy.
+
+  ```cpp
+  struct V {
+      virtual void f() {}  // must be polymorphic to use runtime-checked dynamic_cast
+  };
+  struct A : virtual V {};
+  struct B : A {};
+  
+  B b;
+  A& a = b; // upcast (automatic)
+  B& bb = a; // wont compile! 
+  
+  B& bb = (B&)a; // c-style downcast
+  B& bb = dynamic_cast<B&>(a); // or use dynamic_cast to downcast
+  
+  ```
+
+  
 
 
 
