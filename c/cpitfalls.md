@@ -7,6 +7,32 @@
   cout << m.at(-1) << endl; // check if exist first, throw an error
   ```
 
+* `string::operator[] & string::at` behaves similarly.
+
+  ```c++
+  string s = "a";
+  
+  // [] won't check out of range!
+  cout << "s[1] = " << s[1] << endl; // \0
+  cout << "s[2] = " << s[2] << endl; // undefined char
+  cout << "s = " << s << endl; // a
+  cout << "s.size() = " << s.size() << endl; // 1
+  
+  // even if you modify it, it still won't throw an error.
+  s[1] = 'b'; // dangerous!
+  s[2] = 'c';
+  cout << "s[1] = " << s[1] << endl; // b 
+  cout << "s[2] = " << s[2] << endl; // c
+  // but s is not changed.
+  cout << "s = " << s << endl; // a
+  cout << "s.size() = " << s.size() << endl; // 1
+  
+  // at() checks out of range!
+  cout << "s.at(1) = " << s.at(1) << endl; // error
+  ```
+
+  
+
 * `%` modulo operator will return **signed** value
 
   ```c++
