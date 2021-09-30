@@ -39,6 +39,7 @@ alias acme.sh=~/.acme.sh/acme.sh
 
 # issue a license for nginx
 # -d must be in nginx config (`server_name www.kiui.moe;`)
+# Some times it reports `can't get nonce` or looping `sleep 10 and retry`, just re-run the code several times :)
 acme.sh --issue -d www.kiui.moe --nginx # --debug 2
 
 # install cert
