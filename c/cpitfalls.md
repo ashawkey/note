@@ -90,5 +90,30 @@
   s.erase(s.begin() + 1, s.end()); // a
   ```
 
-  
+* [alternative operators](https://en.cppreference.com/w/cpp/language/operator_alternative)
 
+  though amazing, you can use `and` , `or` in c++.
+
+  ```
+  // can be directly used in c++
+  // to use in c, need to include <iso646.h>
+  &&	and
+  &=	and_eq
+  &	bitand
+  |	bitor
+  ~	compl
+  !	not
+  !=	not_eq
+  ||	or
+  |=	or_eq
+  ^	xor
+  ^=	xor_eq
+  {	<%
+  }	%>
+  [	<:
+  ]	:>
+  #	%:
+  ##	%:%:
+  ```
+
+  
