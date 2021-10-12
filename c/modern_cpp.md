@@ -1,6 +1,6 @@
 # modern c++
 
-### nullptr
+### nullptr (c++11)
 
 To replace `NULL`'s use as a pointer.
 
@@ -18,6 +18,33 @@ To replace `NULL`'s use as a pointer.
 > f(0); // f(int)
 > f(nullptr); // f(char*)
 > ```
+
+
+
+### value initialization (c++11)
+
+```cpp
+int x{}; // default initialization, equals to `int x = 0;`
+```
+
+
+
+### string_view (c++17)
+
+make a view of a string without copying it.
+
+> Prefer `std::string_view` over `std::string` for read-only strings, unless you already have a `std::string`.
+
+```cpp
+// create a view
+string s = "test";
+string_view sv{s};
+
+// view to string
+string_view sv{"test"};
+string str{sv};
+static_cast<string>(sv);
+```
 
 
 

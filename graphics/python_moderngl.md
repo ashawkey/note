@@ -1,18 +1,5 @@
 # moderngl
 
-An alternative for `pyopengl`. At least it is updating.
-
-
-
-### OpenGL version
-
-* **OpenGL < 3.3**: Legacy. Use fixed pipeline.
-* **OpenGL >= 3.3**: Modern. Use programmable pipeline (shaders).
-* **OpenGL ES**: for embedded systems and **webGL**. (1.1 for fixed pipeline, 2.0 for programmable pipeline.)
-* **Vulkan** (OpenGL 5, next generation GL.)
-
-
-
 `moderngl ` supports OpenGL >= 3.3.
 
 
