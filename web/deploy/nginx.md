@@ -115,6 +115,22 @@ Location: `/etc/nginx/nginx.conf`
   }
   ```
   
+* redirect
+
+  ```nginx
+  http {
+      server {
+      	...
+          
+          # make a shortname for your github repo:
+          # kiui.moe/g<else> --> github.com/ashawkey<else>
+          location /g {
+              rewrite ^/g(.*)$ https://github.com/ashawkey$1 redirect;
+          }
+      }
+  }
+  ```
+
   
 
 * Reverse Proxy
