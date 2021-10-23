@@ -30,7 +30,7 @@ $$
 
 Camera Intrinsics (determined by the camera itself, also called the **camera matrix**): $\mathbf K \in \mathbb R^{3 \times 4}$.
 
-Camera Exintrics (describes the position of camera in the world, also called the **camera pose**): $\begin{bmatrix}\mathbf R& \mathbf T \\ 0&  1 \end{bmatrix} \in \mathbb R ^ {4 \times 4}$.
+Camera Extrinsics(describes the position of camera in the world, also called the **camera pose**): $\begin{bmatrix}\mathbf R& \mathbf T \\ 0&  1 \end{bmatrix} \in \mathbb R ^ {4 \times 4}$.
 
 
 
@@ -65,7 +65,7 @@ $(u_0, v_0)$ are the **principal point (camera center)**, ideally the center of 
 
 
 
-### Exintrics
+### Extrinsics
 
 A $4 \times 4$ matrix, a regular 3D transformation from world coordinate system to camera coordinate system.
 $$

@@ -88,6 +88,12 @@ It is a convention.
 
 
 
+### Model Transformation
+
+It transform the object from its local coordinate system to the world coordinate system. 
+
+Usually this transformation is pre-applied to the model, so we don't use it here.
+
 ### View/Camera Transformation
 
 It transform both the camera and objects, until **the camera is at the origin, up at Y axis and look at -Z axis.** (from world coordinate system to camera coordinate system)

@@ -111,9 +111,9 @@
   {
       "run_type": "server",
       "local_addr": "127.0.0.1", # modified (why? default is 0.0.0.0)
-      "local_port": 443, # if use stream, keep the same as nginx trojan upstream (e.g. 10241)
+      "local_port": 443, # if use stream, keep the same as nginx trojan upstream (e.g., 10241)
       "remote_addr": "127.0.0.1",
-      "remote_port": 80,
+      "remote_port": 80, # if use stream, keep the same as nginx fake upstream (e.g., 10242)
       "password": [
           "password" # modified
       ],
@@ -170,45 +170,37 @@
   use when trojan set `local_port == 443`. So trojan will listen to 443 and handle all the requests, check whether it is a trojan request:
 
   * if it is, trojan handles it.
-  * if not, trojan redirect it to Nginx http (127.0.0.1:80) to handle it.
+  * if not, trojan redirect it to `remote_port` to let Nginx handle it.
 
   ```nginx
-  # handle the non-trojan requets rejected by trojan.
+  # fake website
+  # handle the non-trojan requets rejected by trojan (specified by remote_port = 80).
   server {
-      listen 127.0.0.1:80 default_server;
+      listen 80 default_server;
       server_name <your.domain.name>;
   	
       # the camouflage website to redirect
       location / {
-          proxy_pass https://<redirect.url>;
+          proxy_pass https://bilibili.com;
       }
   
   }
   
-  # this is to redirect direct-ip-access to https (trojan)
+  # redirect http to https
   server {
-      listen 127.0.0.1:80;
-  
-      server_name <your_ipv4>;
-  
-      return 301 https://<tdom.ml>$request_uri;
-  }
-  
-  # redirect http to https (trojan)
-  server {
-      listen 0.0.0.0:80;
+      listen 80;
       listen [::]:80;
   
-      server_name _;
+      server_name _; # catch-all, any other server_name will use this.
   
       location / {
           return 301 https://$host$request_uri;
       }
   }
   ```
-
   
-
+  
+  
 * Nginx stream reuse 443
 
   this happens if we also use Nginx to host other websites.
@@ -251,12 +243,39 @@
   change web servers to the new port:
 
   ```nginx
+  # trojan http --> https
+  server {
+      listen 80;
+      listen [::]:80;
+      server_name x.kiui.moe;
+      return 301 https://x.kiui.moe$request_uri;
+  }
+  
+  # trojan remote_port (fake web)
+  server {
+      listen 10242;
+      server_name x.kiui.moe;
+  
+      location / {
+          proxy_pass https://bilibili.com;
+      }
+  }
+  
+  # web http --> https
+  server {
+      listen 80;
+      listen [::]:80;
+      server_name kiui.moe;
+      return 301 https://kiui.moe$request_uri;
+  }
+  
+  # web https
   server {
   
-      listen 10240 ssl default_server; # modified from 443
-      listen [::]:10240 ssl default_server; # modified from 443
+      listen 10240 ssl; # modified from 443
+      listen [::]:10240 ssl; # modified from 443
   
-      server_name www.hawia.xyz;
+      server_name hawia.xyz;
   
       ssl_certificate www.hawia.xyz.pem;
       ssl_certificate_key www.hawia.xyz.key;
@@ -294,13 +313,6 @@
           include uwsgi_params;
           uwsgi_pass 127.0.0.1:8002;
       }
-  }
-  
-  # http redirect
-  server {
-      listen 80;
-      server_name www.hawia.xyz;
-      rewrite ^(.*)$ https://$host$1 permanent;
   }
   ```
 

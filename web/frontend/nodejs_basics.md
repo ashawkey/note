@@ -1,5 +1,25 @@
 # Node.js
 
+### install & update in ubuntu
+
+ubuntu default install is low-version:
+
+```bash
+sudo apt install nodejs npm
+```
+
+Update to stable:
+
+```bash
+sudo npm install -g n
+sudo n stable
+sudo npm install -g npm
+```
+
+need to restart shell to use new version!
+
+
+
 ### `node`
 
 Node.js is a **JavaScript run-time environment.**
