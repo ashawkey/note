@@ -1,6 +1,6 @@
 ### X.org
 
-install:
+install: (usually you will never need to do these)
 
 ```bash
 sudo apt update 
@@ -11,6 +11,31 @@ sudo apt install ubuntu-desktop
 ```
 
 
+
+### ubuntu 18.04 issues
+
+since ubuntu 18.04 changes from `lightdm` to `gdm3`, there are somethings to do if it fails to start.
+
+* disable `wayland`:
+
+  edit `vi /etc/gdm3/custom.conf`
+
+  ```bash
+  [deamon]
+  WaylandEnable=false # uncomment this line
+  ```
+
+  restart gdm: `sudo systemctl restart gdm3`
+
+  now you can see the familiar Xorg logs. (CHECK?)
+
+* reconfigure `xorg.conf` and restart `gdm3`
+
+
+
+
+
+### basics
 
 log files:
 
@@ -51,7 +76,7 @@ config:
   
   ```bash
   Section "Files"
-  	ModulePath   "/usr/lib/nvidia-<xxx>/xorg" # the key line
+  	ModulePath   "/usr/lib/nvidia-<xxx>/xorg" # the key line !!!
   	ModulePath   "/usr/lib/xorg/modules"
   	FontPath     "/usr/share/fonts/X11/misc"
   	FontPath     "/usr/share/fonts/X11/cyrillic"
@@ -184,4 +209,37 @@ sudo systemctl status display-manager
 
 log files:`/var/log/lightdm/lightdm.log`
 
+
+
+
+
+### nomachine related
+
+```
+/usr/NX/var/log/nxerror.log
+```
+
+Black screen issue for headless machines (it worked in 44!):
+
+https://knowledgebase.nomachine.com/AR03P00973
+
+```bash
+# turn off X server
+sudo systemctl stop gdm
+
+# restart NX
+sudo /etc/NX/nxserver --restart
+```
+
+
+
+### reinstall ubuntu-desktop
+
+```bash
+# do not use taskel in terminal... it stucks with no reason and once you unfocus from the tab, it somewhat freezes..
+
+
+sudo apt install --reinstall ubuntu-desktop
+sudo apt install --reinstall unity
+```
 

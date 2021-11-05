@@ -45,3 +45,19 @@ Improvement: **use `git pull --rebase` instead of `git pull`!**
 
 [It also syncs server change](https://gitolite.com/git-pull--rebase).
 
+
+
+### [force `git pull`](https://stackoverflow.com/questions/1125968/git-how-do-i-force-git-pull-to-overwrite-local-files)
+
+```bash
+# reset
+git reset --hard HEAD
+
+# WARN: this delete all untracked files & dirs.
+# git clean -f -d -n # dry-run
+git clean -f -d
+
+# pull
+git pull
+```
+
