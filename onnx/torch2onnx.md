@@ -20,8 +20,11 @@ torch.onnx.export(model, x, output_path,
                   do_constant_folding=True, # optimization
                   input_names=['input'],
                   output_names=['output'],
+                  # dynamic axes is a dict of {input/output name: dimension list or dict}
+                  # list specifies each dynamic axis, dict supports custom name {axis: name}.
+                  # use a string means it is dynamic, else a number or omitted in dict means fixed. 
                   dynamic_axes={
-                      'input': {0: 'batch_size'},
+                      'input': {0: 'batch_size'}, # or [0], automatic named like "input_dynamic_axes_1"
                       'output': {0: 'batch_size'},
                   }
                   )
@@ -38,8 +41,5 @@ y = model(x) # GT
 ort_inputs = {ort_session.get_inputs()[0].name: x.detach().cpu().numpy()}
 ort_outputs = ort_session.run(None, ort_inputs)
 np.testing.assert_allclose(y.cpu().numpy(), ort_outputs[0], rtol=1e-03, atol=1e-05)
-
-
-
 ```
 
