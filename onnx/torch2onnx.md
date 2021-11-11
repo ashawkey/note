@@ -18,6 +18,7 @@ output_path = "out.onnx"
 torch.onnx.export(model, x, output_path, 
                   export_params=True, # export parameters, of course
                   do_constant_folding=True, # optimization
+                  opset_version=11, # default is 9, some ops not supported.
                   input_names=['input'],
                   output_names=['output'],
                   # dynamic axes is a dict of {input/output name: dimension list or dict}
