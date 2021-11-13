@@ -6,13 +6,23 @@
 
 A `Promise`  is an object representing the eventual completion or failure of an asynchronous operation.
 
+e.g., `fetch()` returns a `Promise`.
+
+It is always in one of these states: `pending, fufilled, rejected.`
+
+Use `then()` to add callbacks to `fufilled` promises, and `catch()` for `rejected` promises.
+
+
+
 Some guarantees:
 
-* Callbacks added with `then()` will never be invoked before the [completion of the current run](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#run-to-completion) of the JavaScript event loop
+* Callbacks added with `then()/catch()` will never be invoked before the [completion of the current run](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#run-to-completion) of the JavaScript event loop
 * These callbacks will be invoked even if they were added *after* the success or failure of the asynchronous operation that the promise represents.
 * (Chaining) Multiple callbacks may be added by calling `then()` several times. They will be invoked one after another, in the order in which they were inserted.
 
-A Chaining example:
+
+
+Chaining:
 
 ```js
 doSomething()
@@ -20,6 +30,8 @@ doSomething()
 .then(newResult => doThirdThing(newResult))
 .then(finalResult => {console.log(`Got the final result: ${finalResult}`);})
 .catch(failureCallback);
+
+doAnotherthing(); // this will not wait until doSomething() finish !
 ```
 
 
@@ -45,17 +57,26 @@ new Promise((resolve, reject) => {
 
 
 
-Create promises on old callback API:
+### Create promises manually
+
+```js
+let p = new Promise((resolveFunc[, rejectFunc]) => {
+	// do something
+    // if you returned something, it will be passed to `then`.
+});
+
+p.then(handleResolveFunc[, handleRejectFunc]);
+
+Promise.resolve([value]) // returns a dummy resolved Promise with value.
+```
+
+examples:
 
 ```js
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-wait(10*1000).then(() => saySomething("10 seconds")).catch(failureCallback);
+wait(10*1000).then(() => console.log("10 seconds later"));
 ```
-
-
-
-Micro-task queues:
 
 ```js
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -69,7 +90,7 @@ console.log(1); // not in task queue
 
 
 
-### async/await
+### async / await
 
 `async` can be put in front of a function to make it async, i.e., return a Promise.
 
@@ -80,7 +101,7 @@ hello().then((value) => console.log(value)); // output Hello.
 hello().then(console.log) // shorter ver.
 ```
 
-`await` can be put in front of a `Promise` to pause until it fulfills.
+`await` can be put in front of a `Promise` to **pause program until it fulfills**.
 
 ```js
 async function hello() {

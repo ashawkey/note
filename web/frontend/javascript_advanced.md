@@ -12,6 +12,26 @@ function foo(){
 
 
 
+### [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis)
+
+A standard way to access the global environment in different js environments. 
+
+e.g., It equals to `window, self, frames` in browser, and `global` in nodejs.
+
+```js
+// it works like this:
+var getGlobal = function () {
+  if (typeof self !== 'undefined') { return self; }
+  if (typeof window !== 'undefined') { return window; }
+  if (typeof global !== 'undefined') { return global; }
+  throw new Error('unable to locate global object');
+};
+
+var globals = getGlobal();
+```
+
+
+
 ### Prototype Chain
 
 * All the reference types are Objects.
@@ -316,10 +336,6 @@ l.speak();
 // Fuzzy makes a noise.
 // Fuzzy roars.
 ```
-
-
-
-### Promises
 
 
 
