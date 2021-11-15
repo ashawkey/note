@@ -55,12 +55,3 @@ acme.sh --install-cert \
 ```
 
 
-
-
-
-### CSP: Content security policy
-
-```html
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
-```
-

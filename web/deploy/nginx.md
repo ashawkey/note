@@ -135,11 +135,23 @@ Location: `/etc/nginx/nginx.conf`
 
 * Reverse Proxy
 
-  ```bash
+  Proxy to local port:
+
+  ```nginx
   http {
       server {
-          location / {
-  			proxy_pass http://www.example.com/link/;
+          # access at domain.com/app/<params> 
+          location /app {
+  			proxy_pass http://127.0.0.1:5000/; # the trailing `/` means relative --> --> localhost:5000/<params>
+              # proxy_pass http://127.0.0.1:5000; # w/o the `/`, it means --> localhost:5000/app/<params>
+              
+              # to correctly pass everything:
+              proxy_set_header  X-Real-IP $remote_addr;
+              proxy_set_header  X-Forwarded-For $remote_addr;
+              proxy_set_header  X-Forwarded-Proto $scheme;
+              proxy_set_header  X-Forwarded-Host $http_host;
+              proxy_set_header  Host $host;            
+              
           }
       }
   }
@@ -147,7 +159,7 @@ Location: `/etc/nginx/nginx.conf`
 
 * HTTPS
 
-  ```bash
+  ```nginx
   http {
       server {
       	listen 443 ssl; # https usually use 443
@@ -184,7 +196,7 @@ Location: `/etc/nginx/nginx.conf`
 
 * Load Balance
 
-  ```bash
+  ```nginx
   http {
   	upstream load_balance_server {
   		server 192.168.1.11:80   weight=5;
@@ -197,24 +209,4 @@ Location: `/etc/nginx/nginx.conf`
   }
   ```
 
-  
-
-### Open port
-
-* Set security group at VPS provider's console.
-
-  ```
-  IN_GROUP 443,80 0.0.0.0
-  ```
-
-  
-
-* open firewall in VPS.
-
-  ```bash
-  ufw allow 80
-  ufw allow 443
-  ```
-
-  
 
