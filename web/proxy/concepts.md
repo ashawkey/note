@@ -1,8 +1,9 @@
-### SOCKS
+### Proxy protocols
 
 Protocol that exchanges packets through a proxy server.
 
-Latest version is SOCKS5.
+* http: 
+* socks5:
 
 
 

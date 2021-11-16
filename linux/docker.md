@@ -23,7 +23,8 @@ docker run -d ubuntu bash -c "yes" # d=detach
 docker run -d --name <name> <image/cmd> # assign name (else generating random name)
 
 # map data
-docker run -v /host:/container -it ubuntu bash # 
+# always map directories! single file mapping can be bug-prone.
+docker run -v /host:/container -it ubuntu bash # /host is mapped to /container, all modifications in /container reflects to /host. 
 docker run --rm -v "$PWD/":/var/www/html <image> # rm=remove container after finish running, volume=mapping directories.
 
 docker kill <ID>
@@ -113,3 +114,25 @@ WORKDIR <path> # change working directory of building
 RUN cd /workdir # totally wrong, no effect to later workdir.
 USER <user> # change user of building
 ```
+
+
+
+### publish image
+
+```bash
+# build the image locally.
+docker built -t <name>:<tag> .
+
+# login
+docker login -u <user> 
+
+# create a remote repository in dockerhub.
+# e.g., the repo is <user>/<name>
+
+# tag local image
+docker tag <name>:<tag> <user>/<name>:<tag>
+
+# push
+docker push <user>/<name>:<tag>
+```
+
