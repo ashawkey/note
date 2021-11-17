@@ -33,3 +33,13 @@ Special IPs:
 
 ### IPv6
 
+128bit
+
+
+
+
+
+### NAT (Network Address Translation)
+
+用于缓解IPv4不足，指的是路由器自动修改IP报文实现LAN/WAN之间转换的过程。
+
