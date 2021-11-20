@@ -289,7 +289,8 @@ Detailed command:
   
   # copy files
   # if dstdir (/myfiles/) do not exit, it will be created automatically.
-  COPY *.html /myfiles/
+  # the last / is necessary! 
+  COPY index.html /myfiles/
   
   # copy folder is however tricky: by default it copy the content, not the folder itself
   COPY folder /myfiles/ # cp folder/* /myfiles/
