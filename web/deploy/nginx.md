@@ -76,26 +76,69 @@ Location: `/etc/nginx/nginx.conf`
 * Static Website
 
   ```bash
+  # basic
   http {
       server {
       	listen 80;
           location / {
-              root /data; # root_dir
-              index index.html; # load /data/index.html
+              root /data; # root directory
+              index index.html; # http://mysite.com/index.html --> /data/index.html
           }
       }
   }
   
-  # to serve the directory like `python -m http.server` http://mysite.com/files
+  # root vs alias
   http {
       server {
       	listen 80;
+          location /static/ {
+          	# location is appended to root
+              root /data; # http://mysite.com/static/ --> /data/static/
+          }
+      }
+      server {
+      	listen 80;
+          location /static/ {
+          	# location is dropped, and instead use the alias (the trailing `/` is nececssary here!)
+              alias /data/; # http://mysite.com/static --> /data/ 
+          }
+      }
+  }
+  
+  
+  # auto serve static files
+  http {
+      server {
+      	listen 80;
+      	# http://mysite.com/files --> /data/files
           location /files {
               root /data; # serve /data/files
   			autoindex on; # automatically show the directory tree (if off, will show 403 Forbidden, but can still access the file using fullname.)
           }
       }
   }
+  
+  # more detailed example of the trailing `/`
+  # access: http://localhost/app/path/file
+  # server: /root/app/path/file
+  location /app/ {
+  	root /root/; # --> /root/app/path/file
+  } 
+  location /app/ {
+  	root /root; # --> /root/app/path/file
+  } 
+  location /app {
+  	root /root/; # --> /root/app/path/file
+  } 
+  location /app {
+  	root /root; # --> /root/app/path/file
+  } 
+  location /app {
+  	alias /root/; # --> /root/path/file
+  } 
+  location /app {
+  	alias /root; # --> (wrong) TODO
+  } 
   ```
   
 * Dynamic Website (need backend)
@@ -155,6 +198,21 @@ Location: `/etc/nginx/nginx.conf`
           }
       }
   }
+  
+  # more detailed example of the trailing `/`
+  # access http://localhost/app/api/abc
+  location /app/ {
+      proxy_pass http://localhost:1234/; # --> http://localhost:1234/api/abc (relative)
+  }
+  location /app {
+      proxy_pass http://localhost:1234/; # --> http://localhost:1234//api/abc (relative, better not use)
+  }
+  location /app/ {
+      proxy_pass http://localhost:1234; # --> http://localhost:1234/app/api/abc (absolute)
+  }
+  location /app {
+      proxy_pass http://localhost:1234; # --> http://localhost:1234/app/api/abc (absolute)
+  }
   ```
 
 * HTTPS
@@ -208,5 +266,4 @@ Location: `/etc/nginx/nginx.conf`
       }
   }
   ```
-
 

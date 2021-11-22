@@ -24,7 +24,7 @@
   device: /dev/dri
   ```
 
-  
+  (However it is close-sourced, and cannot play `flv` still.)
 
 
 
@@ -32,3 +32,10 @@
 
 Default account/password is `admin/admin`.
 
+
+
+### video
+
+it use the browser's video player, so mostly only `.mp4` will work.
+
+for mobiles, `Quark` browser support multiple formats.
