@@ -12,7 +12,7 @@ Install:
 
 ```bash
 pip install numpy protobuf==3.16.0
-pip install onnx onnxruntime
+pip install onnx onnxruntime onnxruntime_gpu
 ```
 
 Check model IO size:
@@ -29,7 +29,17 @@ print(sess.get_inputs()[0].name)
 for x in sess.get_inputs():
     print(x.name, x.shape, x.type)
 for x in sess.get_outputs():
-    print(x.name, x.shape, x.type)    
+    print(x.name, x.shape, x.type)
+
+# util
+def inspect(path):
+    import onnxruntime
+    sess = onnxruntime.InferenceSession(path)
+    for x in sess.get_inputs():
+        print(x.name, x.shape, x.type)
+    for x in sess.get_outputs():
+        print(x.name, x.shape, x.type)
+    
 ```
 
 Update IO size:

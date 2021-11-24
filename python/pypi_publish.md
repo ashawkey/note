@@ -37,8 +37,6 @@ if __name__ == '__main__':
 
 
 
-
-
 ### `pytest` for unit test
 
 ```python
@@ -168,3 +166,27 @@ twine upload dist/numpytorch-0.1.2.tar.gz
 
 Note: you cannot delete or replace published versions! To update the code, you must change the version code and rebuild the package, then upload a different version (e.g., 0.1.3).
 
+
+
+### add static files
+
+By default `sdist` only bundle code files, if you have some data, like the `onnx` models, you should use `MANIFEST.in` to add them.
+
+`MANIFEST.in`:
+
+```in
+recursive-include path/to/my/data *
+recursive-include path/to/another/data *
+```
+
+Then add one line in `setup.py`:
+
+```python
+setup(
+    ...,
+	include_package_data=True,
+    ,,,.
+)
+```
+
+Now you can run `python setup.py sdist` to check whether it copies your static files.
