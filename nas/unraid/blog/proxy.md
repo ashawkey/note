@@ -38,15 +38,11 @@ This article provides a way to access CA via proxy, using [trojan-gfw](https://t
 
 
 
-> Ref: https://post.smzdm.com/p/ad2dngvn/
-
-
-
 ### Setup proxy via docker
 
 Since the terminal of Unraid do not support package manager (and the alternative  `nerdpack` is also a plugin), we would like to use docker to setup `trojan` proxy.
 
-We use trojan-gfw as an example, if you use other tools, you should build your own docker image.
+We use trojan-gfw as an [example](https://github.com/ashawkey/trojan-privoxy-client), if you use other tools, you should build your own docker image.
 
 * set up docker mirrors for faster downloading:
 
@@ -181,7 +177,7 @@ There are two things we need to care: the Apps Tab Information and the Plugin In
 
 Now reboot and you are free to load Apps and install Plugins!
 
-If not, you should look at the logs of the docker container to debug which step goes wrong.
+If not, you should look at the logs of the docker container to debug which step went wrong.
 
 
 
