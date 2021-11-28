@@ -43,6 +43,19 @@ echo $https_proxy
 
 
 
+### pip
+
+```bash
+# by default, it will use http_proxy and https_proxy
+
+# explitly set
+pip install -U --proxy=socks5://127.0.0.1:51837 ddddsr
+```
+
+
+
+
+
 ### powershell
 
 (not tested)
