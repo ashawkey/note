@@ -398,9 +398,15 @@ int main() {
     priority_queue<int, vector<int>, greater<int>> pq;
     
     
-    // custom cmp function
+    // custom cmp function by struct
 	set<int, cmp> s;
 	priority_queue<int, vector<int>, cmp> pq;
+    
+    // custom cmp function by lambda
+    auto cmp = [&](const pair<int, int>& x, const pair<int, int>& y) {
+        return arr[x.first] * arr[y.second] > arr[x.second] * arr[y.first];
+    };
+    priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> q(cmp);
 }
 ```
 
