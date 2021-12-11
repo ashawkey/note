@@ -288,6 +288,7 @@ int main() {
     
     // delete
     m.erase(0); // erase(key)
+    
     // find
     auto it = m.find(2);
     if (it != m.end()) {
@@ -297,6 +298,17 @@ int main() {
     // check if a key is in map
 	bool is_in = m.find(0) != m.end();
     bool is_in2 = m.count(0); // also work in map
+    
+    // binary search keys
+    // assume the keys are {0,1,3,5,7}
+    auto it = m.lower_bound(3); // will get iterator to 3
+    auto it = m.lower_bound(2); // will get iterator to 3
+    auto it = m.lower_bound(-1); // will get iterator to 0
+    auto it = m.lower_bound(8); // will get map.end(), which has `it->first = map.size(); it->second = 0` (注意不要用key来判断是否达到了map.end()!这里key等于map中的元素数量。要用it == map.end()。)
+    
+    auto it = m.upper_bound(3); // will get iterator to 5
+    auto it = m.upper_bound(7); // will get map.end()
+
     
 }
 ```
