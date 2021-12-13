@@ -1,4 +1,4 @@
-# 内排序
+# Inner Sorting
 
 ### Concepts
 
@@ -161,7 +161,7 @@ Hibbard sequence $\{2^k-1, .., 3, 1\}$ 's Time complexity is $O(n^{\frac 3 2 })$
 
 Space: $O(1)$
 
-![1546675194838](E:\aa\junior1\DSAlgo\DA08_InnerSorting.assets\1546675194838.png)
+![1546675194838](DA08_InnerSorting.assets\1546675194838.png)
 
 ​	交换次数计算：(1+1+1)+(1+1)+(4) = 9
 

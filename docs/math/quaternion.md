@@ -19,7 +19,8 @@ $$
 Multiply with a complex number equals **scaling and rotating**.
 
 let $\theta = \arccos \frac{b}{\sqrt{a^2+b^2}}, r=||z||=\sqrt{a^2+b^2}$:
-$$
+
+$$ 
 z = \begin{bmatrix}a &-b \\ b & a\end{bmatrix} = \sqrt{a^2+b^2} \begin{bmatrix} \frac {a} {\sqrt{a^2+b^2}} & \frac {-b} {\sqrt{a^2+b^2}} \\ \frac{b}{\sqrt{a^2+b^2}} & \frac{a} {\sqrt{a^2+b^2}}\end{bmatrix} = r \begin{bmatrix}\cos \theta  & - \sin \theta \\ \sin \theta & \cos \theta\end{bmatrix} \\ 
 = r(\cos\theta + i\sin\theta) \\
 = re^{i\theta} 
@@ -29,7 +30,8 @@ $$
 ### 3D Rotation
 
 3D rotation can be represented by three **Euler angles** $(\theta, \phi, \gamma)$, but it relies on the axes system and can lead to Gimbal Lock.
-$$
+
+$$ 
 \mathbf R_x(\theta) = 
 \begin{bmatrix}
 1&0&0&0\\
@@ -64,5 +66,4 @@ $$
 $$
 
 $$
-
 
