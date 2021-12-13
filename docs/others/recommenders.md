@@ -67,28 +67,33 @@ Main idea: Matrix factorization.
 
 Define user matrix $X_{k \times n} = [x_1, x_2, \cdots, x_n]$, item matrix $Y_{k \times m} = [y_1, y_2, \cdots, y_m]$, with $k$ dimensional features. ($k \ll n,m$)
 
-Assume $R \approx X^TY $.
+Assume $R \approx X^TY$.
 
 Optimize:
+
 $$
 \min_{X,Y} \sum_{r_{ui}}^{\text{observed}} (r_{ui} - x_u^Ty_i)^2 + \lambda (\sum_u||x_u||^2+\sum_i||y_i||^2)
 $$
+
 This is nonconvex, but we can make a 2-step iterative optimization to separately optimize X and Y:
 
 * Repeat until Converge: (**WHY???**)
 
   * Fix Y, update X
+
     $$
     x_u = (\sum_{r_{ui} \in r_{u*}}y_iy_i^T+\lambda I_k)^{-1} \sum_{r_{ui} \in r_{u*}}r_{ui}y_i
     $$
 
   * Fix X, update Y
+
     $$
     y_i = (\sum_{r_{ui} \in r_{*i}}x_ux_u^T+\lambda I_k)^{-1} \sum_{r_{ui} \in r_{*i}}r_{ui}x_u
     $$
 
 * Inference:
-  $$
+
+  $$ 
   r_{ui} = x_u^Ty_i
   $$
 

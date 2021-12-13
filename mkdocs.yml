@@ -1,0 +1,29 @@
+site_name: Kiui's notebook
+theme:
+  name: material
+  palette:
+    primary: grey
+    accent: amber
+  features:
+    - navigation.instant  
+    - navigation.tracking
+    - navigation.top
+repo_url: https://github.com/ashawkey/Notebooks
+plugins:
+  - search
+markdown_extensions:
+  - tables  
+  - pymdownx.betterem
+  - pymdownx.arithmatex:
+      generic: true  
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.superfences  
+  - pymdownx.tabbed:
+      alternate_style: true 
+
+extra_javascript:
+  - _js/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js      

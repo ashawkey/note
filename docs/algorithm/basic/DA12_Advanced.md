@@ -127,11 +127,8 @@ TAIL: 广义表中**第一个元素以外的元素构成的(!)广义表(!)**。
     `C(i, j) = W(i, j) + min{C(i, k-1) + C(k, j)}, for k in [i, j]`
 
 
-![1545820801261](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1545820801261.png)
 
-
-
-![图片1](E:\aa\junior1\DSAlgo\DA12_Advanced.assets\图片1.png)
+![图片1](DA12_Advanced.assets\图片1.png)
 
 
 
@@ -493,7 +490,7 @@ Splay规则保证访问代价较低，不保证平衡。
 
 * 一次访问操作的代价：$O(n)$，不保证单个操作高效。
 
-* m次访问操作的总代价：$O(mlgn)​$，**每次操作平均代价$O(lgn)​$**，保证多个操作平均高效。
+* m次访问操作的总代价：$O(mlgn)$，**每次操作平均代价$O(lgn)$**，保证多个操作平均高效。
 
 
 

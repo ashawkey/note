@@ -22,6 +22,7 @@ since ubuntu 18.04 changes from `lightdm` to `gdm3`, there are somethings to do 
 
   ```bash
   [deamon]
+  
   WaylandEnable=false # uncomment this line
   ```
 
