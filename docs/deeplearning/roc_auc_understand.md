@@ -27,11 +27,13 @@ auc = metrics.auc(fpr, tpr)
 
 ### Receiver Operation Curve
 
-A graphic plot metric for binary classifier.
+A graphic plot metric for binary classifier. 
+
 $$
 TPR = \frac{TP}{P}=\frac {TP}{TP+FN} \\
 FPR = \frac{FP}{N}=\frac {FP}{FP+TN} \\
 $$
+
 In binary classification, the prediction is usually a continuous variable. 
 
 We need a threshold $T$ to determine whether the prediction is positive or negative.
