@@ -142,7 +142,30 @@
 
   the state can be checked by `x.retains_grad`, which is a boolean flag.
 
-  
+
+
+
+* `torch.autograd.grad(outputs, inputs, grad_outputs=None, retain_graph=None, create_graph=False)`
+
+  a way to manually compute and get the gradients.
+
+  * outputs: tensor, usually a scalar such as the loss.
+  * inputs: tensor, used to calculate $\frac{d~\text{outputs}}{d~\text{inputs}}$.
+  * grad_outputs: $d~\text{outputs}$, should be the same shape as outputs, if left `None`, will use all ones.
+  * create_graph: whether keep the DAG so higher order derivitives can be calculated.
+  * retrain_graph: default to create_graph, do not free the DAG.
+
+  example use in SDF to calculate normals:
+
+  ```python
+  with torch.set_grad_enabled(True):
+      input.requires_grad_(True)
+      sigma = self.backbone(input)
+      normal = - torch.autograd.grad(torch.sum(sigma), input, create_graph=True)[0] # [B, N, 3]
+      return sigma, normal
+  ```
+
+
 
 Full Examples:
 
