@@ -29,11 +29,10 @@ auc = metrics.auc(fpr, tpr)
 
 A graphic plot metric for binary classifier. 
 
-$$
+$$\begin{eqnarray}
 TPR = \frac{TP}{P}=\frac {TP}{TP+FN} \\ 
-
 FPR = \frac{FP}{N}=\frac {FP}{FP+TN} \\
-$$
+\end{eqnarray}$$
 
 In binary classification, the prediction is usually a continuous variable. 
 
