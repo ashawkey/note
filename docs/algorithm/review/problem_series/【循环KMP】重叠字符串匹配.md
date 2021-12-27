@@ -1,4 +1,4 @@
-# [循环字符串匹配](https://leetcode-cn.com/problems/repeated-string-match/)
+## [循环字符串匹配](https://leetcode-cn.com/problems/repeated-string-match/)
 
 给定两个字符串 a 和 b，寻找重复叠加字符串 a 的最小次数，使得字符串 b 成为叠加后的字符串 a 的子串，如果不存在则返回 -1。
 

@@ -1,5 +1,7 @@
 site_name: Kiui's notebook
 theme:
+  #logo: _assets/icon.png
+  favicon: _assets/icon.png
   name: material
   palette:
     primary: grey
