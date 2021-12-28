@@ -2,7 +2,7 @@
 
 
 
-### prepare `setup.py`
+### Prepare `setup.py`
 
 A simple example:
 
@@ -168,7 +168,7 @@ Note: you cannot delete or replace published versions! To update the code, you m
 
 
 
-### add static files
+### Add static files
 
 By default `sdist` only bundle code files, if you have some data, like the `onnx` models, you should use `MANIFEST.in` to add them.
 
@@ -190,3 +190,49 @@ setup(
 ```
 
 Now you can run `python setup.py sdist` to check whether it copies your static files.
+
+
+
+### Automatic publishing with github actions
+
+create workflows at `.github/workflows/pypi-publish.yml`:
+
+```yaml
+# This workflows will upload a Python Package using Twine when a release is created
+# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+
+name: Upload Python Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine
+    - name: Build and publish
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      run: |
+        python setup.py sdist bdist_wheel
+        twine upload dist/*
+```
+
+Create secrets at repository.
+
+When you want to publish a new version, navigate to **release** and release a version tag.
+
+Then github actions will build and publish current repository state automatically!
