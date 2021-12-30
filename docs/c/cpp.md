@@ -366,6 +366,26 @@ int main() {
         cout << q.size() << endl;
     }
 }
+
+// a trick in BFS to get each layer of a tree (only use one queue!)
+bool BFS_leveling(TreeNode* root) {
+    // bfs leveling
+    queue<TreeNode*> q;
+    q.push(root);
+    int layer = 0;
+    while (!q.empty()) {
+        // record current size
+        int cur_size = q.size();
+        // lnodes in current layer
+        for (int i = 0; i < cur_size; i++) {
+            TreeNode* p = q.front(); q.pop();
+            // do something...
+            if (p->left) q.push(p->left);
+            if (p->right) q.push(p->right);
+        }
+        layer++;
+    }
+}
 ```
 
 #### #include \<stack\>
@@ -391,7 +411,7 @@ int main() {
 #include <priority_queue>
 using namespace std;
 
-// <表示大的在前。
+// < means larger-first
 struct cmp {
     bool operator()(int a, int b) {
         return a < b;
@@ -399,12 +419,12 @@ struct cmp {
 };
 
 int main() {
-    // heap, large-first
+    // heap, default is larger-first
     priority_queue<int> pq;
     pq.push(1);
     pq.push(2);
     pq.push(0);
-    p.top(); // 2
+    p.top(); // 2, yes it's top, not front.
     
     // smaller-first
     priority_queue<int, vector<int>, greater<int>> pq;
@@ -420,6 +440,13 @@ int main() {
     };
     priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> q(cmp);
 }
+
+// you may need to store a pair in priority queue and sort by a key:
+typedef pair<int,int> pii;
+priority_queue<pii, vector<pii>, greater<pii>> pq; // smaller first
+// unfortunately, you cannot update the pq in-place, if you would like to modify it, you have to pop and re-push.
+auto [k, v] = pq.top(); pq.pop();
+pq.push(pii(k))
 ```
 
 #### #include \<algorithm\>
