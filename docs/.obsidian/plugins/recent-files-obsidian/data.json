@@ -1,0 +1,18 @@
+{
+  "recentFiles": [
+    {
+      "basename": "basics",
+      "path": "rust/basics.md"
+    },
+    {
+      "basename": "camera_intrinsics_exintrics",
+      "path": "vision/camera_intrinsics_exintrics.md"
+    },
+    {
+      "basename": "camera_combined",
+      "path": "vision/camera_combined.md"
+    }
+  ],
+  "omittedPaths": [],
+  "maxLength": null
+}

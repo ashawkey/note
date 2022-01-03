@@ -1,0 +1,113 @@
+{
+  "main": {
+    "id": "a5747f9c7394f3e1",
+    "type": "split",
+    "children": [
+      {
+        "id": "91a63039f010b333",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "rust/basics.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5632328568f8c689",
+    "type": "split",
+    "children": [
+      {
+        "id": "5cc07b1b982fabdf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2c80454b44925751",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "83ccbec1d9e3beb8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f5b82b2c136b21c6",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 224
+  },
+  "right": {
+    "id": "514d5ec60d411788",
+    "type": "split",
+    "children": [
+      {
+        "id": "59d15e05cce5a77f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4e196643951be1bd",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "rust/basics.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "88447649aff39817",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "91a63039f010b333",
+  "lastOpenFiles": [
+    "rust/basics.md",
+    "vision/camera_intrinsics_exintrics.md",
+    "vision/camera_combined.md"
+  ]
+}
