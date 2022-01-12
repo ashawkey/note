@@ -34,6 +34,9 @@ https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E
 curl  https://get.acme.sh | sh
 alias acme.sh=~/.acme.sh/acme.sh
 
+# setup auto upgrade
+acme.sh --upgrade --auto-upgrade
+
 # setup http for nginx (i.e, the website can be accessed by http), so acme.sh can verify your identity.
 # server {listen 80; ...} 
 
@@ -52,6 +55,8 @@ acme.sh --install-cert \
 
 # setup https for nginx. (in manual)
 # server {listen 443 ssl; ...}
-```
 
+# manual renew all certs
+acme.sh --cron --force # --debug 2
+```
 
