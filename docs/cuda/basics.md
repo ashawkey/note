@@ -497,6 +497,10 @@ Some abbreviations:
 
 
 
+### compilation in detail
+
+![img](basics.assets/cuda-compilation-from-cu-to-executable.png)
+
 
 
 
