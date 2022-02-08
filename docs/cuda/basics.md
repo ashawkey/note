@@ -534,6 +534,53 @@ __global__ void helloCUDA(float f) {
 
 
 
+### [CUDA memory check](https://stackoverflow.com/questions/27277365/unspecified-launch-failure-on-memcpy/27278218#27278218)
+
+Useful tool to debug `cuda illegal memory access`.
+
+For compute_70 and later, the tool is called `compute-sanitizer`.
+
+Compile your program with `-lineinfo` to get the detailed error location.
+
+then run:
+
+```sh
+compute-sanitizer [any program that uses cuda and error]
+
+# example output
+========= Invalid __global__ read of size 2 bytes                                                                                                                                                          
+=========     at 0xd80 in /home/kiui/anaconda3/lib/python3.9/site-packages/torch/include/c10/util/Half-inl.h:37:c10::Half::operator float() const                                                          
+=========     by thread (174,0,0) in block (11,0,0)                                                                                                                                                        
+=========     Address 0x7f169c7ff2f0 is out of bounds                                                                                                                                                      
+=========     Device Frame:/home/kiui/projects/torch-ngp/raymarching/src/raymarching.cu:154:void kernel_generate_points<c10::Half>(c10::Half const*, c10::Half const*, c10::Half const*, float, int, float,
+ unsigned int, unsigned int, unsigned int, c10::Half*, int*, int*) [0xc50]                                                                                                                                 
+=========     Saved host backtrace up to driver entry point at kernel launch time                                                                                                                          
+=========     Host Frame: [0x209e4a]                                                                                                                                                                       
+=========                in /lib/x86_64-linux-gnu/libcuda.so.1                                                                                                                                             
+=========     Host Frame: [0x115ab]                                                                                                                                                                        
+=========                in /home/kiui/anaconda3/lib/python3.9/site-packages/torch/lib/libcudart-a7b20f20.so.11.0                                                                                          
+=========     Host Frame:cudaLaunchKernel [0x618c0]                                                                                                                                                        
+=========                in /home/kiui/anaconda3/lib/python3.9/site-packages/torch/lib/libcudart-a7b20f20.so.11.0                                                                                          
+=========     Host Frame:generate_points(at::Tensor, at::Tensor, at::Tensor, float, int, float, unsigned int, unsigned int, unsigned int, at::Tensor, at::Tensor, at::Tensor) [0x8c12]                     
+=========                in /home/kiui/.cache/torch_extensions/py39_cu113/_raymarching/_raymarching.so                                                                                                     
+=========     Host Frame: [0x1ca0d]                                                                                                                                                                        
+=========                in /home/kiui/.cache/torch_extensions/py39_cu113/_raymarching/_raymarching.so                                                                                                     
+=========     Host Frame: [0x18833]                                                                                                                                                                        
+=========                in /home/kiui/.cache/torch_extensions/py39_cu113/_raymarching/_raymarching.so                                                                                                     
+=========     Host Frame: [0x174714]                                                                                              .....
+```
+
+And it points out where out of bounds happens:
+
+```cpp
+// /home/kiui/projects/torch-ngp/raymarching/src/raymarching.cu:154:
+const float density = grid[index];
+```
+
+
+
+
+
 ### template
 
 cuda provides `AT_DISPATCH_FLOATING_TYPES` to automatically dispatch & cast type for every input.
@@ -608,7 +655,7 @@ static inline  __device__ at::Half gpuAtomicAdd(at::Half *address, at::Half val)
 }
 ```
 
-
+However, `__half` atomicAdd is extremely slow compared to `float` or `__half2`. Usually a better choice is to not use it at all.
 
 
 
