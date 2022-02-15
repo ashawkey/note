@@ -408,7 +408,7 @@ int main() {
 
 ```c++
 #include <iostream>
-#include <priority_queue>
+#include <queue> // priority_queue is define
 using namespace std;
 
 // < means larger-first

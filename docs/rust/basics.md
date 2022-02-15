@@ -126,7 +126,7 @@ let x = 0b1111_0000 // i32, binary
 let x = 2.0; // f64
 let x: f32 = 2.0; // f32
 ```
-* boolean
+* boolean  
 	* `bool`
 
 ```rust

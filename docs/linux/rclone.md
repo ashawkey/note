@@ -89,6 +89,7 @@ rclone about nuts:
   rclone copy -P ~/data nuts:hawia/data # show progress
   rclone copy -i ~/data nuts:hawia/data # dry run (interactive)
   rclone copy --dry-run ~/data nuts:hawia/data # dry run
+  rclone copy ~/data nuts:hawia/data --ignore-checksum # ignore checksum  speed up 
   
   # copy from remote to local
   rclone copy nuts:hawia/data ~/data -P

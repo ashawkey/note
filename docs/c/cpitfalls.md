@@ -1,5 +1,41 @@
 # c pitfalls
 
+* NEVER call `top()/front()` when a  (priority) queue is empty, it is an undefined behavior, and will not cause runtime error:
+
+  ```cpp
+  #include <iostream>
+  #include <queue>
+  
+  using namespace std;
+  
+  int main() {
+      priority_queue<int> q;
+      //cout << q.empty() << " " << q.top() << endl; // undefined, will destroy the priority queue and nothing is printed...
+      q.push(1);
+      cout << q.empty() << " " << q.top() << endl; // 0 1
+      q.pop();
+      cout << q.empty() << " " << q.top() << endl; // 1 1 (undefined behavior, seems still the last top element.)
+  }
+  ```
+
+  ```cpp
+  #include <iostream>
+  #include <queue>
+  
+  using namespace std;
+  
+  int main() {
+      queue<int> q;
+      cout << q.empty() << " " << q.front() << endl; // 1 0 (undefined behavior, seems default to 0)
+      q.push(1);
+      cout << q.empty() << " " << q.front() << endl; // 0 1
+      q.pop();
+      cout << q.empty() << " " << q.front() << endl; // 1 0 (undefined behavior)
+  }
+  ```
+
+  
+
 * `unordered_map<pair<int, int>, int>` throws error like `deleted implicit constructor`:
 
   this is because there is no built in `hash` function for `pair<>`. [see here.](https://stackoverflow.com/questions/62869571/call-to-implicitly-deleted-default-constructor-of-unordered-set-vectorint)

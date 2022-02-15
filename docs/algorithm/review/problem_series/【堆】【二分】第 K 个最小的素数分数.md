@@ -1,12 +1,12 @@
 ### [第 K 个最小的素数分数](https://leetcode-cn.com/problems/k-th-smallest-prime-fraction/)
 
+给你一个按递增顺序排序的数组 arr 和一个整数 k 。数组 arr 由 1 和若干 素数  组成，且其中所有整数互不相同。
+
+对于每对满足 0 < i < j < arr.length 的 i 和 j ，可以得到分数 arr[i] / arr[j] 。
+
+那么第 k 个最小的分数是多少呢?  以长度为 2 的整数数组返回你的答案, 这里 answer[0] == arr[i] 且 answer[1] == arr[j] 。
 
 
-> 给你一个按递增顺序排序的数组 arr 和一个整数 k 。数组 arr 由 1 和若干 素数  组成，且其中所有整数互不相同。
->
-> 对于每对满足 0 < i < j < arr.length 的 i 和 j ，可以得到分数 arr[i] / arr[j] 。
->
-> 那么第 k 个最小的分数是多少呢?  以长度为 2 的整数数组返回你的答案, 这里 answer[0] == arr[i] 且 answer[1] == arr[j] 。
 
 ### 暴力
 
@@ -89,6 +89,47 @@ public:
                 right = mid;
             }
         }
+    }
+};
+```
+
+
+
+### 类似题目：[查找和最小的K对数字](https://leetcode-cn.com/problems/find-k-pairs-with-smallest-sums/)
+
+给定两个以升序排列的整数数组 nums1 和 nums2 , 以及一个整数 k 。
+
+定义一对值 (u,v)，其中第一个元素来自 nums1，第二个元素来自 nums2 。
+
+请找到和最小的 k 个数对 (u1,v1),  (u2,v2)  ...  (uk,vk) 。
+
+
+
+#### 堆
+
+类似的，虽然两组数可复用时没有明显的单调性，但如果固定其中一个数，求和对另一个数一定是单调的，所以也可以用堆解决。
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
+        auto cmp = [&](const pair<int, int>&x, const pair<int, int>&y) {
+            return nums1[x.first] + nums2[x.second] > nums1[y.first] + nums2[y.second];
+        };
+        priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> q(cmp);
+        for (int i = 0; i < nums2.size(); i++) {
+            q.emplace(0, i);
+        }
+        vector<vector<int>> ans;
+        for (int i = 0; i < k; i++) {
+            if (q.empty()) break; // when k > nums1.size() * nums2.size()
+            auto [m, n] = q.top(); q.pop();
+            ans.push_back({nums1[m], nums2[n]});
+            if (m + 1 < nums1.size()) {
+                q.emplace(m + 1, n);
+            }
+        }
+        return ans;
     }
 };
 ```
