@@ -277,7 +277,7 @@ void dijkstra(int s) {
 	while (!q.empty()) {
 		P p = q.top(); q.pop();
 		int u = p.second;
-		if (d[u] < p.first) continue; // outd records
+		if (d[u] < p.first) continue; // outdated records
 		for (int i = 0; i < G[u].size(); i++) {
 			edge& e = G[u][i];
 			int v = e.t;

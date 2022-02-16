@@ -14,8 +14,6 @@
 
 ### Simple Sorting Algorithms
 
-![1542164642764](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1542164642764.png)
-
 #### Insert sort
 
 ```c++
@@ -161,7 +159,7 @@ Hibbard sequence $\{2^k-1, .., 3, 1\}$ 's Time complexity is $O(n^{\frac 3 2 })$
 
 Space: $O(1)$
 
-![1546675194838](DA08_InnerSorting.assets\1546675194838.png)
+![1546675194838](.\DA08_InnerSorting.assets\1546675194838.png)
 
 ​	交换次数计算：(1+1+1)+(1+1)+(4) = 9
 
@@ -195,19 +193,19 @@ int partition(int arr[], int left, int right){
     return i;
 }
 
-// simplified
-void quicksort(int a[], int l, int r){
-    if(l<r){
-        int i=l, j=r, x=a[l];
-        while(i<j){
-            while(i<j && a[j]>=x) j--;
-            if(i<j) a[i++] = a[j];
-            while(i<j && a[i]<=x) i++;
-            if(i<j) a[j--] = a[i];
+// simplified, sort a[l:r+1]
+void quicksort(int a[], int l, int r) {
+    if (l < r) {
+        int i = l, j = r, x = a[l];
+        while (i < j) {
+            while (i < j && a[j] >= x) j--;
+            if (i < j) a[i++] = a[j];
+            while (i < j && a[i] <= x) i++;
+            if (i < j) a[j--] = a[i];
         }
         arr[i] = x;
-        quicksort(a, l, i-1);
-        quickdort(a, i+1, r);
+        quicksort(a, l, i - 1);
+        quickdort(a, i + 1, r);
     }
 }
 ```
@@ -265,9 +263,9 @@ $$
 
   （这些方法都是找到**有序的前k个最小元素**，所以复杂度都含有k）
 
-  * Naive quicksort: $O(n log n)$
+  * Naïve quicksort: $O(n log n)$
 
-  * Naive Heap: $O(n+klogn)$
+  * Naïve Heap: $O(n+klogn)$
 
   * Small Heap: $O(nlogk)$
 
@@ -282,7 +280,7 @@ $$
         for(int i=k; i<n; i++){
             if(arr[i] < q.top()){ // smaller than max
     			q.pop();
-                 q.push(arr[i]);
+                q.push(arr[i]);
             }
         }
         return q;
@@ -317,21 +315,21 @@ void merge(int arr[], int tmp[], int left, int right, int mid){
     while(j<=right) arr[idx++] = tmp[j++];
 }
 
-// simplified
+// simplified, sort a[l:r+1]
 int a[maxn], b[maxn];
 void mergesort(int* a, int* b, int l, int r){
-    if(l==r) return;
-    int m = (l+r)/2;
+    if (l == r) return;
+    int m = (l + r) / 2;
     mergesort(a, b, l, m);
-    mergesort(a, b, m+1, r);
-    int i=l, j=m+1; k=l;
-    while(i<=m && j<=r){
-        if(a[i]<=a[j]) b[k++] = a[i++];
+    mergesort(a, b, m + 1, r);
+    int i = l, j = m + 1; k = l;
+    while (i <= m && j <= r){
+        if (a[i] <= a[j]) b[k++] = a[i++];
         else b[k++] = a[j++];
     }
-    while(i<=m) b[k++] = a[i++];
-    while(j<=r) b[k++] = a[j++];
-    for(int i=l; i<=r; i++) a[i]=b[i];
+    while (i <= m) b[k++] = a[i++];
+    while (j <= r) b[k++] = a[j++];
+    for (int i = l; i <= r; i++) a[i] = b[i];
 }
 ```
 
@@ -608,8 +606,6 @@ void adjust(record arr[], int idx[], int n){
 
 
 ## Summary
-
-![1542768830443](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1542768830443.png)
 
 
 
