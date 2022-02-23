@@ -61,3 +61,39 @@ git clean -f -d
 git pull
 ```
 
+
+
+### remove a large file wrongly committed and left in git history
+
+large file, even if removed in current branch, will be left in history and every clone suffers from it.
+
+The best choice is never to upload any, but if you have committed, this will save you:
+
+```bash
+# FOLDERNAME is what you want to remove from ALL history
+git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch FOLDERNAME" -- --all
+
+# further clean
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+
+# push to remote
+git push --all --force
+```
+
+
+
+### embed mp4 in readme.md (github only)
+
+You just edit the markdown file in github webpage, drag and drop your mp4 video to it, and it will work.
+
+It only writes a URL into your markdown, but github will render it as a video:
+
+```markdown
+**A GUI for training/visualizing NeRF is also available!**
+
+https://user-images.githubusercontent.com/25863658/155265815-c608254f-2f00-4664-a39d-e00eae51ca59.mp4
+```
+
