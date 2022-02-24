@@ -97,3 +97,25 @@ It only writes a URL into your markdown, but github will render it as a video:
 https://user-images.githubusercontent.com/25863658/155265815-c608254f-2f00-4664-a39d-e00eae51ca59.mp4
 ```
 
+
+
+### reset
+
+say you would like to reset to a previous commit.
+
+```bash
+# check log to get the commit reference
+git log --oneline
+
+# say you'll reset to xxxxx commit
+# --hard will rewrite the file content
+git reset --hard xxxxx
+
+# after that, you want to return to your previous commit.
+git reflog show
+
+# you found your previous commit is called HEAD@{y}
+git reset --hard HEAD@{y}
+
+```
+
