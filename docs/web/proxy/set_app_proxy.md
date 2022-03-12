@@ -51,13 +51,13 @@ echo $https_proxy
 
 ### pip
 
-by default, it will use http_proxy and https_proxy, so you can just set these env variables.
-
 ```bash
+# by default, it will use http_proxy and https_proxy
+
 # explitly set
 pip install -U --proxy=socks5://127.0.0.1:51837 ddddsr
 
-# note: to use socks proxy, you have to install pysocks first
+# note: to use socks proxy, you have to install pysocks first [
 pip install pysocks
 ```
 
@@ -87,16 +87,12 @@ netsh winhttp show proxy
 
   * Use `ENV` at Dockerfile (not recommended, since it makes the Dockerfile not portable)
 
-    add in `Dockerfile`:
+    First check docker's ip via `ip -4 addr`, which is default to `127.17.0.1` in Ubuntu.
+
+    Then add in `Dockerfile`:
 
     ```dockerfile
-    # socks5
-    ENV http_proxy "socks5h://localhost:1080"
-    ENV https_proxy "socks5h://localhost:1080"
-    
-    # http (recommended)
-    ENV http_proxy "http://localhost:1081"
-    ENV https_proxy "http://localhost:1081"
+    ENV http_proxy "socks5h://127.17.0.1:1080"                                                           ENV https_proxy "socks5h://127.17.0.1:1080"
     ```
 
     and call with `docker build --network=host -t tag ...`

@@ -461,4 +461,44 @@
   proxychains curl -4 ip.sb
   ```
 
+* Privoxy for http proxy
+
+  since trojan only supports socks5 proxy, you should use `privoxy` to forward it to `http` proxy:
+
+  ```bash
+  sudo apt install privoxy
+  ```
+
+  edit config `/etc/privoxy/config`, add the following lines:
+
+  ```bash
+  listen-address 0.0.0.0:1081 # http proxy port
+  toggle  1
+  enable-remote-toggle 1
+  enable-remote-http-toggle 1
+  enable-edit-actions 0
+  enforce-blocks 0
+  buffer-limit 4096
+  forwarded-connect-retries  0
+  accept-intercepted-requests 0
+  allow-cgi-request-crunching 0
+  split-large-forms 0
+  keep-alive-timeout 5
+  socket-timeout 60
+  
+  forward-socks5 / 0.0.0.0:1080 . # trojan's socks5 proxy port
+  ```
+
+  restart the service:
+
+  ```bash
+  sudo systemctl restart privoxy
+  ```
+
+  Now you can check the proxy via:
+
+  ```bash
+  sudo netstat -antp
+  ```
+
   
