@@ -2,16 +2,36 @@
 
 
 
+### install
+
+download the runfile from [here](https://www.anaconda.com/products/individual), then simply run it with bash.
+
+* update: `condas update conda`
+* uninstall: `rm -rf ~/anaconda`
+
+
+
 ### envs
 
 ```bash
-# list all
+# list all envs (not `conda env ls`)
 conda env list
 
-# create
-conda env create -n <name> python=3.7
+# create (not `conda env create`!)
+# -n is short for --name
+conda create -n <name> python=3.7 
 
-# delete
+# dump env to file 
+# not recommended though, it lists all packages with the exact version, but mostly we want a more concise one...
+conda list --explicit > env.txt
+
+# create from file (note the `env` here...)
+conda env create --file env.txt
+
+# clone
+conda create --clone <env> --name <name>
+
+# delete (note the `env` here...)
 conda env remove -n <name>
 ```
 
@@ -64,7 +84,7 @@ The directory structures:
 ```bash
 # install
 conda install <pkg> # from conda source.
-pip install <pkg> # from pip source, but also install to the current env
+pip install <pkg> # from pip source, but also only install to the current env
 
 # list 
 conda list
