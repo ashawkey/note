@@ -26,7 +26,16 @@
 * dress code: 服装规定 (It's semi-formal)
 * tuxedo: n, 燕尾服 (that would be overdressing, a nice tie with a suit is enough)
 
+* baggage carousel: 行李转盘, luggage
+* diarrhea: 腹泻
+*  I feel weak, nauseous (想吐) and have a bad headache.
+* trim down: lose weight
+* I cut down on carbs (carbohydrates), sugary drinks and fried food, and stopped eating late-night snacks.
+* 
 
 
-> P31
+
+
+
+> P50
 
