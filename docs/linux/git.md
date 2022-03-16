@@ -318,3 +318,12 @@ git rm -r --cached <folder>
 
 
 
+### Submodule
+
+Add a repo (at `url`) to the current repo's `dest_path` as a submodule:
+
+```bash
+git submodule add <submodule_url> <dest_path>
+```
+
+This will automatically track the submodule's version by creating a `.gitmodules` file.
