@@ -21,8 +21,21 @@ sudo swapon /swapfile
 
 ```bash
 sudo swapoff /swapfile
-sudo rm  /swapfile
+sudo rm /swapfile
 ```
+
+
+
+### check swap file location
+
+```bash
+sudo swapon -s
+
+# or
+sudo cat /proc/swaps
+```
+
+
 
 
 
