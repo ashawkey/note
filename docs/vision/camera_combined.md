@@ -26,7 +26,6 @@ $$
     0 & 0 & near+far & near * far \\
     0 & 0 & -1 & 0
     \end{bmatrix}
-    
 $$
 
     And here the $P$ can be seen as a modified $K$:

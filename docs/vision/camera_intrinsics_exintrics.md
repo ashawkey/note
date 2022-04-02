@@ -23,7 +23,6 @@ u \\ v \\ 1 \\
 \end{bmatrix}
 =
 \mathbf K \begin{bmatrix}\mathbf R & \mathbf T \\ 0&  1\end{bmatrix}
-
 \cdot
 \begin{bmatrix}
 x_w \\ y_w \\ z_w \\ 1 \\
@@ -154,9 +153,7 @@ x_w \\ y_w \\ z_w \\ 1
 \text{right}_z & \text{up}_z & \text{forward}_z & \text{C}_z \\ 
 0 & 0 & 0 & 1 
 \end{bmatrix} 
-
 \cdot
-
 \begin{bmatrix}
 x_c \\ y_c \\ z_c \\ 1
 \end{bmatrix}
@@ -207,19 +204,14 @@ x_c \\ y_c \\ z_c \\ 1
 \text{forward}_x & \text{forward}_y & \text{forward}_z & 0 \\ 
 0 & 0 & 0 & 1 
 \end{bmatrix} 
-
 \cdot
-
 \begin{bmatrix}
 1 & 0 & 0 & -C_x \\ 
 0 & 1 & 0 & -C_y \\ 
 0 & 0 & 1 & -C_z \\ 
 0 & 0 & 0 & 1 
 \end{bmatrix} 
-
-
 \cdot
-
 \begin{bmatrix}
 x_w \\ y_w \\ z_w \\ 1
 \end{bmatrix}
