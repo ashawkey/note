@@ -9,20 +9,17 @@
   * The Intrinsic Matrix use pixel height / width / focal, e.g. `H ~ [0, 1024), W ~ [0, 1024), focal = 1236 `, and face at `+z`.
     
 $$
-
-    K = \begin{bmatrix}
+K = \begin{bmatrix}
     f_x & s & x_0 & 0 \\
     0 & f_y  & y_0 & 0 \\
     0 & 0 & 1 & 0
     \end{bmatrix}
-    
 $$
 
-    
+
 * The Projection Matrix use NDC, e.g., `H ~ [-1, 1], W ~ [-1, 1], near = 0.1`, and face at `-z`:
-    
+  
 $$
-
     Persp = Ortho\cdot P = Ortho \cdot \begin{bmatrix}
     near & 0 & 0 & 0 \\
     0 & near & 0 & 0 \\
@@ -33,12 +30,12 @@ $$
 $$
 
     And here the $P$ can be seen as a modified $K$:
-  
+
   * if we use the near plane as the focal plane, then $near = f_x = f_y$
     * if we set principle to $(0, 0)$, then $x_0 = 0, y_0 = 0$
     * revert z-axis, so $1 \rightarrow -1$
     * inserting a third row about the information of `far` plane.
-  
+
   However, in most cases, the focal plane is not the near plane:
 
 

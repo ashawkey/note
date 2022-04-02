@@ -1,4 +1,4 @@
-# View & Projection
+## View & Projection
 
 
 
@@ -34,9 +34,7 @@ It transform both the camera and objects, until **the camera is at the origin, u
 We should first apply this view transformation before we further apply projection transformation.
 
 $$
-
 V_{camera} = \mathbf M_{view} \cdot V_{world} \\
-
 $$
 
 
@@ -46,9 +44,7 @@ $$
 It projects 3D objects into a Clip space, such that we can transform it to the final 2D plane. 
 
 $$
-
 V_{clip} =  \mathbf M_{projection} \cdot V_{camera} \\
-
 $$
 
 First, we project the objects (from camera coordinate system) into a canonical cuboid $[-1,1]^3$ (the normalized device coordinate system, NDC). Coordinates outside $[-1, 1]$ will be clipped, so the space is called Clip space.
@@ -67,7 +63,6 @@ Second, we perform viewport transform, i.e., simply look at -Z direction and get
 In implementation, we simply **linear** translate & scale the object's bounding box **from $[l,r]\times[b,t]\times[-n,-f]$ into $[-1, 1]^3$**:
 
 $$
-
 \mathbf M_{ortho} = 
 \begin{bmatrix}
 \frac 2 {r-l} & 0 & 0 & -\frac{r+l}{r-l} \\
@@ -75,7 +70,6 @@ $$
 0 & 0 & \frac {-2} {f-n} & -\frac{f+n}{f-n} \\
 0 & 0 & 0 & 1
 \end{bmatrix}
-
 $$
 
 (Note: since we look at -Z, we use $-n$ and $-f$ for near and far plane, so that $0<n<f$.)
@@ -94,10 +88,8 @@ Further objects should look smaller!
 In implementation, we should find the relationship between the transformed points and original points:
 
 $$
-
 y' = \frac n z y\\
 x' = \frac n z x\\
-
 $$
 
 For Z axis, we observe:
@@ -108,7 +100,6 @@ For Z axis, we observe:
 Solve the equations and we have:
 
 $$
-
 \mathbf M_{persp\rightarrow ortho} = 
 \begin{bmatrix}
 n & 0 & 0 & 0 \\ 
@@ -116,13 +107,11 @@ n & 0 & 0 & 0 \\
 0 & 0 & n+f & nf\\
 0 & 0 & -1 & 0 \\
 \end{bmatrix}
-
 $$
 
 And finally:
 
 $$
-
 \mathbf M_{persp} = \mathbf{M}_{ortho}\mathbf M_{persp\rightarrow ortho} = \\
 \begin{bmatrix}
 \frac{2n}{r-l} & 0 & \frac{r+l}{r-l} & 0 \\
@@ -130,7 +119,6 @@ $$
 0 & 0 & -\frac{f+n}{f-n} & -\frac{2fn}{f-n} \\
 0 & 0 & -1 & 0
 \end{bmatrix}
-
 $$
 
 
@@ -139,7 +127,6 @@ $$
 In cases the view is symmetric ($l= -r, b = -t$), we have the most commonly used form:
 
 $$
-
 \mathbf M_{persp} = 
 \begin{bmatrix}
 \frac{n}{r} & 0 & 0 & 0 \\
@@ -147,6 +134,5 @@ $$
 0 & 0 & -\frac{f+n}{f-n} & -\frac{2fn}{f-n} \\
 0 & 0 & -1 & 0
 \end{bmatrix}
-
 $$
 

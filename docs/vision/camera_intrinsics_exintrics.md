@@ -1,4 +1,6 @@
-# Camera Pose
+## Camera Pose
+
+
 
 Very good reference: https://ksimek.github.io/2012/08/22/extrinsic/
 
@@ -6,10 +8,8 @@ Very good reference: https://ksimek.github.io/2012/08/22/extrinsic/
 
 
 $$
-
 \text{2D:} \quad [u, v, 1]^T  \\
 \text{3D:} \quad [x, y, z, 1]^T  \\
-
 $$
 
 
@@ -18,7 +18,6 @@ $$
 We usually first transform the 3D points to the camera coordinate system by the camera pose, then project the 3D points to 2D image plane by the camera matrix:
 
 $$
-
 z_c\begin{bmatrix}
 u \\ v \\ 1 \\
 \end{bmatrix}
@@ -29,7 +28,6 @@ u \\ v \\ 1 \\
 \begin{bmatrix}
 x_w \\ y_w \\ z_w \\ 1 \\
 \end{bmatrix}
-
 $$
 
 3D Point in the world coordinate system: $[x_w, y_w,z_w, 1]^T$ (relative to a defined origin position.)
@@ -49,7 +47,6 @@ Camera Extrinsic (describes the transformation from **world to camera**, inversi
 A $3 \times 4$ matrix used to **project** 3D points to 2D coordinates:
 
 $$
-
 z_c\begin{bmatrix}
 u \\ v \\ 1 \\
 \end{bmatrix}
@@ -68,7 +65,6 @@ x_c \\ y_c \\ z_c \\ 1 \\
 \begin{bmatrix}
 x_c \\ y_c \\ z_c \\ 1 \\
 \end{bmatrix}
-
 $$
 
 $\alpha_x, \alpha_y$ are the **focal length in pixels**. (e.g., $\alpha_x = f\cdot m_x$, where $f$ is the focal length in distance, and $m_x$ is the inverse width of a pixel)
@@ -84,7 +80,6 @@ $(u_0, v_0)$ are the **principal point (camera center)**, ideally the center of 
 A $4 \times 4$ matrix, a regular **3D transformation from world coordinate system to camera coordinate system**.
 
 $$
-
 \begin{bmatrix}\mathbf R_{3\times3}& \mathbf T_{3\times1} \\ 0_{1\times3}&  1 \end{bmatrix}
 =
 \begin{bmatrix}\mathbf I& \mathbf T \\ 0&  1 \end{bmatrix}
@@ -92,7 +87,6 @@ $$
 =
 \begin{bmatrix}\mathbf R& 0 \\ 0&  1 \end{bmatrix}
 \begin{bmatrix}\mathbf I& -\mathbf C \\ 0&  1 \end{bmatrix}
-
 $$
 
 It can be decomposed as:
@@ -109,7 +103,6 @@ $\mathbf T$ is the position of **the world origin in the camera coordinate syste
 instead, the position of the camera center in the world coordinate system, $\mathbf C=[x_0, y_0, z_0]$ should be calculated as:
 
 $$
-
 \begin{bmatrix}
 0 \\ 0 \\ 0 \\ 1
 \end{bmatrix}
@@ -119,7 +112,6 @@ $$
 \begin{bmatrix}
 x_0 \\ y_0 \\ z_0 \\ 1
 \end{bmatrix}
-
 $$
 
 thus, $\mathbf C = -\mathbf R^{-1}\mathbf T$
@@ -135,10 +127,8 @@ Also a $4 \times 4$ matrix, but it describes the **3D transformation from camera
 Obviously, **camera pose (c2w) is the inversion of extrinsic (w2c)**.
 
 $$
-
 \begin{bmatrix}\mathbf R_{3\times3}^T& \mathbf C_{3\times1} \\ 0_{1\times3}&  1 \end{bmatrix} = 
 \begin{bmatrix}\mathbf R_{3\times3}& \mathbf T_{3\times1} \\ 0_{1\times3}&  1 \end{bmatrix}^{-1}
-
 $$
 
 
@@ -154,7 +144,6 @@ Assume you know the camera position $\mathbf{C}$, and target position $\mathbf{O
 To construct the camera pose matrix, you can calculate the normalized **forward, right, and up vector**, then simply concatenate them：
 
 $$
-
 \begin{bmatrix}
 x_w \\ y_w \\ z_w \\ 1
 \end{bmatrix}
@@ -171,7 +160,6 @@ x_w \\ y_w \\ z_w \\ 1
 \begin{bmatrix}
 x_c \\ y_c \\ z_c \\ 1
 \end{bmatrix}
-
 $$
 
 
@@ -209,7 +197,6 @@ world_points = poses @ cam_points
 Or the camera extrinsic similarly:
 
 $$
-
 \begin{bmatrix}
 x_c \\ y_c \\ z_c \\ 1
 \end{bmatrix}
@@ -236,7 +223,6 @@ x_c \\ y_c \\ z_c \\ 1
 \begin{bmatrix}
 x_w \\ y_w \\ z_w \\ 1
 \end{bmatrix}
-
 $$
 
 
