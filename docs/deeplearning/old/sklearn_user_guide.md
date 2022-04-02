@@ -3,9 +3,13 @@
 * Generalized Linear Models
 
   * Ordinary Least Squares
-    $$
+    
+$$
+
     argmin_w\{||Xw+b-y||_2^2\}
-    $$
+    
+$$
+
 
     ```python
     clf = LinearRegression()
@@ -15,9 +19,13 @@
     ```
 
   * Ridge Regression
-    $$
+    
+$$
+
     argmin_w\{||Xw+b-y||_2^2+\alpha||w||_2^2\}
-    $$
+    
+$$
+
 
     ```python
     clf = Ridge(alpha=0.5)
@@ -27,9 +35,13 @@
     ```
 
   * Lasso Regression
-    $$
+    
+$$
+
     argmin_w\{\frac{1}{2N}||Xw+b-y||_2^2 + \alpha||w||_1\}
-    $$
+    
+$$
+
 
   * Least Angle Regression
 
@@ -44,9 +56,13 @@
     for classification instead of regression.
 
     we can use L1 or L2 norm for regularization.
-    $$
+    
+$$
+
     argmin_{w,b}\{\frac 1 2 ||w||_2 + C\sum_{i=1}^nlog(exp(-y_i(X_i^Tw+b))+1)\}
-    $$
+    
+$$
+
 
     ```python
     ...

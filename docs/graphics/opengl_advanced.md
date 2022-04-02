@@ -40,9 +40,13 @@
   z buffer's depth range is $[0, 1]$, which is mapped from the frustum depth $[near, far]$.
 
   This mapping is NON-linear, because we want more precision in nearer distance, while less precision in further distance.
-  $$
+  
+$$
+
   z' = \frac {1/z - 1/near} {1/far - 1/near}
-  $$
+  
+$$
+
   To visualize z buffer, just set it as the `FragColor`:
 
   ```glsl

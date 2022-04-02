@@ -14,11 +14,15 @@ Exception is the tractable Convex optimization.
 
 ##### Problem definition (standard form)
 
+
 $$
+
 minimize \ f_0(x) \\
 subject \ to \ f_i(x) \le 0, i=1,...,m \\
 Ax=b
+
 $$
+
 
 - $x \in R^n$
 - equality constraints are linear
@@ -61,16 +65,24 @@ solution = x.value
 ##### Regularized loss minimization
 
 * Regression Problem
-  $$
+  
+$$
+
   R^n \rightarrow R\cup\{\infty\}
-  $$
+  
+$$
+
 
 * Regularized Loss
 
   m examples, each has n dimensions.
-  $$
+  
+$$
+
   (1/m)\sum_i^nL(x_i, y_i, \theta) + r(\theta)
-  $$
+  
+$$
+
   ![1548743843595](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1548743843595.png)
 
   * $\lambda > 0$ scales regularization.
@@ -84,10 +96,14 @@ solution = x.value
 
 ##### Conic form
 
+
 $$
+
 minimize\ c^Tx \\
 subject\ to\ Ax=b,\ x\in K
+
 $$
+
 
 - $x \in  R^n$
 - $K$ is convex cone.
@@ -165,9 +181,13 @@ Less basic ones:
 
 
 eg. show the following function is convex:
+
 $$
+
 f(u, v) = (u+1)log(\frac {u+1}{min(u,v)})
+
 $$
+
 
 ##### Constructive Convexity verification
 

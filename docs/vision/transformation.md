@@ -3,7 +3,9 @@
 #### 2D
 
 The transformation matrix is **Rotate THEN Translate (and scale)**
+
 $$
+
 \begin{bmatrix}
 \cos\theta & -\sin\theta & t_x \\
 \sin\theta &  \cos\theta & t_y \\
@@ -20,21 +22,29 @@ $$
 \sin\theta &  \cos\theta & 0 \\
 0&0&1 \\
 \end{bmatrix}
+
 $$
 
+
 Note: We always use $\mathbf T \mathbf R$ because in this form the translation is applied later and is explicit.
+
 $$
+
 \mathbf T \mathbf R = \begin{bmatrix}1 & \mathbf t \\ 0 & 1\end{bmatrix} \begin{bmatrix}\mathbf r & 0 \\ 0 & 1\end{bmatrix} = \begin{bmatrix}\mathbf r & \mathbf t \\ 0 & 1\end{bmatrix}
 \ne
 \begin{bmatrix}\mathbf r & \mathbf {rt} \\ 0 & 1\end{bmatrix} = \begin{bmatrix}\mathbf r & 0 \\ 0 & 1\end{bmatrix}\begin{bmatrix}1 & \mathbf t \\ 0 & 1\end{bmatrix}  =
 \mathbf R \mathbf T
+
 $$
+
 
 
 #### 3D
 
 Main difference from 2D is the three rotation matrices **along three axes**:
+
 $$
+
 \mathbf R_x(\alpha) = 
 \begin{bmatrix}
 1&0&0&0\\
@@ -59,20 +69,30 @@ $$
 0&0&1&0 \\
 0&0&0&1\\
 \end{bmatrix} \\
+
 $$
+
 With the final form:
+
 $$
+
 \mathbf R_{xyz}(\alpha) = \mathbf R_x(\alpha)\mathbf R_y(\alpha)\mathbf R_z(\alpha)
+
 $$
+
 Rodrigues' Rotation Formula for rotation along any axis $\mathbf n$:
+
 $$
+
 \mathbf R(\mathbf n, \alpha) = \cos\alpha\mathbf I + (1 - \cos\alpha)\mathbf n\mathbf n^T + \sin\alpha
 \begin{bmatrix}
 0 & -n_x &n_y \\
 n_z & 0 & -n_x \\
 -n_y & n_x & 0
 \end{bmatrix}
+
 $$
+
 
 
 

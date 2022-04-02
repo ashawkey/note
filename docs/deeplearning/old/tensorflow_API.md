@@ -45,23 +45,35 @@
   * MAE (mean of L1_loss)
 
   * MAPE (percentage error)
-    $$
+    
+$$
+
     MAPE = \frac{1}{n}\sum_{i=1}^n|\frac{\hat y - y_i}{y_i}|
-    $$
+    
+$$
+
 
   * binary cross entropy
 
     binary classification with sigmoid.
-    $$
+    
+$$
+
     L = -\sum_{i=1}^n(y_ilog(\hat y) + (1-y_i)log(1-\hat y))
-    $$
+    
+$$
+
 
   * categorical cross entropy
 
     multiple classification with one_hot + softmax.
-    $$
+    
+$$
+
     L = -\sum_{i=1}^n\sum_{t=1}^c(y_{i,t}log\hat y_t)
-    $$
+    
+$$
+
 
 
 

@@ -71,28 +71,40 @@
   Absolute time is also required but not the most important.
 
   * $O()$ expression
-    $$
+    
+$$
+
     \exist C,N_0 \gt 0 \ \ s.t. \ \forall n \ge N_0:\\
     f(n) \le C \cdot g(n) \\
     \Rightarrow f(n) \in O(g(n))
-    $$
+    
+$$
+
     We should choose the **tightest** $g(n)$ .
 
     eg. $f(x) = n^2 + 2n$ is $O(n^2)$, but we can also say it's $O(n^3)$ or larger.
 
   * $\Omega()$ expression
-    $$
+    
+$$
+
     \exist C,N_0 \gt 0 \ \ s.t. \ \forall n \ge N_0:\\
     f(n) \ge C \cdot g(n) \\
     \Rightarrow f(n) \in \Omega(g(n))
-    $$
+    
+$$
+
     Choose the tightest.
 
   * $\Theta()$ expression
-    $$
+    
+$$
+
     f(n) \in O(g(n)) \ and \ f(n) \in \Omega(g(n)) \\
     \Rightarrow f(n) \in \Theta(g(n))
-    $$
+    
+$$
+
 
 
   Best, Worst and Average Complexity analysis: For most Algorithms, the difference is only in the constants and coefficients.

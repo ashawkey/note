@@ -15,9 +15,13 @@ Cast ray and trace the route recursively.
 ![image-20210314220007542](raytracing.assets/image-20210314220007542.png)
 
 A ray is defined by origin $\mathbf o$ and direction $\mathbf d$ as a function of time $t \ge 0$:
+
 $$
+
 \mathbf r(t) = \mathbf o + t\mathbf d
+
 $$
+
 Ray-Surface intersection algorithm:
 
 * Naïve: Check intersection with each triangles. (slow!)

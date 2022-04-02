@@ -35,9 +35,13 @@ DT.stypes # column types
 
 ### Data Manipulation
 
+
 $$
+
 DT[i, j, by(), sort(), join()]
+
 $$
+
 
 
 

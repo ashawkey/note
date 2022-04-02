@@ -27,9 +27,13 @@ public:
 数学公式：
 
 出现$k$的概率为$x^k$的系数。
+
 $$
+
 (x+x^2+x^3+x^4+x^5+x^6)^n / 6^n
+
 $$
+
 可以通过扩展二项式定理展开：
 
 ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/7e4dd69e04f849cc627775308fffd170e9472024)

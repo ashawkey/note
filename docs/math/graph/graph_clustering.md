@@ -3,26 +3,42 @@
 there are different objective for a partition of a graph.
 
 denotations:
+
 $$
+
 links(A, B) = \sum_{i \in A, j \in B}A_{ij} \\
 degree(A) = links(A, V)\\
+
 $$
 
+
 * Ratio association
-  $$
+  
+$$
+
   RAssoc(G) = max_{V_1,...,V_k }\sum_{c=1}^k \frac {links(V_c, V_c)}{|V_c|} 
-  $$
+  
+$$
+
 
 * Ratio cut
-  $$
+  
+$$
+
   RCut(G) = min_{V_1,...,V_k }\sum_{c=1}^k \frac {links(V_c, V \setminus V_c)}{|V_c|} \\
-  $$
+  
+$$
+
   if $V_1, ..., V_k$ are all of the same size, we call it the Kernighan-Lin objective.
 
 * Normalized cut
-  $$
+  
+$$
+
   NCut(G) = min_{V_1,...,V_k }\sum_{c=1}^k \frac {links(V_c, V \setminus V_c)}{degree(V_c)} \\
-  $$
+  
+$$
+
 
 
 * General Weighted graph cut/association
