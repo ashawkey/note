@@ -236,3 +236,20 @@ Create secrets at repository.
 When you want to publish a new version, navigate to **release** and release a version tag.
 
 Then github actions will build and publish current repository state automatically!
+
+
+
+### the setup script
+
+```python
+python setup.py build # build everything
+python setup.py build_ext # build c extensions
+python setup.py sdist # create source distribution
+
+python setup.py install # install package, not recommended!
+pip install . # this is recommended as it will take care of dependencies and write correct metadata for upgrade/uninstall.
+
+python setup.py develop # editable install 
+pip install -e . # ditto
+```
+
