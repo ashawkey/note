@@ -221,18 +221,14 @@ When pivot is selected such that it always in nearly middle, the height of corre
 When the sequence is already ordered, it reaches the worst Time complexity of n^2.
 
 Analysis of average time complexity: (Similar to that of Random BST)
-
 $$
-
 T(n) = T(i) + T(n-i-1) + cn\\
 T(n) = \frac 2 n \sum_{i=0}^{n-1} T(i) + cn \\
 nT(n) - (n-1)T(n-1) = 2T(n-1) + cn \\
 \frac {T(n)} {n+1} = \frac {T(n-1)} {n} + \frac c n \\
 \frac {T(n)} {n+1} \sim O(logn) \\
 T(n) \sim O(nlogn)
-
 $$
-
 
 
 

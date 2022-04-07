@@ -18,13 +18,9 @@
 #### 顺序检索
 
 设置下标0处为哨岗，从尾部检索到此处仍未发现目标元素，意味着检索失败。
-
 $$
-
 \frac {n+1} 2 < ASL < n+1
-
 $$
-
 
 * 检索成功: 假设 $p_i$ is $\frac 1 n$:
   
@@ -40,14 +36,10 @@ $$
 
 #### 二分检索
 
-
 $$
-
 ASL = \frac 1 n (\sum_{i=1}^{lg\ n}i\cdot 2^{i-1}) \\
 \sim O(lg\ n)
-
 $$
-
 
 * Need Sorting first
 
@@ -65,15 +57,11 @@ $$
 分块有序，先检索在哪一块中（二分检索），后在块内检索（顺序检索）。
 
 ![1543372011178](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1543372011178.png)
-
 $$
-
 ASL_{succ} = ASL_b + ASL_s \\
 \approx lg\ b + s/2 \\
 \approx lg(\frac n s + 1) + s/2
-
 $$
-
 
 
 ### 散列检索
@@ -263,15 +251,11 @@ $$
 
     $h2(key)$必须与M互素。
 
-
 $$
-
 d = h_1(key) \\
 d_i = (d + p(key, i)) \% M \\
 p(key, i) = i*h_2(key)
-
 $$
-
 
 
 * Implementation: Dictionary
@@ -368,10 +352,6 @@ $$
 #### Exercises
 
 ![1544104068419](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1544104068419.png)
-
 $$
-
 ASL = 0.6*1 + 0.4*(0.6*2+0.4*(0.6*3+...)) = (1-a)\sum_i^{N}(i*a^i)
-
 $$
-

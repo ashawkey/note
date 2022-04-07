@@ -4,17 +4,13 @@
 
 ### Basics about complex number
 
-
 $$
-
 i^2 = -1 \\
 
 z = a + bi = \begin{bmatrix}a &-b \\ b & a\end{bmatrix} \\
 
 ||z|| = \sqrt{a^2 + b^2} = \sqrt{z \bar z}
-
 $$
-
 
 
 
@@ -30,9 +26,7 @@ $$
 z = \begin{bmatrix}a &-b \\ b & a\end{bmatrix} = \sqrt{a^2+b^2} \begin{bmatrix} \frac {a} {\sqrt{a^2+b^2}} & \frac {-b} {\sqrt{a^2+b^2}} \\ \frac{b}{\sqrt{a^2+b^2}} & \frac{a} {\sqrt{a^2+b^2}}\end{bmatrix} = r \begin{bmatrix}\cos \theta  & - \sin \theta \\ \sin \theta & \cos \theta\end{bmatrix} \\ 
 = r(\cos\theta + i\sin\theta) \\
 = re^{i\theta} 
-
 $$
-
 
 
 ### 3D Rotation
@@ -65,25 +59,15 @@ $$
 0&0&1&0 \\
 0&0&0&1\\
 \end{bmatrix} \\
-
 $$
-
 Another representation is **axis-angle**, i.e., rotation $\theta$ degree along axis $\textbf {u} = (x, y, z)^T$. ($||\mathbf u|| = 1$ so there are still only 3 Degree of Freedom.)
 
 The Rodrigues' Rotation Formula:
-
 $$
-
 \mathbf v' = \cos\theta\mathbf v + (1 - \cos\theta)(\mathbf u \mathbf v)\mathbf u + \sin\theta(\mathbf u\times\mathbf v)
+$$
 
 $$
 
-
-
 $$
-
-
-
-$$
-
 

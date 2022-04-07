@@ -124,25 +124,17 @@ One limit for k-means is that it always cluster by a hyperplane.
 So we can use a transfer function $\phi()$ to transfer each data vector into a higher dimension, then apply traditional k-means.
 
 Besides, we can also add weight for each data vector.
-
 $$
-
 \sum_{c=1}^{k}\sum_{a_i \in \pi_c} w_i||\phi(a_i) - m_c||^2
-
 $$
-
 Further more, if we simply expand the $l2$ norm, we notice that we even needn't knowing the explicit form of $\phi()$ to compute this norm.
 
 All we need is a Kernel Matrix $K$, where $K_{ij} = \phi(a_i)\phi(a_j)$
 
 for example, a polynomial $K$ can be defined as:
-
 $$
-
 K_{ij} = (a_i \cdot a_j + c)^d
-
 $$
-
 
 
 

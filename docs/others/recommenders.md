@@ -71,13 +71,9 @@ Assume $R \approx X^TY$.
 
 Optimize:
 
-
 $$
-
 \min_{X,Y} \sum_{r_{ui}}^{\text{observed}} (r_{ui} - x_u^Ty_i)^2 + \lambda (\sum_u||x_u||^2+\sum_i||y_i||^2)
-
 $$
-
 
 This is nonconvex, but we can make a 2-step iterative optimization to separately optimize X and Y:
 

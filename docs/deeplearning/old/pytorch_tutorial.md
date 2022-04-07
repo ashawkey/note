@@ -68,14 +68,10 @@ print(x.grad) # 4.5
 
 ```
 
-
 $$
-
 out = \frac {3}{4} \sum (x + 2)^2 \\
 \frac {\partial out}{\partial x_i} = \frac{3}{2}(x+2) = 4.5
-
 $$
-
 
 
 

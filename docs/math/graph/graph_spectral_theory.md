@@ -52,45 +52,29 @@ The classical Fourier transform works in **the time domain and the frequency dom
 For any signal $f$ in the vertex domain, we have its corresponding signal (kernel) $\hat{f}$ in the graph spectral domain.
 
 In matrix form, we have $U$ ($n * n$) as the Fourier basis of the graph Laplacian (eigenvectors as columns), $F$  ($n * m$) as a list of $m$ signals on $n$ vertices (each signal is a column).
-
 $$
-
 \hat{f}(\lambda_\iota) = \sum_{i=1}^{N}f(i)\mathcal{u}_\iota^*(i) \\
 \hat{F} = U'F
-
 $$
-
 and the inverse graph Fourier transform:
-
 $$
-
 f(i) = \sum_{\iota=0}^{N-1}\hat{f}(\lambda_\iota)u_\iota(i) \\
 F = U\hat{F}
-
 $$
-
 The eigenvalues and eigenvectors in graph spectral domain provide a similar **notation of frequency**: the eigenvectors with larger eigenvalues contains more zero crossings.
 
 ### Discrete Calculus and Signal Smoothness
 
 The edge derivative of a signal $f$ with respect to edge $e_{ij}$ at vertex $i$ is defined as :
-
 $$
-
 \frac {\partial f} {\partial e} |_i = \sqrt{W_{i,j}}|f(j)-f(i)|
-
 $$
-
 The gradient of $f$ at vertex $i$  ($\nabla_if$) is therefore the vector of all derivatives with edges starting from $i$  in the graph.
 
 The discrete $p$-Dirichlet form of $f$ is defined as:
-
 $$
-
 S_p(f) =  \frac {1} {p} \sum_{i \in V}\parallel \nabla_if\parallel_2^p
-
 $$
-
 When $p=2$ , it is known as the **graph Laplacian quadratic form**.
 
 Seminorm of $f$ is defined as $\parallel f\parallel _\mathcal{L} = \sqrt{S_2(f)}$ .
@@ -98,13 +82,9 @@ Seminorm of $f$ is defined as $\parallel f\parallel _\mathcal{L} = \sqrt{S_2(f)}
 **The smoother the graph, the smaller the $S_2(f)$ .**
 
 The discrete regularization framework:
-
 $$
-
 {argmin}_f\{\parallel f-y\parallel_2^2 + \gamma S_p(f)\}
-
 $$
-
 When $p=2$ ,it is called Tikhonov Regularization and can be used for image denoising.
 
 ### Generalized Graph Signal Operators
@@ -115,24 +95,16 @@ When $p=2$ ,it is called Tikhonov Regularization and can be used for image denoi
 
   let $\hat{h}(1*n)$ be the transfer function in spectral domain. let $H = diag(\hat{h})$ .
 
-
 $$
-
 \hat f_{out}(\lambda_\iota) = \hat f_{in}(\lambda_\iota)\hat h(\lambda_\iota) \\
 \hat{F}_{out} = H  \hat{F}_{in}
-
 $$
-
 
 $ f_{out} $ can then be calculated through an inverse graph Fourier transform.
-
 $$
-
 U' * F_{out} = H  U'  F_{in} \\
 F_{out} = U  H  U'  F_{in}
-
 $$
-
 
 * vertex domain: linear combination within K-hop neighborhoods
   
@@ -152,48 +124,32 @@ When the transfer function in graph spectral domain is an **order K polynomial**
 **Convolution in the vertex domain (the time domain) is equivalent to multiplication in the graph spectral domain (the frequency domain).**
 
 Since in the graph setting there is no $h(t-\tau)$, we use multiplication in the graph spectral domain to generalize the definition of convolution:
-
 $$
-
 (f *_g h)(i) = \sum_{\iota = 0}^{N-1}\hat f(\lambda_\iota)\hat h(\lambda_\iota)u_\iota(i) \\
 f *_g h = U((U'f) \odot (U'g)\\
 F *_g h = UHU'F
-
 $$
-
 
 **so convolution with $h$ is just filter with $h$.**
 
 ##### Translation
 
 It's not clear what it means to translate a graph signal, but we can generalize translation as a convolution with a delta centered at $n$:
-
 $$
-
 (T_ng)(i) = \sqrt{N}(g*\delta_n)(i)
-
 $$
-
 
 ##### Modulation 
 
-
 $$
-
 (M_kg)(i) = \sqrt{N}u_k(i)g(i)
-
 $$
-
 
 ##### Dilation
 
-
 $$
-
 (\hat{\mathcal{D}_sg)}(\lambda) = \hat g(s\lambda)
-
 $$
-
 
 ##### Coarsening
 

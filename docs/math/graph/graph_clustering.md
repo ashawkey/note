@@ -3,14 +3,10 @@
 there are different objective for a partition of a graph.
 
 denotations:
-
 $$
-
 links(A, B) = \sum_{i \in A, j \in B}A_{ij} \\
 degree(A) = links(A, V)\\
-
 $$
-
 
 * Ratio association
   

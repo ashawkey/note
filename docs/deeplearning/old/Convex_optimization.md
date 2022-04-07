@@ -14,15 +14,11 @@ Exception is the tractable Convex optimization.
 
 ##### Problem definition (standard form)
 
-
 $$
-
 minimize \ f_0(x) \\
 subject \ to \ f_i(x) \le 0, i=1,...,m \\
 Ax=b
-
 $$
-
 
 - $x \in R^n$
 - equality constraints are linear
@@ -96,14 +92,10 @@ $$
 
 ##### Conic form
 
-
 $$
-
 minimize\ c^Tx \\
 subject\ to\ Ax=b,\ x\in K
-
 $$
-
 
 - $x \in  R^n$
 - $K$ is convex cone.
@@ -181,13 +173,9 @@ Less basic ones:
 
 
 eg. show the following function is convex:
-
 $$
-
 f(u, v) = (u+1)log(\frac {u+1}{min(u,v)})
-
 $$
-
 
 ##### Constructive Convexity verification
 

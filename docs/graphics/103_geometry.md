@@ -5,17 +5,13 @@
 ##### Implicit
 
 abstract functions. (Signed Distance Function, SDF)
-
 $$
-
 f(x, y, z) = 
 \begin{cases}
 \le0, \text{inside} \\
 >0, \text{outside}
 \end{cases}
-
 $$
-
 easy to test inside/outside, but hard to sample.
 
 
@@ -41,22 +37,14 @@ Given 4 control points, an interpolation parameter $t$, and order $n$, **recursi
 ![image-20210314210904500](geometry.assets/image-20210314210904500.png)
 
 This algorithm has a explicit algebra solution (the Bernstein form):
-
 $$
-
 \mathbf b^n(t) = \sum_{j=0}^n\mathbf b_j B^n_j(t) \\
 B_i^n(t) = C_n^it^i(1-t)^{n-i}
-
 $$
-
 In particular, for a $n=4 $ Bezier curve:
-
 $$
-
 \mathbf b^n(t) = \mathbf b_0(1-t)^3 + \mathbf b_13t(1-t)^2 + \mathbf b_23t^2(1-t) + \mathbf b_3 t^3
-
 $$
-
 
 
 Piece-wise cubic Bezier is the most common technique to represent curves.
