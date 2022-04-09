@@ -35,8 +35,11 @@ git config --global http.proxy
 
 ```bash
 # set
-export http_proxy=socks5://127.0.0.1:8080
-export https_proxy=socks5://127.0.0.1:8080
+export http_proxy=socks5://127.0.0.1:1080
+export https_proxy=socks5://127.0.0.1:1080
+
+export http_proxy=http://127.0.0.1:1081
+export https_proxy=http://127.0.0.1:1081
 
 # unset
 export http_proxy=
