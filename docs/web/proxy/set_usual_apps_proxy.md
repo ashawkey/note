@@ -70,13 +70,21 @@ pip install pysocks
 
 ### powershell
 
-(not tested)
+tested:
+
+```powershell
+setx http_proxy socks5://127.0.0.1:51837
+setx https_proxy socks5://127.0.0.1:51837
+```
+
+not tested:
 
 ```powershell
 # set
 netsh winhttp set proxy "192.168.0.14:3128"
 
 # unset 
+netsh winhttp reset proxy
 
 # show
 netsh winhttp show proxy

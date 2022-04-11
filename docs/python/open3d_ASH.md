@@ -16,7 +16,6 @@ o3_a = o3c.Tensor.from_dlpack(torch.utils.dlpack.to_dlpack(th_a))
 # open3d --> torch
 o3_a = o3c.Tensor([1, 1, 1, 1, 1], device=o3c.Device("CUDA:0"))
 th_a = torch.utils.dlpack.from_dlpack(o3_a.to_dlpack())
-o3_a = o3c.Tensor.from_dlpack(torch.utils.dlpack.to_dlpack(th_a)) # have to cast back if still want to  share storage with open3d end.
 ```
 
 
