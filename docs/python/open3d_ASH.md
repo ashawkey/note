@@ -53,7 +53,7 @@ buf_indices, masks = hashmap.insert(keys, vals)
 print(masks) # [True True True True True False False], last two keys are duplicated and ignored.
 
 # buf_indices indicate the inserted position.
-buf_indices = buf_indices[masks].to(o3c.int64) # also need to remove failed insertion.
+buf_indices = buf_indices[masks].to(o3c.int64) # also need to remove failed insertion (which will be 0 by default).
 print(buf_indices) # [0 1 3 4 2], row vec [5]
 
 # retrieve keys/vals by buf_indices

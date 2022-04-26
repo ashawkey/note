@@ -327,3 +327,41 @@ git submodule add <submodule_url> <dest_path>
 ```
 
 This will automatically track the submodule's version by creating a `.gitmodules` file.
+
+
+
+### Stash
+
+Use situation: You want to switch to another branch, but there are uncommitted modifications in the current branch.
+
+If you checkout now, you'll get errors:
+
+```bash
+error: Your local changes to the following files would be overwritten by checkout:
+        .gitignore
+Please, commit your changes or stash them before you can switch branches.
+```
+
+And if you don't want to commit, you'll need stash:
+
+```bash
+git stash
+# Saved working directory and index state WIP on main: f559623 xxx
+# HEAD is now at f559623 xxx
+
+git status
+# now the uncommited modificaitons are reverted.
+
+# do your works now...
+# e.g., git checkout dev
+
+git stash list
+# stash@{0}: WIP on main: f559623 xxx
+
+git stash apply # == git stash apply stash@{0}
+# everything is back again!
+
+git stash drop stash@{0}
+# delete the stash since it is useless now.
+```
+
