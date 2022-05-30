@@ -119,3 +119,30 @@ git reset --hard HEAD@{y}
 
 ```
 
+
+
+### change remote
+
+```bash
+# change remote
+git remote set-url origin [new_repo_url]
+
+# then you can normally push!
+```
+
+
+
+### push new branch
+
+```bash
+# to local branch
+git checkout -b <branch>
+
+# push branch to remote
+git push -u origin <branch>
+#To https://github.com/ashawkey/svd_nerf.git
+# * [new branch]      arithm -> arithm
+#Branch arithm set up to track remote branch arithm from origin.
+
+```
+
