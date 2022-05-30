@@ -109,6 +109,7 @@ __global__ void vector_add(float *out, float *a, float *b, int n) {
 }
 
 vector_add<<<1,1>>>(d_out, d_a, d_b, N);
+// NO parallel, just use one thread to process N elements.
 ```
 
 ```c
@@ -122,7 +123,7 @@ __global__ void vector_add(float *out, float *a, float *b, int n) {
 }
 
 vector_add<<<1,256>>>(d_out, d_a, d_b, N);
-// only 1 blocks, use 256 threads to process data.
+// only use 256 threads to process, each thread process N / 256 elements in a strided way.
 ```
 
 ```c
@@ -133,9 +134,9 @@ __global__ void vector_add(float *out, float *a, float *b, int n) {
 }
 
 int block_size = 256;
-int grid_size = ((N + block_size - 1) / block_size); // allocate enough blocks
-// !!! different from the previous impl, this assumes we have enough blocks. (we always have ???)
+int grid_size = ((N + block_size - 1) / block_size); // at most 4294967295, enough for most cases
 vector_add<<<grid_size, block_size>>>(d_out, d_a, d_b, N);
+// allocate enough blocks, each with 256 threads to process. Each thread only process 1 element!
 ```
 
 
