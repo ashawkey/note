@@ -221,18 +221,18 @@ git branch --merged
 git branch --no-merged
 
 git checkout dev # move to "dev"
-git checkout -b dev # create and move to "dev"
-	# equals
-	git branch dev
-	git checkout dev
+git checkout -b dev # create and move to "dev", equals to `git branch dev && git checkout dev`
+
+git switch dev # move to "dev"
+git switch -c dev # create and move to "dev"
 
 ### merge
 git merge dev # merge "dev" into "master" (when no conflict)
-	# if master and dev are on the same line, this is called a Fast-Forward merge, since there is no conflict to be solve, git only move master pointer to dev.
-	# if master and dev are on different forks of the repo, this is called a three-source merge. git will find the diverge point (latest common ancestor) and merge three commit objects together.
+# if master and dev are on the same line, this is called a Fast-Forward merge, since there is no conflict to be solve, git only move master pointer to dev.
+# if master and dev are on different forks of the repo, this is called a three-source merge. git will find the diverge point (latest common ancestor) and merge three commit objects together.
 
 # when conflict
-git status # Unmerged path
+git status # Unmerged path, must be solved manually...
 git mergetool
 
 # delete branch
