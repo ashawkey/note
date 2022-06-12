@@ -62,6 +62,14 @@ The full Execution Configuration: <<<Dg, Db, Ns, S>>>
 
 ![](https://docs.nvidia.com/cuda/cuda-c-programming-guide/graphics/grid-of-thread-blocks.png)
 
+About how to decide the `N_THREAD` or `block_size` [here](https://stackoverflow.com/questions/9985912/how-do-i-choose-grid-and-block-dimensions-for-cuda-kernels):
+
+* hardware limits: We can launch at most 4294967295=65536*65536 (x/y/z: 4294967295/65536/65536) blocks, 
+  with each block contains at most 1024 (x/y/z: 1024/1024/64) threads !
+* usually, tune it from `[128, 1024]` with a stride of 32.
+
+
+
 ### Built-ins
 
 ```c
@@ -77,8 +85,6 @@ dim3 Dim3(x=1, y=1, z=1);
 
 
 
-
-
 ### One-dimensional example
 
 ```c
@@ -86,9 +92,6 @@ dim3 Dim3(x=1, y=1, z=1);
 
   BlockIdx, ThreadIdx
 <<<GridDim, BlockDim>>>
-
-We can launch at most 4294967295=65536*65536 (x/y/z: 4294967295/65536/65536) blocks, 
-with each block contains at most 1024 (x/y/z: 1024/1024/64) threads !
 
 */
 
