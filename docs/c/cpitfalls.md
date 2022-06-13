@@ -40,7 +40,7 @@
 
   this is because there is no built in `hash` function for `pair<>`. [see here.](https://stackoverflow.com/questions/62869571/call-to-implicitly-deleted-default-constructor-of-unordered-set-vectorint)
 
-  Unfortunately there is perfect solution:
+  Unfortunately there is no perfect solution:
 
   * custom hash, like `p.first * MAX_SECOND + p.second`.
   * use `map<pair<int,int>, int>`.
