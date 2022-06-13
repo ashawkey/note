@@ -500,8 +500,8 @@ do {
 
 //// unique
 auto end = unique(v.begin(), v.end());
-int new_size = end - v.begin();
 v.erase(end, v.end());
+int new_size = v.size();
 
 int new_size = unique(v, v+4) - v;
 
@@ -555,6 +555,41 @@ vector<int> idx;
 for (int i = 0; i < v2.size(); i++) {
     idx.push_back(v2[i].second);
 }
+```
+
+#### #include \<bitset\>
+
+```cpp
+#include <bitset>
+
+bitset<1000> bs; // 1000 bits
+
+bitset<32> bs{10}; // binary form of x (only support unsigned int/long long)
+bitset<8> bs{0b00001111}; // just 00001111
+bitset<6> bs{"010101"}; // just 010101
+
+cout << bs << endl; // bit format
+
+// access pos bit, NOTE: the order is reversed! e.g., bs[0] = 1 for "010101"
+// out-of-bound is undefined!
+bool x = bs[pos]; 
+
+bs.all();
+bs.any();
+bs.none();
+
+int cnt = bs.count(); // count 1
+int l = bs.size();
+
+bs.set(); // set all to 1
+bs.set(pos, val=true); // set pos to 1 or 0
+bs.reset(); // set all to 0
+bs.reset(pos); // set pos to 0, equals bs.set(pos, false);
+bs.flip(); // flip all
+bs.flip(pos); // flip pos
+
+string s = bs.to_string();
+unsigned long x = bs.to_ulo
 ```
 
 
