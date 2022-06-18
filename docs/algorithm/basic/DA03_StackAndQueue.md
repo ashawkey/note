@@ -18,10 +18,8 @@
 
   
 $$
-
-  C_0 = 1 \ \  and \ \ C_{n+1} = \sum_{i=0}^nC_iC_{n-i}  \\
+C_0 = 1 \ \  and \ \ C_{n+1} = \sum_{i=0}^nC_iC_{n-i}  \\
   or\ \  C_{n+1} = \frac{2(2n+1)}{n+2} C_n
-  
 $$
 
 
