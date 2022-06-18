@@ -12,10 +12,10 @@ cmake --version
 ### `CMakeLists.txt`
 
 The rules to generate makefile.
-- commands are not case-sensitive (e.g., `project()` or `PROJECT()`) for historical reason.
-- variables are case-sensitive! (e.g., must be `PROJECT_NAME`)
-- paths can be string or raw (e.g., `include` or `"include"`)
-- command parameters are separated by spaces or line breaks.
+* commands are not case-sensitive (e.g., `project()` or `PROJECT()`) for historical reason.
+* variables are case-sensitive! (e.g., must be `PROJECT_NAME`)
+* paths can be string or raw (e.g., `include` or `"include"`)
+* command parameters are separated by spaces or line breaks.
 
 ### Project structure
 
@@ -24,10 +24,10 @@ A regular C/C++/CUDA project layout:
 Readme.md
 CMakeLists.txt
 ./include
-	mylib.h
+    mylib.h
 ./src
-	mylib.cpp
-	main.cpp # it #include "mylib.h"
+    mylib.cpp
+    main.cpp # it #include "mylib.h"
 ```
 
 ### Build with cmake
@@ -60,8 +60,8 @@ PROJECT_BINARY_DIR # the target dir, usually ./build/
 
 # define your variables
 set(SOURCES
-	src/main.cpp
-	src/test.cpp
+    src/main.cpp
+    src/test.cpp
 )
 ```
 
@@ -73,13 +73,13 @@ cmake_minimum_required(VERSION 3.5)
 project(test_example) # project name
 
 add_executable(test # output binary name
-	# all the sources
-	src/main.cpp
-	src/mylib.cpp
+    # all the sources
+    src/main.cpp
+    src/mylib.cpp
 )
 
 target_include_directories(test PUBLIC # target + qualifier (use public as default)
-	include # dir to include
+    include # dir to include
 )
 ```
 
@@ -95,9 +95,9 @@ project(test_example) # project name
 include_directories(include)
 
 add_executable(test # output binary name
-	# all the sources
-	src/main.cpp
-	src/mylib.cpp
+    # all the sources
+    src/main.cpp
+    src/mylib.cpp
 )
 
 ```
@@ -106,10 +106,10 @@ add_executable(test # output binary name
 It supports nested folders, e.g., the following file structure will still work: 
 ```bash
 ./include
-	./mylib
-		mylib.h
+    ./mylib
+        mylib.h
 ./src
-	main.cpp # change to #include "mylib/mylib.h"
+    main.cpp # change to #include "mylib/mylib.h"
 ```
 
 We can also (1) create a static library (2) link it to the executable:
@@ -120,8 +120,8 @@ project(test_example) # project name
 include_directories(include)
 
 add_library(mylib STATIC # build a static lib, called libmylib.a on linux, or libmylib.lib on windows
-	# move all the sources here
-	src/mylib.cpp
+    # move all the sources here
+    src/mylib.cpp
 )
 
 add_executable(test src/main.cpp) # only add the main.cpp
@@ -132,7 +132,7 @@ target_link_libraries(test PUBLIC mylib) # link mylib to the executable
 We can also build a dynamic/shared library by:
 ```cmake
 add_library(mylib SHARED # named libmylib.so on linux , or libmylib.dll on windows
-	src/mylib.cpp
+    src/mylib.cpp
 )
 ```
 
@@ -154,18 +154,18 @@ endif()
 #### Build types
 
 Built-in build types and their equal command:
-- Release: `-O3 -DNDEBUG`
-- Debug: `-g`
-- RelWithDebInfo: `-O2 -g -DNDEBUG`, 
+* Release: `-O3 -DNDEBUG`
+* Debug: `-g`
+* RelWithDebInfo: `-O2 -g -DNDEBUG`, 
 
 Explicitly use it by `cmake .. -DCMAKE_BUILD_TYPE=Release`.
 We can also detect and set default build type:
 ```cmake
 # Set a default configuration if none was specified
 if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-	message(STATUS "No release type specified. Setting to 'Release'.")
-	set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
-	set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "RelWithDebInfo")
+    message(STATUS "No release type specified. Setting to 'Release'.")
+    set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "RelWithDebInfo")
 endif()
 ```
 
@@ -189,7 +189,7 @@ Set per-target c++ flags:
 ```cmake
 
 target_compile_definitions(test PUBLIC
-	fPIC
+    fPIC
 )
 ```
 
@@ -233,22 +233,22 @@ Readme.md
 CMakeLists.txt
 # these dependencies are sub-projedts
 ./dependencies
-	./package1 # a normal package
-		CMakeLists.txt
-		./include
-			lib1.h
-		./src
-			lib1.cpp
-	./package2 # a header-only package
-		CMakeLists.txt
-		./include
-			lib2.h
-	...
+    ./package1 # a normal package
+        CMakeLists.txt
+        ./include
+            lib1.h
+        ./src
+            lib1.cpp
+    ./package2 # a header-only package
+        CMakeLists.txt
+        ./include
+            lib2.h
+    ...
 ./include
-	mylib.h
+    mylib.h
 ./src
-	mylib.cpp
-	main.cpp # it #include "mylib.h", #include "package1/lib1.h"
+    mylib.cpp
+    main.cpp # it #include "mylib.h", #include "package1/lib1.h"
 ```
 
 To use these packages in your binary, use:
@@ -265,20 +265,20 @@ add_subdirectory(dependencies/package1)
 include_directories(dependencies/package2)
 
 add_library(mylib STATIC # build a static lib, called libmylib.a on linux, or libmylib.lib on windows
-	# move all the sources here
-	src/mylib.cpp
+    # move all the sources here
+    src/mylib.cpp
 )
 
 add_executable(test src/main.cpp) # only add the main.cpp
 
 target_link_libraries(test PUBLIC 
-	package1 # link package1
-	mylib 
+    package1 # link package1
+    mylib 
 )
 ```
 
 
 ### Misc
-- Should I use `#include <mylib/mylib.h>` or `#include "mylib/mylib.h"`?
-	- If you use CMakelists.txt to manage the include directories, `<>` is the only thing you need.
-	- `<>` only searches the include dirs, while `""` searches the current directory first (e.g., when `.h` are in the same dir as `.cpp`), then the include dirs.
+* Should I use `#include <mylib/mylib.h>` or `#include "mylib/mylib.h"`?
+    * If you use CMakelists.txt to manage the include directories, `<>` is the only thing you need.
+    * `<>` only searches the include dirs, while `""` searches the current directory first (e.g., when `.h` are in the same dir as `.cpp`), then the include dirs.
