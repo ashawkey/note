@@ -1,3 +1,5 @@
 .obsidian
 .vault-stats
 .vscode
+build
+__pycache__

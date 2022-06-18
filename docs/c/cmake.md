@@ -9,235 +9,276 @@ To make cross-platform compilation less painful (or maybe more painful ?)
 cmake --version
 ```
 
-
-
 ### `CMakeLists.txt`
 
-The rules to generate makefile. (case-sensitive)
+The rules to generate makefile.
+- commands are not case-sensitive (e.g., `project()` or `PROJECT()`) for historical reason.
+- variables are case-sensitive! (e.g., must be `PROJECT_NAME`)
+- paths can be string or raw (e.g., `include` or `"include"`)
+- command parameters are separated by spaces or line breaks.
 
-#### Single source file
+### Project structure
 
-First, assume we have a cpp source file `main.cpp` to compile:
-
-```c++
-#include <iostream>
-
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
-}
-```
-
-Then, we write a `CMakeLists.txt`:
-
-```cmake
-# CMakeLists ignores case.
-# required version
-cmake_minimum_required(VERSION 2.8)
-
-# project name. Any string is ok.
-project(Test)
-
-# add the executable, (output file, source file)
-add_executable(Test1 main.cpp) # generate ./Test1 executable
-```
-
-Run it! 
-
+A regular C/C++/CUDA project layout:
 ```bash
-mkdir build # enter a new dir to avoid messing up.
+Readme.md
+CMakeLists.txt
+./include
+	mylib.h
+./src
+	mylib.cpp
+	main.cpp # it #include "mylib.h"
+```
+
+### Build with cmake
+
+Traditional way:
+```bash
+mkdir build
 cd build
-cmake .. # generate Makefile
-make # compile
+cmake ..
+make -j8
+./binary
 ```
 
-And you will see the output files:
-
+More modern way:
 ```bash
--rw-rw-r-- 1 tang tang 1.4K 5月  15 22:07 cmake_install.cmake
--rw-rw-r-- 1 tang tang  12K 5月  15 22:07 CMakeCache.txt
--rw-rw-r-- 1 tang tang 4.8K 5月  15 22:07 Makefile
--rwxrwxr-x 1 tang tang 8.9K 5月  15 22:07 Test
-drwxrwxr-x 6 tang tang 4.0K 5月  15 22:07 CMakeFiles
+cmake -B build . # mkdir build && cd build && cmake ..
+cmake --build build -j 8 # invoke make
+./build/binary
+
+cmake --build build --config Release -j 8 # set build type
 ```
 
+### Built in variables
 
+Like shell variables, use with `${CAPITAL_NAME}`
+```CMake
+PROJECT_NAME # project name defined in project()
+PROJECT_SOURCE_DIR # the source dir, usually ./
+PROJECT_BINARY_DIR # the target dir, usually ./build/
 
-####  Multiple source files, same directory
+# define your variables
+set(SOURCES
+	src/main.cpp
+	src/test.cpp
+)
+```
 
-Assume we have:
+### Basic example
 
+To include  `mylib`, we can use `target_include_directories` for our target:
+```cmake
+cmake_minimum_required(VERSION 3.5)
+project(test_example) # project name
+
+add_executable(test # output binary name
+	# all the sources
+	src/main.cpp
+	src/mylib.cpp
+)
+
+target_include_directories(test PUBLIC # target + qualifier (use public as default)
+	include # dir to include
+)
+```
+
+> what is a `target` in `target_*()`:
+> (1) executable by `add_executable()`
+> (2) library by `add_library()`, sometimes we need to link library to library.
+
+We can also use global `include_directories` if these headers are globally needed:
+```cmake
+cmake_minimum_required(VERSION 3.5)
+project(test_example) # project name
+
+include_directories(include)
+
+add_executable(test # output binary name
+	# all the sources
+	src/main.cpp
+	src/mylib.cpp
+)
+
+```
+
+`include_directories()` equals to the `-I` option in `gcc`, denoting the folders to search for headers. 
+It supports nested folders, e.g., the following file structure will still work: 
 ```bash
-main.cpp # in which we includes "lib"
-lib.cpp
-lib.h
+./include
+	./mylib
+		mylib.h
+./src
+	main.cpp # change to #include "mylib/mylib.h"
 ```
 
-The cmakelists:
-
+We can also (1) create a static library (2) link it to the executable:
 ```cmake
-cmake_minimum_required(VERSION 2.8)
-project(Test)
-add_executable(Test1 main.cpp lib.cpp)
+cmake_minimum_required(VERSION 3.5)
+project(test_example) # project name
+
+include_directories(include)
+
+add_library(mylib STATIC # build a static lib, called libmylib.a on linux, or libmylib.lib on windows
+	# move all the sources here
+	src/mylib.cpp
+)
+
+add_executable(test src/main.cpp) # only add the main.cpp
+
+target_link_libraries(test PUBLIC mylib) # link mylib to the executable
 ```
 
-Another choice is to let cmake find the `lib.cpp` automatically, useful if we have lots of libs to include.
-
+We can also build a dynamic/shared library by:
 ```cmake
-cmake_minimum_required(VERSION 2.8)
-project(Test)
-aux_source_directory(. DIR_SRCS) # find all source files under '.', assign to variable DIR_SRCS
-add_executable(Test1 ${DIR_SRCS}) # DIR_SRCS == main.cpp lib.cpp
+add_library(mylib SHARED # named libmylib.so on linux , or libmylib.dll on windows
+	src/mylib.cpp
+)
 ```
 
+> Difference between static and dynamic libraries:
+> (1) static lib will be copied to the binary, leading to a much larger binary size (both in storage and memory cost), but no runtime external dependency.
+> (2) dynamic lib is only referenced by the binary, and called in runtime as an external dependency (the dynamic loading from OS will lead to a small additional time cost too).
+> (3) In most cases, dynamic lib is preferred. 
 
+For Windows MSVC, we need to add additional things for shared lib to work:
+```cmake
+if (MSVC)
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+    set(BUILD_SHARED_LIBS TRUE)
+endif()
+```
 
-#### Multiple source files, different directories
+### Configurations
 
-Assume we have:
+#### Build types
 
+Built-in build types and their equal command:
+- Release: `-O3 -DNDEBUG`
+- Debug: `-g`
+- RelWithDebInfo: `-O2 -g -DNDEBUG`, 
+
+Explicitly use it by `cmake .. -DCMAKE_BUILD_TYPE=Release`.
+We can also detect and set default build type:
+```cmake
+# Set a default configuration if none was specified
+if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+	message(STATUS "No release type specified. Setting to 'Release'.")
+	set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+	set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "RelWithDebInfo")
+endif()
+```
+
+#### Compile flags
+
+Set default (global) c++ flags:
+```cmake
+# set c++ compile flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC") # usually this is enough
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC" CACHE STRING "doc string" FORCE) # force set in CMakeCache.txt... seems not very needed.
+
+# set c++ standard
+set(CMAKE_CXX_STANDARD 14)
+```
+We can also set it with command line:
 ```bash
-main.cpp
-libs/
-  lib.cpp
-  lib.h
+cmake .. -DCMAKE_CXX_FLAGS="-fPIC"
 ```
 
-where `main.cpp` includes `#include "libs/lib.h"` and use the functions defined in it.
-
-We should use two cmakelists here:
-
-First is at the current dir:
-
+Set per-target c++ flags:
 ```cmake
-cmake_minimum_required(VERSION 2.8)
-project(Test)
-add_subdirectory(libs) # add subdir
-add_executable(Test1 main.cpp) # executable
-target_link_libraries(Test1 libs) # link lib
+
+target_compile_definitions(test PUBLIC
+	fPIC
+)
 ```
 
-Second at the `libs` dir:
+#### Thrid party dependency
 
+`find_package()` can handle about 142 common third party libraries, to automatically handle it for your project.
 ```cmake
-aux_source_directory(. DIR_LIB_SRCS)
-add_library (libs ${DIR_LIB_SRCS}) # generate lib
+# find and include boost 1.46.1; error out if not found; only find the following components
+find_package(Boost 1.46.1 REQUIRED COMPONENTS filesystem system)
+
+# check if the package is found
+if(Boost_FOUND)
+    message ("Boost found")
+    include_directories(${Boost_INCLUDE_DIRS}) # include headers.
+else()
+    message (FATAL_ERROR "Cannot find Boost")
+endif()
+
+# your binary
+add_executable(test src/main.cpp)
+
+# link library
+target_link_libraries(test PRIVATE Boost::filesystem) # alias target, equals to ${Boost_FILESYSTEM_LIBRARY}
 ```
 
+#### Build with ninja
+> what is `ninja`?
+> A small build system (i.e., alternative to `make`) focusing on speed.
 
+Cmake can generate ninja config too:
+```bash
+cmake -B build -G Ninja . # generate ./build/build.ninja
+ninja -C build # build in ./build
+```
 
-#### gdb
+### Sub-projects
 
-just add these lines:
+Let say your projects include some sub-projects that contain individual `CMakeLists.txt`:
+```bash
+Readme.md
+CMakeLists.txt
+# these dependencies are sub-projedts
+./dependencies
+	./package1 # a normal package
+		CMakeLists.txt
+		./include
+			lib1.h
+		./src
+			lib1.cpp
+	./package2 # a header-only package
+		CMakeLists.txt
+		./include
+			lib2.h
+	...
+./include
+	mylib.h
+./src
+	mylib.cpp
+	main.cpp # it #include "mylib.h", #include "package1/lib1.h"
+```
 
+To use these packages in your binary, use:
 ```cmake
-set(CMAKE_BUILD_TYPE "Debug")
-set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
-set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+cmake_minimum_required(VERSION 3.5)
+project(test_example) # project name
+
+include_directories(include)
+
+# regular dependency: first process their CMakeLists.txt
+add_subdirectory(dependencies/package1)
+
+# header-only dependency: just include it
+include_directories(dependencies/package2)
+
+add_library(mylib STATIC # build a static lib, called libmylib.a on linux, or libmylib.lib on windows
+	# move all the sources here
+	src/mylib.cpp
+)
+
+add_executable(test src/main.cpp) # only add the main.cpp
+
+target_link_libraries(test PUBLIC 
+	package1 # link package1
+	mylib 
+)
 ```
 
 
-
-#### find_package
-
-automatically find the directories to includes in compiling.
-
-```cmake
-add_executable(my_bin src/my_bin.cpp)
-find_package(OpenCV REQUIRED) # find <pkg>, assign to <pkg>_INCLUDE_DIRS
-include_directories(${OpenCV_INCLUDE_DIRS}) # headers
-target_link_libraries(my_bin, ${OpenCV_LIBS}) # libraries
-```
-
-In particular, it searches the following directories:
-
-```
-<package>_DIR
-CMAKE_PREFIX_PATH
-CMAKE_FRAMEWORK_PATH
-CMAKE_APPBUNDLE_PATH
-PATH
-```
-
-then it looks for
-
-```
-<prefix>/(lib/<arch>|lib|share)/cmake/<name>*/          (U)
-<prefix>/(lib/<arch>|lib|share)/<name>*/                (U)
-<prefix>/(lib/<arch>|lib|share)/<name>*/(cmake|CMake)/  (U)
-```
-
-
-
-
-
-### Checklist
-
-```cmake
-# 本CMakeLists.txt的project名称
-# 会自动创建两个变量，PROJECT_SOURCE_DIR和PROJECT_NAME
-# ${PROJECT_SOURCE_DIR}：本CMakeLists.txt所在的文件夹路径
-# ${PROJECT_NAME}：本CMakeLists.txt的project名称
-project(xxx)
-
-# 获取路径下所有的.cpp/.c/.cc文件，并赋值给变量中
-aux_source_directory(路径 变量)
-
-# 给文件名/路径名或其他字符串起别名，用${变量}获取变量内容
-set(变量 文件名/路径/...)
-# e.g., set(CMAKE_CXX_STANDARD 17)
-
-# 添加编译选项
-add_definitions(编译选项)
-# e.g., add_definitions(-O3 -Wall)
-
-# 自动寻找依赖，每个包的用法都不一样
-find_package(PkgName [Version] [REQUIRED])
-# e.g., find_package(Eigen3 3.3 REQUIRED)
-
-# 打印消息
-message(消息)
-
-# 编译子文件夹的CMakeLists.txt
-add_subdirectory(子文件夹名称)
-
-# 将.cpp/.c/.cc文件生成.a静态库
-# 注意，库文件名称通常为libxxx.so，在这里只要写xxx即可
-add_library(库文件名称 STATIC 文件)
-
-# 将.cpp/.c/.cc文件生成可执行文件
-add_executable(可执行文件名称 文件) # 自动选择这些文件中唯一的main()为入口
-
-# 规定.h头文件路径
-include_directories(路径)
-
-# 规定.so/.a库文件路径
-link_directories(路径)
-
-# 对add_library或add_executable生成的文件进行链接操作
-# 注意，库文件名称通常为libxxx.so，在这里只要写xxx即可
-target_link_libraries(库文件名称/可执行文件名称 链接的库文件名称)
-```
-
-
-
-### examples
-
-```cmake
-cmake_minimum_required(VERSION 2.8)
-project(asicp)
-
-set (CMAKE_CXX_STANDARD 17)
-
-find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-find_package(nanoflann)
-
-add_definitions(-Ofast -ftree-vectorize -finline-functions -march=native -flto)
-
-aux_source_directory(src SRCS)
-add_executable(asicp ${SRCS})
-target_link_libraries(asicp nanoflann::nanoflann)
-target_link_libraries(asicp Eigen3::Eigen)
-
-```
-
+### Misc
+- Should I use `#include <mylib/mylib.h>` or `#include "mylib/mylib.h"`?
+	- If you use CMakelists.txt to manage the include directories, `<>` is the only thing you need.
+	- `<>` only searches the include dirs, while `""` searches the current directory first (e.g., when `.h` are in the same dir as `.cpp`), then the include dirs.
