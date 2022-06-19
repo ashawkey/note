@@ -54,7 +54,7 @@ $$
                             &-\cdots \\
                             &-\alpha_{N}(1-\alpha_{N-1})\cdots(1-\alpha_{i+1})(1-\alpha_{i-1})\cdots(1-\alpha_1)r_{N} \\
    \end{aligned} \\
-&= \frac {1} {1-\alpha_i} (T_{i+1}r_i - \alpha_{i+1}T_{i+1}r_{i+1} -\dots -\alpha_NT_Nr_N) \\
+&= \frac {1} {1-\alpha_i} ((1-\alpha_i)T_{i}r_i - \alpha_{i+1}T_{i+1}r_{i+1} -\dots -\alpha_NT_Nr_N) \\
 &= \frac {1} {1-\alpha_i} (T_{i+1}r_i - \sum_{j=i+1}^N\alpha_jT_jr_j) \\
 &= \frac {1} {1-\alpha_i} (T_{i+1}r_i -(R - R_i))
 \end{align}
