@@ -76,4 +76,15 @@ $$
 &= \frac {\partial L} {\partial R} \delta_i (T_{i+1}r_i -(R - R_i))
 \end{align}
 $$
+And this is the form used in `instant-ngp`.
 
+A more beautiful form:
+$$
+\begin{align}
+T_{i+1}r_i - \sum_{j=i+1}^N\alpha_jT_jr_j
+&= (1-\alpha_i)T_ir_i - \sum_{j=i+1}^N\alpha_jT_jr_j \\
+&= T_ir_i - \alpha_iT_ir_i - \sum_{j=i+1}^N\alpha_jT_jr_j \\
+&= T_ir_i - \sum_{j=i}^N\alpha_jT_jr_j \\
+&= T_ir_i - (R-R_{i-1})
+\end{align}
+$$
