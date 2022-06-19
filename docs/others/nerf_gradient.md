@@ -1,35 +1,27 @@
 ## NeRF gradients from instant-ngp
 Basic notations:
 (assume single color channel denoted as $R$)
+
 $$
 \begin{align}
-
 \alpha_i &= 1 - e^{- \sigma_i \delta_i}
-
 \\
-
 T_i &= 
 \begin{cases}
 1, & i = 1 \\
 (1 - \alpha_{i-1})(1 - \alpha_{i-2})\cdots(1 - \alpha_1), & i > 1
 \end{cases} 
-
 \\
-
 w_i &= \alpha_i T_i
-
 \\
-
 R_i &= \sum_{j=1}^i w_j r_j
-
 \\
-
 R &= R_N
-
 \end{align}
 $$
 
 Gradient towards color:
+
 $$
 \begin{align}
 \frac {\partial L} {\partial r_i} 
@@ -38,7 +30,9 @@ $$
 &= \frac {\partial L} {\partial R} \alpha_iT_i
 \end{align}
 $$
+
 Gradient towards sigma:
+
 $$
 \begin{align}
 \frac {\partial L} {\partial \sigma_i} 
@@ -46,7 +40,9 @@ $$
 &= \frac {\partial L} {\partial R} \frac {\partial R} {\partial \alpha_i} \frac {\partial \alpha_i} {\partial \sigma_i} \\
 \end{align}
 $$
+
 We have:
+
 $$
 \begin{align}
 \frac {\partial R} {\partial \alpha_i} 
@@ -63,11 +59,15 @@ $$
 &= \frac {1} {1-\alpha_i} (T_{i+1}r_i -(R - R_i))
 \end{align}
 $$
+
 And since:
+
 $$
 \frac {\partial \alpha_i} {\partial \sigma_i} = \delta_ie^{-\sigma_i\delta_i}=\delta_i(1-\alpha_i)
 $$
+
 We finally have:
+
 $$
 \begin{align}
 \frac {\partial L} {\partial \sigma_i} 
