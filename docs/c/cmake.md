@@ -1,4 +1,4 @@
-# cmake
+## cmake
 
 To make cross-platform compilation less painful (or maybe more painful ?)
 

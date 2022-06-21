@@ -372,9 +372,6 @@
   ```
 
   
-  
-  
-
 ### 其他
 
 * 反射（Reflection）：通过字符串的名称来调用函数、类等。
@@ -393,8 +390,6 @@
   # reflection from method name
   getattr(foo, 'call')() # foo.call()
   ```
-
-  
 
 * 自省（Introspection）：通过一个实例获取它所属的类的任意方法或特性。
 

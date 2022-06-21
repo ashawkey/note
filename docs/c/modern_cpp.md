@@ -47,9 +47,6 @@ static_cast<string>(sv);
 ```
 
 
-
-
-
 ### cast
 
 * Implicit (Automatic) conversion
