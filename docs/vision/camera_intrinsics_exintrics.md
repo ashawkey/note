@@ -22,6 +22,11 @@ z_c\begin{bmatrix}
 u \\ v \\ 1 \\
 \end{bmatrix}
 =
+\mathbf K
+\begin{bmatrix}
+x_c \\ y_c \\ z_c \\ 1 \\
+\end{bmatrix}
+=
 \mathbf K \begin{bmatrix}\mathbf R & \mathbf T \\ 0&  1\end{bmatrix}
 \cdot
 \begin{bmatrix}
@@ -29,11 +34,11 @@ x_w \\ y_w \\ z_w \\ 1 \\
 \end{bmatrix}
 $$
 
-3D Point in the world coordinate system: $[x_w, y_w,z_w, 1]^T$ (relative to a defined origin position.)
+3D Point in the world coordinate system: $[x_w, y_w,z_w]^T$ (relative to a defined origin position.)
 
-3D Point in the camera coordinate system: $[x_c, y_c, z_c, 1]^T$ (relative to the camera center position.)
+3D Point in the camera coordinate system: $[x_c, y_c, z_c]^T$ (relative to the camera center position.)
 
-2D Point in the image plane: $[u,v,1]^T$
+2D Point (Pixel) in the image plane: $[u,v]^T$ (range in $[0, H]\times[0, W]$)
 
 Camera Intrinsic (determined only by the camera itself): $\mathbf K \in \mathbb R^{3 \times 4}$.
 
@@ -56,8 +61,8 @@ x_c \\ y_c \\ z_c \\ 1 \\
 \end{bmatrix}
  =
 \begin{bmatrix}
-\alpha_x & \gamma & u_0 & 0 \\
-0 &\alpha_y & v_0 &  0 \\
+f_x & \gamma & u_0 & 0 \\
+0 & f_y & v_0 &  0 \\
 0 & 0 & 1 & 0 \\
 \end{bmatrix}
 \cdot
@@ -66,11 +71,23 @@ x_c \\ y_c \\ z_c \\ 1 \\
 \end{bmatrix}
 $$
 
-$\alpha_x, \alpha_y$ are the **focal length in pixels**. (e.g., $\alpha_x = f\cdot m_x$, where $f$ is the focal length in distance, and $m_x$ is the inverse width of a pixel)
+$f_x, f_y$ are the **focal length in pixels**, usually $f_x =f_y$.
 
 $\gamma$ is the skew coefficient, usually 0.
 
-$(u_0, v_0)$ are the **principal point (camera center)**, ideally the center of the image, i.e., $(H/2, W/2)$
+$(u_0, v_0)$ are the **principal point (camera center) in pixels**, ideally the center of the image, i.e., $(H/2, W/2)$.
+
+Inversely, we can use the intrinsic to project pixel coordinates to 3D points in the camera's coordinate system.
+
+Since a pixel can be projected to multiple depth planes, so we need to know the depth value $z_c$ in advance.
+$$
+\begin{cases}
+x_c = \frac {(u - u_0)} {f_x} z_c \\
+y_c = \frac {(v - v_0)} {f_y} z_c \\
+z_c
+\end{cases}
+$$
+
 
 
 
@@ -130,7 +147,7 @@ $$
 \begin{bmatrix}\mathbf R_{3\times3}& \mathbf T_{3\times1} \\ 0_{1\times3}&  1 \end{bmatrix}^{-1}
 $$
 
-
+Note that now the translation vector $\mathbf{C}$ is the camera's position in the world coordinate system now.
 
 
 
