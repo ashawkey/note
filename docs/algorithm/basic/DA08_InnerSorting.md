@@ -205,7 +205,7 @@ void quicksort(int a[], int l, int r) {
         }
         arr[i] = x;
         quicksort(a, l, i - 1);
-        quickdort(a, i + 1, r);
+        quicksort(a, i + 1, r);
     }
 }
 ```
@@ -315,7 +315,7 @@ void merge(int arr[], int tmp[], int left, int right, int mid){
     while(j<=right) arr[idx++] = tmp[j++];
 }
 
-// simplified, sort a[l:r+1]
+// simplified, sort [l, r]
 int a[maxn], b[maxn];
 void mergesort(int* a, int* b, int l, int r){
     if (l == r) return;
