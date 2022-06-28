@@ -5,6 +5,7 @@
 ### Tips: 
 
 * Check **[Project]/[Blog]** first for a brief understanding of the paper, and watch their introduction video if available.
+
 * Only about 2 papers are chosen for each area. If you find a paper interesting, please use [[Connected Papers]](https://www.connectedpapers.com/) to find related works!
 
 
@@ -32,10 +33,6 @@
 * [2014] **Fully Convolutional Networks for Semantic Segmentation** [[Paper]](https://arxiv.org/abs/1411.4038)
 
 * [2015] **You Only Look Once: Unified, Real-Time Object Detection** [[Paper]](https://arxiv.org/abs/1506.02640)
-
-  Further readings:
-
-  * YOLOv5 [[Code]](https://github.com/ultralytics/yolov5)
 
 #### 3D
 
@@ -82,6 +79,10 @@ Different from 2D images, 3D data have many representations (voxel volumes, poin
 * [2016] **COLMAP** [[Doc]](https://colmap.github.io/) [[Code]](https://github.com/colmap/colmap)
 
   A general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline still widely used today.
+
+* [2019] **DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation** [[Paper]](https://arxiv.org/abs/1901.05103)
+
+  Implicit 3D representation by learning an MLP to predict signed distance functions (SDF).
 
 * [2020] **NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis** [[Project]](https://www.matthewtancik.com/nerf) [[Paper]](http://arxiv.org/abs/2003.08934)
 
