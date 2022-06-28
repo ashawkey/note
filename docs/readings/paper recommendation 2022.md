@@ -13,11 +13,11 @@
 
 * [2015] **Deep Residual Learning for Image Recognition** [[Paper]](https://arxiv.org/abs/1512.03385)
 
-  Most known paper and most used backbones in CV.
+  Most known paper and most used backbone in CV.
 
 * [2020] **An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale** [[Paper]](https://arxiv.org/abs/2010.11929)
 
-  Transformer is mainly used in NLP tasks, but vision transformer has been a recent trending.
+  Transformer is mainly used in NLP tasks, but vision transformer has been a recent trend.
 
   Further readings:
 
