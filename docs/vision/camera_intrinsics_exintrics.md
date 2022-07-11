@@ -80,6 +80,7 @@ $(u_0, v_0)$ are the **principal point (camera center) in pixels**, ideally the 
 Inversely, we can use the intrinsic to project pixel coordinates to 3D points in the camera's coordinate system.
 
 Since a pixel can be projected to multiple depth planes, so we need to know the depth value $z_c$ in advance.
+
 $$
 \begin{cases}
 x_c = \frac {(u - u_0)} {f_x} z_c \\

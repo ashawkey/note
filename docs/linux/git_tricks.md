@@ -43,7 +43,7 @@ git reset --hard master@{5.days.ago}
 
 Improvement: **use `git pull --rebase` instead of `git pull`!**
 
-[It also syncs server change](https://gitolite.com/git-pull--rebase).
+[It also syncs server change](https://gitolite.com/git-pull--rebase).v
 
 
 
@@ -146,3 +146,12 @@ git push -u origin <branch>
 
 ```
 
+### gitignore un-ignore specific files
+say you want to exclude everything in `datasets/` except `datasets/splits/*`.`
+
+```bash
+#datasets # this will not work!
+datasets/* # the /* matters!
+
+!datasets/splits/
+```
