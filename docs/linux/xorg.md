@@ -1,4 +1,4 @@
-### X.org
+### X.org / X11
 
 install: (usually you will never need to do these)
 
@@ -243,4 +243,11 @@ sudo /etc/NX/nxserver --restart
 sudo apt install --reinstall ubuntu-desktop
 sudo apt install --reinstall unity
 ```
+
+### restart those machines and find nomachine fails to connect...
+
+* your machine is running in low-graphics mode --> black screen with X mouse mark. (ubuntu16)
+  * likely lightdm is not running. Check by `sudo systemctl status lightdm`, usually something is wrong with `/etc/X11/xorg.conf`, just configure it like above.
+  * restart lightdm, restart nomachine: `sudo systemctl restart lightdm && sudo /etc/NX/nxserver --restart`
+
 
