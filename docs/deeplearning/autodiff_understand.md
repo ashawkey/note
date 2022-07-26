@@ -97,6 +97,7 @@
 * `x.detach()`
 
   create a new tensor (but not copy data) from `x`, and set `requires_grad = False`. (which also means `is_leaf == True`).
+  note that `x.clone()` will copy data but remains the gradient to the original tensor (thus `is_leaf == False`).
 
 
 

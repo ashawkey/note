@@ -9,9 +9,6 @@ starter, ender = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_t
 
 starter.record()
 # do the things
-ender.record()
-torch.cuda.synchronize()
-curr_time = starter.elapsed_time(ender)
-print(f"{curr_time}")    
+ender.record(); torch.cuda.synchronize(); curr_time = starter.elapsed_time(ender); print(f"{curr_time}"); starter.record()
 ```
 
