@@ -2,6 +2,11 @@
 
 [--> good tutorial <--](http://louiszhai.github.io/2017/09/30/tmux/)
 
+* how to invoke tmux (remote ssh) in tmux (local) ?
+  `Ctrl + b` is the outter tmux.
+  `Ctrl + b + b` is the inner tmux.
+  `Ctrl + b + b + b` if you have even more...
+
 ```bash
 ## session
 # create session
