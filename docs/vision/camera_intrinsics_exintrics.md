@@ -252,6 +252,56 @@ poses[:, :3, :3] = np.stack((right_vector, up_vector, forward_vector), axis=-1)
 poses[:, :3, 3] = centers
 ```
 
+An example of creating camera poses on the vertices of a dodecahedron:
+
+```python
+def create_dodecahedron_cameras(radius=1, center=np.array([0, 0, 0])):
+
+    vertices = np.array([
+        -0.57735,  -0.57735,  0.57735,
+        0.934172,  0.356822,  0,
+        0.934172,  -0.356822,  0,
+        -0.934172,  0.356822,  0,
+        -0.934172,  -0.356822,  0,
+        0,  0.934172,  0.356822,
+        0,  0.934172,  -0.356822,
+        0.356822,  0,  -0.934172,
+        -0.356822,  0,  -0.934172,
+        0,  -0.934172,  -0.356822,
+        0,  -0.934172,  0.356822,
+        0.356822,  0,  0.934172,
+        -0.356822,  0,  0.934172,
+        0.57735,  0.57735,  -0.57735,
+        0.57735,  0.57735,  0.57735,
+        -0.57735,  0.57735,  -0.57735,
+        -0.57735,  0.57735,  0.57735,
+        0.57735,  -0.57735,  -0.57735,
+        0.57735,  -0.57735,  0.57735,
+        -0.57735,  -0.57735,  -0.57735,
+        ]).reshape((-1,3), order="C")
+
+    length = np.linalg.norm(vertices, axis=1).reshape((-1, 1))
+    vertices = vertices / length * radius + center
+
+    # construct camera poses by lookat
+    def normalize(x):
+        return x / (np.linalg.norm(x, axis=-1, keepdims=True) + 1e-8)
+
+    forward_vector = - normalize(vertices - center)
+    up_vector = np.array([0, 1, 0], dtype=np.float32)[None].repeat(forward_vector.shape[0], 0)
+    right_vector = normalize(np.cross(up_vector, forward_vector, axis=-1))
+    up_vector = normalize(np.cross(forward_vector, right_vector, axis=-1))
+
+    ### construct c2w
+    poses = np.eye(4, dtype=np.float32)[None].repeat(forward_vector.shape[0], 0)
+    poses[:, :3, :3] = np.stack((right_vector, up_vector, forward_vector), axis=-1)
+    poses[:, :3, 3] = vertices
+
+    return poses
+```
+
+
+
 
 
 ### Visualize poses
@@ -260,11 +310,14 @@ poses[:, :3, 3] = centers
 import trimesh
 import numpy as np
 
+
 def visualize_poses(poses, size=0.1):
     # poses: [B, 4, 4]
 
     axes = trimesh.creation.axis(axis_length=4)
-    objects = [axes]
+    box = trimesh.primitives.Box(extents=(2, 2, 2)).as_outline()
+    box.colors = np.array([[128, 128, 128]] * len(box.entities))
+    objects = [axes, box]
 
     for pose in poses:
         # a camera is visualized with 8 line segments.
@@ -274,7 +327,11 @@ def visualize_poses(poses, size=0.1):
         c = pos - size * pose[:3, 0] - size * pose[:3, 1] + size * pose[:3, 2]
         d = pos + size * pose[:3, 0] - size * pose[:3, 1] + size * pose[:3, 2]
 
-        segs = np.array([[pos, a], [pos, b], [pos, c], [pos, d], [a, b], [b, c], [c, d], [d, a]])
+        dir = (a + b + c + d) / 4 - pos
+        dir = dir / (np.linalg.norm(dir) + 1e-8)
+        o = pos + dir * 3
+
+        segs = np.array([[pos, a], [pos, b], [pos, c], [pos, d], [a, b], [b, c], [c, d], [d, a], [pos, o]])
         segs = trimesh.load_path(segs)
         objects.append(segs)
 
@@ -286,16 +343,17 @@ def visualize_poses(poses, size=0.1):
 ### Orbit Camera Model
 
 ```python
-
-
 class OrbitCamera:
-    def __init__(self, W, H, r=2, fovy=60):
+    def __init__(self, W, H, r=2, fovy=60, near=0.1, far=10):
         self.W = W
         self.H = H
         self.radius = r # camera distance from center
         self.fovy = fovy # in degree
+        self.near = near
+        self.far = far
         self.center = np.array([0, 0, 0], dtype=np.float32) # look at this point
-        self.rot = R.from_quat([1, 0, 0, 0]) # init camera matrix: [[1, 0, 0], [0, -1, 0], [0, 0, 1]] (to suit ngp convention)
+        # self.rot = R.from_quat([0, 0, 0, 1]) # init camera matrix: [[1, 0, 0], [0, -1, 0], [0, 0, 1]] (to suit ngp convention)
+        self.rot = R.from_matrix(np.eye(3)) # init camera matrix: [[1, 0, 0], [0, -1, 0], [0, 0, 1]] (to suit ngp convention)
         self.up = np.array([0, 1, 0], dtype=np.float32) # need to be normalized!
 
     # pose
@@ -303,7 +361,7 @@ class OrbitCamera:
     def pose(self):
         # first move camera to radius
         res = np.eye(4, dtype=np.float32)
-        res[2, 3] -= self.radius
+        res[2, 3] = self.radius # opengl convention...
         # rotate
         rot = np.eye(4, dtype=np.float32)
         rot[:3, :3] = self.rot.as_matrix()
@@ -311,36 +369,41 @@ class OrbitCamera:
         # translate
         res[:3, 3] -= self.center
         return res
+
+    # view
+    @property
+    def view(self):
+        return np.linalg.inv(self.pose)
     
     # intrinsics
     @property
     def intrinsics(self):
-        res = np.eye(3, dtype=np.float32)
         focal = self.H / (2 * np.tan(np.radians(self.fovy) / 2))
-        res[0, 0] = res[1, 1] = focal
-        res[0, 2] = self.W // 2
-        res[1, 2] = self.H // 2
-        return res
+        return np.array([focal, focal, self.W // 2, self.H // 2], dtype=np.float32)
+
+    # projection (perspective)
+    @property
+    def perspective(self):
+        y = np.tan(np.radians(self.fovy) / 2)
+        aspect = self.W / self.H
+        return np.array([[1/(y*aspect),    0,            0,              0], 
+                         [           0,  -1/y,            0,              0],
+                         [           0,    0, -(self.far+self.near)/(self.far-self.near), -(2*self.far*self.near)/(self.far-self.near)], 
+                         [           0,    0,           -1,              0]], dtype=np.float32)
+
     
     def orbit(self, dx, dy):
         # rotate along camera up/side axis!
-        side = self.rot.as_matrix()[:3, 0] # the right_vector
-        rotvec_x = self.up * np.radians(-0.1 * dx)
-        rotvec_y = side * np.radians(-0.1 * dy)
+        side = self.rot.as_matrix()[:3, 0] # why this is side --> ? # already normalized.
+        rotvec_x = self.up * np.radians(-0.05 * dx)
+        rotvec_y = side * np.radians(-0.05 * dy)
         self.rot = R.from_rotvec(rotvec_x) * R.from_rotvec(rotvec_y) * self.rot
 
-        # wrong: rotate along global x/y axis
-        #self.rot = R.from_euler('xy', [-dy * 0.1, -dx * 0.1], degrees=True) * self.rot
-    
     def scale(self, delta):
         self.radius *= 1.1 ** (-delta)
 
     def pan(self, dx, dy, dz=0):
         # pan in camera coordinate system (careful on the sensitivity!)
-        self.center += 0.001 * self.rot.as_matrix()[:3, :3] @ np.array([dx, dy, dz])
-
-        # wrong: pan in global coordinate system
-        #self.center += 0.001 * np.array([-dx, -dy, dz])
-    
+        self.center += 0.0005 * self.rot.as_matrix()[:3, :3] @ np.array([dx, dy, dz])
 ```
 
