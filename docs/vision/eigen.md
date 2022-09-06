@@ -99,6 +99,8 @@ Built-in typedefs for `N in [2,3,4,X]` and `t in [i, f, d, cf, cd]`:
 * `VectorNt` == `Matrix<t, N, 1>`
 * `RowVectorNt` == `Matrix<t, 1, N>`
 
+
+
 #### dynamic matrix
 
 Eigen also supports **dynamic** matrix size: `typedef Matrix<double, Dynamic, Dynamic> MatrixXd;`
@@ -108,6 +110,14 @@ Initial size is 0-by-0.
 To init with a size: `MatrixXd a(4,4);`
 
 When to use dynamic matrix: **use fixed sizes for very small sizes (<= 16) where you can, and use dynamic sizes for larger sizes or where you have to.**
+
+```cpp
+// example for [N, 3] dynamic matrix
+using Points = Matrix<float, Dynamic, 3, RowMajor>;
+using Triangles = Matrix<uint32_t, Dynamic, 3, RowMajor>;
+```
+
+
 
 #### Access coefficients
 
@@ -121,6 +131,8 @@ m << 1, 2, 3,
      4, 5, 6,
      7, 8, 9;
 ```
+
+
 
 #### Size
 
@@ -671,6 +683,30 @@ int main()
   //add v2 to each row of m
   mat.rowwise() += v2.transpose();
   std::cout << mat << std::endl;
+}
+```
+
+
+
+### Map: from raw data to eigen
+
+```cpp
+float* data;
+Map<const Vector3f> pos(data, 3); // (pointer, size)
+```
+
+
+
+### Ref: generic type without template
+
+```cpp
+void fn(const Ref<const MatrixXf>& a) {
+    // a can be MatrixXf or block of MatrixXf
+    // a is read only
+}
+
+void fn(Ref<MatrixXf> a) {
+    // a is writable
 }
 ```
 

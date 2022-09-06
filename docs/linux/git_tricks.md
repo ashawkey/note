@@ -146,7 +146,10 @@ git push -u origin <branch>
 
 ```
 
+
+
 ### gitignore un-ignore specific files
+
 say you want to exclude everything in `datasets/` except `datasets/splits/*`.`
 
 ```bash
@@ -155,3 +158,20 @@ datasets/* # the /* matters!
 
 !datasets/splits/
 ```
+
+
+
+### use ssh for git command (avoid permission denied error)
+
+You need to generate a SSH key for your machine and add it to github.
+
+```bash
+cd  ~/.ssh
+ssh-keygen -t ecdsa -b 521 -C "your_email@example.com"
+
+cat id_ecdsa.pub
+```
+
+Then copy the public key and add it in https://github.com/settings/keys
+
+Now you should be able to clone through ssh!
