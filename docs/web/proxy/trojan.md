@@ -356,7 +356,7 @@
       "remote_addr": "trojan.hawia.xyz", # modified
       "remote_port": 443, # may need to modify
       "password": [
-          "password" # modified
+          "password" # modified!
       ],
       "log_level": 1,
       "ssl": {
@@ -408,7 +408,7 @@
   trojan -c config.json -l trojan.log
   ```
 
-  Or make a system unit.
+  Or make a system unit. (**MODIFY the trojan path!**)
 
   ```bash
   cat > /etc/systemd/system/trojan.service <<-EOF
@@ -418,8 +418,8 @@
   
   [Service]
   Type=simple
-  PIDFile=/usr/src/trojan/trojan.pid
-  ExecStart=/usr/src/trojan/trojan -c /usr/src/trojan/config.json -l /usr/src/trojan/trojan.log
+  PIDFile=/home/kiui/trojan/trojan.pid
+  ExecStart=/home/kiui/trojan/trojan -c /home/kiui/trojan/config.json -l /home/kiui/trojan/trojan.log
   ExecReload=/bin/kill -HUP \$MAINPID
   Restart=on-failure
   RestartSec=1s
