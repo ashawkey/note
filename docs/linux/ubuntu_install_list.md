@@ -41,9 +41,29 @@ Then another long wait...
   apt update
   apt upgrade
   
-  # useful tools
+  # necessary tools
   apt install vim git curl net-tools tmux ssh build-essential cmake htop
+  
+  # vision related
+  apt install feh mplayer ffmpeg
+  
+  # if failed to fetch, install proxychains first
+  sudo proxychains apt install feh
   ```
+
+  If wish to change apt sources:
+
+  ```bash
+  cd /etc/apt
+  # backup
+  cp sources.list sources.list.original
+  # replace the content from your source.
+  vi sources.list
+  ```
+
+  TUNA source: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
+
+  
 
 * VPN
 
@@ -260,7 +280,7 @@ Then another long wait...
   https://developer.nvidia.com/rdp/cudnn-download
 
   ```bash
-  # change name to your version
+  # download and uncompress
   tar -xvf cudnn-linux-x86_64-8.x.x.x_cudaX.Y-archive.tar.xz
   
   # copy paste
@@ -268,3 +288,29 @@ Then another long wait...
   sudo cp -P cudnn-*-archive/lib/libcudnn* /usr/local/cuda/lib64 
   sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
   ```
+
+* VS Code
+
+  download the deb file to install.
+
+
+
+### Misc
+
+* I cannot open firefox or any other snap applications in nomachine virtual desktop...
+
+  This seems to be a known bug...
+
+  A workaround is to reinstall firefox in dev mode:
+
+  ```bash
+  sudo snap remove firefox
+  sudo snap install firefox --devmode
+  
+  # same for the other apps
+  sudo snap remove snap-store
+  sudo snap install snap-store --devmode
+  ```
+
+  
+
