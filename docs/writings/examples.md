@@ -34,6 +34,12 @@
 * for ..., there are two dominant paradigms. The first one focuses on ..., Another mainstream solution ...
 * while state-of-the-art A methods handle xxx well, B methods either ignore these cases altogether or only deliver a weak performance.
 
+* These methods **fall short of** generating novel samples of a subject while preserving fidelity.
+* We do not **impose any restrictions** on input image capture settings.
+
+* In addition, language drift is a common problem in language models, and **manifests itself in** text-to-image diffusion models as well.
+* 
+
 
 
 ### Contributions
