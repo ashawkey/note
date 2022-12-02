@@ -15,17 +15,21 @@ ffmpeg -i in.mp4 -vf "crop=out_w:out_h:x:y" out.mp4
 ### rescale
 ffmpeg -i in.mp4 -vf "scale=out_w:out_h" out.mp4
 
-# change FPS
+### change FPS
 ffmpeg -i in.mp4 -vf "fps=fps=30" out.mp4
 ffmpeg -i in.mp4 -r 30 out.mp4
 
-# merge audio to video
+### merge audio to video
 ffmpeg -i in.mp4 -i aud.wav -c:v copy -c:a aac out.mp4
 
-# extract audio from video
+### extract audio from video
 ffmpeg -i in.mp4 -f wav -ar 16000 out.wav
 
-# extract image frames from video
+### extract image frames from video
 ffmpeg -i in.mp4 -vf fps=25 -qmin 1 -q:v 1 -start_number 0 "%d.jpg"
+
+### compress visually-losslessly
+# crf: compression levvel, high values lead to smaller file with worse quality.
+ffmpeg -i in.mp4 -c:v libx264 -crf 18 -preset veryslow -c:a copy out.mp4
 ```
 

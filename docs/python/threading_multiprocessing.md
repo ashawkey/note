@@ -4,7 +4,62 @@
 
 ### difference between threading and multiprocessing
 
-* threading is limited by the GIL (for Cpython), so only one python process can run at the same time.
+* threading is limited by the GIL (for CPython), so only one python process can run at the same time.
+* object can be shared between threads (memory sharing), but **must be copied** per process.
+
+
+
+### GIL (Global Interpreter Lock)
+
+* What: a mutex that only allows one thread to access python objects at any time.
+
+* Why: prevents race conditions and ensures thread safety for reference counting.
+
+* Impact: harms performance for CPU-bound program.
+
+  For example, this two-thread program is SLOWER than a single-thread one.
+
+  ```python
+  # two-thread
+  import time
+  from threading import Thread
+  
+  COUNT = 50000000
+  
+  def countdown(n):
+      while n>0:
+          n -= 1
+  
+  t1 = Thread(target=countdown, args=(COUNT//2,))
+  t2 = Thread(target=countdown, args=(COUNT//2,))
+  
+  start = time.time()
+  t1.start()
+  t2.start()
+  t1.join()
+  t2.join()
+  end = time.time()
+  
+  print('Time taken in seconds -', end - start)
+  
+  # single-thread
+  import time
+  from threading import Thread
+  
+  COUNT = 50000000
+  
+  def countdown(n):
+      while n>0:
+          n -= 1
+  
+  start = time.time()
+  countdown(COUNT)
+  end = time.time()
+  
+  print('Time taken in seconds -', end - start)
+  ```
+
+  
 
 
 
@@ -20,8 +75,6 @@ import multiprocessing as mp
 
 mp.set_start_method('spawn')
 ```
-
-
 
 
 

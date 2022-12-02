@@ -31,3 +31,39 @@ else ...;
 
 
 
+### Playing with #define
+
+```cpp
+// variable
+#define X 100
+
+// func
+#define ADD(x, y) (x + y)
+
+// stringfy: #
+#define PQSR(x) printf("square of" #x "is %d\n", (x) * (x))
+int y = 2;
+PQSR(y); // "square of y is 4"
+
+// concat: ##
+#define XN(n) x##n
+#define PXN(n) printf("x"#n" = %d\n", x##n)
+
+int XN(1) = 1; // int x1 = 1;
+PXN(1); // printf("x1 = %d\n", x1);
+
+// multi-line: do while(0)
+#define M(x, y) do { /
+stmt1; /
+stmt2; /
+} while(0)
+
+// example
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+#define _REG_FUNC(funname) m.def(#funname, &funname)
+  _REG_FUNC(sample_grid);
+  _REG_FUNC(sample_grid_backward);
+#undef _REG_FUNC
+}
+```
+
