@@ -67,3 +67,47 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
 }
 ```
 
+
+
+### static
+
+General meaning: **only initialized once**.
+
+* Static global variable / function:
+
+  Only visible inside the file it is declared in.
+
+* Static class variable / function:
+
+  The member belongs to the class itself, instead of its instantiations.
+
+  ```cpp
+  class A {
+  public:
+      static int x = 0;
+  }
+  
+  int main() {
+      A a, b;
+      a.x = 1;
+      cout << b.x << endl; // 1
+  }
+  ```
+
+* Static local variable inside function:
+
+  Retains value between function calls.
+
+  ```cpp
+  int foo() {
+      static int x = 0; // preserved in all function calls
+      cout << x << endl;
+  }
+  
+  int main() {
+      for(int i = 0; i < 3; i++) foo(); // 0, 1, 2
+  }
+  ```
+
+  
+
