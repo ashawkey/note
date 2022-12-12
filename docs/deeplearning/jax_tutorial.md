@@ -194,7 +194,7 @@ Tips to use `jit`:
 
 ### vmap
 
-`jax.vmap` for automatical vectorization (batch).
+`jax.vmap` for automatic vectorization (batch).
 
 ```python
 # any function that operates on unbatched inputs
