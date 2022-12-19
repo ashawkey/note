@@ -6,6 +6,18 @@ git submodule update --init --recursive
 
 
 
+### checkout a history commit, and also update all submodules to the corresponding commits
+
+```bash
+git log # find your commit
+git log --reverse # old-to-new history
+
+git checkout <hash> # only checkout main repo
+git submodule update --recursive # checkout all submodules too.
+```
+
+
+
 ### undo `git pull`
 
 **git pull** performs two operations:

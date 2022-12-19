@@ -2,6 +2,63 @@
 
 
 
+### Install in Ubuntu
+
+To enable CUDA, you must build from source.
+
+```bash
+# dependency
+sudo apt-get install \
+    git \
+    cmake \
+    build-essential \
+    libboost-program-options-dev \
+    libboost-filesystem-dev \
+    libboost-graph-dev \
+    libboost-system-dev \
+    libboost-test-dev \
+    libeigen3-dev \
+    libsuitesparse-dev \
+    libfreeimage-dev \
+    libmetis-dev \
+    libgoogle-glog-dev \
+    libgflags-dev \
+    libglew-dev \
+    qtbase5-dev \
+    libqt5opengl5-dev \
+    libcgal-dev
+    
+# if in ubuntu 16/18:
+sudo apt-get install libcgal-qt5-dev
+
+# ceres
+sudo apt-get install libatlas-base-dev libsuitesparse-dev
+git clone https://ceres-solver.googlesource.com/ceres-solver
+cd ceres-solver
+# use <= 2.1, ref: https://github.com/colmap/colmap/issues/1482
+git checkout f68321e7de8929fbcdb95dd42877531e64f72f66 
+mkdir build
+cd build
+cmake .. -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF
+make -j
+sudo make install
+
+# if use anaconda, you may meet undefined refernce to libtiff error
+# ref: https://github.com/colmap/colmap/issues/188
+conda deactivate
+
+# colmap
+git clone https://github.com/colmap/colmap.git
+cd colmap
+mkdir build
+cd build
+cmake ..
+make -j
+sudo make install
+```
+
+
+
 ### CLI
 
 ```bash

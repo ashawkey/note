@@ -324,6 +324,26 @@ np.negative.at(np.array([1,2,3]), [0,2]) # [-1,2,-3]
 
 
 
+Torch's equivalent:
+
+```python
+a = torch.zeros(6)
+b = torch.LongTensor([3, 2, 5, 2]) # 1d indices
+c = torch.FloatTensor([1, 1, 1, 1]) # values to add at these indices
+
+# extract
+print(a[b])
+
+# manipulate
+a[b] += c                              # ([0, 0, 1, 1, 0, 1]), DO NOT USE! a[2] is only added once.
+a.index_put_((b,), c)                  # ([0, 0, 1, 1, 0, 1]), ditto, this is really 'put' (the original values will be overwriten!)
+a.index_put_((b,), c, accumulate=True) # ([0, 0, 2, 1, 0, 1]), correctly accumulate on the original values.
+```
+
+Note: the name `index_put_` is tricky, `index_add_` is another different thing in torch, which is less flexible to achieve what we are doing.
+
+
+
 ### numpy add by 2D (or nD) index 
 
 The desired operation:
@@ -340,6 +360,23 @@ a[tuple(b.T)]
 a[tuple(b.T)] += c # same, duplicated indices are added once. DO NOT USE!
 np.add.at(a, tuple(b.T), c) # as expected.
 ```
+
+Torch's equivalent:
+
+```python
+a = torch.zeros((3, 3))
+b = torch.LongTensor([[0,0], [1,1], [2,2], [2,2]]) # [M, 2], 2d indices
+c = torch.FloatTensor([1, 1, 1, 1]) # values to add
+
+# extract
+a[tuple(b.T)]
+
+# manipulate
+a[tuple(b.T)] += c # same, duplicated indices are added once. DO NOT USE!
+a.index_put_(tuple(b.T), c, accumulate=True) # as expected.
+```
+
+
 
 
 

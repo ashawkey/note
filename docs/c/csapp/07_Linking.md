@@ -97,6 +97,10 @@ These parts are **linked** together later.
     * External Symbols: defined in other files and referred by this file.
     * Local Symbols: defined in this file, cannot be accessed by other files.
 
+  * `.rel.text`: **relocation entries** for code (e.g., functions).
+
+  * `.rel.data`: **relocation entries** for variables.
+
 * Section header table
 
   index for the Sections (name, type, address, offset).
@@ -183,7 +187,7 @@ gcc -static -o main main.o lib.a # append the lib archive
 gcc -static -o main main.o lib.a # libc.a is always appended at last
 ```
 
-Maintain three sets: Executable, Undefined, Defined.
+Maintain three sets: **Executable, Undefined, Defined**.
 
 * E: only the necessary `*.o` files.
 * U: currently undefined symbols.
@@ -211,5 +215,69 @@ gcc -static -o foo foo.c libx.a liby.a libx.a # must duplicate libx.a twice here
 
 ### Relocation
 
-TODO: 7-6 https://www.bilibili.com/video/BV1JL411L7ku/
+After determining the set **E**xecutable, linker performs relocation to merge all the `*.o` files into one.
+
+Two steps are performed:
+
+* Sections and Symbol Definitions.
+
+  merge the `.text` and `.data` from all `*.o` files.
+
+* Symbol References within Sections.
+
+  resolve the undefined symbols based on the **relocation entries** defined in `.rel.text` and `.rel.data`.
+  
+  The structure for relocation entry:
+  
+  ![image-20221219203503532](07_Linking.assets/image-20221219203503532.png)
+
+
+
+### Executable Files
+
+Similar to ELF files:
+
+* ELF header
+* Segment header table
+* Sections
+  * `.init`: the initialization program
+  * `.text`
+  * `.rodata, .data, .bss`
+  * `.symtab`
+  * `.debug, .line, .strtab`
+* Section header table
+
+Note that `.rel.text`  and `.rel.data` are no longer needed since all the code are after-relocation thus no undefined symbols.
+
+What happens when we run an executable file:
+
+![image-20221219204229506](07_Linking.assets/image-20221219204229506.png)
+
+
+
+### Dynamic Linking
+
+Static linking (static libraries, `*.o`) has various disadvantages:
+
+* Recompilation is needed if a static library is updated.
+* Frequently used code (like the standard c library) are always copied to our program.
+
+Therefore, dynamic linking (dynamic/shared libraries, `*.so, *.dll`) is proposed.
+
+How to create a shared library:
+
+```bash
+# -shared: shared library
+# -fpic: flag-positional-independent-code
+gcc -shared -fpic -o lib.so add.c mul.c
+
+# compile with dynamic linking
+gcc -o main main.c lib.so
+```
+
+In dynamic linking, the code in `lib.so` is NOT copied into `main`!
+
+Instead, only the relocation information and symbol table are copied. 
+
+A dynamic linker (`ld-linux.so`) will resolve the undefined symbols at runtime.
 
