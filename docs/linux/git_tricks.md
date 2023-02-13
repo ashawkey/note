@@ -6,6 +6,20 @@ git submodule update --init --recursive
 
 
 
+### undo a commit
+
+```bash
+# reset to the status before last commit
+git reset HEAD~1
+# now correct your mistakes...
+...
+# redo the commit
+git add *
+git commit -c ORIG_HEAD
+```
+
+
+
 ### checkout a history commit, and also update all submodules to the corresponding commits
 
 ```bash

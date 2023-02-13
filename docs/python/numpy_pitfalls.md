@@ -338,6 +338,10 @@ print(a[b])
 a[b] += c                              # ([0, 0, 1, 1, 0, 1]), DO NOT USE! a[2] is only added once.
 a.index_put_((b,), c)                  # ([0, 0, 1, 1, 0, 1]), ditto, this is really 'put' (the original values will be overwriten!)
 a.index_put_((b,), c, accumulate=True) # ([0, 0, 2, 1, 0, 1]), correctly accumulate on the original values.
+
+# equivalent with torch_scatter (much faster! but only support 1D index)
+import torch_scatter
+torch_scatter.scatter_add(c, b, out=a) # ([0, 0, 2, 1, 0, 1]), correctly accumulate on the original values.
 ```
 
 Note: the name `index_put_` is tricky, `index_add_` is another different thing in torch, which is less flexible to achieve what we are doing.
@@ -374,6 +378,8 @@ a[tuple(b.T)]
 # manipulate
 a[tuple(b.T)] += c # same, duplicated indices are added once. DO NOT USE!
 a.index_put_(tuple(b.T), c, accumulate=True) # as expected.
+
+# no torch_scatter equivalent.
 ```
 
 

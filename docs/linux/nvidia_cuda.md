@@ -16,7 +16,7 @@ Always use the package manager!!!
 >
 > For example, it will not install `nvidia-prime` which contains `prime-select`
 
-First, go runlevel 2 and turn off any GUI.
+First, go runlevel 2 and turn off any GUI. [seems not really necessary...]
 
 ```bash
 # go runlevel 3
@@ -56,7 +56,7 @@ sudo systemctl set-default graphical.target
 sudo reboot
 ```
 
-Location of `nvidia-smi`:
+Location of `nvidia-smi`: [outdated, only on ubuntu16!]
 
 ```bash
 nvidia-debugdump -> /etc/alternatives/x86_64-linux-gnu_nvidia-debugdump
