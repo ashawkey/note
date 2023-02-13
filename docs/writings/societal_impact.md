@@ -1,1 +1,7 @@
 * This project aims to provide users with an effective tool for synthesizing personal subjects (animals, objects) in different contexts. While general text-to-image models might be biased towards specific attributes when synthesizing images from text, our approach enables the user to get a better reconstruction of their desirable subjects. **On contrary, malicious parties might try to use such images to mislead viewers**. This is a common issue, existing in other generative models approaches or content manipulation techniques. Future research in generative modeling, and specifically of personalized generative priors, must continue investigating and revalidating these concerns.
+
+
+
+
+
+* Our method has the potential for negative impact if used to create deepfakes. Using voice cloning, a malicious actor can create videos enabling identity theft or dissemination of fake news. However, in controlled settings, SPACEx can be used for positive creative purposes.
