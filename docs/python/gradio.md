@@ -216,3 +216,11 @@ with gr.Blocks() as demo:
 demo.launch()
 ```
 
+### Proxy Trouble shooting
+
+If `ValueError: Unknown scheme for proxy URL`.
+
+```bash
+all_proxy= python gradio_app.py
+```
+

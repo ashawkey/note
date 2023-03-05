@@ -38,7 +38,7 @@
 * We do not **impose any restrictions** on input image capture settings.
 
 * In addition, language drift is a common problem in language models, and **manifests itself in** text-to-image diffusion models as well.
-* 
+* In contrast, ...
 
 
 
