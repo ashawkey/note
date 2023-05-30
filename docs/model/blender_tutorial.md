@@ -16,11 +16,20 @@
 
 `Ctrl + F12` to render animation.
 
+Use `ffmpeg` to concat to video:
+
+```bash
+# -pix_fmt yuv420p is neccessary to be compatible to powerpoint
+ffmpeg.exe -framerate 30 -i %04d.png -vcodec libx264 -pix_fmt yuv420p out.mp4
+```
+
 Set output path:
 
 ![image-20230305191231538](blender_tutorial.assets/image-20230305191231538.png)
 
+Set resolution & aspect:
 
+![image-20230522151233612](blender_tutorial.assets/image-20230522151233612.png)
 
 ### Animation
 
@@ -28,11 +37,25 @@ In animation tab, set keyframe by clicking:
 
 ![image-20230305191530471](blender_tutorial.assets/image-20230305191530471.png)
 
+### Camera follow path animation
+
+![image-20230522160717435](blender_tutorial.assets/image-20230522160717435.png)
+
 ### Ambient lighting
 
 In the world properties:
 
 ![image-20230305191716034](blender_tutorial.assets/image-20230305191716034.png)
+
+
+
+### Move object origin to mesh center (instead of global center 0,0,0)
+
+![image-20230521220540588](blender_tutorial.assets/image-20230521220540588.png)
+
+
+
+
 
 ### UI and shortcut key
 
@@ -68,3 +91,8 @@ In the world properties:
 * Ctrl + Z: undo
 
 * Ctrl + Shift + Z: redo
+
+
+
+* Ctrl + Alt + 0: **move camera to current view (very useful!)**
+
