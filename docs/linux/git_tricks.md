@@ -201,3 +201,14 @@ cat id_ecdsa.pub
 Then copy the public key and add it in https://github.com/settings/keys
 
 Now you should be able to clone through ssh!
+
+
+
+### fetch branch from a forked repo without clon
+
+```bash
+git remote add theirusername https://github.com/theirusername/reponame
+git fetch theirusername
+git checkout -b mynamefortheirbranch theirusername/theirbranch
+```
+
