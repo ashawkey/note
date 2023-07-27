@@ -18,6 +18,8 @@ Zlab servers:
 
 Select your USB as the starter, and choose `try or install ubuntu`.
 
+To change the default boot order (e.g., if you installed new system on a different disk), you should check `Hard Disk Drive BBS Priorities`  in BIOS config.
+
 
 
 ### Installing...
@@ -256,6 +258,16 @@ Then another long wait...
   Choose `restart`......
   
   Verify the driver installation by `nvidia-smi`.
+  
+  > No devices were found:
+  >
+  > This can be caused by using open-kernel driver on non-open GPU (like TITAN RTX...), see [here](https://forums.developer.nvidia.com/t/nvidia-smi-on-ubuntu-22-04-lts-no-devices-were-found/253520).
+  >
+  > You can find in `/var/log/syslog`:
+  >
+  > NVRM: Open nvidia.ko is only ready for use on Data Center GPUs.
+  >
+  > In such case, reinstall a driver without (open kernel) !!!
   
 * CUDA
 
