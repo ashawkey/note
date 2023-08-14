@@ -1,5 +1,14 @@
 ## powershell
 
+### set execution policy
+The default is `restricted`, which disables executing custom ps scripts (ps1 files).
+Run powershell in administrator mode (ctrl + click new terminal), then:
+```powershell
+set-executionpolicy remotesigned
+
+# check
+get-executionpolicy # show remotesigned
+```
 
 
 ### profile (bashrc)
@@ -8,6 +17,7 @@
 # location
 $profile
 # C:\Users\haw\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+# if it doesn't exist, you need to create it manually...
 
 # edit it
 notepad $profile
@@ -53,5 +63,13 @@ reload:
 
 ```powershell
 . $profile
+```
+
+### set proxy via profile
+Add in your `$profile`:
+```powershell
+# example for clash default port
+$Env:http_proxy="http://127.0.0.1:7890"
+$Env:https_proxy="http://127.0.0.1:7890"
 ```
 

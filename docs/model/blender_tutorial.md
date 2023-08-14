@@ -8,6 +8,12 @@
 * You could see in Outlier, the camera/light now belongs to the empty object.
 * Rotate the empty object, and the child will rotate too!
 
+### animation interpolation
+
+default is some smoothing bezier curve.
+
+In Animation pannel, choose `channel --> extrapolation mode --> linear extrapolation`.
+
 ### Render
 
 `0` to toggle camera view. 
