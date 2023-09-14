@@ -1,5 +1,40 @@
 # blender tutorial
 
+### Rigging and deforming
+
+* load your ready-to-rig humanoid model.
+
+* Add (Shift-A) --> Armature --> Single Bone
+
+  * Change to wireframe mode for easy visualization of bone-model position.
+  * you may change the visibility to "always in front" so you can click your bone easily.
+
+  ![image-20230914131227283](blender_tutorial.assets/image-20230914131227283.png)
+
+  
+
+* Adjust the bone's size, rotation, make it as the main spine of your model.
+
+* Go to edit mode:
+
+  ![image-20230914131413554](blender_tutorial.assets/image-20230914131413554.png)
+
+* click on the rotation ball, use E = extrude to create other connected bones:
+
+  ![image-20230914131605802](blender_tutorial.assets/image-20230914131605802.png)
+
+* After creating all bones, go to object mode, first click model, then shift-click bone, then Ctrl + P, choose automatic weights:
+
+  ![image-20230914132030562](blender_tutorial.assets/image-20230914132030562.png)
+
+* Then go to pose mode, and you can move your bones to visualize the deformed poses!
+
+
+
+### How to render transparent background
+
+![image-20230914130930948](blender_tutorial.assets/image-20230914130930948.png)
+
 ### How to rotate camera/light by parenting
 
 * Add (`Shift + A`) a new empty object (plain axis), set its location to (0, 0, 0).

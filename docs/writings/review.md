@@ -1,3 +1,21 @@
+### strengths
+
+* In general, the paper is well-written and easy to follow.
+* The proposed method is intuitive and reasonable for practical application.
+* The experimental results demonstrate significant improvement over existing methods.
+* The paper addresses an important research topic on ...
+
+
+
+### weaknesses
+
+* Some parts of the paper are difficult to understand, ...
+* 
+
+
+
+### post rebuttal
+
 After reading the other reviews and the rebuttal, I still remain at a reject rating.
 
 Regarding the rebuttal, I appreciate the authors statement regarding additional experiments, evaluations on more scans in the ablation study, mentioning limitations/failure cases and the revision of the text quality. However, the respective revisions need to be checked again as detailed insights have not been provided.
