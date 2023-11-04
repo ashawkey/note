@@ -14,11 +14,11 @@ tmux # nameless
 tmux new -s session_name
 # detach
 tmux detach
-<Ctrl + B> + d
+<Ctrl + B> d
 # list sessions
 tmux ls
 tmux list-session
-<Ctrl + B> + s
+<Ctrl + B> s
 # attach
 tmux a # to the first session
 tmux a -t session_name
@@ -27,37 +27,35 @@ tmux attach -t session_name
 tmux kill-session -t session_name
 tmux kill-server # close all
 # switch 
-<Ctrl + B> + s
+<Ctrl + B> s
 
 ## window
 # create window
-<Ctrl + B> + c
+<Ctrl + B> c
 # delete window
-<Ctrl + B> + d
+<Ctrl + B> d
 # switch window
-<Ctrl + B> + 0~9
+<Ctrl + B> 0~9
 # list and select
-<Ctrl + B> + w
+<Ctrl + B> w
 
 # close window
-<Ctrl + B> + &
+<Ctrl + B> &
 tmux kill-window
 
 ## pane
 # create
-<Ctrl + B> + " # horizontal
-<Ctrl + B> + % # vertical
+<Ctrl + B> " # horizontal
+<Ctrl + B> % # vertical
 # switch
-<Ctrl + B> + o
+<Ctrl + B> arrow keys
+# adjust size
+<Ctrl + B> (hold) + arrow keys
 # close
-tmux kill-pane
-<Ctrl + B> + x
-# zoom
-<Ctrl + B> + z
-
+<Ctrl + B> x
 
 ### scroll
-<Ctrl + B> + [
+<Ctrl + B> [
 # jump to top
 Alt + Shift + ,
 # jump to any line in scroll mode

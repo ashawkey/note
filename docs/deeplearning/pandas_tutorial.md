@@ -9,6 +9,20 @@ import pandas as pd
 
 
 
+### IO
+
+```python
+# load
+df = pd.read_csv(path, header=None) # no column names (first line is data)
+
+# save
+df.to_csv(path, header=False, index=False) # do not write row and column names (will be default int)
+```
+
+
+
+
+
 ### Data Structure
 
 ##### Series (Ordered, Indexed, Homogenous, One-Dimensional)
