@@ -55,3 +55,5 @@
 * `tac`: reversed `cat`
 
 * `ncdu`: n-curses version `du`.
+
+* `tar xf <file>`: one command to uncompress all kind of `tar/tar.xz/tar.gz`
