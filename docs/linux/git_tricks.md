@@ -1,4 +1,4 @@
-### I forget `--recursive` when cloning
+### I forget adding recursive when cloning
 
 ```bash
 git submodule update --init --recursive
@@ -6,7 +6,34 @@ git submodule update --init --recursive
 
 
 
-### undo a commit
+### add more things to the last commit (amend)
+
+```bash
+# add the modifications
+git add *
+# amend
+git commit --amend --no-edit
+
+# this will also allow you to change the commit message
+git commit --amend
+```
+
+
+
+### command line diff
+
+If you cannot use VS Code or Github.
+
+```bash
+# see changes (before git add)
+git diff 
+# after git add
+git diff --staged
+```
+
+
+
+### modify the last commit
 
 ```bash
 # reset to the status before last commit
@@ -16,6 +43,17 @@ git reset HEAD~1
 # redo the commit
 git add *
 git commit -c ORIG_HEAD
+```
+
+
+
+### revert a commit
+
+```bash
+# find the commit hash
+git log
+# revert it
+git revert <hash>
 ```
 
 
@@ -69,7 +107,7 @@ git reset --hard master@{5.days.ago}
 
 Improvement: **use `git pull --rebase` instead of `git pull`!**
 
-[It also syncs server change](https://gitolite.com/git-pull--rebase).v
+[It also syncs server change](https://gitolite.com/git-pull--rebase).
 
 
 
@@ -125,7 +163,7 @@ https://user-images.githubusercontent.com/25863658/155265815-c608254f-2f00-4664-
 
 
 
-### reset
+### reset to a history commit
 
 say you would like to reset to a previous commit.
 
@@ -142,12 +180,11 @@ git reflog show
 
 # you found your previous commit is called HEAD@{y}
 git reset --hard HEAD@{y}
-
 ```
 
 
 
-### change remote
+### change remote repo url
 
 ```bash
 # change remote
@@ -158,7 +195,7 @@ git remote set-url origin [new_repo_url]
 
 
 
-### push new branch
+### push a new branch to remote
 
 ```bash
 # to local branch
@@ -204,7 +241,7 @@ Now you should be able to clone through ssh!
 
 
 
-### fetch branch from a forked repo without clon
+### fetch branch from a forked repo without clone
 
 ```bash
 git remote add theirusername https://github.com/theirusername/reponame
