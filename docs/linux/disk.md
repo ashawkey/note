@@ -181,6 +181,18 @@ A way of storing data inside the partitions.
   └─sda1   8:1    0   512M  0 part /boot/efi
   ```
 
+  To check if the disk is SSD or HDD (ROTAtional):
+
+  ```bash
+  $ lsblk -d -o name,rota
+  NAME ROTA
+  sda     0
+  sdb     0
+  sdc     1
+  ```
+
+  where ROTA == 1 means HDD, and ROTA == 0 means SSD.
+
 * `findmnt` specialized tool
 
   ```bash
