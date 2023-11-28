@@ -4,6 +4,8 @@ Although `omegaconf`+`argparse` is great for a research project, it's not suitab
 
 With `tyro`, we can write a package CLI elegantly!
 
+
+
 ### Function
 
 The simplest use case, turn a function into a CLI.
@@ -66,11 +68,14 @@ class Color(enum.Enum):
 
 @dataclass
 class Options:
-    # NOTE: all required values should be put ahead of default values!
+    # NOTE: must place positional values > required vales > default values
     # NOTE: tyro will detect comments (after > above) as the help string.
+    
+    # positional value
+    x: tyro.conf.Positional[int]
 
     # required value
-    x: int 
+    y: int 
 
     # required bool, "--flag1 True/False"
     flag1: bool 
@@ -113,6 +118,9 @@ usage: main.py [-h] --x INT --flag1 {True,False} [--path STR] [--shape INT [INT 
                [--color {red,green,blue}] [--color2 {red,green,blue}] [--flag2] [--no-flag3]
                [--int-or-str INT|STR]
 
+╭─ positional arguments ───────────────────────────────────────────────────────────────────────╮
+│ INT                     positional parameters (required)                                     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────╯
 ╭─ arguments ──────────────────────────────────────────────────────────────────────────────────╮
 │ -h, --help              show this help message and exit                                      │
 │ --x INT                 required value (required)                                            │

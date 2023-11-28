@@ -49,6 +49,13 @@ launch/submit a job.
 
 `srun` will start the job in foreground.
 
+```bash
+# srun a cpu task: install conda
+srun -p <partition> -n 1 -c 16 bash AnacondaInstall.sh
+```
+
+
+
 `sbatch` will submit a job in background, using a script like this:
 
 ```shell
@@ -88,6 +95,11 @@ delete a job.
 
 
 
-### saact
+### sacct
 
-show finished jobs.
+show status of running and finished jobs.
+
+```bash
+sacct
+```
+

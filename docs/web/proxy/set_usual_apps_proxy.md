@@ -47,6 +47,21 @@ echo $http_proxy
 echo $https_proxy
 ```
 
+### wget
+
+```bash
+# use .wgetrc
+cat > ~/.wgetrc <<EOF
+http_proxy=http://127.0.0.1:1081
+https_proxy=http://127.0.0.1:1081
+HTTP_PROXY=http://127.0.0.1:1081
+HTTPS_PROXY=http://127.0.0.1:1081
+use_proxy=on
+EOF
+```
+
+
+
 ### git
 
 ```bash
@@ -96,3 +111,29 @@ pip install pysocks
     and call with `docker build --network=host -t tag ...`
 
 * `docker run`
+
+
+
+### Authorization
+
+```bash
+# for authorization, use proxy like:
+http://<user>:<pwd>@<ip>:<port>
+
+# note that special characters in user/pwd should be replaced:
+@          %40
+:          %3A
+!          %21
+#          %23
+$          %24
+%          %25
+&          %26
++          %2B
+/          %2F
+\          %5C
+=          %3D
+?          %3F
+spacebar   %20
+.          %2E
+```
+
