@@ -14,6 +14,13 @@ sinfo -N # nodes
 sinfo -N --states=idle # check all idle nodes
 ```
 
+to check more detailed GPU usage:
+
+```bash
+cinfo -p <partition> 
+cinfo -p <partition> occupy-reserved # only show reserved quota
+```
+
 
 
 ### squeue
@@ -22,8 +29,7 @@ check the current running (R) and pending (PD) jobs.
 
 ```bash
 squeue -u <user name> # list your jobs
-squeue -l # list all
-squeue -j jobid
+squeue -l # list all info
 ```
 
 
@@ -45,13 +51,30 @@ launch/submit a job.
 -x # --exclude=node[3,5-6], nodes to avoid
 --exclusive # exclusively use the nodes
 --gres # --gres=gpu:2, gpu allocation
+--quotatype=reserved # [phoenix-feature] auto, reserved (will not be reallocated), spot (may be reallocated)
 ```
+
+QUOTA mode [phoenix-feature]:
+
+* reserved: guaranteed GPU resources for this partition, will allocate as long as it's idle.
+* spot: borrow idle resources from other partitions, will be reallocated if required by other partitions.
+* auto: try to allocate reserved quota first, if not successful, turn to spot mode.
+
+
 
 `srun` will start the job in foreground.
 
 ```bash
-# srun a cpu task: install conda
-srun -p <partition> -n 1 -c 16 bash AnacondaInstall.sh
+# quick alias
+alias srcpu="srun --ntasks=1 --ntasks-per-node=1 --cpus-per-task=16 -p 3dobject_aigc_light"
+alias sr1gpu="srun --ntasks=1 --ntasks-per-node=1 --cpus-per-task=16 --gres=gpu:1 -p 3dobject_aigc_light"
+alias sr8gpu="srun --ntasks=1 --ntasks-per-node=1 --cpus-per-task=16 --gres=gpu:8 -p 3dobject_aigc_light"
+alias sr8gpu_spot="srun --ntasks=1 --ntasks-per-node=1 --cpus-per-task=16 --gres=gpu:8 --quotatype=spot -p 3dobject_aigc_light"
+alias squ="squeue -u `whoami`"
+
+# use with -p!
+srcpu -p <partition> bash some_script.sh
+sr1gpu -p <partition> python test.py
 ```
 
 
@@ -91,7 +114,11 @@ scontrol release JOBID # release
 
 ### scancel 
 
-delete a job.
+delete a pending job.
+
+```bash
+scancel <jobid>
+```
 
 
 
@@ -101,5 +128,18 @@ show status of running and finished jobs.
 
 ```bash
 sacct
+```
+
+
+
+### swatch
+
+identify why my job is pending:
+
+```bash
+swatch check_pending <jobid>
+
+# Reasons:
+# NodeQuota: 
 ```
 

@@ -31,6 +31,8 @@ git clone <url> [name]
 
 # track/stage a file
 git add [files]
+git add *
+git add --all
 
 # ignore files
 # use .gitignore
