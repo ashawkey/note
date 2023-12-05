@@ -1,5 +1,40 @@
 # blender tutorial
 
+### Pure white background
+
+First set transparent rendering:
+
+![image-20230817121854933](D:\aa\Notebooks\docs\model\blender_tutorial.assets\image-20230817121854933.png)
+
+Then Change color view transform to standard (the same tab, just below `Film`):
+
+![image-20230817121902473](D:\aa\Notebooks\docs\model\blender_tutorial.assets\image-20230817121902473.png)
+
+Then open compositing window, and set use nodes, then add an "alpha over" layer like this:
+
+![image-20230817121909364](D:\aa\Notebooks\docs\model\blender_tutorial.assets\image-20230817121909364.png)
+
+
+
+### Add-on
+
+`Edit --> Preferences --> Add-ons`
+Download the released zip file, and choose it from `install...` to install.
+(seems you need to manually enable add-ons every time when you start blender?)
+
+### obj sequence animation ([Stop-motion-OBJ](https://github.com/neverhood311/Stop-motion-OBJ))
+
+To animate a sequence of obj files.
+After enabling the add-on, choose `file --> import --> mesh sequence`.
+The files need to be organized as:
+```bash
+name_000.obj
+name_001.obj
+name_002.obj
+```
+in the same folder, and a name keyword is necessary.
+
+
 ### Rigging and deforming
 
 * load your ready-to-rig humanoid model.
