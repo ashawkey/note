@@ -49,3 +49,10 @@ using CLI:
   ```
 
   
+
+### Downloads a repo
+
+```bash
+huggingface-cli download <user/repo>
+```
+

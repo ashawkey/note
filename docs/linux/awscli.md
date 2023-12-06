@@ -59,3 +59,36 @@ aws s3 cp --recursive s3://myBucket/remote_folder local_folder
 aws s3 rm s3://myBucket/remote_file
 ```
 
+
+
+### Megfile
+
+A management tool for both S3 and normal dataset.
+
+```bash
+pip install megfile
+
+# config s3 access key
+megfile config s3 AK SK --addressing-style virtual --endpoint-url http://<ip>:<port>
+```
+
+#### CLI
+
+```bash
+megfile ls s3://bucket
+megfile cat s3://bucket/file
+megfile cp s3://bucket/file local_file
+```
+
+#### API
+
+```python
+from megfile import smart_open, smart_glob
+from megfile.smart_path import SmartPath
+
+files = smart_glob('s3://bucket/*.jpg')
+for file in files:
+    with smart_open(file, 'r') as fp:
+		content = fp.read()
+```
+

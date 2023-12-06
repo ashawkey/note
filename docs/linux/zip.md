@@ -16,6 +16,16 @@
   zip drn.zip -r drn-master/ -x "drn-master/pretrained/*"
   ```
   
+* check the content without unzipping:
+
+  ```bash
+  vim archive.zip # you can even further read the content of a file in it.
+  less archive.zip
+  
+  unzip -l archive.zip # list archive
+  unzip -p archive.zip a_certain_file # print content of a file
+  ```
+
   
 
 
