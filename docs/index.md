@@ -1,3 +1,26 @@
+
 # Index
 
-Notebook for self-use.
+[kiui](https://kiui.moe/)'s notebook.
+
+## Recent Updates
+- [slurm.md](linux\slurm.md) <div style="text-align: right">2023-12-07 15:20:34.127883</div>
+- [zip.md](linux\zip.md) <div style="text-align: right">2023-12-06 14:44:52.320809</div>
+- [huggingface.md](python\huggingface.md) <div style="text-align: right">2023-12-06 14:44:52.316494</div>
+- [awscli.md](linux\awscli.md) <div style="text-align: right">2023-12-06 14:44:52.315493</div>
+- [vs_code_hotkey.md](others\vs_code_hotkey.md) <div style="text-align: right">2023-12-06 14:44:52.315493</div>
+- [powershell.md](windows\powershell.md) <div style="text-align: right">2023-12-06 14:44:52.279341</div>
+- [blender_tutorial.md](model\blender_tutorial.md) <div style="text-align: right">2023-12-06 14:44:52.277337</div>
+- [git.md](linux\git.md) <div style="text-align: right">2023-11-28 20:33:56.409179</div>
+- [env.md](linux\env.md) <div style="text-align: right">2023-11-27 19:54:33.115214</div>
+- [tyro.md](python\tyro.md) <div style="text-align: right">2023-11-27 14:38:51.496247</div>
+- [set_usual_apps_proxy.md](web\proxy\set_usual_apps_proxy.md) <div style="text-align: right">2023-11-27 13:06:36.605972</div>
+- [disk.md](linux\disk.md) <div style="text-align: right">2023-11-23 11:12:45.079090</div>
+- [ddpm.md](math\ddpm.md) <div style="text-align: right">2023-11-21 14:17:26.240711</div>
+- [quaternion.md](math\quaternion.md) <div style="text-align: right">2023-11-20 15:05:44.199565</div>
+- [rebuttals.md](writings\rebuttals.md) <div style="text-align: right">2023-11-18 11:39:03.764987</div>
+- [git_tricks.md](linux\git_tricks.md) <div style="text-align: right">2023-11-18 11:04:41.502742</div>
+- [trojan.md](web\proxy\trojan.md) <div style="text-align: right">2023-11-17 09:55:15.367723</div>
+- [bash.md](linux\bash.md) <div style="text-align: right">2023-11-17 09:19:57.540734</div>
+- [datetime.md](python\datetime.md) <div style="text-align: right">2023-11-06 14:25:24.795182</div>
+- [tmux.md](linux\tmux.md) <div style="text-align: right">2023-11-04 09:51:23.685858</div>

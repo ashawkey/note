@@ -75,7 +75,7 @@ alias sr8gpu="srun --ntasks=1 --ntasks-per-node=1 --cpus-per-task=64 --gres=gpu:
 alias sr8gpu_spot="srun --ntasks=1 --ntasks-per-node=1 --cpus-per-task=64 --gres=gpu:8 --quotatype=spot -p xxx"
 alias squ="squeue -u `whoami`"
 
-# use with -p!
+# use at ease
 srcpu bash some_script.sh
 sr1gpu python test.py
 ```
@@ -97,6 +97,7 @@ For example, we launch 4 * 8 = 32 GPUs to train:
 #SBATCH --quotatype=spot
 #SBATCH --output=logs/%j_%x_out.log
 #SBATCH --err=logs/%j_%x_err.log
+#SBATCH --nodelist=xxx-[123-125],xxx-145
 
 # configs
 LOG_PATH="log.txt" # where all the printing goes
