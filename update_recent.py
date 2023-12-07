@@ -26,4 +26,4 @@ with open(INDEX_FILE, 'w') as handle:
         name = os.path.basename(file)
         modified = os.path.getmtime(file)
         
-        handle.write(f'- [{name}]({os.path.relpath(file, "docs")}) <div style="text-align: right">{datetime.datetime.fromtimestamp(modified)}</div>\n')
+        handle.write(f'- [{name}]({os.path.relpath(file, "docs").replace(".md", "/")}) <div style="text-align: right">{datetime.datetime.fromtimestamp(modified)}</div>\n')
