@@ -60,7 +60,15 @@ use_proxy=on
 EOF
 ```
 
+### jupyter notebook
 
+It should use the system proxy, if not working, add this code block and run it:
+
+```python
+import os
+os.environ['http_proxy'] = "http://127.0.0.1:1081" 
+os.environ['https_proxy'] = "http://127.0.0.1:1081" 
+```
 
 ### git
 
