@@ -4,6 +4,7 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
+- [monky_patch.md](python\monky_patch/) <div style="text-align: right">2023-12-12 18:58:16.041742</div>
 - [camera_intrinsics_exintrics.md](vision\camera_intrinsics_exintrics/) <div style="text-align: right">2023-12-11 10:48:44.821914</div>
 - [set_usual_apps_proxy.md](web\proxy\set_usual_apps_proxy/) <div style="text-align: right">2023-12-08 16:21:56.252977</div>
 - [slurm.md](linux\slurm/) <div style="text-align: right">2023-12-07 15:20:34.127883</div>
@@ -23,4 +24,3 @@
 - [git_tricks.md](linux\git_tricks/) <div style="text-align: right">2023-11-18 11:04:41.502742</div>
 - [trojan.md](web\proxy\trojan/) <div style="text-align: right">2023-11-17 09:55:15.367723</div>
 - [bash.md](linux\bash/) <div style="text-align: right">2023-11-17 09:19:57.540734</div>
-- [datetime.md](python\datetime/) <div style="text-align: right">2023-11-06 14:25:24.795182</div>
