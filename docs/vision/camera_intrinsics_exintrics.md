@@ -4,6 +4,10 @@
 
 Very good reference: https://ksimek.github.io/2012/08/22/extrinsic/
 
+Good demo of look-at camera: https://learnwebgl.brown37.net/07_cameras/camera_lookat/camera_lookat.html
+
+
+
 ### Homogeneous Coordinates
 
 

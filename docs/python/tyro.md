@@ -146,7 +146,7 @@ For nesting configs.
 
 ```python
 import tyro
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Tuple, Literal, Union
 
 @dataclass
@@ -157,7 +157,8 @@ class OptimizerOption:
 @dataclass
 class Options:
     # nested option: just declare the type
-    optimizer: OptimizerOption
+    # the field(...) is for python 3.11 compatibility, ref: https://github.com/NVIDIA/NeMo/issues/7166#issuecomment-1694251124
+    optimizer: OptimizerOption = field(default_factory=lambda: OptimizerOption(lr=1e-2))
     # other options
     seed: int = 0
     iterations: int = 3000
