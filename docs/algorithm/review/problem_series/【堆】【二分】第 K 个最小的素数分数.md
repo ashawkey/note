@@ -7,13 +7,11 @@
 那么第 k 个最小的分数是多少呢?  以长度为 2 的整数数组返回你的答案, 这里 answer[0] == arr[i] 且 answer[1] == arr[j] 。
 
 
-
 ### 暴力
 
 扫描k次，手动管理大小关系只能做到每次$O(N)$。
 
 $O(kN)=O(N^3)$，TLE。
-
 
 
 ### 堆
@@ -46,7 +44,6 @@ public:
     }
 };
 ```
-
 
 
 ### 二分
@@ -94,7 +91,6 @@ public:
 ```
 
 
-
 ### 类似题目：[查找和最小的K对数字](https://leetcode-cn.com/problems/find-k-pairs-with-smallest-sums/)
 
 给定两个以升序排列的整数数组 nums1 和 nums2 , 以及一个整数 k 。
@@ -102,7 +98,6 @@ public:
 定义一对值 (u,v)，其中第一个元素来自 nums1，第二个元素来自 nums2 。
 
 请找到和最小的 k 个数对 (u1,v1),  (u2,v2)  ...  (uk,vk) 。
-
 
 
 #### 堆

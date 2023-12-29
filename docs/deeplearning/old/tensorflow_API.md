@@ -46,10 +46,13 @@
 
   * MAPE (percentage error)
     
+
 $$
+\displaylines{
 
     MAPE = \frac{1}{n}\sum_{i=1}^n|\frac{\hat y - y_i}{y_i}|
     
+}
 $$
 
 
@@ -57,10 +60,13 @@ $$
 
     binary classification with sigmoid.
     
+
 $$
+\displaylines{
 
     L = -\sum_{i=1}^n(y_ilog(\hat y) + (1-y_i)log(1-\hat y))
     
+}
 $$
 
 
@@ -68,14 +74,14 @@ $$
 
     multiple classification with one_hot + softmax.
     
+
 $$
+\displaylines{
 
     L = -\sum_{i=1}^n\sum_{t=1}^c(y_{i,t}log\hat y_t)
     
+}
 $$
-
-
-
 
 
 #### tensorflow
@@ -189,7 +195,6 @@ GradientDescentOptimizer(learning_rate)
 ```
 
 
-
 #### layers
 
 An encapsulation of `tf.nn `.
@@ -250,7 +255,6 @@ name
 '''
 average_pooling2d()
 ```
-
 
 
 #### nn
@@ -402,12 +406,6 @@ model.save("full_model.h5")
 ```
 
 
-
 #### summary
-
-
-
-
-
 
 

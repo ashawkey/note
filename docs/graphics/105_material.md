@@ -15,15 +15,11 @@ Material == BRDF
 ![image-20210318190942601](material.assets/image-20210318190942601.png)
 
 
-
-
-
 ### Microfacet Theory
 
 ### Anisotropic Materials
 
 ![image-20210318191307366](material.assets/image-20210318191307366.png)
-
 
 
 ### Properties of BRDF

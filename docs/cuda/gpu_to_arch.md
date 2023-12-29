@@ -13,7 +13,6 @@ reference: https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-vario
 ** Hopper is NVIDIA’s rumored “tesla-next” series, with a 5nm process.
 
 
-
 ### Fermi cards (CUDA 3.2 until CUDA 8)
 
 Deprecated from CUDA 9, support completely dropped from CUDA 10.

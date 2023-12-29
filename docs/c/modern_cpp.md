@@ -20,13 +20,11 @@ To replace `NULL`'s use as a pointer.
 > ```
 
 
-
 ### value initialization (c++11)
 
 ```cpp
 int x{}; // default initialization, equals to `int x = 0;`
 ```
-
 
 
 ### string_view (c++17)
@@ -144,7 +142,6 @@ static_cast<string>(sv);
   
 
 
-
 ### constexpr
 
 constant expression is different from constant value. 
@@ -166,7 +163,6 @@ char a[fibonacci(5)]; // OK
 ```
 
 
-
 ### declare variable inside if (c++17)
 
 ```cpp
@@ -178,7 +174,6 @@ if (size_t n = v.size(); n > 10) {
 if (n := len(v)) > 10:
 	pass // but n will be visible since this block!
 ```
-
 
 
 ### initializer list
@@ -195,9 +190,6 @@ public:
 A a{1,2,3,4,5};
 A f() { return {1,2,3}; }
 ```
-
-
-
 
 
 ### tuple (c++17)
@@ -264,7 +256,6 @@ cout << s.a << endl;
 ```
 
 
-
 ### std::optional (c++17)
 
 Any instance of `optional<T>` at any given point in time either *contains a value* or *does not contain a value*.
@@ -319,7 +310,6 @@ create_ref(true) returned Godzilla
 modifying it changed it to Mothra
 */
 ```
-
 
 
 ### lambda function (c++11)

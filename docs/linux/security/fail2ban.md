@@ -1,7 +1,6 @@
 # fail2ban
 
 
-
 ```bash
 ### install
 sudo apt install fail2ban

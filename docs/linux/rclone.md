@@ -1,13 +1,11 @@
 # rclone
 
 
-
 ### install
 
 ```bash
 curl https://rclone.org/install.sh | sudo bash
 ```
-
 
 
 ### set up remotes
@@ -45,7 +43,6 @@ check remote disk:
 ```bash
 rclone about nuts:
 ```
-
 
 
 ### usage

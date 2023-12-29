@@ -5,7 +5,6 @@ pip install awscli
 ```
 
 
-
 ### Setup
 
 First configure it using your AK & SK:
@@ -27,7 +26,6 @@ To use a different endpoint than amazon, config an alias in your `.bashrc`:
 ```bash
 alias aws="aws --endpoint-url=http://<ip>:<port>"
 ```
-
 
 
 ### Usage
@@ -58,7 +56,6 @@ aws s3 cp --recursive s3://myBucket/remote_folder local_folder
 # delete remote file
 aws s3 rm s3://myBucket/remote_file
 ```
-
 
 
 ### Megfile

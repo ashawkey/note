@@ -9,7 +9,6 @@ A metric usually used in object detection.
 And the calculation of AP is like the AUC of ROC in binary classification:
 
 
-
 ### AP
 
 ```python
@@ -63,7 +62,6 @@ ap = np.sum((recall[xs + 1] - recall[xs]) * precision[xs + 1])
 ```
 
 
-
 illustration of VOC 07:
 
 ![](https://miro.medium.com/max/875/1*naz02wO-XMywlwAdFzF-GA.jpeg)
@@ -71,7 +69,6 @@ illustration of VOC 07:
 illustration of VOC after 07:
 
 ![](https://miro.medium.com/max/875/1*TAuQ3UOA8xh_5wI5hwLHcg.jpeg)
-
 
 
 ### Other Notations

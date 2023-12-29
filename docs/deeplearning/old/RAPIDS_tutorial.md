@@ -5,7 +5,6 @@
 GPU DataFrame.
 
 
-
 ### cuml
 
 Machine Learning Algorithms.
@@ -27,7 +26,6 @@ Machine Learning Algorithms.
   ```
 
 
-
 ##### k-Means
 
 ```python
@@ -38,7 +36,6 @@ model.fit(embed)
 train['cluster'] = model.labels_
 train.head()
 ```
-
 
 
 ##### T-SNE

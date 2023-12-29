@@ -3,7 +3,6 @@
 > We prefer not to write HTML directly. Instead, use code to generate HTML automatically.
 
 
-
 ### Elements
 
 * `<a href='https://example.com'> Website </a>`
@@ -34,11 +33,6 @@
 * `<header>` declare header, no factual effect.
 
 
-
-
-
-
-
 ### Example
 
 * Simple Document
@@ -61,7 +55,6 @@
   
 
 
-
 ### Script
 
 basics:
@@ -80,6 +73,5 @@ basics:
     import * as THREE form 'three'
 </script>
 ```
-
 
 

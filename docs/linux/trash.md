@@ -3,7 +3,6 @@
 Cut my fingers if I `rm` a file accidentally again!!!
 
 
-
 ### Usage
 
 ```bash
@@ -26,7 +25,6 @@ trash-rm <pattern>
 # restore from trash
 restore-trash # will show a list and let you choose id to restore
 ```
-
 
 
 ### Details

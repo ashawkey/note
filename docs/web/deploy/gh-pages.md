@@ -1,7 +1,6 @@
 # gh-pages
 
 
-
 ##### `package.json`
 
 ```json

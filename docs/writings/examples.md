@@ -5,13 +5,11 @@
 * ... be prohibitively computational expensive ...
 
 
-
 ### Abstract
 
 * It is of increasing importance for ...  and draws increasing attention.
 * Further ablation study and analysis gives more insights into the proposed method and demonstrate the generalization capability and stability of our model.
 * Experiments on the ... dataset show that xxx outperforms the state-of-the-arts in xxx, especially for ...
-
 
 
 ### Intro
@@ -41,15 +39,11 @@
 * In contrast, ...
 
 
-
 ### Contributions
 
 * We present a new approach capable of ... from ...
 * We propose XXX, a novel ..., which ...
 * We demonstrate significant performance improvements of our approach compared to prior work.
-
-
-
 
 
 ### Related work
@@ -65,7 +59,6 @@
 * Compared to the xxx approaches, wherein the ... is often suboptimal, yyy approaches are more straightforward and have achieved promising performance.
 
 
-
 ### Methods
 
 * (directly describe methods) In this section, we briefly summarize A, and then describe how we extend it to B.
@@ -74,12 +67,10 @@
 * Our goal is .... In the following, we discuss the main components of our method. First, ... (See Sec~\ref{}). Next, ... Finally, ....
 
 
-
 ### Experiments
 
 * The improvements potentially come from the design of ... in our method, which can act as a ...
 * 
-
 
 
 ### Appendix
@@ -87,7 +78,6 @@
 * The proof is given in the Appendix.
 
 * The detailed derivation of this formula is given in the Appendix.
-
 
 
 ### junction

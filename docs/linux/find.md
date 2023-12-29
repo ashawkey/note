@@ -25,8 +25,6 @@
   ```
 
 
-
-
 * Replace string in all files under a folder
 
   ```bash

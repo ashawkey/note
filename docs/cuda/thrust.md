@@ -44,7 +44,6 @@ int main(void) {
 ```
 
 
-
 ### Algorithms
 
 Thrust algorithms will auto detect host/device and run the correct version.
@@ -146,7 +145,6 @@ float norm = std::sqrt(thrust::transform_reduce(d_x.begin(), d_x.end(), square<f
 ```
 
 
-
 ### iterators
 
 ```cpp
@@ -180,6 +178,5 @@ first[2]   // returns tuple(30, 'z')
 thrust::tuple<int,char> init = first[0];
 thrust::reduce(first, last, init, thrust::maximum<tuple<int,char>>()); // returns tuple(30, 'z')
 ```
-
 
 

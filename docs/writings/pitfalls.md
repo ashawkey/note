@@ -1,7 +1,6 @@
 # Writing Issues
 
 
-
 ### Avoid Ambiguity
 
 * since --> because
@@ -10,13 +9,11 @@
 * if --> whether
 
 
-
 ### Avoid Strong Words
 
 * always --> often
 
 * 
-
 
 
 ### Avoid Informal Words
@@ -52,11 +49,9 @@
 * note ... --> note that ...
 
 
-
 ### Avoid Complicated Words
 
 * utilize --> use
-
 
 
 ### Which vs That
@@ -86,7 +81,6 @@
 > ABC, that is the best method, ... [WRONG]
 
 
-
 ### Misc
 
 * No need to add "the" before Figure/Table 1.
@@ -104,7 +98,6 @@
   e.g., "Tools proposed in [2]" --> "Tools proposed by AAA et al. [2]"
 
 
-
 ### Uncountable
 
 * work: use several pieces of work.
@@ -112,11 +105,9 @@
 * software: use several software programs.
 
 
-
 ### Abbreviation
 
 * ABC (Aaa Bbb Ccc) --> Aaa Bbb Ccc (ABC)
-
 
 
 ### As follows

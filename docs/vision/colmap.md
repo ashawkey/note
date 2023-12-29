@@ -1,7 +1,6 @@
 # colmap
 
 
-
 ### Install in Ubuntu
 
 To enable CUDA, you must build from source.
@@ -56,7 +55,6 @@ cmake ..
 make -j
 sudo make install
 ```
-
 
 
 ### CLI
@@ -135,9 +133,6 @@ colmap ...
 ```
 
 
-
-
-
 ### GUI
 
 ```bash
@@ -146,7 +141,6 @@ colmap gui
 ```
 
 Then just follow the GUI.
-
 
 
 ### Troubleshooting

@@ -17,7 +17,6 @@ ln -s /root/anaconda3/lib/libpcre.so.1 /lib
 ```
 
 
-
 ### Config
 
 uwsgi.ini
@@ -43,7 +42,6 @@ pidfile = uwsgi.pid
 ```
 
 
-
 ### Setup  Nginx
 
 ```
@@ -66,9 +64,6 @@ server {
 	}
 }
 ```
-
-
-
 
 
 ### CLI

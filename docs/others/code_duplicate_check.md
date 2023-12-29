@@ -27,7 +27,6 @@
   compare similarity of vectors.
 
 
-
 ### example
 
 ```python

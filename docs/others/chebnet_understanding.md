@@ -3,9 +3,13 @@
 convolution in spectral domain is just a frequency filter.
 
 let the graph Laplacian is $n * n$.
+
 $$
+\displaylines{
 y = UHU'x = Ug_\theta(\lambda)U'x = g_\theta(L)x
+}
 $$
+
 but to learn a filter's complicity is $O(n)$. (there are $n$ free parameters)
 
 the problem is how to make it faster.
@@ -13,23 +17,30 @@ the problem is how to make it faster.
 we need parametrization of the filter.
 
 we use Chebyshev polynomial to approximate it.
+
 $$
+\displaylines{
 g_\theta(\lambda) = diag(\theta) \rightarrow \sum_{k=0}^{K-1}\theta_k\Lambda^k \rightarrow  \sum_{k=0}^{K-1}\theta_kT_k(\tilde\Lambda) \\
 \Lambda = diag(\lambda)\\
 g_\theta(L) \rightarrow Ug_\theta(\lambda)U' =  \sum_{k=0}^{K-1}\theta_kT_k(\tilde L) \\
 then \ \ \ y = g_\theta(L)x \\
 let \ \ \bar{x_k} = T_k(\tilde L)x \\
 y = \bar{X}\theta \\
+}
 $$
+
 due to the property of Chebyshev:
+
 $$
+\displaylines{
 \bar{x_k} = 2\tilde L \bar{x_{k-1}} - \bar{x_{k-2}} \\
 \tilde L = 2L/\lambda_{max} - I
+}
 $$
+
 so we avoided computing eigenvalues and Fourier basis $U$ , and just use $L$ and $\lambda_{max}$ to recursively calculate $y$ from $x$.
 
 time complexity is from $O(n^2)$ to $O(K|\mathcal E|)$
-
 
 
 #### Pooling
@@ -48,7 +59,6 @@ we need multi-level clustering: Graclus, which also need not calculating eigenva
 Then we pool it by adding fake nodes to build a balanced binary tree.
 
 Finally, we feed it to a Fully connected Layer for Output.
-
 
 
 #### Codes
@@ -378,14 +388,6 @@ class model_perf:
 ```
 
 
-
 #### Example
-
-
-
-
-
-
-
 
 

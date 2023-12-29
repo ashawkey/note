@@ -13,7 +13,6 @@ vim /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 
 
-
 ### CLI
 
 ```bash
@@ -43,7 +42,6 @@ show full columns from <tb>;
 ```
 
 
-
 ### backup & recovery
 
 ```bash
@@ -57,7 +55,6 @@ mysqldump <db> [table1 table2 ...] > backup.sql
 shell $ mysql < backup.sql
 mysql $ source backup.sql;
 ```
-
 
 
 ### Char set
@@ -141,9 +138,6 @@ To set the default charset to `utf8mb4`:
   
 
 
-
-
-
 ### Set password
 
 ```mysql
@@ -154,7 +148,6 @@ exit;
 ```
 
 the default password is ''.
-
 
 
 ### Data types
@@ -181,7 +174,6 @@ the default password is ''.
 * DATE, TIME, DATETIME, TIMESTAMP
 
 
-
 ### Create database
 
 You must create database first, then select database, then create table.
@@ -193,7 +185,6 @@ CREATE DATABASE [IF NOT EXISTS] database_name;
 
 USE database_name;
 ```
-
 
 
 ### Create table
@@ -211,11 +202,9 @@ column_name data_type(length) [NOT NULL] [DEFAULT value] [AUTO_INCREMENT] column
 ```
 
 
-
 ### Operations
 
 Nearly the same as SQLite.
-
 
 
 ### Full text search
@@ -253,7 +242,6 @@ Nearly the same as SQLite.
   ```
 
 
-
 ### Python API
 
 ```python
@@ -288,8 +276,5 @@ stmt = "select * from table"
 cursor.execute(stmt)
 res = cursor.fetchall() # list of list
 ```
-
-
-
 
 

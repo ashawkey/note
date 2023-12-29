@@ -19,7 +19,6 @@ sudo npm install -g npm
 need to restart shell to use new version!
 
 
-
 ### `node`
 
 Node.js is a **JavaScript run-time environment.**
@@ -105,7 +104,6 @@ It allows developers to write JavaScript outside of a browser.
   
 
 
-
 ### `npm`: Node Package Manager
 
 ```bash
@@ -172,15 +170,11 @@ this will create a `package.json`.
 ```
 
 
-
 React provides a better init setup by:
 
 `npx create-react-app <name>`
 
 It installs lots of default packages.
-
-
-
 
 
 ### `npx`: Node Package Runner
@@ -197,7 +191,6 @@ npx cowsay
 npx node@10 # run specific version of node
 npx https://xxx # run code from web
 ```
-
 
 
 ### `package.json`

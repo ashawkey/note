@@ -10,7 +10,6 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```
 
 
-
 ### usage
 
 Run multiple containers (service) within one config (project).

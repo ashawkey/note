@@ -19,9 +19,6 @@ remove_folder(input_folder, output_folder, return_mask=True)
 ```
 
 
-
-
-
 ### [Carvekit](https://github.com/OPHoperHPO/image-background-remove-tool)
 
 ```bash
@@ -99,7 +96,6 @@ for img_path in tqdm.tqdm(img_paths):
 ```
 
 
-
 ### [Rembg](https://github.com/danielgatis/rembg)
 
 best quality.
@@ -111,7 +107,6 @@ pip install rembg[gpu]
 rembg i input_file output_file
 rembg p input_folder output_folder
 ```
-
 
 
 ```python
@@ -126,9 +121,6 @@ output = remove(input, alpha_matting=True) # alpha matting, better for hair-like
 
 cv2.imwrite('output.png', output)
 ```
-
-
-
 
 
 ### [BackgroundRemover](https://github.com/nadermx/backgroundremover)

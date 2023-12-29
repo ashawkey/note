@@ -8,7 +8,6 @@ import pandas as pd
 ```
 
 
-
 ### IO
 
 ```python
@@ -18,9 +17,6 @@ df = pd.read_csv(path, header=None) # no column names (first line is data)
 # save
 df.to_csv(path, header=False, index=False) # do not write row and column names (will be default int)
 ```
-
-
-
 
 
 ### Data Structure
@@ -80,7 +76,6 @@ df = pd.read_excel(io, sheetname=0, header=0)
 ```
 
 
-
 ### Manipulate Data
 
 ##### Series
@@ -121,7 +116,6 @@ s.drop([100, 'a'])
 ### unique
 s.unique()
 ```
-
 
 
 ##### DataFrame
@@ -185,7 +179,6 @@ df[df['list'].str.len() > 0]
 ```
 
 
-
 ### Conditioned Query
 
 ```python
@@ -194,7 +187,6 @@ df.loc[df.country.isin(['Italy', 'New Zealand'])]
 df.loc[(df.points>80) & (df.country=='Italy')] # Never use `and`, `or`. Must use ()&(), ()|()
 df.loc[df.price.notnull()] # or isnull()
 ```
-
 
 
 ### Grouping and Sorting
@@ -219,9 +211,6 @@ Parrot       25.0
 >>> df.groupby(['Animal'])
 <pandas.core.groupby.groupby.DataFrameGroupBy object at 0x000002B607F06128>
 ```
-
-
-
 
 
 ### Missing values
@@ -257,7 +246,6 @@ def impute(train, columns, test=None):
             test[column] = imp.transform(test[[column]])      
     return train if test is None else train, test
 ```
-
 
 
 ### Melting
@@ -332,14 +320,12 @@ two  4   5   6
 ```
 
 
-
 ### Merging
 
 ```python
 pd.merge(left, right, how='inner', on=None)
 # how: inner, outer, left, right
 ```
-
 
 
 ### Options
@@ -357,7 +343,6 @@ pd.reset_option(key)
 ```
 
 
-
 ### Others
 
 ```python
@@ -372,6 +357,5 @@ df.sum(axis='rows')
 df.apply(func, axis=0, raw=False, ...)
 df.pipe(func, *args, **kwargs)
 ```
-
 
 

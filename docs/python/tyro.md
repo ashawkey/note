@@ -5,7 +5,6 @@ Although `omegaconf`+`argparse` is great for a research project, it's not suitab
 With `tyro`, we can write a package CLI elegantly!
 
 
-
 ### Function
 
 The simplest use case, turn a function into a CLI.
@@ -28,7 +27,6 @@ python main.py --help
 python main.py --x 1
 python main.py --x 1 --path wow
 ```
-
 
 
 ### Dataclass
@@ -139,7 +137,6 @@ usage: main.py [-h] --x INT --flag1 {True,False} [--path STR] [--shape INT [INT 
 ```
 
 
-
 ### Hierarchical Configs
 
 For nesting configs.
@@ -188,7 +185,6 @@ usage: main.py [-h] [--optimizer.type {adam,sgd}] [--optimizer.lr FLOAT] [--seed
 │ --optimizer.lr FLOAT    (default: 0.001)                │
 ╰─────────────────────────────────────────────────────────╯
 ```
-
 
 
 ### Subcommands
@@ -245,7 +241,6 @@ usage: main.py train [-h] [--type {adam,sgd}] [--lr FLOAT] [--seed INT] [--itera
 │ --iterations INT        (default: 3000)                 │
 ╰─────────────────────────────────────────────────────────╯
 ```
-
 
 
 ### Subcommands for overriding default configs

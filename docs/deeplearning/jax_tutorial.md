@@ -1,7 +1,6 @@
 ## [JAX tutorial](https://jax.readthedocs.io/en/latest/index.html)
 
 
-
 ### why
 
 `jax` is more suitable for:
@@ -12,14 +11,12 @@
 * data parallel, especially on TPU.
 
 
-
 ### install
 
 ```bash
 # Installs the wheel compatible with CUDA 11 and cuDNN 8.2 or newer.
 pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_releases.html  # Note: wheels only available on linux.
 ```
-
 
 
 ### basics
@@ -34,7 +31,6 @@ from jax import grad, jit
 from jax import lax
 from jax import random
 ```
-
 
 
 ### jax.numpy
@@ -62,7 +58,6 @@ arr.device() # it's a function! GpuDevice(id=0, process_index=0)
   # However, jit can be used avoid the copy.
   arr.at[0].set(0)
   ```
-
 
 
 ### jax.grad
@@ -103,7 +98,6 @@ l, x_grad = jax.value_and_grad(mse_loss)(x, y)
   loss_dx = jax.grad(loss_aux, has_aux=True)
   x_grad = loss_dx(x, y)
   ```
-
 
 
 ### jax.jit
@@ -191,7 +185,6 @@ Tips to use `jit`:
 * Do not jit function in loops, always jit the function before using it in a loop.
 
 
-
 ### vmap
 
 `jax.vmap` for automatic vectorization (batch).
@@ -231,7 +224,6 @@ zsb = func_batch_broadcast(xs, y)
 `jit`, `vmap`, `grad` can be combined in arbitrary orders and all works well.
 
 
-
 ### RNG
 
 random number generator in jax is very different from numpy, to be reproducible, parallelizable, vectorizable.
@@ -251,7 +243,6 @@ random.normal(subkey) # 0.7692, different now.
 # to split multiple subkeys (useful for parallel)
 key, subkeys = random.split(key, num=10)
 ```
-
 
 
 ### Pytree
@@ -315,7 +306,6 @@ Tips:
   ```
 
 * since array  `shape` are tuples, it will be treated as a node instead of a leaf.
-
 
 
 ### pmap
@@ -451,13 +441,9 @@ params = jax.device_get(jax.tree_map(lambda x: x[0], replicated_params))
 ```
 
 
-
 Tips:
 
 * `pmap` will call `jit` internally.
-
-
-
 
 
 ### misc

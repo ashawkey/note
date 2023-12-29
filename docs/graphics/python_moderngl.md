@@ -3,16 +3,12 @@
 `moderngl ` supports OpenGL >= 3.3.
 
 
-
 ### install
 
 ```bash
 pip install moderngl # only headless
 pip install moderngl-window # for window creation
 ```
-
-
-
 
 
 ### troubles
@@ -37,7 +33,6 @@ SystemError: <built-in function create_context> returned NULL without setting an
 ```
 
 however, version`5.5` is OK.
-
 
 
 ### example
@@ -87,7 +82,6 @@ for i in range(0, 20, 2):
 ```
 
 
-
 #### Context
 
 the GL Context, all the operations are called in this context.
@@ -109,7 +103,6 @@ ctx.version_code
 ```
 
 
-
 ### Primitive Modes
 
 ```python
@@ -120,7 +113,6 @@ Context.LINE_STRIP
 Context.TRIANGLES
 ...
 ```
-
 
 
 #### program
@@ -145,7 +137,6 @@ program = ctx.program(
 ```
 
 
-
 #### buffer (vbo)
 
 OpenGL objects that stores an array in GPU allocated by the context.
@@ -164,7 +155,6 @@ vbo.ctx
 ```
 
 
-
 #### vertex_array (vao)
 
 describes how `buffer` is read by `shader`. 
@@ -180,7 +170,6 @@ vao.mode
 vao.program
 vao.extra
 ```
-
 
 
 ### Texture

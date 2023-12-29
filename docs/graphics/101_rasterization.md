@@ -9,7 +9,6 @@ When rasterize triangles, we need to solve the visibility/occlusion problem.
 store an extra z-value for each pixel to represent the depth. (convention: positive, the larger the further, in fact it can be viewed as the depth.)
 
 
-
 ```c++
 static bool insideTriangle(int x, int y, const Vector4f* _v){
     Vector3f v[3];

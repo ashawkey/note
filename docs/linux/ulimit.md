@@ -18,7 +18,6 @@ ulimit -n 100000
 ```
 
 
-
 ### permanent fix
 
 Modify `/etc/security/limits.conf`, and add:
@@ -27,6 +26,5 @@ Modify `/etc/security/limits.conf`, and add:
 * soft nofile 100000
 * hard nofile 100000
 ```
-
 
 

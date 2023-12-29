@@ -64,7 +64,6 @@ A technique that stores a copy of a given resource, and serves it back when requ
 It eases the load of server, and improves performance.
 
 
-
 ### Cookies
 
 A small piece of data that a server sends to the user's web browser.
@@ -105,7 +104,6 @@ Usually used to tell if two requests came from the same browser. (keeping logged
   ```
   
   
-
 
 
 ### CORS: Cross-Origin Resource Sharing

@@ -35,7 +35,6 @@ print(x, end='') # do not append \n
 ```
 
 
-
 ### list
 
 ```python
@@ -66,7 +65,6 @@ l = [x in l if x != val]
 ```
 
 
-
 * remove in for loop:
 
   Not well supported. Use list comprehension or filter.
@@ -88,7 +86,6 @@ s.discard(x) # pass if not found.
 ```
 
 
-
 ### dict
 
 ```python
@@ -107,9 +104,6 @@ for k in d:
 if k in d:
     print(d[k])    
 ```
-
-
-
 
 
 ### tricks

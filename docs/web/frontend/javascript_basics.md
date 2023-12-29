@@ -9,7 +9,6 @@ var a = 1; // use ;
 ```
 
 
-
 ### Types
 
 * `Number`
@@ -105,7 +104,6 @@ var a = 1; // use ;
 * `undefined`: uninitialized variable
 
 
-
 ### Variables
 
 Pass by value.
@@ -145,7 +143,6 @@ Pass by value.
   Maybe Global or Local, depending on where we declare it.
 
 
-
 ### Operators
 
 ```javascript
@@ -160,7 +157,6 @@ Pass by value.
 123 === '123'; // false
 1 === true;    // false
 ```
-
 
 
 ### Controls
@@ -180,7 +176,6 @@ switch (action) {
     doNothing();
 }
 ```
-
 
 
 ### Objects
@@ -211,7 +206,6 @@ Pass by Reference.
   ```
 
 
-
 ### Arrays
 
 A special type of Object. (Not a list, still a dictionary!)
@@ -238,7 +232,6 @@ a.splice(0, 0, 'x') // insert 'x' at index=0
 a.splice(a.indexOf('x'), 1) // delete 'x'
 
 ```
-
 
 
 ### Functions
@@ -315,8 +308,6 @@ a.splice(a.indexOf('x'), 1) // delete 'x'
   ```
 
 
-
-
 ### Exports & Imports
 
 Export by:
@@ -355,9 +346,6 @@ import(".App.js").then(
 );
 
 ```
-
-
-
 
 
 ### Closures

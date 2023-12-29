@@ -9,7 +9,6 @@ go run test.go # build and run
 ```
 
 
-
 ### Go Proxy
 
 Correct way to download modules.
@@ -21,7 +20,6 @@ $env:GO111MODULE = "on"
 
 go get <pkg>
 ```
-
 
 
 ### Go Modules
@@ -49,7 +47,6 @@ require github.com/gin-gonic/gin v1.6.3
 ```
 
 
-
 ### Defer
 
 ```go
@@ -70,9 +67,6 @@ defer func() { fmt.Println("3") }()
 
 
 ```
-
-
-
 
 
 ### The empty Interface
@@ -100,7 +94,6 @@ func main() {
 ```
 
 
-
 ### Overview
 
 ```go
@@ -118,7 +111,6 @@ func main() {
 ```bash
 go run test.go
 ```
-
 
 
 ### Types
@@ -170,7 +162,6 @@ const (
 * Global variable may not be used.
 
 
-
 ### Control
 
 * `select`
@@ -196,13 +187,11 @@ const (
   
 
 
-
 ### Function
 
 ```go
 func name([param [type1], param2 [type2]]) [return type] {}
 ```
-
 
 
 ### Array
@@ -215,7 +204,6 @@ var name [...]type{a, b ,c} // auto
 // pass to function
 func foo(arr [] int, size int) int {}
 ```
-
 
 
 ### Pointer
@@ -233,9 +221,6 @@ func swap (x* int, y* int) {
     *y = temp
 }
 ```
-
-
-
 
 
 ### OOP
@@ -288,9 +273,6 @@ func swap (x* int, y* int) {
 ```
 
 
-
-
-
 ### Slice (dynamic array)
 
 ```go
@@ -301,7 +283,6 @@ var slc []type{a,b,c}
 slc = append(slc, d, e)
 
 ```
-
 
 
 ### Map
@@ -321,7 +302,6 @@ val, ok = m[key]
 delete(m, key)
 
 ```
-
 
 
 ### Go Routine
@@ -373,6 +353,5 @@ In-born multi-threading support.
   ```
 
 * `select`
-
 
 

@@ -11,7 +11,6 @@
 > In Tensorflow 2.0 `tf.keras` will be the default and I highly recommend to start working using `tf.keras`
 
 
-
 ### Model
 
 ##### Sequential 
@@ -86,7 +85,6 @@ def build_densenet():
 ```
 
 
-
 ### Data Loaders
 
 ```python
@@ -147,7 +145,6 @@ class DataGenerator(keras.utils.Sequence):
 ```
 
 
-
 ### Preprocess
 
 ```python
@@ -182,7 +179,6 @@ for e in range(epochs):
             # the generator loops indefinitely
             break
 ```
-
 
 
 ### Callbacks
@@ -223,7 +219,6 @@ class MyCallback(keras.callbacks.Callback):
 ```
 
 
-
 ### Custom Metrics
 
 ```python
@@ -240,7 +235,6 @@ model.compile(optimizer='rmsprop',
               loss='binary_crossentropy',
               metrics=['accuracy', dice_coef])
 ```
-
 
 
 ### Custom Losses
@@ -263,7 +257,6 @@ def dice_loss(smooth):
 # use it
 model.compile(loss=dice_loss(smooth=0.001))
 ```
-
 
 
 ### Custom Layers
@@ -307,7 +300,6 @@ class MyLayer(Layer):
     def compute_output_shape(input_shape):
         return (input_shape[0], self.output_dim)
 ```
-
 
 
 ### Examples

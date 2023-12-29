@@ -5,13 +5,11 @@ pip install wordcloud
 ```
 
 
-
 ### CLI
 
 ```
 wordcloud_cli --text mytext.txt --imagefile wordcloud.png
 ```
-
 
 
 ### API
@@ -28,7 +26,6 @@ plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.show()
 ```
-
 
 
 ```

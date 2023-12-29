@@ -1,9 +1,6 @@
 ## custom search keyword
 
 
-
-
-
 Chrome: 设置-搜索引擎-管理搜索引擎和网站搜索-网站搜索-添加
 
 * google scholar: https://scholar.google.com/scholar?q=%s
@@ -12,7 +9,6 @@ Chrome: 设置-搜索引擎-管理搜索引擎和网站搜索-网站搜索-添�
 * wiki: https://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=%s
 * emoji: https://emojipedia.org/search/?q=%s
 * twitter: https://twitter.com/search?q=%s
-
 
 
 ### Reference

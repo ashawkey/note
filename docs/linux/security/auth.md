@@ -1,7 +1,6 @@
 # authorization
 
 
-
 ### last logins
 
 ```bash
@@ -23,7 +22,6 @@ who
 ```
 
 
-
 ### auth.log
 
 `/var/log/auth.log`
@@ -41,15 +39,11 @@ sudo cat /var/log/auth.log | grep "Failed password"
 ```
 
 
-
 If `rsyslog` is working but `auth.log` still failed to show any logs, this maybe caused by ownership of `auth.log` (must not be `root` but `syslog:adm`). Try:
 
 ```bash
 sudo chown syslog:adm /var/log/auth.log
 ```
-
-
-
 
 
 ### syslog

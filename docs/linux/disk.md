@@ -9,7 +9,6 @@ ref: https://stackoverflow.com/questions/24429949/device-vs-partition-vs-file-sy
 ```
 
 
-
 ### Partition Table Type
 
 A data structure that provides basic information for the OS about the partition of the hard disk.
@@ -53,7 +52,6 @@ A way of storing data inside the partitions.
 * VFAT
 
   support both Windows and Linux, usually for swap and recovery.
-
 
 
 ### check disk state and mount point
@@ -240,12 +238,6 @@ A way of storing data inside the partitions.
   ```
 
 
-
-
-
-
-
-
 ### Add a new disk
 
 * Plug in the hardware
@@ -300,9 +292,6 @@ A way of storing data inside the partitions.
   
 
 
-
-
-
 ### testdisk
 
 TestDisk can undelete
@@ -314,13 +303,11 @@ TestDisk can undelete
 If it doesn't work or for other filesystem! (which means the most used ext4 cannot use it.)
 
 
-
 ### extundelete
 
 Need to unmount the device.
 
 Usually we need a live-USB boot. (very difficult, not recommended)
-
 
 
 ### if the process is not killed (the only practical way)

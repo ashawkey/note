@@ -1,32 +1,47 @@
 ### [k inverse pairs array](https://leetcode-cn.com/problems/k-inverse-pairs-array/)
 
 
-
 > 给出两个整数 `n` 和 `k`，找出所有包含从 `1` 到 `n` 的数字，且恰好拥有 `k` 个逆序对的不同的数组的个数。
 
 令$f(i, j)$代表前$i$个数组成的序列中含有$j$个逆序对的个数。
 
 假设我们知道$f(i-1, *)$, 考虑将$i$插入到$k=0 \rightarrow i-1$的位置处**新**得到的逆序对数量为$i-1-k$，从而：
+
 $$
+\displaylines{
 f(i, j) = \sum_{k=0}^{i-1}f(i-1, j-(i-1-k))=\sum_{k=0}^{i-1}f(i-1, j-k)
+}
 $$
+
 展开可发现：
+
 $$
+\displaylines{
 \begin{align}
 f(i,j)    &= f(i-1,j) + &f(i-1, j-1) + \cdots + &f(i-1, j-i+1) \\
 f(i, j-1) &=            &f(i-1, j-1) + \cdots + &f(i-1, j-i+1) + f(i-1, j-i) \\
 \end{align}
+}
 $$
+
 从而：
+
 $$
+\displaylines{
 f(i,j) = f(i-1,j) + f(i, j-1)-f(i-1,j-i)
+}
 $$
+
 边界条件：
+
 $$
+\displaylines{
 f(*, 0) = 1 \quad \text{specifically, } f(1, 0) = 1\\
 f(1, j) = 0 \quad \text{if} ~ j > 0\\
 f(*, j) = 0 \quad \text{if} ~ j < 0 \\
+}
 $$
+
 动态规划：
 
 ```cpp
@@ -77,6 +92,5 @@ public:
     }
 };
 ```
-
 
 

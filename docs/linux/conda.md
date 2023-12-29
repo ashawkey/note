@@ -1,14 +1,12 @@
 # conda
 
 
-
 ### install
 
 download the runfile from [here](https://www.anaconda.com/products/individual), then simply run it with bash.
 
 * update: `condas update conda`
 * uninstall: `rm -rf ~/anaconda`
-
 
 
 ### envs
@@ -34,7 +32,6 @@ conda create --clone <env> --name <name>
 # delete (note the `env` here...)
 conda env remove -n <name>
 ```
-
 
 
 ### conda file locations
@@ -76,7 +73,6 @@ The directory structures:
 ### the installed python packages for each env
 ~/anaconda3/envs/<name>/lib/python3.7/site-packages
 ```
-
 
 
 ### package management

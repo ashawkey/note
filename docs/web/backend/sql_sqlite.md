@@ -9,8 +9,6 @@
   contains a series of `sql` script.
 
 
-
-
 ### Data Types
 
 * NULL
@@ -18,7 +16,6 @@
 * REAL
 * TEXT: character data, unlimited size.
 * BLOB: binary large object, can store any time of data. unlimited size.
-
 
 
 ### Create Table
@@ -155,7 +152,6 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
     
 
 
-
 * UPDATE
 
   used to change value of inserted row.
@@ -173,7 +169,6 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
   
 
 
-
 ### PRAGMA
 
 Set default behavior.
@@ -181,7 +176,6 @@ Set default behavior.
 ```sqlite
 PRAGMA case_sensitive_like = true;
 ```
-
 
 
 ### Full text search
@@ -218,7 +212,6 @@ FROM posts
 WHERE posts MATCH 'SQLite'
 ORDER BY rank;
 ```
-
 
 
 ### Python API

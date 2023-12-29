@@ -5,7 +5,6 @@ import datatable as dt
 ```
 
 
-
 ### Load
 
 ```python
@@ -20,7 +19,6 @@ dt.fread(data, sep=None, header=None, fill=False, skip_blank_lines=False, column
 ```
 
 
-
 ### Properties
 
 ```python
@@ -30,15 +28,14 @@ DT.stypes # column types
 ```
 
 
-
-
-
 ### Data Manipulation
 
-$$
-DT[i, j, by(), sort(), join()]
-$$
 
+$$
+\displaylines{
+DT[i, j, by(), sort(), join()]
+}
+$$
 
 
 ```python
@@ -97,7 +94,6 @@ DT[:, sum(f.quantity * g.price), join(products)]
 DT.sort("A")
 DT[:, :, sort(f.A)]
 ```
-
 
 
 ### Save

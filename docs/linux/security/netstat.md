@@ -1,7 +1,6 @@
 # port
 
 
-
 ### netstat
 
 check for network communications on every port.
@@ -10,7 +9,6 @@ check for network communications on every port.
 sudo netstat -antp # all numeric tcp program
 sudo netstat -anup # ... udp ...
 ```
-
 
 
 ### fuser
@@ -27,7 +25,6 @@ fuser -k [-HUP/TERM/INT...] .
 # interactively kill them
 fuser -i -k .
 ```
-
 
 
 ### ufw

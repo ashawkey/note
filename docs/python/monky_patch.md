@@ -1,7 +1,6 @@
 ## Monkey patch a method
 
 
-
 To patch the `forward` of a `nn.Module`, **define a closure** that keeps temporary variables and returns your new `forward`:
 
 ```python
@@ -39,7 +38,6 @@ Output:
 patched forward of a
 patched forward of b
 ```
-
 
 
 However, you cannot patch magic methods like `__call__` by this:

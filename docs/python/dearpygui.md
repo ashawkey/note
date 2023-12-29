@@ -7,7 +7,6 @@ pip install dearpygui
 ```
 
 
-
 ### Pipeline
 
 Context --> Viewport --> DearPyGUI

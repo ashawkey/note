@@ -1,7 +1,6 @@
 ### ACM style I/O
 
 
-
 ### scanf/printf
 
 Not recommended to use...
@@ -37,9 +36,6 @@ int main() {
 ```
 
 
-
-
-
 ### iostream
 
 Acceleration:
@@ -54,7 +50,6 @@ int main() {
     cin.tie(0);
 }
 ```
-
 
 
 `cin >> x` are separated by spaces or line breaks. types are auto-casted.
@@ -90,7 +85,6 @@ int main() {
 ```
 
 
-
 If you want to get **a whole input line (may contain spaces)** to string:
 
 ```cpp
@@ -104,7 +98,6 @@ int main() {
 	getline(cin, s); // NOT cin.getline(c_str);
 }
 ```
-
 
 
 `cout` precision:
@@ -124,6 +117,5 @@ int main() {
     cout << fixed << setprecision(5) << f << endl; // 3.14159
 }
 ```
-
 
 

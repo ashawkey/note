@@ -10,7 +10,6 @@ pkg-config --libs opencv
 ```
 
 
-
 ### install opencv2
 
 Although opencv2 has been outdated, lots of packages still use it...

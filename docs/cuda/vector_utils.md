@@ -213,6 +213,3 @@ template<class T> static __device__ __forceinline__ void swap(T& a, T& b)       
 ```
 
 
-
-
-

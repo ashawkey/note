@@ -7,7 +7,6 @@ blockchain is a center-less distributed database.
 * once the data are written into the database, they cannot be modified (unless one has control over more than 51% nodes).
 
 
-
 ### Algorithm
 
 blockchain is a single-direction linked list (chain) of blocks. 
@@ -48,7 +47,6 @@ And this computation progress is called **mining**.
 **Mining is the procedure that writes data into a blockchain.**
 
 In fact, it is very expensive to maintain a blockchain, and maybe the only practical application of blockchain is bitcoin.
-
 
 
 ### Bitcoin
@@ -94,9 +92,6 @@ There are 2 ways for miners to get profits:
 **How to make a valid transaction?**
 
 Digital Signature technology is used here.
-
-
-
 
 
 ### Problems of cryptocurrency

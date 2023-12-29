@@ -6,9 +6,6 @@
 * Reverse Proxy (Server): An intermediary for responses from servers.
 
 
-
-
-
 ### Systemd
 
 `Systemd` is a series of commands, it replaces `initd`  and has `pid=1`.
@@ -40,9 +37,6 @@ systemctl cat apache.service # cat config file
 ```
 
 
-
-
-
 ### CLI
 
 ```bash
@@ -57,7 +51,6 @@ nginx -t # test, check config files.
 ```
 
 
-
 ### Logs
 
 default:
@@ -66,7 +59,6 @@ default:
 /var/log/nginx/access.log
 /var/log/nginx/error.log
 ```
-
 
 
 ### Configs

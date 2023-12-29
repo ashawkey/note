@@ -1,13 +1,11 @@
 ## PyMeshLab
 
 
-
 ### install
 
 ```bash
 pip install pymeshlab
 ```
-
 
 
 ### usage
@@ -54,7 +52,6 @@ ms.clear()
 ```
 
 
-
 Numpy interaction:
 
 ```python
@@ -77,7 +74,6 @@ m = ms.current_mesh() # get the correct ref
 verts = m.vertex_matrix()
 faces = m.face_matrix()
 ```
-
 
 
 Filter script (automatic processing)
@@ -104,7 +100,6 @@ ms.load_filter_script(base_path + "sample_filter_script.mlx")
 # apply the same filters
 ms.apply_filter_script()
 ```
-
 
 
 ### Useful Filters
@@ -134,7 +129,6 @@ ms.meshing_remove_t_vertices(method=0, threshold=40, repeat=True)
 ms.meshing_repair_non_manifold_edges(method=0)
 ms.meshing_repair_non_manifold_vertices(vertdispratio=0)
 ```
-
 
 
 [T-vertices](): Vertices in the mid of an edge. Could be fixed by tessellation.

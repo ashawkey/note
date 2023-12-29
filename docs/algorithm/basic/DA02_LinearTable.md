@@ -31,9 +31,6 @@ More space for less time.
 Link the head and tail.
 
 
-
-
-
 # Exercise
 
 * Floyd Cycle detection (& Variations)
@@ -95,12 +92,15 @@ Link the head and tail.
 
   （m奇数时均走m步，f第一圈不经过相遇点，m偶数时f走两圈，每圈m/2）
   
+
 $$
+\displaylines{
 
   2t - t = km \\
   2t'-t' = (k+1)m \\
   \therefore t'-t = m
   
+}
 $$
 
 
@@ -108,14 +108,18 @@ $$
 
   设s入环后又走了x步，则：
   
+
 $$
+\displaylines{
 
   t = n + x \\
   t = km \\
   \therefore km = n +x \\
   (k-1)m + (m-x) = n \\
   
+}
 $$
+
 
   即，外部路径长度为当前位置走到入口点的距离加上k个环。
 
@@ -126,7 +130,6 @@ $$
 
   * 人为构环（A’s tail->B’s head），之后用Floyd判断入环点。
   * （更简单直白）先分别遍历两个链表，如果终点相同，则他们相交。记录他们的长度，再次遍历，先让长链表指针移动长度的差值次，再同步移动两个指针，相等处即交点。
-
 
 
 ### Others

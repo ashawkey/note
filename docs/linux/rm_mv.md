@@ -11,7 +11,6 @@ mv !(dir1|dir2) dir1
 ```
 
 
-
 ### remove with exclusion
 
 ```bash
@@ -23,6 +22,5 @@ rm !(file1|file2)
 # prompt(i) and verbose(v)
 rm -vi *
 ```
-
 
 

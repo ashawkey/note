@@ -41,7 +41,6 @@
     * I'm here to see friends.
 
 
-
 ### Hotel
 
 * No appointment

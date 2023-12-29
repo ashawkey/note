@@ -3,7 +3,6 @@
 A matrix/vector arithmetic library for c/c++.
 
 
-
 ### Install
 
 download the source at [homepage](https://eigen.tuxfamily.org/index.php?title=Main_Page).
@@ -11,7 +10,6 @@ download the source at [homepage](https://eigen.tuxfamily.org/index.php?title=Ma
 to use it, include it in compiling : `g++ -I /path/to/eigen source.cpp`
 
 or simply symbol link it to `\usr\local\include`.
-
 
 
 > Troubleshooting: `Eigen::all, Eigen::seq` is not a member of Eigen.
@@ -22,7 +20,6 @@ or simply symbol link it to `\usr\local\include`.
 > * stable: https://eigen.tuxfamily.org/dox/ (there is no page about slicing)
 >
 > To use the `dev` branch, download the source at https://eigen.tuxfamily.org/dox/
-
 
 
 ### Examples
@@ -67,7 +64,6 @@ int main()
 ```
 
 
-
 ### Matrix
 
 all matrices and vectors are instances of the `Matrix` class:
@@ -100,7 +96,6 @@ Built-in typedefs for `N in [2,3,4,X]` and `t in [i, f, d, cf, cd]`:
 * `RowVectorNt` == `Matrix<t, 1, N>`
 
 
-
 #### dynamic matrix
 
 Eigen also supports **dynamic** matrix size: `typedef Matrix<double, Dynamic, Dynamic> MatrixXd;`
@@ -118,7 +113,6 @@ using Triangles = Matrix<uint32_t, Dynamic, 3, RowMajor>;
 ```
 
 
-
 #### Access coefficients
 
 Coefficient accessors: `m(i, j)`
@@ -131,7 +125,6 @@ m << 1, 2, 3,
      4, 5, 6,
      7, 8, 9;
 ```
-
 
 
 #### Size
@@ -155,7 +148,6 @@ MatrixXf a(2,2);
 MatrixXf b(3,3);
 a = b; // a is now 3x3
 ```
-
 
 
 ### Arithmetic
@@ -286,7 +278,6 @@ int main() {
 ```
 
 
-
 #### Basic reductions
 
 ```c++
@@ -327,7 +318,6 @@ Matrix3f a;
 Matrix3f b;
 a.cwiseProduct(b);
 ```
-
 
 
 ### Array
@@ -416,9 +406,6 @@ int main()
 ```
 
 
-
-
-
 ### Block Operations
 
 use `.block(i,j,p,q)` for dynamic-size block or `.block<p,q>(i,j)` for a fixed-size block, starting at `(i,j)` with size `(p,q)`.
@@ -479,7 +466,6 @@ v.segment(i, n) == v.segment<n>(i)
 ```
 
 
-
 ### Advanced Initializations
 
 #### joined comma 
@@ -495,7 +481,6 @@ RowVectorXd joined(7);
 joined << vec1, vec2;
 std::cout << "joined = " << joined << std::endl;
 ```
-
 
 
 ### Special matrices
@@ -546,7 +531,6 @@ std::cout << mat3 << std::endl;
 MatrixXf mat = MatrixXf::Random(2, 3);
 mat = (MatrixXf(2,2) << 0, 1, 1, 0).finished() * mat; // .finished() is a must!
 ```
-
 
 
 ### Reductions
@@ -687,14 +671,12 @@ int main()
 ```
 
 
-
 ### Map: from raw data to eigen
 
 ```cpp
 float* data;
 Map<const Vector3f> pos(data, 3); // (pointer, size)
 ```
-
 
 
 ### Ref: generic type without template

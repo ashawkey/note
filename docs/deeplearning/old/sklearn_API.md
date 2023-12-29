@@ -44,7 +44,6 @@ RandomForestClassifier()
 ```
 
 
-
 #### feature_extraction
 
 ####  linear_model
@@ -55,7 +54,6 @@ RandomForestClassifier()
 
 
 ```
-
 
 
 #### metrics
@@ -155,7 +153,6 @@ scaler = StandardScaler()
 df[col+"_scaled"] = scaler.fit_transform(df[col].values.reshape(-1,1))
 
 ```
-
 
 
 #### svm

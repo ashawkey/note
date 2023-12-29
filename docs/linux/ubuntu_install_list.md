@@ -9,7 +9,6 @@ https://rufus.ie/
 Use the default settings are OK.
 
 
-
 ### Restart the machine, enter boot manager.
 
 Zlab servers: 
@@ -21,7 +20,6 @@ Select your USB as the starter, and choose `try or install ubuntu`.
 To change the default boot order (e.g., if you installed new system on a different disk), you should check `Hard Disk Drive BBS Priorities`  in BIOS config.
 
 
-
 ### Installing...
 
 Wait until you see graphics.
@@ -29,7 +27,6 @@ Wait until you see graphics.
 Choose language, how to install (alongside or erase old OS), enter your name and password.
 
 Then another long wait...
-
 
 
 ### Setting up
@@ -304,7 +301,6 @@ Then another long wait...
 * VS Code
 
   download the deb file to install.
-
 
 
 ### Misc

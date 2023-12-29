@@ -1,7 +1,6 @@
 # bash
 
 
-
 * options
   * `--`: disable further option processing.
   * `-i`: interactive

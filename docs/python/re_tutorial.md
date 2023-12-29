@@ -11,7 +11,6 @@ r'\s*'
 ```
 
 
-
 ### Special Characters
 
 * `.`
@@ -41,7 +40,6 @@ r'\s*'
 * `\W`: [ ^a-zA-Z0-9_]
 
 
-
 ### API
 
 ```python
@@ -68,7 +66,6 @@ m.group(i)
 m.pos
 m.endpos
 ```
-
 
 
 ### Examples

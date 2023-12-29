@@ -66,7 +66,6 @@ def is_contiguous(stride):
   * dtype: int, float, ...
 
 
-
 ### Source Structure
 
 ```bash
@@ -92,7 +91,6 @@ myop() # return the output
 Then you should write kernels as the real implementation.
 
 You'll need to `dispatch` based on `dtype`, and implement each (or use template).
-
 
 
 ### Workflow efficiency

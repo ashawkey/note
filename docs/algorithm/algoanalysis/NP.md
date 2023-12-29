@@ -6,7 +6,6 @@ To prove a problem is NPC, we need to:
 * show it is NP-hard, by reducing from a known NP-hard problem (e.g., SAT, 3-SAT, ...).
 
 
-
 ### Known NPC problems
 
 ![image-20220608155144578](NP.assets/image-20220608155144578.png)
@@ -14,7 +13,6 @@ To prove a problem is NPC, we need to:
 * **[Partition](https://en.wikipedia.org/wiki/Partition_problem)**: Partition a set of numbers into two subsets with the same sum.
 
   Can be reduced from Subset-sum, and is a limited case of 0-1 knapsack.
-
 
 
 ### Undirected Hamiltonian Cycle
@@ -47,7 +45,6 @@ To prove a problem is NPC, we need to:
   ![image-20220608144438533](NP.assets/image-20220608144438533.png)
 
 
-
 ### Strongly Independent Set
 
 > https://www.cse.iitd.ac.in/~amitk/SemI-2015/tut11.pdf
@@ -71,14 +68,10 @@ The following is a version of the Independent Set problem. You are given a graph
   Conversely, let S be a strongly independent set in G0 . First observe that k > 1 (otherwise, the reduction is trivially correct). Now S cannot contain any of the new vertices ve (because any other vertex in G0 is reachable from ve by a path of length 2). Therefore, S contains vertices which correspond to those in G. Now check that these vertices form an independent set in S.
 
 
-
-
-
 ### Minimum Sum of Squares
 
 > http://cmcstuff.esyr.org/vmkbotva-r15/5%20%D0%BA%D1%83%D1%80%D1%81/9%20%D0%A1%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/%D0%A2%D0%B8%D0%B3%D1%80%D1%8B/%D0%A2%D0%B5%D0%BE%D1%80%D0%B8%D1%8F%20%D1%81%D0%BB%D0%BE%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%BD%D0%B0%20%D0%B0%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%BC.pdf, 17
 
 ![image-20220608161307474](NP.assets/image-20220608161307474.png)
-
 
 

@@ -5,7 +5,6 @@
 use `htop`.
 
 
-
 ### create swap
 
 ```bash
@@ -16,14 +15,12 @@ sudo swapon /swapfile
 ```
 
 
-
 ### delete swap
 
 ```bash
 sudo swapoff /swapfile
 sudo rm /swapfile
 ```
-
 
 
 ### check swap file location
@@ -34,9 +31,6 @@ sudo swapon -s
 # or
 sudo cat /proc/swaps
 ```
-
-
-
 
 
 ### `kswapd0` high CPU usage.

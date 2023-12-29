@@ -1,7 +1,6 @@
 # asynchronous programming
 
 
-
 ### Promise
 
 A `Promise`  is an object representing the eventual completion or failure of an asynchronous operation.
@@ -13,13 +12,11 @@ It is always in one of these states: `pending, fufilled, rejected.`
 Use `then()` to add callbacks to `fufilled` promises, and `catch()` for `rejected` promises.
 
 
-
 Some guarantees:
 
 * Callbacks added with `then()/catch()` will never be invoked before the [completion of the current run](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#run-to-completion) of the JavaScript event loop
 * These callbacks will be invoked even if they were added *after* the success or failure of the asynchronous operation that the promise represents.
 * (Chaining) Multiple callbacks may be added by calling `then()` several times. They will be invoked one after another, in the order in which they were inserted.
-
 
 
 Chaining:
@@ -33,7 +30,6 @@ doSomething()
 
 doAnotherthing(); // this will not wait until doSomething() finish !
 ```
-
 
 
 Catching errors:
@@ -54,7 +50,6 @@ new Promise((resolve, reject) => {
     console.log('Do this, no matter what happened before');
 });
 ```
-
 
 
 ### Create promises manually
@@ -87,7 +82,6 @@ console.log(1); // not in task queue
 
 // 1, 2, 3, 4
 ```
-
 
 
 ### async / await

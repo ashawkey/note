@@ -5,15 +5,12 @@
 ![image-20210310122314387](interpolation.assets/image-20210310122314387.png)
 
 
-
 ### Align Corners
 
 https://zhuanlan.zhihu.com/p/87572724
 
 
-
 ### Up-sampling
-
 
 
 ### Down-sampling
@@ -70,7 +67,6 @@ https://zhuanlan.zhihu.com/p/87572724
  [12. 15.]]
 
 ```
-
 
 
 ### PIL resize problem

@@ -102,7 +102,6 @@ Time2: $O(n) \sim O(n^2) \sim O(n^2)$
 Space: $O(1)$
 
 
-
 #### Selection sort
 
 ```c++
@@ -126,7 +125,6 @@ Space: $O(1)$
 Time: $O(n^2) \sim O(n^2) \sim O(n^2)$ (stably)
 
 Improvement is the **Heap sort**. Instead of using O(n) to find the smallest element, we can put the records in a heap and only use O(logn).
-
 
 
 ### Shell sort (缩小增量排序)
@@ -162,7 +160,6 @@ Space: $O(1)$
 ![1546675194838](.\DA08_InnerSorting.assets\1546675194838.png)
 
 ​	交换次数计算：(1+1+1)+(1+1)+(4) = 9
-
 
 
 ### Divide-and-conquer 
@@ -221,15 +218,17 @@ When pivot is selected such that it always in nearly middle, the height of corre
 When the sequence is already ordered, it reaches the worst Time complexity of n^2.
 
 Analysis of average time complexity: (Similar to that of Random BST)
+
 $$
+\displaylines{
 T(n) = T(i) + T(n-i-1) + cn\\
 T(n) = \frac 2 n \sum_{i=0}^{n-1} T(i) + cn \\
 nT(n) - (n-1)T(n-1) = 2T(n-1) + cn \\
 \frac {T(n)} {n+1} = \frac {T(n-1)} {n} + \frac c n \\
 \frac {T(n)} {n+1} \sim O(logn) \\
 T(n) \sim O(nlogn)
+}
 $$
-
 
 
 * Variant: **Find the first k smallest elements, or Find the k-th smallest element.**
@@ -286,7 +285,6 @@ $$
         return q;
     }
     ```
-
 
 
 #### merge sort
@@ -358,7 +356,6 @@ MergeSort(array, count)
 ```
 
 
-
 ### Heap sort
 
 Advanced version of Selection sort.
@@ -375,7 +372,6 @@ Unstable.
 Time: $O(nlogn)$ (stably)
 
 Space: $O(1 )$
-
 
 
 ### Bin sort
@@ -604,9 +600,7 @@ void adjust(record arr[], int idx[], int n){
 关键在于adjust仅使用O(1)额外空间。
 
 
-
 ## Summary
-
 
 
 **排序算法的下界分析：判定树。**

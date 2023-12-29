@@ -41,11 +41,15 @@
 
   This mapping is NON-linear, because we want more precision in nearer distance, while less precision in further distance.
   
+
 $$
+\displaylines{
 
   z' = \frac {1/z - 1/near} {1/far - 1/near}
   
+}
 $$
+
 
   To visualize z buffer, just set it as the `FragColor`:
 
@@ -69,7 +73,6 @@ $$
 * z-fighting: if two triangles are tightly placed, z-buffer maybe not precise enough to determine which is in the front and switching between the two triangles, resulting in strange visual effect.
 
   There is no real solution for this (maybe set 32-bit depth buffer), so never place two triangles too close!
-
 
 
 ### Stencil test (模板测试)
@@ -148,7 +151,6 @@ $$
   shaderSingleColor.use(); 
   DrawObjectEnlarged(); // we need to manually scale the object so it looks like an edge...
   ```
-
 
 
 ### Blending
@@ -234,7 +236,6 @@ $$
       sorted[distance] = windows[i];
   }
   ```
-
 
 
 ### Face Culling
@@ -606,7 +607,6 @@ $$
   To achieve **dynamic** environment mapping, we need to frame buffer all reflective faces and then render it to the object!
 
 
-
 ### Advanced GLSL
 
 * set the point size.
@@ -756,7 +756,6 @@ $$
   // ... 绘制蓝色立方体
   // ... 绘制黄色立方体 
   ```
-
 
 
 ### Geometry Shader
@@ -961,7 +960,6 @@ $$
   ```
 
 
-
 ### Instancing
 
 * Instancing aims to **draw multiple instances of the same object within one GPU call**, instead of use a for loop, so we can save CPU/GPU communication cost.
@@ -1098,7 +1096,6 @@ $$
       );
   }
   ```
-
 
 
 ### Anti-aliasing (AA)

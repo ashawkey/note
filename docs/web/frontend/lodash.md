@@ -11,7 +11,6 @@ npm install -S lodash
 ```
 
 
-
 ### usage
 
 ```js

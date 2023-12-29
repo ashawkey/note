@@ -43,7 +43,6 @@
     ```
 
 
-
 ### Pattern Matching
 
 * Classification
@@ -160,7 +159,6 @@
     | string | a    | b    | c    | d    | a    | a    | b    | c    | a    | b    |
     | next   | -1   | 0    | 0    | 0    | 0    | 1    | 1    | 2    | 3    | 1    |
     | next2  | -1   | 0    | 0    | 0    | -1   | 1    | 0    | 0    | 3    | 0    |
-
 
 
 ### Boyer-Moore 算法

@@ -62,7 +62,9 @@ void ReplacementSelection(elem *a, int n){
 ![1543030801537](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1543030801537.png)
 
 内部节点树深度s，最底层外部节点个数`LowExt`（篮框），`LowExt`以外的节点数`offset`（红框，满完全二叉树）。则L[i]与对应的父节点B[p]的关系为：
+
 $$
+\displaylines{
 s = ceil(log_2n)-1\\
 LowExt = 2(n-2^s)\\
 offset = 2^{s+1}-1 \\
@@ -72,6 +74,7 @@ p = \left\{
 	 (i-LowExt+n-1)/2, & i>LowExt
 	\end{array}
 \right.
+}
 $$
 
 
@@ -80,7 +83,6 @@ $$
   每次移除最小值后，根节点的顺串首值改变，此时需要重构胜者树。
 
   只需要`siftdown`根节点即可，每次与兄弟比较，更改父节点。
-
 
 
 #### 败者树
@@ -154,7 +156,6 @@ struct LoserTree{
 ```
 
 
-
 ##### 复杂度分析：
 
 初始化$O(k)$，每次操作$O(logk)$.
@@ -162,6 +163,5 @@ struct LoserTree{
 生成n长的顺串总时间$O(k+nlogk)$
 
 （naive需要$O(nk)$）
-
 
 

@@ -1,15 +1,12 @@
 # Magic SysRq
 
 
-
 `SysRq` is usually `Print Screen` in keyboard.
-
 
 
 - `Ctrl+Z`: pause a process (plus `bg` to resume in the background, `fg` to raise to foreground)
 - `Ctrl+C`: politely ask the process to shut down now
 - `Ctrl+\`: mercilessly kill the process that is currently in the foreground
-
 
 
 Push each key sequentially.

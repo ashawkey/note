@@ -1,11 +1,9 @@
 # Community Applications: The Ultra Proxy Guide.
 
 
-
 ### Problems
 
 Unraid plugins rely on GitHub. Specifically, it needs to access `github.com` and `raw.githubusercontent.com` to fetch data.
-
 
 
 ### manually Install CA
@@ -23,9 +21,7 @@ Unraid plugins rely on GitHub. Specifically, it needs to access `github.com` and
 * go to Plugin Tab and install from the local file.
 
 
-
 > Ref: https://post.smzdm.com/p/ad2dngvn/
-
 
 
 ### Use docker to setup proxy
@@ -126,7 +122,6 @@ Since the terminal of unraid do not support package manager (and the alternative
 * Turn on auto-restart of this container.
 
 
-
 ### Configure proxy settings for CA
 
 * Apps Tab: use `curl` to fetch.
@@ -159,7 +154,5 @@ Since the terminal of unraid do not support package manager (and the alternative
   
 
 * Reboot and you are free to load Apps and install Plugins!
-
-
 
 

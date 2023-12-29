@@ -16,7 +16,6 @@ both row-col and col-row binary search for 13 will fail!
 ```
 
 
-
 奇妙遍历法，从右上角开始。
 
 ```cpp

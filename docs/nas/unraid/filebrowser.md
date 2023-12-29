@@ -3,7 +3,6 @@
 [website](https://filebrowser.org/)
 
 
-
 ### install
 
 * official repo:
@@ -27,11 +26,9 @@
   (However it is close-sourced, and cannot play `flv` still.)
 
 
-
 ### usage
 
 Default account/password is `admin/admin`.
-
 
 
 ### video

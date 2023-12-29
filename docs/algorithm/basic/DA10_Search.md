@@ -18,16 +18,23 @@
 #### 顺序检索
 
 设置下标0处为哨岗，从尾部检索到此处仍未发现目标元素，意味着检索失败。
+
 $$
+\displaylines{
 \frac {n+1} 2 < ASL < n+1
+}
 $$
+
 
 * 检索成功: 假设 $p_i$ is $\frac 1 n$:
   
+
 $$
+\displaylines{
 
   \sum_{i=1}^n\frac 1 n(n-i+1) = \frac {n+1} 2
   
+}
 $$
 
 
@@ -36,10 +43,14 @@ $$
 
 #### 二分检索
 
+
 $$
+\displaylines{
 ASL = \frac 1 n (\sum_{i=1}^{lg\ n}i\cdot 2^{i-1}) \\
 \sim O(lg\ n)
+}
 $$
+
 
 * Need Sorting first
 
@@ -57,10 +68,13 @@ $$
 分块有序，先检索在哪一块中（二分检索），后在块内检索（顺序检索）。
 
 ![1543372011178](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1543372011178.png)
+
 $$
+\displaylines{
 ASL_{succ} = ASL_b + ASL_s \\
 \approx lg\ b + s/2 \\
 \approx lg(\frac n s + 1) + s/2
+}
 $$
 
 
@@ -116,11 +130,15 @@ $$
 
 * 基数转换法
   
+
 $$
+\displaylines{
 
   x_{(a)} \rightarrow x_{(b)} = y_{(a)}
   
+}
 $$
+
 
   其中a，b为两个互素的基数，一般选择b大于a。
 
@@ -198,18 +216,15 @@ $$
 
   下一条记录被放到7中的概率：9/13 （0~7，12）
   
+
 $$
+\displaylines{
 
   ASL_{succ} = \frac 1 {11} (1+5+1+2+2+1+1+1+1+2+3) = 20/11 \\
   ASL_{fail} = \frac 1 {13} (8+7+6+5+4+3+2+1+1+1+2+1+11) = 4
   
+}
 $$
-
-
-
-
-
-
 
 
   ​	改进：`p(K, i)=i*c`（仍然会纠缠）
@@ -218,22 +233,30 @@ $$
 
   * 二次探查
     
+
 $$
+\displaylines{
 
     p(K, 2i-1) = i^2 \\
     p(K, 2i) = -i^2 
     
+}
 $$
+
 
     基本消除聚集。
 
   * 伪随机数序列探查
     
+
 $$
+\displaylines{
 
     p(K, i) = perm[i-1]
     
+}
 $$
+
 
     perm为[1, M-1]的伪随机序列。
 
@@ -251,10 +274,13 @@ $$
 
     $h2(key)$必须与M互素。
 
+
 $$
+\displaylines{
 d = h_1(key) \\
 d_i = (d + p(key, i)) \% M \\
 p(key, i) = i*h_2(key)
+}
 $$
 
 
@@ -332,13 +358,9 @@ $$
   ```
 
 
-
-
-
 ### 效率分析
 
 ![1543980144853](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1543980144853.png)
-
 
 
 经验表明，负载因子alpha小于0.5时，大部分操作预期代价均小于2，远比二分检索优秀，但是alpha大于0.5时性能急剧下降。
@@ -346,12 +368,13 @@ $$
 插入与删除频繁的散列表效率会降低（负载因子增大，同义词表变长，墓碑变多），可以通过定期重新散列来解决（清除墓碑，把访问最频繁的记录向前移动到基地址）
 
 
-
-
-
 #### Exercises
 
 ![1544104068419](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1544104068419.png)
+
 $$
+\displaylines{
 ASL = 0.6*1 + 0.4*(0.6*2+0.4*(0.6*3+...)) = (1-a)\sum_i^{N}(i*a^i)
+}
 $$
+

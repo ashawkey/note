@@ -122,7 +122,6 @@ int main() {
 ```
 
 
-
 ### Applications
 
 右值引用主要在函数传参时**用移动代替拷贝**，即**需要拷贝但被拷贝者之后又不再需要**的场景，例如临时变量。因为`std::move`只改变地址指向，而不会物理上的移动（即拷贝）数据。
@@ -210,13 +209,11 @@ v.push_back(A(1)); // A(1) is still copied.
 ```
 
 
-
 > 其它语言中的类似情况：
 >
 > c++默认的对象传值方式是拷贝，例如`vec.push_back(obj); auto vec2 = vec1;`等都会触发拷贝行为。引用传值必须通过`&`显式显式实现，例如`vec.push_back(move(obj)); auto vec2 = &vec1;`
 >
 > python默认的对象传值方式就是引用，例如`l.append(obj), obj2 = obj1`均为引用。相反，如果需要拷贝，则要通过`deepcopy`显式实现。
-
 
 
 ### 通用引用 Universal Reference
@@ -246,7 +243,6 @@ typename remove_reference<T>::type&& move(T&& t) {
     return static_cast<typename remove_reference<T>::type&&>(t);
 }
 ```
-
 
 
 ### 完美转发问题

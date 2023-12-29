@@ -11,7 +11,6 @@ sudo apt install ubuntu-desktop
 ```
 
 
-
 ### ubuntu 18.04 issues
 
 since ubuntu 18.04 changes from `lightdm` to `gdm3`, there are somethings to do if it fails to start.
@@ -31,9 +30,6 @@ since ubuntu 18.04 changes from `lightdm` to `gdm3`, there are somethings to do 
   now you can see the familiar Xorg logs. (CHECK?)
 
 * reconfigure `xorg.conf` and restart `gdm3`
-
-
-
 
 
 ### basics
@@ -211,9 +207,6 @@ sudo systemctl status display-manager
 log files:`/var/log/lightdm/lightdm.log`
 
 
-
-
-
 ### nomachine related
 
 ```
@@ -231,7 +224,6 @@ sudo systemctl stop gdm
 # restart NX
 sudo /etc/NX/nxserver --restart
 ```
-
 
 
 ### reinstall ubuntu-desktop

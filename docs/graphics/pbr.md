@@ -13,9 +13,13 @@
   * $s(\omega_i)$ is the occlusion probability from the shading point to light.
 * rendering Equation:
 
+
 $$
+\displaylines{
 \mathbf c(\mathbf \omega_o) = \int_\Omega L(\omega_i)f(\omega_i, \omega_o)(\omega_i \cdot \mathbf n)d \omega_i
+}
 $$
+
 
 * micro-facet BRDF (Cook-Torrance 1982):
   $$

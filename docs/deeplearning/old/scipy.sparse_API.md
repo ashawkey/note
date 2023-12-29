@@ -80,4 +80,3 @@ eigsh(A[, k]) # fast for real sym mat
 ```
 
 
-

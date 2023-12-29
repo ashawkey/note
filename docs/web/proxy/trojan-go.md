@@ -3,7 +3,6 @@
 Support CDN like Cloudflare to hide your server's IP, or use it even if it's blocked.
 
 
-
 ### download
 
 https://github.com/p4gefau1t/trojan-go/releases
@@ -13,7 +12,6 @@ mkdir trojan-go && cd trojan-go
 wget https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip
 unzip trojan-go-linux-amd64.zip
 ```
-
 
 
 ### Cloudflare settings
@@ -27,12 +25,10 @@ Go to `SSL/TLS`:
   Copy and paste your `cert.pem & private.key`! Put them on your server, like under `/root/cert/`.
 
 
-
 Go to `DNS`:
 
 * add a new A record that parse your domain name to your server IP.
 * make sure to use `Proxied`.
-
 
 
 ### server
@@ -122,7 +118,6 @@ server {
     }
 }
 ```
-
 
 
 To reuse 443 via NGINX streaming, first change trojan config:
@@ -248,7 +243,6 @@ systemctl status nginx
 ```
 
 
-
 ### Client
 
 #### trojan-go client
@@ -327,7 +321,6 @@ systemctl statue trojan-go
 ```
 
 
-
 #### Clash client (recommended)
 
 get clash:
@@ -385,6 +378,5 @@ systemctl start clash
 ```
 
 finally, set up system proxy to manual and enter your http/socks5 port.
-
 
 

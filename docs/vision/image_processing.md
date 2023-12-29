@@ -71,7 +71,6 @@ def HSV2BGR(_img, hsv):
 ```
 
 
-
 ### Histogram
 
 ```python
@@ -79,12 +78,15 @@ plt.hist(img.ravel(), bins=255, rwidth=0.8, range=(0, 255))
 ```
 
 
-
 ### Gamma Correction
 
+
 $$
+\displaylines{
 I_{out} ={\frac{1}{c}\ I_{in}} ^ {\frac{1}{g}}
+}
 $$
+
 
 校正照相机等电子设备传感器的非线性光电转换特征，主要是增大RGB值。
 
@@ -99,7 +101,6 @@ def gamma_correction(img, c=1, g=2.2):
 
 	return out
 ```
-
 
 
 ### Interpolation
@@ -238,10 +239,11 @@ def gamma_correction(img, c=1, g=2.2):
   ```
 
 
-
 ### Affine Transform
 
+
 $$
+\displaylines{
 \left(
 \begin{matrix}
 x'\\
@@ -289,7 +291,9 @@ t_x\\
 t_y
 \end{matrix}
 \right)
+}
 $$
+
 
 ```python
 def affine(img, a, b, c, d, tx, ty):
@@ -327,7 +331,9 @@ def affine(img, a, b, c, d, tx, ty):
 
 * Shift
   
+
 $$
+\displaylines{
 
   \left(
   \begin{matrix}
@@ -351,12 +357,15 @@ $$
   \end{matrix}
   \right)
   
+}
 $$
 
 
 * Resize
   
+
 $$
+\displaylines{
 
   \left(
   \begin{matrix}
@@ -380,12 +389,16 @@ $$
   \end{matrix}
   \right)
   
+}
 $$
+
 
   
 * Rotate
   
+
 $$
+\displaylines{
 
   \left(
   \begin{matrix}
@@ -409,12 +422,16 @@ $$
   \end{matrix}
   \right)
   
+}
 $$
+
 
   
 * Sharing
   
+
 $$
+\displaylines{
 
   a=\frac{t_x}{h}\\
     \left[
@@ -460,18 +477,19 @@ $$
     \end{matrix}
     \right]
   
+}
 $$
-
-
 
 
 ### Fourier Transform
 
+
 $$
+\displaylines{
 G(k,l)=\frac{1}{H\  W}\ \sum\limits_{y=0}^{H-1}\ \sum\limits_{x=0}^{W-1}\ I(x,y)\ e^{-2\  \pi\  j\ (\frac{k\  x}{W}+\frac{l\  y}{H})} \\
 I(x,y)=\frac{1}{H\  W}\ \sum\limits_{l=0}^{H-1}\ \sum\limits_{k=0}^{W-1}\ G(l,k)\ e^{2\  \pi\  j\ (\frac{k\  x}{W}+\frac{l\  y}{H})}
+}
 $$
-
 
 
 ```python
@@ -652,7 +670,6 @@ def idft(G):
 5. IDCT之后从YCbCr色彩空间变换到RGB色彩空间。
 
 
-
 ```python
 T = 8
 K = 8
@@ -766,9 +783,6 @@ def JPEG(img):
 
     return out
 ```
-
-
-
 
 
 ### Canny Edge Detector
@@ -972,7 +986,6 @@ def Canny(img):
 ```
 
 
-
 ### Hough Transform (Line detection)
 
 ```python
@@ -1076,7 +1089,6 @@ def Hough_Line(edge, img):
 ```
 
 
-
 ### Dilate
 
 ```python
@@ -1126,7 +1138,6 @@ def Morphology_Erode(img, Dil_time=1):
 
 	return out
 ```
-
 
 
 ### Opening Operation

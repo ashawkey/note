@@ -29,7 +29,6 @@ Secure Hash Algorithms. A large series of well known hash functions.
 e.g., SHA-256
 
 
-
 # asymmetric cryptography
 
 also called public-key cryptography.
@@ -52,7 +51,6 @@ Some widely used asymmetric cryptosystem:
 * RSA
 * DSA
 * ECDSA (Elliptic Curve Digital Signature Algorithm)
-
 
 
 ### digital signature

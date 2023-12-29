@@ -59,7 +59,6 @@ ffmpeg -i in.mp4 -vf reverse -af reverse out.mp4
 ```
 
 
-
 ## ffplay
 
 ```bash

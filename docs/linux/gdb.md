@@ -5,7 +5,6 @@
 https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/gdb.html
 
 
-
 ## Deal with Segmentation Fault
 
 Set `-g` flag for compiler,
@@ -36,7 +35,6 @@ gdb ./god_damn_program ./core
 $gdb info stack # show traceback
 # ctrl-d to exit
 ```
-
 
 
 ### seg fault in python that calls c

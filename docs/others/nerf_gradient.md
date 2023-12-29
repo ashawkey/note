@@ -2,7 +2,9 @@
 Basic notations:
 (assume single color channel denoted as $R$)
 
+
 $$
+\displaylines{
 \begin{align}
 \alpha_i &= 1 - e^{- \sigma_i \delta_i}
 \\
@@ -18,32 +20,44 @@ R_i &= \sum_{j=1}^i w_j r_j
 \\
 R &= R_N
 \end{align}
+}
 $$
+
 
 Gradient towards color:
 
+
 $$
+\displaylines{
 \begin{align}
 \frac {\partial L} {\partial r_i} 
 &= \frac {\partial L} {\partial R} \frac {\partial R} {\partial r_i} \\
 &= \frac {\partial L} {\partial R} w_i \\
 &= \frac {\partial L} {\partial R} \alpha_iT_i
 \end{align}
+}
 $$
+
 
 Gradient towards sigma:
 
+
 $$
+\displaylines{
 \begin{align}
 \frac {\partial L} {\partial \sigma_i} 
 &= \frac {\partial L} {\partial R} \frac {\partial R} {\partial \sigma_i} \\
 &= \frac {\partial L} {\partial R} \frac {\partial R} {\partial \alpha_i} \frac {\partial \alpha_i} {\partial \sigma_i} \\
 \end{align}
+}
 $$
+
 
 We have:
 
+
 $$
+\displaylines{
 \begin{align}
 \frac {\partial R} {\partial \alpha_i} 
 &= \frac {\partial \sum_{j=1}^N \alpha_jT_jr_j } {\partial \alpha_i} \\
@@ -58,30 +72,42 @@ $$
 &= \frac {1} {1-\alpha_i} (T_{i+1}r_i - \sum_{j=i+1}^N\alpha_jT_jr_j) \\
 &= \frac {1} {1-\alpha_i} (T_{i+1}r_i -(R - R_i))
 \end{align}
+}
 $$
+
 
 And since:
 
+
 $$
+\displaylines{
 \frac {\partial \alpha_i} {\partial \sigma_i} = \delta_ie^{-\sigma_i\delta_i}=\delta_i(1-\alpha_i)
+}
 $$
+
 
 We finally have:
 
+
 $$
+\displaylines{
 \begin{align}
 \frac {\partial L} {\partial \sigma_i} 
 &= \frac {\partial L} {\partial R} \frac {\partial R} {\partial \alpha_i} \frac {\partial \alpha_i} {\partial \sigma_i} \\
 &= \frac {\partial L} {\partial R} \delta_i (1-\alpha_i) \frac {1} {1-\alpha_i} (T_{i+1}r_i -(R - R_i)) \\
 &= \frac {\partial L} {\partial R} \delta_i (T_{i+1}r_i -(R - R_i))
 \end{align}
+}
 $$
+
 
 And this is the form used in `instant-ngp`.
 
 A more beautiful form:
 
+
 $$
+\displaylines{
 \begin{align}
 T_{i+1}r_i - \sum_{j=i+1}^N\alpha_jT_jr_j
 &= (1-\alpha_i)T_ir_i - \sum_{j=i+1}^N\alpha_jT_jr_j \\
@@ -89,4 +115,6 @@ T_{i+1}r_i - \sum_{j=i+1}^N\alpha_jT_jr_j
 &= T_ir_i - \sum_{j=i}^N\alpha_jT_jr_j \\
 &= T_ir_i - (R-R_{i-1})
 \end{align}
+}
 $$
+

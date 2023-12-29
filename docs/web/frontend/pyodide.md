@@ -35,7 +35,6 @@ run python in javascript!
 ```
 
 
-
 ### example in nodejs
 
 Install:
@@ -55,7 +54,6 @@ let pyodide = await pyodide_pkg.loadPyodide({
 
 await pyodide.runPythonAsync("1+1");
 ```
-
 
 
 ### JS API (`namedLikeThis`)
@@ -83,7 +81,6 @@ await pyodide.runPythonAsync("1+1");
   * `toJs(options)`: convert to a native js object.
 
 
-
 ### Python API (`named_like_this`)
 
 * `js`: alias to the global js environment (`window`).
@@ -95,11 +92,9 @@ await pyodide.runPythonAsync("1+1");
   Most time we just use `PyProxy.toJs()` in js.
 
 
-
 ### Micropip API
 
 * `install(requirements)`: install given packages and dependencies.
-
 
 
 ### access python from js
@@ -170,7 +165,6 @@ let sys = pyodide.globals.get("sys");
 ```
 
 
-
 ### access js from python
 
 ```python
@@ -218,7 +212,6 @@ js.document.title = 'New window title'
 from js.document.location import reload as reload_page
 reload_page()
 ```
-
 
 
 ### load python packages

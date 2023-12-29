@@ -22,7 +22,6 @@ https://www.computerhope.com/unix/chattr.htm#list-of-attributes
   change the attributes of file or directory.
 
 
-
 ### chown
 
 change ownership of file or directory.
@@ -36,7 +35,6 @@ sudo chown <new-owner> <file>
 sudo chown <new-owner:new-group> <file>
 sudo chown -R <new-owner> <dir>
 ```
-
 
 
 ### umask
@@ -53,7 +51,6 @@ umask u+x # rwxr--r--
 ```
 
 
-
 ### chmod
 
 set user permission mask for a specific file.
@@ -66,13 +63,11 @@ chmod -R 777 <dir>
 ```
 
 
-
 ### note the escaped space!
 
 ```bash
 `python\ ` looks the same as `python ` in default ls and top.
 but `ls --escape` will reveal it!
 ```
-
 
 

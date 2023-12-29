@@ -1,13 +1,11 @@
 # autodiff
 
 
-
 ### Concepts
 
 ![autodiff](autodiff_understand.assets/torch_autodiff.png)
 
 ![image-20211218131323609](autodiff_understand.assets/image-20211218131323609.png)
-
 
 
 * `x.is_leaf`
@@ -93,12 +91,10 @@
   ```
 
 
-
 * `x.detach()`
 
   create a new tensor (but not copy data) from `x`, and set `requires_grad = False`. (which also means `is_leaf == True`).
   note that `x.clone()` will copy data but remains the gradient to the original tensor (thus `is_leaf == False`).
-
 
 
 * `with torch.no_grad():`
@@ -136,14 +132,11 @@
   similar to `with torch.no_grad()/enable_grad():`.
 
 
-
 * `x.retain_grad()`
 
   `x` must be a non-leaf tensor to call this before `backward()`, so `x` will keep its `grad` (as the leaf tensors that requires grad).
 
   the state can be checked by `x.retains_grad`, which is a boolean flag.
-
-
 
 
 * `torch.autograd.grad(outputs, inputs, grad_outputs=None, retain_graph=None, create_graph=False)`
@@ -165,7 +158,6 @@
       normal = - torch.autograd.grad(torch.sum(sigma), input, create_graph=True)[0] # [B, N, 3]
       return sigma, normal
   ```
-
 
 
 Full Examples:

@@ -21,7 +21,6 @@ print(x.value, y.value)
 ```
 
 
-
 * Status:
   * optimal (`cp.OPTIMAL`)
 
@@ -110,11 +109,9 @@ print(x.value, y.value)
   ```
 
 
-
 ### DCP
 
 DCP is used to ensure the optimization problem is convex. (sufficient but not necessary)
-
 
 
 * Expressions
@@ -138,7 +135,6 @@ DCP is used to ensure the optimization problem is convex. (sufficient but not ne
     AFFINE, CONSTANT, CONVEX, CONCAVE, UNKNOWN	
 
 
-
 * DCP tree analysis
 
   ![../../_images/example2.png](https://www.cvxpy.org/_images/example2.png)
@@ -154,7 +150,6 @@ DCP is used to ensure the optimization problem is convex. (sufficient but not ne
     * concave >= convex
 
   `prob.is_dcp()`
-
 
 
 ### Atomic functions

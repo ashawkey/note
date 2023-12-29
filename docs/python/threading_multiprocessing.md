@@ -1,12 +1,10 @@
 # threading and multiprocessing
 
 
-
 ### difference between threading and multiprocessing
 
 * threading is limited by the GIL (for CPython), so only one python process can run at the same time.
 * object can be shared between threads (memory sharing), but **must be copied** per process.
-
 
 
 ### GIL (Global Interpreter Lock)
@@ -62,7 +60,6 @@
   
 
 
-
 ### multiprocessing
 
 thread start method
@@ -75,7 +72,6 @@ import multiprocessing as mp
 
 mp.set_start_method('spawn')
 ```
-
 
 
 simple data-parallel:
@@ -107,7 +103,6 @@ with Pool(8) as p:
 	res = p.map(f, list(range(1024)))
 # res: [0, 1, 2, ..., 1023]
 ```
-
 
 
 sender-receiver model with Queue:
@@ -175,11 +170,7 @@ a.run()
 ```
 
 
-
-
-
 ### threading
-
 
 
 sender-receiver model
@@ -225,6 +216,5 @@ class A:
 a = A()
 a.run()
 ```
-
 
 

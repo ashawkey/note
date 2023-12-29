@@ -1,5 +1,3 @@
-## ultimate config
-
 ### argparse
 
 when you just have a simple project, and don't want to write `yaml` config files.
@@ -11,7 +9,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--name', default=None, type=str)
 opt = parser.parse_args()
 ```
-
 
 
 ### omega conf
@@ -94,3 +91,8 @@ python main.py --config configs/base.yaml --train --gpu 0
 # override config
 python main.py --config configs/base.yaml --train --gpu 0 x=2 # now x is 2
 ```
+
+
+### tyro
+
+An even better library, satisfying all the need, check the separate note [here](./tyro.md).

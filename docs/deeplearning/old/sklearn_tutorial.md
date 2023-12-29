@@ -72,7 +72,9 @@
   * Linear regression model:
 
   
+
 $$
+\displaylines{
 
   y = Xw + \epsilon \\
   J(w) = min_w||Xw-y||^2 \\
@@ -81,6 +83,7 @@ $$
   in \ fact \ we \ can \ solve \ it: \\
   w = (X'X)^{-1}X'y
   
+}
 $$
 
 
@@ -98,11 +101,15 @@ $$
 
     LR is very **sensitive to noise**, so RR is designed to improve this.
     
+
 $$
+\displaylines{
 
     J(W) = min_w\{||Xw-y||^2 + \alpha||w||^2\}
     
+}
 $$
+
 
     so we can set an $\alpha$ to avoid $w$ being so big and thus too sensitive.
 
@@ -230,6 +237,5 @@ $$
   * ICA (Independent)
 
     separate a multivariate signal into additive subcomponents that are maximally independent.
-
 
 

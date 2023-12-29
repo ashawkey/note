@@ -19,7 +19,6 @@
 ```
 
 
-
 `renderer.js`
 
 ```js
@@ -206,7 +205,6 @@ function add_plane(h, w, z) {
     plane.receiveShadow = true;
     scene.add( plane );
 }
-
 
 
 // bind to window

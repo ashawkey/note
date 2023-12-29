@@ -9,7 +9,6 @@ ps aux | grep <pid>
 ```
 
 
-
 ### kill
 
 kill by pid. single wrapper to kill system call.
@@ -30,7 +29,6 @@ kill -SIGKILL <pid>
 ```
 
 
-
 ### killall
 
 kill by name.
@@ -44,7 +42,6 @@ killall -user <user>
 # case in-sensitive
 killall -I <name>
 ```
-
 
 
 ### pkill

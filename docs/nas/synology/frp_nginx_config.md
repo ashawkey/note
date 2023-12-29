@@ -24,7 +24,6 @@ nohup /root/frp/frpc -c /root/frp/frpc.ini </dev/null >/root/frp/log.txt 2>&1 &
 ```
 
 
-
 ### `frps.ini`
 
 ```ini
@@ -37,7 +36,6 @@ dashboard_user = <user>
 dashboard_pwd = <pwd>
 
 ```
-
 
 
 ### `nginx.conf`

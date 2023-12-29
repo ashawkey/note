@@ -1,13 +1,11 @@
 ## flax tutorial
 
 
-
 ### install
 
 ```bash
 pip install flax
 ```
-
 
 
 ### basic
@@ -22,6 +20,5 @@ from flax import linen as nn
 
 from typing import Any, Callable, Sequence, Optional
 ```
-
 
 

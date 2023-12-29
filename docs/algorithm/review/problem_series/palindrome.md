@@ -50,7 +50,6 @@ public:
 ```
 
 
-
 ### [回文子串数量](https://leetcode-cn.com/problems/palindromic-substrings/)
 
 计算字符串中有多少个回文子串。
@@ -76,7 +75,6 @@ class Solution(object):
 
         return sum((v+1)//2 for v in manachers(S))
 ```
-
 
 
 ### [最长回文子序列](https://leetcode-cn.com/problems/longest-palindromic-subsequence/)
@@ -113,7 +111,6 @@ public:
     }
 };
 ```
-
 
 
 ### [不同回文子序列的数量](https://leetcode-cn.com/problems/count-different-palindromic-subsequences/)

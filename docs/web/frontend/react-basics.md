@@ -7,7 +7,6 @@ npx create-react-app <name>
 ```
 
 
-
 ### JSX
 
 Use </> in code. Place expressions inside {}.
@@ -60,9 +59,6 @@ const element = React.createElement(
   
 
 
-
-
-
 ### Render
 
 ```javascript
@@ -83,7 +79,6 @@ function tick() {
 
 setInterval(tick, 1000);
 ```
-
 
 
 ### Component & Prop[ertie]s
@@ -136,7 +131,6 @@ class Welcome extends React.Component {
   ```
 
 * **Props are Read-Only**
-
 
 
 ### States & Lifecycle Methods
@@ -335,7 +329,6 @@ ReactDOM.render(
 ```
 
 
-
 ### Dynamic Rendering
 
 ```javascript
@@ -395,9 +388,6 @@ function DynamicForm(){
   )
 }
 ```
-
-
-
 
 
 ### Refs
@@ -461,7 +451,6 @@ To access Child node in Parent node.
     }
   }
   ```
-
 
 
 ### Context
@@ -572,9 +561,6 @@ function Content() {
 ```
 
 
-
-
-
 ### Render Props
 
 pass in a `render` attributes to dynamically render component inside component.
@@ -627,11 +613,6 @@ class MouseTracker extends React.Component {
   }
 }
 ```
-
-
-
-
-
 
 
 ### Hook
@@ -873,9 +854,6 @@ class Columns extends React.Component {
 ```
 
 
-
-
-
 ### Other API
 
 * `React.PureComponent`
@@ -901,6 +879,5 @@ class Columns extends React.Component {
   
 
   
-
 
 

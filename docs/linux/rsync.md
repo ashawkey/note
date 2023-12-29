@@ -24,8 +24,6 @@
   ```
 
 
-
-
 * alternative of `scp`
 
   ```bash
@@ -36,7 +34,6 @@
   ```
 
   
-
 
 
 * Super fast remove (for large and recursive directories)

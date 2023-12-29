@@ -38,7 +38,6 @@ sudo usermod -aG docker $USER
 ```
 
 
-
 ### mirrors
 
 Add in `/etc/docker/daemon.json`:
@@ -56,7 +55,6 @@ Add in `/etc/docker/daemon.json`:
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
-
 
 
 ### command line
@@ -239,7 +237,6 @@ sudo systemctl restart docker
   Always use `Dockerfile` to build a image!
 
   
-
 
 
 ### Dockerfile

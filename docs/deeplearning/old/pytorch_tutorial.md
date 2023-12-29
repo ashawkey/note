@@ -42,7 +42,6 @@ torch.cat((A, B), dim=1)
 ```
 
 
-
 ### autograd
 
 ```python
@@ -68,11 +67,13 @@ print(x.grad) # 4.5
 
 ```
 
+
 $$
+\displaylines{
 out = \frac {3}{4} \sum (x + 2)^2 \\
 \frac {\partial out}{\partial x_i} = \frac{3}{2}(x+2) = 4.5
+}
 $$
-
 
 
 ### Neural Network
@@ -235,7 +236,6 @@ def weights_init(m):
 ```
 
 
-
 #### Low level functional
 
 ```python
@@ -258,7 +258,6 @@ F.softmax(input)
 F.dropout(input, p=0.5, training=False, inplace=False)
 F.cross_entropy(input, target, weight=None, size_average=True)
 ```
-
 
 
 ### dataset & torchvision
@@ -390,7 +389,6 @@ print('Accuracy of the network on the 10000 test images: %d %%' % (
 ```
 
 
-
 ### Save Model
 
 ```python
@@ -424,7 +422,6 @@ torch.save(model, PATH)
 model = torch.load(PATH)
 model.eval()
 ```
-
 
 
 ### torchvision transforms

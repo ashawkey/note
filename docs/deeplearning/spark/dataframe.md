@@ -1,7 +1,6 @@
 # Spark SQL
 
 
-
 ```python
 from pyspark.sql import SparkSession
 

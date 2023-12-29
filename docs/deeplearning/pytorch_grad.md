@@ -28,7 +28,6 @@ print(x.is_leaf) # True. see below.
 ```
 
 
-
 ### leaf 
 
 A node is leaf if:
@@ -38,7 +37,6 @@ A node is leaf if:
 * Created by `.detach()`.
 
 Gradients are only populated to tensors with both `required_grad` and `is_leaf` are `True`.
-
 
 
 ### backward
@@ -52,9 +50,6 @@ z.backward() # == z.backward(torch.tensor(1.0))
 # if z is vector, pass in weights the same shape as z.
 z.backward(torch.Tensor([1.0 ,1.0 ,1.0])) 
 ```
-
-
-
 
 
 ### dynamic computation graph 
@@ -77,12 +72,9 @@ print(x.grad.data)
 ```
 
 
-
 ![](https://miro.medium.com/max/589/1*viCEZbSODfA8ZA4ECPwHxQ.png)
 
 
-
 ### [Implement a simple `autograd`](https://github.com/mattjj/autodidact)
-
 
 

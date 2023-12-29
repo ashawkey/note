@@ -1,13 +1,11 @@
 # Paper Recommendation 2022
 
 
-
 ### Tips: 
 
 * Check **[Project]/[Blog]** first for a brief understanding of the paper, and watch their introduction video if available.
 
 * Only about 2 papers are chosen for each area. If you find a paper interesting, please use [[Connected Papers]](https://www.connectedpapers.com/) to find related works!
-
 
 
 ### Backbone
@@ -23,7 +21,6 @@
   Further readings:
 
   * [2021] **CLIP: Connecting Text and Images** [[Blog]](https://openai.com/blog/clip/) [[Code]](https://github.com/openai/CLIP) [[Paper]](https://arxiv.org/abs/2103.00020)
-
 
 
 ### Perception (Classification, Segmentation, Detection)
@@ -55,7 +52,6 @@ Different from 2D images, 3D data have many representations (voxel volumes, poin
   * [2020] **Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution** [[Paper]](https://arxiv.org/abs/2007.16100) [[Code]](https://github.com/mit-han-lab/torchsparse)
 
 
-
 ### Generation
 
 * [2014] **Generative Adversarial Networks** [[Paper]](https://arxiv.org/abs/1406.2661)
@@ -71,7 +67,6 @@ Different from 2D images, 3D data have many representations (voxel volumes, poin
 * [2021] **DALL-E: Zero-Shot Text-to-Image Generation** [[Blog]](https://openai.com/blog/dall-e/) [[Paper]](https://arxiv.org/abs/2102.12092) [[Online dalle-mini]](https://huggingface.co/spaces/dalle-mini/dalle-mini)
 
   Further readings: DALL-E 2, Imagen, Parti...
-
 
 
 ### 3D Reconstruction

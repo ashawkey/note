@@ -14,7 +14,6 @@ ssh-copy-id user@remote_host
 ```
 
 
-
 ### sshd_config
 
 located in `/etc/ssh/sshd_config`.
@@ -30,6 +29,5 @@ PermitRootLogin yes/no/prohabit-password
 AllowUsers user1 user2
 DenyUsers user3 user4
 ```
-
 
 

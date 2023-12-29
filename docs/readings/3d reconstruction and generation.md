@@ -1,11 +1,9 @@
 # Single-/Multi- view 3D Reconstruction and Generation
 
 
-
 We focus on the problem of 3D reconstruction / generation from single or multiple (but not too many) RGB (D)s.
 
 The problem is usually ill-posed (ambiguous), and needs to guess / generate some content.
-
 
 
 ## Object Level
@@ -41,9 +39,6 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 > * Output: Voxels --> Point Cloud / Implicit Function / Mesh
 
 
-
-
-
 #### [ECCV 2016] 3D-R2N2: 3D Recurrent Reconstruction Neural Network
 
 ```
@@ -71,7 +66,6 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 ![image-20210401215040718](3d reconstruction and generation.assets/image-20210401215040718.png)
 
 
-
 #### [3DV 2017] Hierarchical Surface Prediction for 3D Object Reconstruction
 
 [paper](https://arxiv.org/abs/1704.00710)
@@ -84,11 +78,9 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 ![image-20210401215558646](3d reconstruction and generation.assets/image-20210401215558646.png)
 
 
-
 #### [ICCVW 2017] 3D Object Reconstruction from a Single Depth View with Adversarial Learning
 
 [paper](https://arxiv.org/abs/1708.07969)
-
 
 
 #### [ICCV 2017] Octree Generating Networks: Efficient Convolutional Architectures for High-resolution 3D Outputs
@@ -96,13 +88,11 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 [paper](https://arxiv.org/abs/1703.09438) | [code](https://github.com/lmb-freiburg/ogn)
 
 
-
 #### [NIPS 2017] MarrNet: 3D Shape Reconstruction via 2.5D Sketches
 
 [paper](https://arxiv.org/abs/1711.03129) 
 
 ![image-20210401220252010](3d reconstruction and generation.assets/image-20210401220252010.png)
-
 
 
 #### [CVPR 2017] A point set generation network for 3d object reconstruction from a single image.
@@ -115,7 +105,6 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 * Output: Point Cloud
 
 
-
 #### [ECCV 2018] Pixel2Mesh: Generating 3D Mesh Models from Single RGB Images
 
 [paper](https://arxiv.org/pdf/1804.01654.pdf) | [code](https://github.com/nywang16/Pixel2Mesh)
@@ -126,7 +115,6 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 * Output: Mesh
 
 ![image-20210401222806763](3d reconstruction and generation.assets/image-20210401222806763.png)
-
 
 
 #### [ECCV 2018] Learning Category-Specific Mesh Reconstruction from Image Collections. 
@@ -154,7 +142,6 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 * Able to infer texture.
 
 ![image-20210401212228981](3d reconstruction and generation.assets/image-20210401212228981.png)
-
 
 
 #### [ECCV 2014] OpenDR: An approximate differentiable renderer.
@@ -187,7 +174,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ##### Contributions
 
 * we propose an approximate gradient for rasterization that enables the integration of rendering into neural networks.
-
 
 
 #### [ICCV 2019] Soft Rasterizer: A differentiable renderer for image-based 3d reasoning.
@@ -223,7 +209,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210402101531055](3d reconstruction and generation.assets/image-20210402101531055.png)
 
 
-
 #### [NIPS 2019] DISN: Deep Implicit Surface Network for High-quality Single-view 3D Reconstruction
 
 [paper](https://arxiv.org/pdf/1905.10711.pdf) | [code](https://github.com/laughtervv/DISN)
@@ -232,7 +217,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 
 * Input: Single RGB Image + 3D GT
 * Output: Implicit Function
-
 
 
 #### [ECCV 2020] Shape and viewpoint without keypoints.
@@ -253,7 +237,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210402103514003](3d reconstruction and generation.assets/image-20210402103514003.png)
 
 
-
 #### [ECCV 2020] Self-supervised single-view 3d reconstruction via semantic consistency
 [paper](https://arxiv.org/pdf/2003.06473.pdf)
 
@@ -269,7 +252,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 * Learn a category-level 3D shape template from scratch via iterative learning
 
 ![image-20210402102613777](3d reconstruction and generation.assets/image-20210402102613777.png)
-
 
 
 #### [CVPR 2020] From Image Collections to Point Clouds with Self-supervised Shape and Pose Networks
@@ -291,7 +273,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 * Output: Camera Pose, Point Cloud
 
 ![image-20210401221826288](3d reconstruction and generation.assets/image-20210401221826288.png)
-
 
 
 #### [NIPS 2020] Convolutional Generation of Textured 3D Meshes
@@ -324,9 +305,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210401213317770](3d reconstruction and generation.assets/image-20210401213317770.png)
 
 
-
-
-
 #### [Arxiv 2021] Learning Generative Models of Textured 3D Meshes from Real-World Images
 
 ```
@@ -352,7 +330,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210402101050945](3d reconstruction and generation.assets/image-20210402101050945.png)
 
 ![image-20210402101126321](3d reconstruction and generation.assets/image-20210402101126321.png)
-
 
 
 #### [Arxiv 2021] NeuTex: Neural Texture Mapping for Volumetric Neural Rendering
@@ -383,7 +360,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210402105216141](3d reconstruction and generation.assets/image-20210402105216141.png)
 
 
-
 #### [Arxiv 2021] Putting NeRF on a Diet: Semantically Consistent Few-Shot View Synthesis 
 
 [paper](https://arxiv.org/pdf/2104.00677.pdf)
@@ -393,9 +369,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 *  Scenes share high-level semantic properties across viewpoints, and pre-trained 2D visual encoders can extract these semantics. *"An X is an X from any viewpoint."*
 
 <img src="3d reconstruction and generation.assets/image-20210402142103260.png" alt="image-20210402142103260" style="zoom:50%;" />
-
-
-
 
 
 > Remaining Problems:
@@ -408,9 +381,7 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 >   * How to extract mesh from NeRF? (view-dependent to independent)
 
 
-
 ## Scene Level
-
 
 
 #### [CVPR 2018] ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans
@@ -439,7 +410,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![img](https://github.com/angeladai/ScanComplete/raw/master/images/teaser_mesh.jpg)
 
 
-
 #### [CVPR 2020] SynSin: End-to-end View Synthesis from a Single Image
 
 [paper](https://arxiv.org/abs/1912.08804) | [code](https://github.com/facebookresearch/synsin)
@@ -454,7 +424,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 * differentiable point cloud render
 
 ![image-20210402151112751](3d reconstruction and generation.assets/image-20210402151112751.png)
-
 
 
 #### [CVPR 2020] SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans
@@ -483,7 +452,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![img](https://github.com/angeladai/sgnn/raw/master/sgnn.jpg)
 
 
-
 #### [TPAMI 2020] Semantic Scene Completion using Local Deep Implicit Functions on LiDAR Data
 
 [paper](https://arxiv.org/abs/2011.09141)
@@ -492,7 +460,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 
 * Input: Single view LiDAR --> Point Cloud
 * Output: Implicit Function with semantics.
-
 
 
 #### [Arxiv 2021] SPSG: Self-Supervised Photometric Scene Generation from RGB-D Scans
@@ -525,9 +492,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210402133455770](3d reconstruction and generation.assets/image-20210402133455770.png)
 
 
-
-
-
 > Remaining Problems:
 >
 > * Self-supervised SSC
@@ -547,11 +511,7 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 >   * Hard. It's better to divide and conquer, by first detecting objects and layout.
 
 
-
-
-
 -------
-
 
 
 #### []

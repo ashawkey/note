@@ -30,7 +30,6 @@ else ...;
 ```
 
 
-
 ### Playing with #define
 
 ```cpp
@@ -66,7 +65,6 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
 #undef _REG_FUNC
 }
 ```
-
 
 
 ### static

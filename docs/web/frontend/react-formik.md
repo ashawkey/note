@@ -45,7 +45,6 @@ function SelectForm() {
 ```
 
 
-
 ### Uncontrolled Form: File Input 
 
 ```javascript
@@ -81,9 +80,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
-
-
-
 
 
 ### Formik & Yup
@@ -132,7 +128,6 @@ const SignupForm = () => {
   );
 };
 ```
-
 
 
 ### Dynamic Form

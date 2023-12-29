@@ -1,7 +1,6 @@
 # C
 
 
-
 ## Concepts
 
 * ANSI C  / ISO C / Standard C
@@ -40,7 +39,6 @@ compile it with `gcc`:
 gcc -o hello.out hello.c
 ./hello.out
 ```
-
 
 
 ## Tutorial
@@ -109,7 +107,6 @@ long long -> float -> double -> long double
 ```
 
 
-
 ### Pointer
 
 ```c
@@ -126,7 +123,6 @@ Some concepts:
 * null pointer: pointing to NULL. `int *p = NULL; static int* p;`
 * wild pointer: uninitialized pointer, may point to a random address or even not valid. `int *p;`
 * dangling pointer (悬垂指针): pointint to a **deleted** address.
-
 
 
 ### Array
@@ -265,7 +261,6 @@ int main() {
 ```
 
 
-
 ### Chars
 
 ```c
@@ -289,7 +284,6 @@ int i = atoi(s); // 12
 ```
 
 
-
 ### pass-by-reference in function args
 
 ```c
@@ -301,7 +295,6 @@ void inc(int &x) { x += 1; }
 void int(int *px) { *px += 1; }
 
 ```
-
 
 
 ### CMD args
@@ -316,7 +309,6 @@ int main(int argc, char **argv)
     return 0;
 }
 ```
-
 
 
 ### Struct
@@ -348,14 +340,12 @@ struct {
 ```
 
 
-
 ### typedef
 
 ```c
 typedef unsigned char BYTE;
 BYTE b;
 ```
-
 
 
 ### Macro
@@ -370,7 +360,6 @@ BYTE b;
 
 #pragma
 ```
-
 
 
 ### IO
@@ -390,7 +379,6 @@ int main() {
     printf( "\nYou entered: %s %d \n", str, i);
 }
 ```
-
 
 
 ### C Library
@@ -463,7 +451,6 @@ int main() {
    return 0;
 }
 ```
-
 
 
 #### #include <string.c>

@@ -111,7 +111,6 @@ These parts are **linked** together later.
   ```
 
 
-
 ### Handling Symbols
 
 #### Undefined symbols
@@ -179,7 +178,6 @@ gcc -static -o main main.o lib.a # append the lib archive
 ```
 
 
-
 ### Static Linking
 
 ```bash
@@ -212,7 +210,6 @@ gcc -static -o foo foo.c libx.a liby.a libx.a # must duplicate libx.a twice here
 ```
 
 
-
 ### Relocation
 
 After determining the set **E**xecutable, linker performs relocation to merge all the `*.o` files into one.
@@ -230,7 +227,6 @@ Two steps are performed:
   The structure for relocation entry:
   
   ![image-20221219203503532](07_Linking.assets/image-20221219203503532.png)
-
 
 
 ### Executable Files
@@ -252,7 +248,6 @@ Note that `.rel.text`  and `.rel.data` are no longer needed since all the code a
 What happens when we run an executable file:
 
 ![image-20221219204229506](07_Linking.assets/image-20221219204229506.png)
-
 
 
 ### Dynamic Linking

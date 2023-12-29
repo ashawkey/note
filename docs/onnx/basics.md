@@ -5,7 +5,6 @@ ONNX: An open standard format for ML models.
 ONNX Runtime: a multi-platform and hardware performance-focused engine for ONNX models.
 
 
-
 ## Python API
 
 Install:

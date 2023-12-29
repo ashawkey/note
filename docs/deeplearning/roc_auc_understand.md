@@ -3,7 +3,6 @@
 A metric traditionally used for binary classification task.
 
 
-
 ### sklearn API
 
 ```python
@@ -18,11 +17,9 @@ auc = metrics.auc(fpr, tpr)
 ```
 
 
-
 ### Great Illustration
 
 ![image-20200717212241528](roc_auc_understand.assets/image-20200717212241528.png)
-
 
 
 ### Receiver Operation Curve
@@ -31,10 +28,12 @@ A graphic plot metric for binary classifier.
 
 
 $$
+\displaylines{
 \begin{eqnarray}
 TPR = \frac{TP}{P}=\frac {TP}{TP+FN} \\ 
 FPR = \frac{FP}{N}=\frac {FP}{FP+TN} \\
 \end{eqnarray}
+}
 $$
 
 
@@ -45,11 +44,9 @@ We need a threshold $T$ to determine whether the prediction is positive or negat
 ROC curve plots parametrically $TPR(T)$ vs. $FPR(T)$.
 
 
-
 ### Area Under the Curve
 
 Use $TPR$ as y axis and $FPR$ as x axis.
-
 
 
 ### Self Implementations

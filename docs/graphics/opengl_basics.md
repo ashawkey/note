@@ -5,7 +5,6 @@ A definition of a set of APIs to call GPU to render images.
 Kudos to [learnopengl](https://learnopengl-cn.github.io/) !
 
 
-
 ### Versions
 
 * **OpenGL < 3.3**: Legacy, not used now. Use fixed pipeline.
@@ -13,7 +12,6 @@ Kudos to [learnopengl](https://learnopengl-cn.github.io/) !
 * **OpenGL ES**: for embedded systems and **webGL**. (1.1 for fixed pipeline, 2.0 for programmable pipeline.)
 * **Vulkan** (OpenGL 5, next generation GL.)
 * **DirectX** (Not OpenGL, Windows's graphic library.)
-
 
 
 ### APIs
@@ -686,9 +684,6 @@ GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragm
 * Yaw（偏航角）, Pitch（俯仰角）, Roll（滚转角）: 以自己为中心的三转轴。
 
   ![img](opengl.assets/camera_pitch_yaw_roll.png)
-
-
-
 
 
 ### [A complete program example in C++](https://github.com/JoeyDeVries/LearnOpenGL/tree/master/src/1.getting_started/6.2.coordinate_systems_depth)

@@ -5,7 +5,6 @@
 an extension of the [Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (HTTP) that allows [clients](https://en.wikipedia.org/wiki/Web_client) to perform remote [Web](https://en.wikipedia.org/wiki/World_Wide_Web) content authoring operations.
 
 
-
 ### cadaver
 
 A command-line WebDAV client for Unix.

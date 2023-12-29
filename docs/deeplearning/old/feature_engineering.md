@@ -1,9 +1,6 @@
 # Feature Engineering
 
 
-
-
-
 ```python
 ### Label Encoding
 from sklearn import preprocessing

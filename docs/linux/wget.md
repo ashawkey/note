@@ -9,7 +9,6 @@ wget -c https://example.com/test.txt
 ```
 
 
-
 ### cURL (client URL)
 
 ```bash
@@ -23,9 +22,6 @@ curl -o test.html https://example.com
 curl -4 ip.sb # ipv4
 curl ip.sb # ipv6
 ```
-
-
-
 
 
 ### aria2

@@ -51,17 +51,14 @@ echo
 ```
 
 
-
 ### default output
 
 ![gnome-terminal screenshot - default](lscolor.assets/6kknG.png)
 
 
-
 ### other-writable (o+w)
 
 can be write by users other than owner.
-
 
 
 ### sticky bit
@@ -81,7 +78,6 @@ chmod 1777 <dir>
 chmod -t <dir>
 chmod 0777 <dir>
 ```
-
 
 
 ### change ls color

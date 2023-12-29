@@ -3,9 +3,7 @@
 https://nanohub.org/resources/7225/share?sharewith=pinterest
 
 
-
 ## Examples
-
 
 
 ### Compile
@@ -21,9 +19,7 @@ nvprof ./hello.out
 ```
 
 
-
 ## Tutorials
-
 
 
 ### Compute Capability (SM version)
@@ -35,7 +31,6 @@ indicates the features supported by the GPU **hardware** (not to be confused wit
 > 7 = Volta, 7.5 = Turing
 >
 > 8 = Ampere
-
 
 
 ### Call kernel with <<<num_blocks, num_threads>>
@@ -69,7 +64,6 @@ About how to decide the `N_THREAD` or `block_size` [here](https://stackoverflow.
 * usually, tune it from `[128, 1024]` with a stride of 32.
 
 
-
 ### Built-ins
 
 ```c
@@ -82,7 +76,6 @@ int3 make_int3(int x, int y, int z);
 // special uint3 type
 dim3 Dim3(x=1, y=1, z=1);
 ```
-
 
 
 ### One-dimensional example
@@ -143,7 +136,6 @@ vector_add<<<grid_size, block_size>>>(d_out, d_a, d_b, N);
 ```
 
 
-
 ### Two-dimensional example
 
 ```c
@@ -162,7 +154,6 @@ MatAdd<<<numBlocks, threadsPerBlock>>>(A, B, C);
 ```
 
 
-
 ### [Function prefix](https://stackoverflow.com/questions/12373940/difference-between-global-and-device-functions)
 
 Concepts: host (cpu), device (gpu, ...)
@@ -178,7 +169,6 @@ global & device function cannot:
 * recursion
 * static variable declaration 
 * variable number of arguments.
-
 
 
 ### Memory Location
@@ -201,7 +191,6 @@ int RegArr[10]; // local memory
 – R/W within each thread   // registers (very fast)
 – R/W inputs/results       // global memory (very slow)
 ```
-
 
 
 ### MatMul Example with shared memory
@@ -335,7 +324,6 @@ void MatMul(const Matrix A, const Matrix B, Matrix C) {
 ```
 
 
-
 ### Optimize Pointer Aliasing
 
 ```c
@@ -362,7 +350,6 @@ __global__ void example3b(const float* __restrict__ a, float* __restrict__ b, co
   b[index] = a[c[index]];
 }
 ```
-
 
 
 ### Stream
@@ -411,7 +398,6 @@ nvcc --default-stream per-thread ./stream_test.cu -o stream_per_thread
 ```
 
 
-
 ### Array unfold
 
 In cuda, tensors are usually flattened for parallel. 
@@ -429,9 +415,6 @@ farr = arr.view(-1) [3n,]
 ```
 
 Usually, to access `arr[i, j, k]`, we need `farr[i*(J+K) + j*K + k]`
-
-
-
 
 
 ### Atomic Operators
@@ -452,7 +435,6 @@ int atomicXor(int* address, int val);
 ```
 
 
-
 ### Pragma unroll
 
 ```c++
@@ -469,7 +451,6 @@ a[0] = 0;
 a[1] = 1;
 a[2] = 2;
 ```
-
 
 
 ### compute capability
@@ -500,13 +481,9 @@ Some abbreviations:
 ```
 
 
-
 ### compilation in detail
 
 ![img](basics.assets/cuda-compilation-from-cu-to-executable.png)
-
-
-
 
 
 ### [Print from kernel](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#formatted-output)
@@ -535,7 +512,6 @@ __global__ void helloCUDA(float f) {
     printf("Hello thread %d, f=%f\n", threadIdx.x, f);
 }
 ```
-
 
 
 ### [CUDA memory check](https://stackoverflow.com/questions/27277365/unspecified-launch-failure-on-memcpy/27278218#27278218)
@@ -580,9 +556,6 @@ And it points out where out of bounds happens:
 // /home/kiui/projects/torch-ngp/raymarching/src/raymarching.cu:154:
 const float density = grid[index];
 ```
-
-
-
 
 
 ### template
@@ -660,7 +633,6 @@ static inline  __device__ at::Half gpuAtomicAdd(at::Half *address, at::Half val)
 ```
 
 However, `__half` atomicAdd is extremely slow compared to `float` or `__half2`. Usually a better choice is to not use it at all.
-
 
 
 ### Cuda example: find max value & index in an array

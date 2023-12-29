@@ -26,9 +26,6 @@ apt will read & download sources from `/etc/apt/sources.list`
 We recommend to use the [TUNA mirror](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/).
 
 
-
-
-
 ### build from source
 
 ```bash
@@ -43,7 +40,6 @@ sudo make install
 ```
 
 This will install to `/usr/local/bin`
-
 
 
 ### PPA
@@ -71,9 +67,6 @@ Also, we can just remove them in CLI:
 ```bash
 sudo rm /etc/atp/sources.list.d/xxx.list*
 ```
-
-
-
 
 
 Remove trusted GPG keys:
@@ -112,7 +105,6 @@ uid                  Microsoft (Release signing) <gpgsecurity@microsoft.com>
 # to delete 
 $ sudo apt-key del BE1229CF
 ```
-
 
 
 ### unmet dependencies
@@ -169,8 +161,5 @@ sudo apt install xorg # ok!
 ```
 
 Or, `aptitude` will suggest you how to repair, just type `n` to select the preferred solution and type `Y`.
-
-
-
 
 

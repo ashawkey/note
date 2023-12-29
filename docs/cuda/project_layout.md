@@ -21,7 +21,6 @@ setup.py # build C side and install python side
 ```
 
 
-
 ### Implement Function in CPP
 
 This is much easier. 
@@ -35,7 +34,6 @@ We can handle memory allocation in python side, and only pass data pointer to C 
 * write `setup.py` to build everything.
 
 
-
 ### Implement Class in CPP
 
 We need to let C side hold data structures and maybe allocate memory! This becomes harder...
@@ -43,13 +41,7 @@ We need to let C side hold data structures and maybe allocate memory! This becom
 For example, we'll need to convert data pointer to custom `struct` or `class`.
 
 
-
-
-
 ### Header Source Separation
-
-
-
 
 
 ### Example

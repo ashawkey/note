@@ -4,10 +4,13 @@
 
   * Ordinary Least Squares
     
+
 $$
+\displaylines{
 
     argmin_w\{||Xw+b-y||_2^2\}
     
+}
 $$
 
 
@@ -20,10 +23,13 @@ $$
 
   * Ridge Regression
     
+
 $$
+\displaylines{
 
     argmin_w\{||Xw+b-y||_2^2+\alpha||w||_2^2\}
     
+}
 $$
 
 
@@ -36,10 +42,13 @@ $$
 
   * Lasso Regression
     
+
 $$
+\displaylines{
 
     argmin_w\{\frac{1}{2N}||Xw+b-y||_2^2 + \alpha||w||_1\}
     
+}
 $$
 
 
@@ -57,10 +66,13 @@ $$
 
     we can use L1 or L2 norm for regularization.
     
+
 $$
+\displaylines{
 
     argmin_{w,b}\{\frac 1 2 ||w||_2 + C\sum_{i=1}^nlog(exp(-y_i(X_i^Tw+b))+1)\}
     
+}
 $$
 
 

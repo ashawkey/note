@@ -23,7 +23,6 @@
   XeLaTeX supports `pstricks`(draw images with code), but LuaLaTeX doesn't.
 
 
-
 ### Misc.
 
 * document class
@@ -197,7 +196,6 @@
   ```
 
 
-
 ##### parentheses
 
 ```latex
@@ -221,7 +219,6 @@ s & = \left\{ x \middle| x < 10 \notag \right. \\
 ```
 
 
-
 ##### Align (package amsmath)
 
 ```latex
@@ -243,7 +240,6 @@ p(x) = 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3\\
 3x^2 + 9y =  3a + c
 \end{gather*}
 ```
-
 
 
 ##### Matrices
@@ -280,7 +276,6 @@ $\big(\begin{smallmatrix}
 ```
 
 
-
 ##### spacings
 
 ```latex
@@ -293,7 +288,6 @@ $\big(\begin{smallmatrix}
 \quad % space equal to current font size 
 \qquad % 2 quad
 ```
-
 
 
 ##### fonts
@@ -309,7 +303,6 @@ RQSZ \\
 \mathbb{RQSZ}
 \end{align*}
 ```
-
 
 
 ### Bibliography
@@ -332,7 +325,6 @@ YEAR="3200",
 ##### `.bst` file
 
 Bibliography style file.
-
 
 
 ### Figures
@@ -391,7 +383,6 @@ Bibliography style file.
 ```
 
 
-
 ### Tables
 
 ```latex
@@ -433,9 +424,6 @@ Bibliography style file.
 ```
 
 
-
-
-
 ### Errors
 
 * `undefined control sequence`
@@ -443,7 +431,6 @@ Bibliography style file.
   one of the commands is not defined. e.g. `\R`, `\Zlpha`
 
   
-
 
 
 ### Lengths
@@ -496,6 +483,5 @@ Bibliography style file.
 % setlength command
 \seglength{\columnsep} {1in}
 ```
-
 
 

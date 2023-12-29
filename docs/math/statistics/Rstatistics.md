@@ -14,13 +14,11 @@ cov(x, y) // covariance
 ```
 
 
-
 ### Distributions
 
 ```R
 pnorm(x, mean, sd)
 ```
-
 
 
 ### Quantiles
@@ -37,7 +35,6 @@ qt(p, df)
 qchisq(p, df)
 qf(p, df1, df2)
 ```
-
 
 
 #### Confidence Interval
@@ -62,9 +59,6 @@ confint <- function(x, y, alpha, ratio){
     return(c(lower, higher))
 }
 ```
-
-
-
 
 
 ### test

@@ -55,7 +55,6 @@ message AddressBook {
   this generate `*_pb2.py` files in the python_out directory.
 
 
-
 * API
 
   ```python
@@ -69,7 +68,6 @@ message AddressBook {
   phone.number = "555-4321"
   phone.type = addressbook_pb2.Person.HOME # or simply `phone.type = 1`
   ```
-
 
 
 ### Proto3
@@ -129,12 +127,9 @@ can be viewed as class in python.
   ```
 
 
-
-
 ##### comments
 
 same as C/C++.
-
 
 
 ##### reserved field
@@ -147,7 +142,6 @@ message Foo {
 ```
 
 you should reserve the field number or name for your deleted fields, in case of later modifications reuse these fields and cause bugs.
-
 
 
 ##### import
@@ -167,7 +161,6 @@ when `old.proto` is imported by another proto file saying `client.proto,`
 ##### package
 
 python will ignore package declarations, since python modules are organized according to locations in file system.
-
 
 
 ##### oneof
@@ -190,6 +183,5 @@ CHECK(message.has_name());
 message.mutable_sub_message();   // Will clear name field.
 CHECK(!message.has_name());
 ```
-
 
 

@@ -3,7 +3,6 @@
 A note on https://github.com/ibraheemdev/modern-unix
 
 
-
 ### `zoxide` (recommend!)
 
 To replace `cd`
@@ -27,9 +26,6 @@ z <dir>
 # interactive match
 zi <dir>
 ```
-
-
-
 
 
 ### `mcfly`  (recommend!)
@@ -61,9 +57,6 @@ mcfly # it takes about one minute to read in history
 ```
 
 
-
-
-
 ### `ag` (recommend!)
 
 To replace `grep -rnw -e "pattern"`
@@ -83,9 +76,6 @@ ag -w "pattern" # whole word
 ```
 
 
-
-
-
 ### `duf` (recommend!)
 
 To replace `df`
@@ -101,9 +91,6 @@ Use:
 ```bash
 duf
 ```
-
-
-
 
 
 ### `dust` (recommend!)
@@ -133,9 +120,6 @@ dust -d 1
 ```
 
 
-
-
-
 ### `exa`
 
 To replace `ls`
@@ -162,7 +146,6 @@ exa -lT # ls directory trees.
 ```
 
 
-
 ### `bat`
 
 To replace `cat`
@@ -185,7 +168,6 @@ Use
 ```bash
 bat <file>
 ```
-
 
 
 ### `gdown`

@@ -75,7 +75,6 @@
   ```
 
 
-
 ### ``torch.scatter(input, dim, index, src)``
 
 For the input specifications, it is very similar to `gather`.

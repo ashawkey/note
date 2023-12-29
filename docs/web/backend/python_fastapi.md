@@ -8,7 +8,6 @@ pip install fastapi[all]
 ```
 
 
-
 ### basic usage
 
 ```python
@@ -106,7 +105,6 @@ def getitem(id: int):
 ```
 
 
-
 ### debug
 
 the `main.py`:
@@ -130,9 +128,6 @@ Then run with:
 ```bash
 python main.py
 ```
-
-
-
 
 
 ### deploy

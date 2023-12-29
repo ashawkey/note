@@ -65,7 +65,6 @@ else {
 ```
 
 
-
 ### URL Parameters
 
 `https://example.com/?product=shirt&color=blue&newuser&size=m`
@@ -80,7 +79,6 @@ size=m
 ```
 
 This allows to pass simple data to the server in `GET` and `POST`.
-
 
 
 ### Fetch
@@ -123,6 +121,5 @@ var query = Object.keys(params)
 
 fetch(url+"?"+query).then(...)
 ```
-
 
 

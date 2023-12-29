@@ -17,7 +17,6 @@
 ```
 
 
-
 ### check runlevel
 
 ```bash
@@ -27,7 +26,6 @@ runlevel
 
 sudo systemctl get-default
 ```
-
 
 
 ### change current runlevel
@@ -41,7 +39,6 @@ sudo telinit 3
 sudo systemctl isolate graphical.target
 sudo telinit 5
 ```
-
 
 
 ### set default runlevel
@@ -58,7 +55,6 @@ sudo systemctl set-default graphical.target
 # don't forget to reboot!
 sudo reboot
 ```
-
 
 
 However, if lightdm failed to start, your runlevel will still be 3 even if the default is 5.

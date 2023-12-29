@@ -30,7 +30,6 @@ count                   //ul[count(li) > 2]
 ```
 
 
-
 ### Selectors
 
 ```
@@ -58,7 +57,6 @@ node()
 ```
 
 
-
 ### Built-in functions
 
 ```
@@ -76,7 +74,6 @@ substring(str, start, end)
 ```
 
 
-
 ### Operators
 
 ```
@@ -87,7 +84,6 @@ substring(str, start, end)
 or and
 mod
 ```
-
 
 
 ### Axis

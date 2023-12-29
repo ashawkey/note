@@ -3,7 +3,6 @@
 Another solution except for `react`.
 
 
-
 ### init project
 
 ```bash
@@ -33,7 +32,6 @@ this creates `package.json`
 ```
 
 
-
 ### files organization
 
 we can install any package by `npm`:
@@ -41,7 +39,6 @@ we can install any package by `npm`:
 ```bash
 npm install -S lodash
 ```
-
 
 
 `webpack.config.js`
@@ -58,7 +55,6 @@ module.exports = {
   },
 };
 ```
-
 
 
 `dist/index.html`
@@ -78,7 +74,6 @@ module.exports = {
 ```
 
 
-
 `src/index.js`
 
 ```js
@@ -95,7 +90,6 @@ function component() {
 
 document.body.appendChild(component());
 ```
-
 
 
 ### build

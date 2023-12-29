@@ -13,7 +13,6 @@ I'm looking forward to our discussion today.
 I'm thrilled to be here.
 
 
-
 ### Asking questions
 
 I have a question.
@@ -27,7 +26,6 @@ Can you elaborate on... ? I didn't get the main idea.
 Excuse me, I didn't hear you. Could you please say that again?
 
 
-
 ### Refusing
 
 I'm afraid I can't...
@@ -35,7 +33,6 @@ I'm afraid I can't...
 I'm sorry, but I don't think I can...
 
 Unfortunately, I won't be able to 
-
 
 
 ### environment / unexpected problems
@@ -47,7 +44,6 @@ Sorry, I have to put myself on mute for a second.
 you are breaking up (cutting out) 卡了
 
 Sorry my audio is not working. I will be right back.
-
 
 
 ### end

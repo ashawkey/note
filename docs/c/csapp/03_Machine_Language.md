@@ -10,7 +10,6 @@ gcc -Og -c test.c # test.o, binary machine code
 ```
 
 
-
 #### Registers
 
 * **Caller-saved / Callee-saved** Register: different strategies to save register context at calling functions.
@@ -41,9 +40,6 @@ gcc -Og -c test.c # test.o, binary machine code
   And there are 8 new registers:
 
   ![image-20221203193139631](03_Machine_Language.assets/image-20221203193139631.png)
-
-
-
 
 
 ### Instructions
@@ -146,7 +142,6 @@ gcc -Og -c test.c # test.o, binary machine code
   * `setbe D`, set-below-equal, `CF | ZF`, for unsigned less-equal.
 
 * 
-
 
 
 > TODO: 3-6

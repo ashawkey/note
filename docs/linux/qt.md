@@ -3,7 +3,6 @@
 Qt is a fucking commercial software, and all its free releases are to disgust you.
 
 
-
 You must register to download even the free version.
 
 Docs at: https://doc.qt.io/qt-5/gettingstarted.html
@@ -13,9 +12,7 @@ TUNA mirror (always god!): https://mirrors.tuna.tsinghua.edu.cn/qt/
 Official (slow): https://www.qt.io/offline-installers 
 
 
-
 To manage different Qt versions, use `PATH` and `LD_LIBRARY_PATH`.
-
 
 
 ### Qt 5.5.1 ~ 5.9.7
@@ -25,7 +22,6 @@ The default version, in `/usr/libx86_64-linux-gnu/`.
 what `sudo apt install qt-default` will install. 
 
 However, this is terribly outdated, e.g., `PyQt5, PySide2` do not support it.
-
 
 
 ### Qt 5.12.11
@@ -40,7 +36,6 @@ wget -c https://mirrors.tuna.tsinghua.edu.cn/qt/official_releases/qt/5.12/5.12.1
 chmod u+x ./qt-opensource-linux-x64-5.12.11.run
 sudo ./qt-opensource-linux-x64-5.12.11.run
 ```
-
 
 
 Install the following `[Yes]`, which takes ~ 1.5G:
@@ -72,16 +67,12 @@ qmake -v
 ```
 
 
-
 ##### PyQt5 support
 
 ```bash
 pip install PyQt5==5.12.11
 # do not install the default version, which is for 5.15
 ```
-
-
-
 
 
 ### Qt 5.15
@@ -91,6 +82,5 @@ You must build it from source.
 download at: https://mirrors.tuna.tsinghua.edu.cn/qt/official_releases/qt/5.15/5.15.2/single/
 
 docs at: https://doc.qt.io/qt-5/build-sources.html
-
 
 

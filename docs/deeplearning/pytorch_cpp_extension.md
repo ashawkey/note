@@ -1,7 +1,6 @@
 # Custom C++ & CUDA extensions
 
 
-
 ## Pitfalls
 
 * always check the input tensor is `contiguous` !!!
@@ -9,7 +8,6 @@
   else `.data_ptr<float>()` will generate a mess and you never get the expected values.
 
 * 
-
 
 
 ## Bindings
@@ -106,9 +104,6 @@ print(add(one, one))
 ```
 
 
-
-
-
 ### Just in Time (load)
 
 Better use this.
@@ -166,9 +161,6 @@ class Add(nn.Module):
 ```
 
 
-
-
-
 ## Torch C++ API
 
 ### Header
@@ -177,7 +169,6 @@ class Add(nn.Module):
 #include <ATen/ATen.h> // at::
 #include <torch/extension.h> // torch::
 ```
-
 
 
 ### ATen
@@ -209,7 +200,6 @@ at::cuda::getCurrentCUDAStream();
 at::device(a.device()).dtype(at::ScalarType::Int));
 
 ```
-
 
 
 ### C++ Frontend

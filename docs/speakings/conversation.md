@@ -52,7 +52,6 @@
   * Are you used to the life here?
 
 
-
 ### Daily topics
 
 * family
@@ -72,9 +71,6 @@
     * [response] I like travelling / dancing / ...
   * what kind of music do you like to listen to?
     * [response] I like pop / rock / classical / jazz music.
-
-
-
 
 
 ### End a topic

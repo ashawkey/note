@@ -82,7 +82,6 @@ a[attr*=value] {} /* a with value in attr */
 ```
 
 
-
 ### Cascading and Inheriting
 
 * Cascading

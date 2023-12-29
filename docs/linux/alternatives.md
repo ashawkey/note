@@ -1,7 +1,6 @@
 # update-alternatives
 
 
-
 ### gcc example
 
 ```bash

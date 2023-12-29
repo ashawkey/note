@@ -12,7 +12,6 @@ os.path.dirname(path) # a/b/c --> a/b
 ```
 
 
-
 ### os.walk
 
 ```python

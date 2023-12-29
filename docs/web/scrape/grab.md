@@ -3,7 +3,6 @@
 ## Simple API
 
 
-
 ### Get
 
 ```python
@@ -53,7 +52,6 @@ selector.text()
 ```
 
 
-
 ### Example
 
 crawl videos in `yhdm.so` .
@@ -86,9 +84,6 @@ def crawl(keyword):
 ```
 
 
-
-
-
 ## Spider API
 
 ```python
@@ -108,6 +103,5 @@ class ExampleSpider(Spider):
 bot = ExampleSpider(thread_number=2)
 bot.run()
 ```
-
 
 

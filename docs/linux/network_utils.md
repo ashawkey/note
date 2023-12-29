@@ -72,7 +72,6 @@ Explain:
 * `RX Bytes, TX Bytes`: total amount of data received, transmitted.
 
 
-
 ### arp
 
 command to show the ARP (Address Resolution Protocol) cache.
@@ -85,7 +84,6 @@ arp -a
 # verbose
 arp -v
 ```
-
 
 
 ### route, ip, netstat
@@ -145,9 +143,6 @@ arp -v
   
 
 
-
-
-
 ### subnet mask
 
 Each host is configured with a unique IP address and subnet mask. 
@@ -166,13 +161,11 @@ inet addr:222.29.2.44  Mask:255.255.255.0
 ```
 
 
-
 ### what router does ?
 
 When presented with a packet bound for an IP address
 
 the router needs to determine which of its network interfaces will best get that packet closer to its destination.
-
 
 
 ### default gateway
@@ -192,7 +185,6 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 ```
 
 
-
 ### traceroute
 
 install by `sudo apt install traceroute`. 
@@ -208,7 +200,6 @@ traceroute 8.8.8.8 # google DNS
 ```
 
 
-
 ### iptables
 
 firewall.
@@ -217,6 +208,5 @@ firewall.
 # list ip tables 
 iptables -L
 ```
-
 
 

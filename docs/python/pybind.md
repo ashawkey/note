@@ -7,7 +7,6 @@ pip install pybind11
 ```
 
 
-
 ### example
 
 `example.cpp`:
@@ -40,7 +39,6 @@ use in `main.py`:
 import example
 example.add(1, 2)
 ```
-
 
 
 ### binding basics
@@ -340,10 +338,6 @@ TODO: https://github.com/pybind/pybind11/blob/master/tests/test_eigen.cpp
 ```
 
 ##### Eigen Matrix --> numpy ndarray
-
-
-
-
 
 
 ### Building

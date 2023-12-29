@@ -39,7 +39,6 @@ Config formats:
 ```
 
 
-
 ### cron deamon
 
 ```bash
@@ -47,7 +46,6 @@ systemctl status cron
 systemctl stop cron
 systemctl restart cron
 ```
-
 
 
 ### cron command
@@ -60,7 +58,6 @@ crontab -l -u <user>
 ```
 
 
-
 ### log files
 
 ```bash
@@ -70,7 +67,6 @@ crontab -l -u <user>
 # for auth
 /var/log/auth.log
 ```
-
 
 
 ### anacron

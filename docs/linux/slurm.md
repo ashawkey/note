@@ -3,7 +3,6 @@
 Simple Linux Utility for Resource Management.
 
 
-
 ### sinfo
 
 check information of the system.
@@ -22,7 +21,6 @@ cinfo -p <partition> occupy-reserved # only show reserved quota
 ```
 
 
-
 ### squeue
 
 check the current running (R) and pending (PD) jobs.
@@ -31,7 +29,6 @@ check the current running (R) and pending (PD) jobs.
 squeue -u <user name> # list your jobs
 squeue -l # list all info
 ```
-
 
 
 ### srun/sbatch
@@ -64,7 +61,6 @@ QUOTA mode [phoenix-feature]:
 * auto: try to allocate reserved quota first, if not successful, turn to spot mode.
 
 
-
 `srun` will start the job in foreground, suitable for single-node training:
 
 ```bash
@@ -79,7 +75,6 @@ alias squ="squeue -u `whoami`"
 srcpu bash some_script.sh
 sr1gpu python test.py
 ```
-
 
 
 `sbatch` will submit jobs in background, and can perform multi-node training.
@@ -150,6 +145,7 @@ srun --jobid $SLURM_JOBID bash -c "$CMD" 2>&1 | tee -a $LOG_PATH
 echo "END TIME: $(date)"
 ```
 
+**make sure the --output and --err log directory (`logs` here) exists!** Else the task will fail immediately without any information!
 
 
 ### scontrol
@@ -165,7 +161,6 @@ scontrol release JOBID # release
 ```
 
 
-
 ### scancel 
 
 stop/cancel a job.
@@ -173,7 +168,6 @@ stop/cancel a job.
 ```bash
 scancel <jobid>
 ```
-
 
 
 ### sacct
@@ -190,7 +184,6 @@ sacct
 10740830         python      normal         none xxx    llm2tmp   research          1         16    RUNNING      0:0 
 10747428     accelerate        none         none xxx    llm2tmp   research          8         40  COMPLETED      0:0 
 ```
-
 
 
 ### swatch

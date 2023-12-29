@@ -24,7 +24,6 @@ docker run --rm --gpus all nvidia/cuda:10.2-base nvidia-smi
 ```
 
 
-
 Note:
 
 * Always monitor in host by `nvidia-smi`. In container it will not display correctly.

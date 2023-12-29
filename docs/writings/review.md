@@ -6,12 +6,10 @@
 * The paper addresses an important research topic on ...
 
 
-
 ### weaknesses
 
 * Some parts of the paper are difficult to understand, ...
 * 
-
 
 
 ### post rebuttal

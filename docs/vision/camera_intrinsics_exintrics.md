@@ -1,19 +1,19 @@
 ## Camera Pose
 
 
-
 Very good reference: https://ksimek.github.io/2012/08/22/extrinsic/
 
 Good demo of look-at camera: https://learnwebgl.brown37.net/07_cameras/camera_lookat/camera_lookat.html
-
 
 
 ### Homogeneous Coordinates
 
 
 $$
+\displaylines{
 \text{2D:} \quad [u, v, 1]^T  \\
 \text{3D:} \quad [x, y, z, 1]^T  \\
+}
 $$
 
 
@@ -21,7 +21,9 @@ $$
 
 We usually first transform the 3D points to the camera coordinate system by the camera pose, then project the 3D points to 2D image plane by the camera matrix:
 
+
 $$
+\displaylines{
 z_c\begin{bmatrix}
 u \\ v \\ 1 \\
 \end{bmatrix}
@@ -36,7 +38,9 @@ x_c \\ y_c \\ z_c \\ 1 \\
 \begin{bmatrix}
 x_w \\ y_w \\ z_w \\ 1 \\
 \end{bmatrix}
+}
 $$
+
 
 3D Point in the world coordinate system: $[x_w, y_w,z_w]^T$ (relative to a defined origin position.)
 
@@ -49,12 +53,13 @@ Camera Intrinsic (determined only by the camera itself): $\mathbf K \in \mathbb 
 Camera Extrinsic (describes the transformation from **world to camera**, inversion of camera pose): $\begin{bmatrix}\mathbf R& \mathbf T \\ 0&  1 \end{bmatrix} \in \mathbb R ^ {4 \times 4}$.
 
 
-
 ### Intrinsic
 
 A $3 \times 4$ matrix used to **project** 3D points to 2D coordinates:
 
+
 $$
+\displaylines{
 z_c\begin{bmatrix}
 u \\ v \\ 1 \\
 \end{bmatrix}
@@ -73,7 +78,9 @@ f_x & \gamma & u_0 & 0 \\
 \begin{bmatrix}
 x_c \\ y_c \\ z_c \\ 1 \\
 \end{bmatrix}
+}
 $$
+
 
 $f_x, f_y$ are the **focal length in pixels**, usually $f_x =f_y$.
 
@@ -85,22 +92,25 @@ Inversely, we can use the intrinsic to project pixel coordinates to 3D points in
 
 Since a pixel can be projected to multiple depth planes, so we need to know the depth value $z_c$ in advance.
 
+
 $$
+\displaylines{
 \begin{cases}
 x_c = \frac {(u - u_0)} {f_x} z_c \\
 y_c = \frac {(v - v_0)} {f_y} z_c \\
 z_c
 \end{cases}
+}
 $$
-
-
 
 
 ### Extrinsic (w2c)
 
 A $4 \times 4$ matrix, a regular **3D transformation from world coordinate system to camera coordinate system**.
 
+
 $$
+\displaylines{
 \begin{bmatrix}\mathbf R_{3\times3}& \mathbf T_{3\times1} \\ 0_{1\times3}&  1 \end{bmatrix}
 =
 \begin{bmatrix}\mathbf I& \mathbf T \\ 0&  1 \end{bmatrix}
@@ -108,7 +118,9 @@ $$
 =
 \begin{bmatrix}\mathbf R& 0 \\ 0&  1 \end{bmatrix}
 \begin{bmatrix}\mathbf I& -\mathbf C \\ 0&  1 \end{bmatrix}
+}
 $$
+
 
 It can be decomposed as:
 
@@ -123,7 +135,9 @@ $\mathbf T$ is the position of **the world origin in the camera coordinate syste
 
 instead, the position of the camera center in the world coordinate system, $\mathbf C=[x_0, y_0, z_0]$ should be calculated as:
 
+
 $$
+\displaylines{
 \begin{bmatrix}
 0 \\ 0 \\ 0 \\ 1
 \end{bmatrix}
@@ -133,12 +147,13 @@ $$
 \begin{bmatrix}
 x_0 \\ y_0 \\ z_0 \\ 1
 \end{bmatrix}
+}
 $$
+
 
 thus, $\mathbf C = -\mathbf R^{-1}\mathbf T$
 
 this also gives a way to calculate $\mathbf{T} = -\mathbf{RC}$.
-
 
 
 ### Pose (c2w)
@@ -147,13 +162,16 @@ Also a $4 \times 4$ matrix, but it describes the **3D transformation from camera
 
 Obviously, **camera pose (c2w) is the inversion of extrinsic (w2c)**.
 
+
 $$
+\displaylines{
 \begin{bmatrix}\mathbf R_{3\times3}^T& \mathbf C_{3\times1} \\ 0_{1\times3}&  1 \end{bmatrix} = 
 \begin{bmatrix}\mathbf R_{3\times3}& \mathbf T_{3\times1} \\ 0_{1\times3}&  1 \end{bmatrix}^{-1}
+}
 $$
 
-Note that now the translation vector $\mathbf{C}$ is the camera's position in the world coordinate system now.
 
+Note that now the translation vector $\mathbf{C}$ is the camera's position in the world coordinate system now.
 
 
 ### Construct by `LookAt`
@@ -166,7 +184,9 @@ Assuming you know the camera position $\mathbf{C}$, and target position $\mathbf
 
 To construct the **camera pose matrix**, you can calculate the normalized **right, up, and forward vector**, then simply concatenate them：
 
+
 $$
+\displaylines{
 \begin{bmatrix}
 x_w \\ y_w \\ z_w \\ 1
 \end{bmatrix}
@@ -181,11 +201,15 @@ x_w \\ y_w \\ z_w \\ 1
 \begin{bmatrix}
 x_c \\ y_c \\ z_c \\ 1
 \end{bmatrix}
+}
 $$
+
 
 Or the **camera extrinsic/view matrix** similarly:
 
+
 $$
+\displaylines{
 \begin{bmatrix}
 x_c \\ y_c \\ z_c \\ 1
 \end{bmatrix}
@@ -207,8 +231,8 @@ x_c \\ y_c \\ z_c \\ 1
 \begin{bmatrix}
 x_w \\ y_w \\ z_w \\ 1
 \end{bmatrix}
+}
 $$
-
 
 
 There are different world/camera coordinate conventions, which are really confusing:

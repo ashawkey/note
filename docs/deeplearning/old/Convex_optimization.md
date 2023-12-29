@@ -9,21 +9,23 @@ But most of them are intractable.
 Exception is the tractable Convex optimization.
 
 
-
 ### Convex optimization
 
 ##### Problem definition (standard form)
 
+
 $$
+\displaylines{
 minimize \ f_0(x) \\
 subject \ to \ f_i(x) \le 0, i=1,...,m \\
 Ax=b
+}
 $$
+
 
 - $x \in R^n$
 - equality constraints are linear
 - $f_0, ..., f_m$ are convex.
-
 
 
 ### Solvers
@@ -41,19 +43,12 @@ solution = x.value
 ```
 
 
-
-
-
-
-
 # Applications
 
 ### Portfolio Optimization
 
 
-
 ### Regression variation
-
 
 
 ### Model fitting
@@ -62,10 +57,13 @@ solution = x.value
 
 * Regression Problem
   
+
 $$
+\displaylines{
 
   R^n \rightarrow R\cup\{\infty\}
   
+}
 $$
 
 
@@ -73,17 +71,20 @@ $$
 
   m examples, each has n dimensions.
   
+
 $$
+\displaylines{
 
   (1/m)\sum_i^nL(x_i, y_i, \theta) + r(\theta)
   
+}
 $$
+
 
   ![1548743843595](C:\Users\hawke\AppData\Roaming\Typora\typora-user-images\1548743843595.png)
 
   * $\lambda > 0$ scales regularization.
   * all lead to convex fitting problems.
-
 
 
 # Constructive Convex Analysis & DCP
@@ -92,10 +93,14 @@ $$
 
 ##### Conic form
 
+
 $$
+\displaylines{
 minimize\ c^Tx \\
 subject\ to\ Ax=b,\ x\in K
+}
 $$
+
 
 - $x \in  R^n$
 - $K$ is convex cone.
@@ -114,7 +119,6 @@ $$
 - affine
   - both concave and convex.
   - has the form $f(x) = a^Tx+b$
-
 
 
 ##### Basic convex functions
@@ -137,7 +141,6 @@ Less basic ones:
 - $\lambda_{max}(X), X=X^T$
 
 
-
 ##### Basic concave functions
 
 - $x^p,\ 0 \le p\le 1$
@@ -149,7 +152,6 @@ Less basic ones:
 
 - $log\ det\ X$
 - $\lambda_{min}(X), X=X^T$
-
 
 
 ##### Calculus rules that keeps convexity
@@ -171,11 +173,14 @@ Less basic ones:
   - $f_i$ is affine
 
 
-
 eg. show the following function is convex:
+
 $$
+\displaylines{
 f(u, v) = (u+1)log(\frac {u+1}{min(u,v)})
+}
 $$
+
 
 ##### Constructive Convexity verification
 
@@ -184,7 +189,6 @@ view the function as an expression tree, and use the general composition rule to
 sufficient, but not necessary for convexity.
 
 - $f(x)=\sqrt{1+x^2}$ is convex, but can't be proved by Constructive Convexity verification.
-
 
 
 ### Disciplined Convex Program (DCP)
@@ -210,8 +214,5 @@ Expressions are formed from variables, constants, and functions have known conve
 DCP is very easy to build a parser/analyzer, and be transformed to cone form, then solved by some generic solver.
 
 CVXPY will raise error if the constraints not obey the DCP rules.
-
-
-
 
 

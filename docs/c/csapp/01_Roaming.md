@@ -15,7 +15,6 @@ What happened:
 * linker (ld): `hello.o, printf.o, ... --> hello`
 
 
-
 ### Hardware Organization of a System
 
 Hardwares:
@@ -45,11 +44,9 @@ Memory hierarchy: Balance between **Access Speed** and **Storage Size**!
 * Disk: 1~1000 TB
 
 
-
 Memory Organization:
 
 ![image-20221202103252080](roaming.assets/image-20221202103252080.png)
-
 
 
 ### Concurrency and Parallelism
@@ -57,7 +54,6 @@ Memory Organization:
 Amdahl's Law: How much can a program be accelerated.
 
 ![image-20221202103648538](roaming.assets/image-20221202103648538.png)
-
 
 
 Different methods:

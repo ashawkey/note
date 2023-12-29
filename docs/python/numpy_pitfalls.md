@@ -37,7 +37,6 @@ print(a[:, None] + b)
 ```
 
 
-
 ### View
 
 Without touching underlying data, a `view` is the datatype and shape of the data.
@@ -64,7 +63,6 @@ Pros:
 Cons:
 
 * [space] even if only a small slice is used, the pointed data maybe large and cannot be released. Use `.copy()` if you are sure the old data will not be used and should be garbage-collected!
-
 
 
 ### indexing & Slicing (IMPORTANT!)
@@ -206,7 +204,6 @@ Tips:
   
 
 
-
 ### assign value by a list of coordinates
 
 ```python
@@ -233,7 +230,6 @@ tuple(coords.T) is: (array([0, 1, 2, 3]), array([1, 2, 3, 4]))
 ```
 
 
-
 ### slice
 
 ```python
@@ -247,7 +243,6 @@ a = np.arange(10)
 print(a[s_even]) # equals a[::2]
 print(a[s_odd]) # equals a[1::2]
 ```
-
 
 
 ### meshgrid
@@ -290,9 +285,6 @@ torch.meshgrid(torch.arange(3), torch.arange(4))
 ```
 
 
-
-
-
 ### numpy add by index, with duplicated indices
 
 In numpy >= 1.8, you can also use the `at` method of the addition 'universal function' ('ufunc'). As the [docs note](http://docs.scipy.org/doc/numpy/reference/generated/numpy.ufunc.at.html):
@@ -323,7 +315,6 @@ np.negative.at(np.array([1,2,3]), [0,2]) # [-1,2,-3]
 ```
 
 
-
 Torch's equivalent:
 
 ```python
@@ -345,7 +336,6 @@ torch_scatter.scatter_add(c, b, out=a) # ([0, 0, 2, 1, 0, 1]), correctly accumul
 ```
 
 Note: the name `index_put_` is tricky, `index_add_` is another different thing in torch, which is less flexible to achieve what we are doing.
-
 
 
 ### numpy add by 2D (or nD) index 
@@ -381,9 +371,6 @@ a.index_put_(tuple(b.T), c, accumulate=True) # as expected.
 
 # no torch_scatter equivalent.
 ```
-
-
-
 
 
 ### take v.s. take_along_axis

@@ -7,7 +7,6 @@ Rasterization Shading cannot handle global effect (e.g., soft shadow, multiple l
 Ray-tracing is slow, but can generate high quality shades.
 
 
-
 ### Whitted-Style Ray Tracing
 
 Cast ray and trace the route recursively.
@@ -15,9 +14,13 @@ Cast ray and trace the route recursively.
 ![image-20210314220007542](raytracing.assets/image-20210314220007542.png)
 
 A ray is defined by origin $\mathbf o$ and direction $\mathbf d$ as a function of time $t \ge 0$:
+
 $$
+\displaylines{
 \mathbf r(t) = \mathbf o + t\mathbf d
+}
 $$
+
 Ray-Surface intersection algorithm:
 
 * Naïve: Check intersection with each triangles. (slow!)
@@ -27,8 +30,6 @@ Ray-Surface intersection algorithm:
   first check if ray hit object bounding box, then check intersection with the object triangles.
 
   Need to pre-compute bounding boxes by spatial partitioning (uniform grid, KD-tree) / object partitioning (bounding volume hierarchy).
-
-
 
 
 ```c++
@@ -59,7 +60,6 @@ bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1, const Vector3f
 ```
 
 
-
 #### BVH (Bounding Volume Hierarchy)
 
 BVH partitions **object** directly, compared to KD-Tree/Oct-Tree/BSP-Tree that partitions **space**.
@@ -67,9 +67,6 @@ BVH partitions **object** directly, compared to KD-Tree/Oct-Tree/BSP-Tree that p
 BVH's bounding boxes **may overlap in space, but each object is uniquely contained in bounding box**.
 
 ![image-20210521223715017](104_raytracing.assets/image-20210521223715017.png)
-
-
-
 
 
 ### Basic Radiometry
@@ -96,7 +93,6 @@ Irradiance （辐射照度） vs radiance （辐射亮度）:
 ![image-20210314221805847](raytracing.assets/image-20210314221805847.png)
 
 
-
 **Bidirectional Reflectance Distribution Function (BRDF)**: how much light is reflected into each outgoing direction from each incoming direction.
 
 ![image-20210314223820806](raytracing.assets/image-20210314223820806.png)
@@ -108,7 +104,6 @@ The Reflection Equation:
 The Rendering Equation:
 
 ![image-20210314224100205](raytracing.assets/image-20210314224100205.png)
-
 
 
 ### Path Tracing

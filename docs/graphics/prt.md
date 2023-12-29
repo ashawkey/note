@@ -19,24 +19,35 @@
 
 * For any function $f$ defined on the sphere, we can represent it with a linear combination of SHs (usually truncated):
   
+
 $$
+\displaylines{
   f(\omega) = \sum_ic_iB_i(\omega)
   
+}
 $$
+
 
   **SH property (orthonormal)**:
 
+
 $$
+\displaylines{
   \int_\Omega B_i(\omega)B_j(\omega) = 0, i\ne j \\
   \int_\Omega B_i(\omega)B_j(\omega) = 1, i= j \\
   
+}
 $$
+
 
   **SH property (projection)**: the coefficient can be obtained with:
 
+
 $$
+\displaylines{
   c_i = \int_\Omega f(\omega)B_i(\omega)d\omega
   
+}
 $$
 
 
@@ -56,9 +67,12 @@ $$
 
   * view the rendering function as lighting and **light transport (or bounce, in fact the visibility & BRDF)**.
     
+
 $$
+\displaylines{
     L(o) = \int_\Omega \underbrace{L(i)}_{\text{lighting}}\underbrace{V(i)\rho(i, o)\max(0, n \cdot i)}_{\text{light transport}}di
     
+}
 $$
 
 
@@ -88,7 +102,6 @@ $$
             \approx \sum_jc_j\sum_kt_{j,k}B_k(o)
       $$
         Now we need to save a matrix for each point.
-
 
 
 * **SH property (rotation)**: any rotated SH basis function, can be represented with a linear combination of basis functions of the same level. 

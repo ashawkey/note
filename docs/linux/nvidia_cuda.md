@@ -7,7 +7,6 @@ Usually, we install nvidia-driver first since it is necessary for GUI.
 CUDA is only used for high-performance computation.
 
 
-
 ### install nvidia-driver
 
 Always use the package manager!!!
@@ -66,7 +65,6 @@ nvidia-smi -> /etc/alternatives/x86_64-linux-gnu_nvidia_smi
 ```
 
 
-
 ### switch between intel and nvidia driver
 
 ```bash
@@ -82,14 +80,12 @@ sudo prime-select intel
 ```
 
 
-
 ### uninstall nvidia-driver
 
 ```bash
 # pkg manager install
 sudo apt purge nvidia*
 ```
-
 
 
 ### install CUDA
@@ -116,7 +112,6 @@ nvcc -V
 ```
 
 
-
 ### switch between multiple CUDA versions
 
 Globally: change the `/usr/local/cuda` soft link.
@@ -136,7 +131,6 @@ export LD_LIBRARY_PATH="/usr/local/cuda-10.1/lib64:$:LD_LIBRARY_PATH"
 ```
 
 
-
 ### uninstall CUDA
 
 Just REMOVE it.
@@ -150,7 +144,6 @@ If you use package manager to install CUDA:
 ```bash
 sudo apt purge cuda*
 ```
-
 
 
 ### pitfalls

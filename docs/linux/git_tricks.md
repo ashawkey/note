@@ -5,7 +5,6 @@ git submodule update --init --recursive
 ```
 
 
-
 ### add more things to the last commit (amend)
 
 ```bash
@@ -19,7 +18,6 @@ git commit --amend
 ```
 
 
-
 ### command line diff
 
 If you cannot use VS Code or Github.
@@ -30,7 +28,6 @@ git diff
 # after git add
 git diff --staged
 ```
-
 
 
 ### modify the last commit
@@ -46,7 +43,6 @@ git commit -c ORIG_HEAD
 ```
 
 
-
 ### revert a commit
 
 ```bash
@@ -55,7 +51,6 @@ git log
 # revert it
 git revert <hash>
 ```
-
 
 
 ### checkout a history commit, and also update all submodules to the corresponding commits
@@ -67,7 +62,6 @@ git log --reverse # old-to-new history
 git checkout <hash> # only checkout main repo
 git submodule update --recursive # checkout all submodules too.
 ```
-
 
 
 ### undo `git pull`
@@ -110,7 +104,6 @@ Improvement: **use `git pull --rebase` instead of `git pull`!**
 [It also syncs server change](https://gitolite.com/git-pull--rebase).
 
 
-
 ### [force `git pull`](https://stackoverflow.com/questions/1125968/git-how-do-i-force-git-pull-to-overwrite-local-files)
 
 ```bash
@@ -124,7 +117,6 @@ git clean -f -d
 # pull
 git pull
 ```
-
 
 
 ### remove a large file wrongly committed and left in git history
@@ -148,7 +140,6 @@ git push --all --force
 ```
 
 
-
 ### embed mp4 in readme.md (github only)
 
 You just edit the markdown file in github webpage, drag and drop your mp4 video to it, and it will work.
@@ -160,7 +151,6 @@ It only writes a URL into your markdown, but github will render it as a video:
 
 https://user-images.githubusercontent.com/25863658/155265815-c608254f-2f00-4664-a39d-e00eae51ca59.mp4
 ```
-
 
 
 ### reset to a history commit
@@ -183,7 +173,6 @@ git reset --hard HEAD@{y}
 ```
 
 
-
 ### change remote repo url
 
 ```bash
@@ -192,7 +181,6 @@ git remote set-url origin [new_repo_url]
 
 # then you can normally push!
 ```
-
 
 
 ### push a new branch to remote
@@ -210,7 +198,6 @@ git push -u origin <branch>
 ```
 
 
-
 ### gitignore un-ignore specific files
 
 say you want to exclude everything in `datasets/` except `datasets/splits/*`.`
@@ -221,7 +208,6 @@ datasets/* # the /* matters!
 
 !datasets/splits/
 ```
-
 
 
 ### use ssh for git command (avoid permission denied error)
@@ -238,7 +224,6 @@ cat id_ecdsa.pub
 Then copy the public key and add it in https://github.com/settings/keys
 
 Now you should be able to clone through ssh!
-
 
 
 ### fetch branch from a forked repo without clone

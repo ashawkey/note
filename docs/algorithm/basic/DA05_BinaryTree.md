@@ -14,7 +14,9 @@
 
   Yet another deduction of Catalan Number:
   
+
 $$
+\displaylines{
   f(0) = 1 \\ 
   f(1) = 1 \\
   f(2) = f(1)f(0) + f(0)f(1) = 2 \\
@@ -23,6 +25,7 @@ $$
   f(n) = f(n-1)f(0) + f(n-2)f(1) + ... + f(1)f(n-2) + f(n-1)f(0) \\
   the\ solution\ is \ f(n) = \frac{C_{2n}^n}{n+1}
   
+}
 $$
 
 
@@ -82,13 +85,16 @@ $$
 
         归纳法证明：
         
+
 $$
+\displaylines{
         E_n = I_n + 2n \\
         assume\ add \ a\ node\ of\ length= k \\
         I_{n+1} = I_n + k \\
         E_{n+1} = E_n -k+2(k+1) = E_n+k+2 \\
         E_{n+1} = I_{n+1}+2(n+1)
         
+}
 $$
 
 
@@ -100,19 +106,25 @@ $$
 
     $N(N>0)$个节点的$K$叉树的空指针数：
     
+
 $$
+\displaylines{
     P=NK - (N-1) = N(K-1)+1
     
+}
 $$
 
 
   * 实际上，任意二叉树$N_0 = N_2 + 1$
     
+
 $$
+\displaylines{
     N = N_0 + N_1 + N_2  = E +1\\
     E = N_1 + 2N_2 \\
     \Rightarrow N_0 = N_2 + 1
     
+}
 $$
 
 
@@ -493,7 +505,9 @@ $$
 
   定理：**随机构造$n$个不同节点的二叉搜索树的平均深度为$O(log\ n)$，期望内部路径总和为$O(nlog\ n)$**
   
+
 $$
+\displaylines{
   D(N)\ is \ inner \ path \ summation.\\
   D(N) = D(i) + D(N-1-i) + N-1 \\
   D(N) = 2*\frac 1 N\sum_{i=0}^{N-1}D(i) + N-1 \\
@@ -502,18 +516,24 @@ $$
   f(n) = f(n-1)+O(1/n) \\
   f(n) \in \sum_{i=1}^nO(1/n) = O(log\ n)
   
+}
 $$
+
 
   $f(n)$相当于平均高度，从而期望内部路径总长$D(N)=O(NlogN)$
 
   **Harmonic Series：**
 
+
 $$
+\displaylines{
   \sum_{i=1}^{N}\frac 1 i \in O(logN) \\
   this \ follows \ continuous \ condition: \\
   \int \frac 1 xdx = lnx
   
+}
 $$
+
 
   Another version of proof:
 
@@ -603,10 +623,14 @@ $$
 
   用到了**错位相减法**求数列和。
   
+
 $$
+\displaylines{
   \sum_{i=0}^{logn}2^i(logn - i) = \sum_{j=0}^{logn}n\frac j {2^j} \lt 2n
   
+}
 $$
+
 
   有趣的题目：
 

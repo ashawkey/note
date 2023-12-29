@@ -11,7 +11,6 @@ mkdir tmp/{a,b}/c
 ```
 
 
-
 ### run & interrupt parallel commands
 
 https://stackoverflow.com/questions/3004811/how-do-you-run-multiple-programs-in-parallel-from-a-bash-script

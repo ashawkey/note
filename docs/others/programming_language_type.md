@@ -3,7 +3,6 @@
 ![img](programming_language_type.assets/b0aeb7ffd1667b9162e5329154d43777_1440w.jpg)
 
 
-
 * Dynamic Language: type of variables are determined at runtime.
 
 * Static Language: type of variables are determined at compilation.

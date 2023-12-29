@@ -8,7 +8,6 @@ download from [releases](https://github.com/fatedier/frp/releases).
 * `frpc`: client
 
 
-
 ### deploy
 
 * `frps`:

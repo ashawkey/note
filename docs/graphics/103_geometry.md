@@ -5,15 +5,18 @@
 ##### Implicit
 
 abstract functions. (Signed Distance Function, SDF)
+
 $$
+\displaylines{
 f(x, y, z) = 
 \begin{cases}
 \le0, \text{inside} \\
 >0, \text{outside}
 \end{cases}
+}
 $$
-easy to test inside/outside, but hard to sample.
 
+easy to test inside/outside, but hard to sample.
 
 
 ##### Explicit
@@ -23,7 +26,6 @@ directly given as Meshes, Point Clouds, Voxels.
 Or 2d parameter maps ($f(u,v)\rightarrow (x,y,z)$)
 
 easy to sample, but hard to test inside/outside.
-
 
 
 ### Bezier Curves
@@ -37,13 +39,20 @@ Given 4 control points, an interpolation parameter $t$, and order $n$, **recursi
 ![image-20210314210904500](geometry.assets/image-20210314210904500.png)
 
 This algorithm has a explicit algebra solution (the Bernstein form):
+
 $$
+\displaylines{
 \mathbf b^n(t) = \sum_{j=0}^n\mathbf b_j B^n_j(t) \\
 B_i^n(t) = C_n^it^i(1-t)^{n-i}
+}
 $$
+
 In particular, for a $n=4 $ Bezier curve:
+
 $$
+\displaylines{
 \mathbf b^n(t) = \mathbf b_0(1-t)^3 + \mathbf b_13t(1-t)^2 + \mathbf b_23t^2(1-t) + \mathbf b_3 t^3
+}
 $$
 
 
@@ -52,7 +61,6 @@ Piece-wise cubic Bezier is the most common technique to represent curves.
 B-Splines (Basis Splines) is superset of Bezier Curves.
 
 Bezier Curve can be extended to Bezier Surface in 3D, and use separable 1D de Casteljau to solve.
-
 
 
 ```c++
@@ -98,9 +106,6 @@ cv::Point2f recursive_bezier_func(const std::vector<cv::Point2f> &points, float 
 ```
 
 
-
-
-
 ### Mesh Operations
 
 ##### Subdivision (Magnification)
@@ -116,9 +121,6 @@ Collapse edges and minimize quadric error.
 ![image-20210314212536499](geometry.assets/image-20210314212536499.png)
 
 
-
-
-
 ### Shadow
 
 A pixel NOT in shadow must be seen both by the light and camera.
@@ -130,7 +132,6 @@ A pixel NOT in shadow must be seen both by the light and camera.
 * project camera-visible area to light. (shadow: light-occluded, not shadow: light-visible)
 
 ![image-20210318190725656](geometry.assets/image-20210318190725656.png)
-
 
 
 problem: soft-shadow (penumbra) vs hard-shadow (umbra)

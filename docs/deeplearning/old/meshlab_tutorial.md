@@ -17,7 +17,6 @@
 can only use the RGB to color.
 
 
-
 ### Codelet
 
 ```python

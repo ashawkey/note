@@ -15,7 +15,6 @@ flask run # python -m flask run
 ```
 
 
-
 ### Views
 
 A function to respond to requests.
@@ -86,7 +85,6 @@ def login_required(view):
 ```
 
 
-
 ### Context
 
 **How flask handle request: **
@@ -102,7 +100,6 @@ def login_required(view):
 APP context is cheap, and can be created without a request, for accessing `current_app` and `g`.
 
 Request context is expensive.
-
 
 
 ### URL arguments
@@ -202,7 +199,6 @@ session.clear()
 ```
 
 
-
 ### flask.g
 
 Store data **in the same request**.
@@ -234,9 +230,6 @@ def teardown_db():
 ```
 
 
-
-
-
 ### Jinja
 
 A template library.
@@ -245,8 +238,5 @@ A template library.
 - `{{ ... }}` for [Expressions](https://jinja.palletsprojects.com/en/2.11.x/templates/#expressions) to print to the template output
 - `{# ... #}` for [Comments](https://jinja.palletsprojects.com/en/2.11.x/templates/#comments) not included in the template output
 - `# ... ##` for [Line Statements](https://jinja.palletsprojects.com/en/2.11.x/templates/#line-statements)
-
-
-
 
 

@@ -24,7 +24,6 @@ if __name__ == '__main__':
 ```
 
 
-
 ```bash
 python -m unittest tests/test_something.py
 

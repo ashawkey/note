@@ -21,7 +21,6 @@ public:
 ```
 
 
-
 ### [整数序列中第N位数字](https://leetcode-cn.com/problems/nth-digit/)
 
 在无限的整数序列 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...中找到第 `n` 位数字。

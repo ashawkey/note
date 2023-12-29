@@ -229,7 +229,6 @@ server {
   ![image-20210305154420993](trojan_nginx_server.assets/image-20210305154420993.png)
 
 
-
 ### Client
 
 * Get trojan

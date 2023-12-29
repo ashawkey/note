@@ -7,6 +7,5 @@ npm install -S onnxruntime-web
 ```
 
 
-
 ### example
 

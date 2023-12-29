@@ -9,7 +9,6 @@ pip install gradio
 ```
 
 
-
 ### example
 
 ```python
@@ -93,16 +92,12 @@ gr.Interface(fn=predict,
 ```
 
 
-
-
-
 ### Components
 
 ```python
 name = gr.Textbox(label="Name")
 
 ```
-
 
 
 ### Event Listener
@@ -122,9 +117,6 @@ inp = gr.Textbox(placeholder="What is your name?")
 out = gr.Textbox()
 inp.change(greet, inp, out)
 ```
-
-
-
 
 
 ### Iterative Outputs
@@ -156,9 +148,6 @@ demo.launch()
 ```
 
 
-
-
-
 ### Queuing
 
 Control the concurrency rate. Should be used if the core function takes > 1min to process.
@@ -167,7 +156,6 @@ Control the concurrency rate. Should be used if the core function takes > 1min t
 demo.queue(concurrency_count=3)
 demo.launch()
 ```
-
 
 
 ### State

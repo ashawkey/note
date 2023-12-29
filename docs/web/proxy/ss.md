@@ -3,7 +3,6 @@
 Server is CentOS 7 (Digital Oceans)..
 
 
-
 ### Shadowsocks
 
 edit `/etc/shadowsocks.json`
@@ -33,7 +32,6 @@ edit `/etc/shadowsocks.json`
 ```
 
 
-
 edit `/etc/systemd/system/shadowsocks.service`
 
 ```
@@ -51,7 +49,6 @@ WantedBy=multi-user.target
 (note the `ssserver`'s location may be different)
 
 
-
 run `systemctl` to enable shadowsocks daemon.
 
 ```bash
@@ -66,14 +63,12 @@ systemctl status shadowsocks -l # list all
 ```
 
 
-
 Always remember to check the `logs` if something is wrong!
 
 ```bash
 /var/log/messages
 /var/log/secure
 ```
-
 
 
 ### Fail2ban
@@ -84,7 +79,6 @@ fail2ban is used to secure the server from brute-force ssh attack.
 last # successed logins
 lastb -20 # check last 20 failed logins
 ```
-
 
 
 ```bash
@@ -107,11 +101,9 @@ systemctl status fail2ban -l
 ```
 
 
-
 > sshd
 >
 > sshd is the daemon of ssh.
-
 
 
 remember to check the `log`.
@@ -121,14 +113,12 @@ remember to check the `log`.
 ```
 
 
-
 check banned IPs & unban IP.
 
 ```bash
 fail2ban-client status sshd # list banned ips
 fail2ban-client set sshd unbanip xxx.xxx.xxx.xxx # unban
 ```
-
 
 
 ### set up FirewallD
@@ -140,7 +130,6 @@ firewall-cmd --add-port=8838/tcp --permanent
 firewall-cmd --add-port=8838/udp --permanent # not necessary
 firewall-cmd --reload
 ```
-
 
 
 ### change SSH default port 
@@ -156,7 +145,6 @@ Port 6666
 ```
 
 
-
 ```bash
 systemctl restart sshd
 systemctl status sshd
@@ -165,7 +153,6 @@ firewall-cmd --add-port=6666/tcp --permanent
 firewall-cmd --add-port=6666/udp --permanent # not necessary
 firewall-cmd --reload
 ```
-
 
 
 ### Else

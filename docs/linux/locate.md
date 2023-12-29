@@ -10,7 +10,6 @@ This command is paired with `updatedb`, which creates a database for `locate` fo
 `updatedb` is run by `cron` everyday.
 
 
-
 This command is usually used to locate libraries.
 
 ```bash

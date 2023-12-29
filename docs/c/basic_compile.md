@@ -1,7 +1,6 @@
 # Compile
 
 
-
 ### Header `(.h/hpp)` vs Implementation `(.c/cpp)`
 
 ##### Concepts
@@ -40,7 +39,6 @@ Copy and paste code from the library to the current `cpp` file.
 A collection of resources to provide **re-usable** code.
 
 Generally, any code you include can be viewed as a library.
-
 
 
 ##### Using at Compiling
@@ -120,7 +118,6 @@ You only have `libxxx.h` , and a compiled library file. (static or dynamic)
   ```
 
 
-
 Both kind of library should be compiled & linked by:
 
 ```bash
@@ -135,7 +132,6 @@ g++ main.cpp -I /path/to/include -L /path/to/lib -lunuseful
 ```
 
 
-
 ##### use`pkg-config` to auto-find `-l<libname>`
 
 ```bash
@@ -145,7 +141,6 @@ g++ main.cpp `pkg-config <libname> --cflags --libs`
 `pkg-config --libs <library>` outputs the link arguments for library.
 
 `pkg-config --cflags <library>` outputs the include arguments and any other needed compile flags.
-
 
 
 ### gcc / g++
@@ -206,7 +201,6 @@ g++ -std=c++11 main.cpp
 ```
 
 
-
 ### make
 
 Batch-compile for **multiple** source files.
@@ -220,7 +214,6 @@ make # find makefile in current dir, and run g++
 make clean # remove intermediate files
 make install # install to where ?
 ```
-
 
 
 ### makefile
@@ -285,7 +278,6 @@ display.o insert.o search.o files.o : buffer.h
 clean :
     rm edit $(objects)
 ```
-
 
 
 ### compilers

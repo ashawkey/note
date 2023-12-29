@@ -9,8 +9,6 @@ clash defaults to `http://127.0.0.1:7890` and `socks5://127.0.0.1:7890`
 trojan-qt5 local client's socks port is in "入站设置", not "出站设置".	the default is `socks5://127.0.0.1:51837`.
 
 
-
-
 ### powershell
 
 ```powershell
@@ -97,7 +95,6 @@ pip install pysocks
 ```
 
 
-
 ### docker
 
 * `docker build`
@@ -119,7 +116,6 @@ pip install pysocks
     and call with `docker build --network=host -t tag ...`
 
 * `docker run`
-
 
 
 ### Authorization

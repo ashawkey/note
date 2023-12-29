@@ -7,7 +7,6 @@ pip install mkdocs-material
 ```
 
 
-
 ### setup
 
 Init a workspace:
@@ -17,7 +16,6 @@ mkdocs new .
 ```
 
 Then add your markdowns to `docs`. Folder structure will be preserved in the navigation.
-
 
 
 ### configuration
@@ -79,7 +77,6 @@ window.MathJax = {
 ```
 
 
-
 ### serve
 
 At the root of workspace:
@@ -89,7 +86,6 @@ mkdocs serve
 ```
 
 by default it serves at `localhost:8000`
-
 
 
 ### deploy
@@ -117,7 +113,6 @@ jobs:
 ```
 
 It is invoked at each push to master branch.
-
 
 
 ### problems

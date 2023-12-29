@@ -1,7 +1,6 @@
 ### Openreview markdown
 
 
-
 Thank you for your valuable time and insightful comments! We have tried to address your concerns in the updated manuscript and our rebuttal text:
 
 **Q1: questions**
@@ -11,9 +10,6 @@ replies.
 [1] references
 
 We hope our responses satisfactorily address your queries. Please let us know to address any further concerns impacting your review.
-
-
-
 
 
 ### CMT pdf

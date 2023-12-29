@@ -2,9 +2,13 @@
 
 ### Definition
 
+
 $$
+\displaylines{
 G = (V, E)
+}
 $$
+
 
 We only considers **simple graphs** that have **No self-Connection, No parallel edge.**
 
@@ -411,7 +415,6 @@ int main() {
     }
 }
 ```
-
 
 
 ### Examples

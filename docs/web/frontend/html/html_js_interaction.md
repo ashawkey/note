@@ -18,7 +18,6 @@
 ```
 
 
-
 ```js
 function custom_func () {
     // use global object `document` to access the DOM

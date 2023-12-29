@@ -6,7 +6,6 @@
 * `ufw allow 8080`
 
 
-
 ### Server
 
 ```bash
@@ -16,14 +15,10 @@ nps start
 ##### TCP tunnel
 
 
-
 ### Client
 
 ```bash
 npc 
 ```
-
-
-
 
 

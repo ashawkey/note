@@ -26,7 +26,6 @@ Contains 4 parts, each designed with different philosophy.
 ```
 
 
-
 ### C++ Library 
 
 #### #include \<iostream\>
@@ -593,9 +592,6 @@ unsigned long x = bs.to_ulo
 ```
 
 
-
-
-
 ### Class
 
 ```c++
@@ -645,7 +641,6 @@ struct A {
     void setA(int _a) { a = _a; }
 };
 ```
-
 
 
 #### Inheritance
@@ -738,11 +733,6 @@ public:
 ```
 
 
-
-
-
-
-
 ### Template
 
 #### Function
@@ -767,7 +757,6 @@ public:
 ```
 
 
-
 ### new & delete
 
 ```c++
@@ -778,7 +767,6 @@ char* s = NULL;
 s = new char[20];
 delete [] s;
 ```
-
 
 
 ### shared_ptr
@@ -793,9 +781,6 @@ std::shared_ptr<ClassName> p = std::make_shared<ClassName>();
 
 p.reset(new ClassName()); // the first object is deconstructed.
 ```
-
-
-
 
 
 ### Reference
@@ -838,7 +823,6 @@ void swap(int& x, int& y) {
     int tmp = x; x = y; y = tmp;
 }
 ```
-
 
 
 ### Memory Layout

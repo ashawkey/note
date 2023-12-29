@@ -5,9 +5,7 @@
 > Cython: C-extension of Python, allows to compile python code for speeding up.
 
 
-
 The extension of Cython file is `.pyx`
-
 
 
 ### Example
@@ -65,7 +63,6 @@ primes.primes(10)
 ```
 
 
-
 ### C library
 
 ```python
@@ -81,9 +78,6 @@ from libc.math cimport sin
 cdef double f(double x):
     return sin(x * x)
 ```
-
-
-
 
 
 ### C++ library

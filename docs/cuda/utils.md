@@ -276,9 +276,6 @@ static inline __device__ void atomMin(double *address, double val) {
 ```
 
 
-
-
-
 ### `atomicAdd` for `at::Half`
 
 ```cpp
@@ -288,9 +285,6 @@ static inline  __device__ at::Half atomicAdd(at::Half *address, at::Half val) {
   return atomicAdd(reinterpret_cast<__half*>(address), val);
 }
 ```
-
-
-
 
 
 ### `atomicMax` for `at::Half, float, double`

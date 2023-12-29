@@ -15,7 +15,6 @@ Then open compositing window, and set use nodes, then add an "alpha over" layer 
 ![image-20230817121909364](D:\aa\Notebooks\docs\model\blender_tutorial.assets\image-20230817121909364.png)
 
 
-
 ### Add-on
 
 `Edit --> Preferences --> Add-ons`
@@ -63,7 +62,6 @@ in the same folder, and a name keyword is necessary.
   ![image-20230914132030562](blender_tutorial.assets/image-20230914132030562.png)
 
 * Then go to pose mode, and you can move your bones to visualize the deformed poses!
-
 
 
 ### How to render transparent background
@@ -124,13 +122,9 @@ In the world properties:
 ![image-20230305191716034](blender_tutorial.assets/image-20230305191716034.png)
 
 
-
 ### Move object origin to mesh center (instead of global center 0,0,0)
 
 ![image-20230521220540588](blender_tutorial.assets/image-20230521220540588.png)
-
-
-
 
 
 ### UI and shortcut key
@@ -167,7 +161,6 @@ In the world properties:
 * Ctrl + Z: undo
 
 * Ctrl + Shift + Z: redo
-
 
 
 * Ctrl + Alt + 0: **move camera to current view (very useful!)**

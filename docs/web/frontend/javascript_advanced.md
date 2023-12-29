@@ -11,7 +11,6 @@ function foo(){
 ```
 
 
-
 ### [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis)
 
 A standard way to access the global environment in different js environments. 
@@ -31,7 +30,6 @@ var globals = getGlobal();
 ```
 
 
-
 ### Prototype Chain
 
 * All the reference types are Objects.
@@ -39,7 +37,6 @@ var globals = getGlobal();
 * Function has `prototype` attribute.
 * All the reference types' `_proto_` points to its constructor's `prototype`
 * If an attribute cannot be found in an object, then find it in the object's `_proto_`.
-
 
 
 ### Hoisting (声明提前)
@@ -74,7 +71,6 @@ undefined
 10
 99
 ```
-
 
 
 ### Class (ES6)
@@ -336,9 +332,6 @@ l.speak();
 // Fuzzy makes a noise.
 // Fuzzy roars.
 ```
-
-
-
 
 
 ### Tips

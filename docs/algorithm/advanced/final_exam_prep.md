@@ -181,7 +181,6 @@ int main() {
 ```
 
 
-
 ### BIT
 
 ##### apple tree
@@ -275,7 +274,6 @@ int main() {
 ```
 
 
-
 ### Segment Tree
 
 ##### Balanced Lineup 
@@ -350,7 +348,6 @@ int main() {
 	}
 }
 ```
-
 
 
 ##### integers
@@ -458,7 +455,6 @@ int main() {
 ```
 
 
-
 ##### kth-Number
 
 ```c++
@@ -542,7 +538,6 @@ int main() {
 	}
 }
 ```
-
 
 
 ##### Mayor's Poster
@@ -640,9 +635,6 @@ int main() {
 ```
 
 
-
-
-
 ### Trie
 
 ##### Proto
@@ -734,7 +726,6 @@ int main() {
 	}
 }
 ```
-
 
 
 ### Directed Tarjan
@@ -840,7 +831,6 @@ int main() {
 ```
 
 
-
 ### Shortest Path
 
 ###### candies
@@ -929,7 +919,6 @@ int main() {
 ```
 
 
-
 ##### currency exchange
 
 ```c++
@@ -998,7 +987,6 @@ int main() {
 	cout << (bf() ? "YES" : "NO") << endl;
 }
 ```
-
 
 
 ##### Warmholes
@@ -1073,7 +1061,6 @@ int main() {
 	}
 }
 ```
-
 
 
 ##### cow contest
@@ -1153,15 +1140,11 @@ int main() {
 ```
 
 
-
-
-
 ----
 
 ### Undirected Tarjan
 
 ···
-
 
 
 ### Maximum Flow
@@ -1423,9 +1406,6 @@ int main() {
 	cout << Dinic(src, dst) << endl;
 }
 ```
-
-
-
 
 
 ### Geometry
@@ -1987,11 +1967,6 @@ int main() {
 ```
 
 
-
-
-
-
-
 ### Suffix Array
 
 ##### Substrings
@@ -2110,8 +2085,5 @@ int main() {
 	}
 }
 ```
-
-
-
 
 

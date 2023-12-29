@@ -11,7 +11,6 @@ git config --global credential.helper cache
 ```
 
 
-
 ### Start Projects & Make Changes
 
 ##### file status lifespan
@@ -65,7 +64,6 @@ git commit -a -m "message" # auto add all modified (tracked) files and commit (o
 ```
 
 
-
 ### History
 
 ```bash
@@ -80,7 +78,6 @@ git log --pretty=format:"%h %s" --graph # tree view
 git log --since=2.weeks
 git log --grep="keyword"
 ```
-
 
 
 ### Undo
@@ -99,7 +96,6 @@ git checkout -- [file] # dangerous operation. all changes to [file] will be lost
 					   # in fact this copies from the last commited state.
 
 ```
-
 
 
 ### Remote 
@@ -184,13 +180,11 @@ git push origin master
 ```
 
 
-
 ### Tag
 
 ```bash
 git tag
 ```
-
 
 
 ### Alias
@@ -199,7 +193,6 @@ git tag
 git config --global alias.ci commit # git ci == git commit
 git config --global alias.st status # git st == git status
 ```
-
 
 
 ### Branching
@@ -243,7 +236,6 @@ git branch -D dev # forcely delete unmerged "dev"
 ```
 
 
-
 ### Remote Branching
 
 ```bash
@@ -273,7 +265,6 @@ git push origin/exp exp
 ```
 
 
-
 ### Rebase Branch
 
 Another method to merge branches.
@@ -295,11 +286,9 @@ git merge experiment
 ![master 分支的快进合并。](https://git-scm.com/book/en/v2/images/basic-rebase-4.png)
 
 
-
 While normal merge will generate:
 
 ![通过合并操作来整合分叉了的历史。](https://git-scm.com/book/en/v2/images/basic-rebase-2.png)
-
 
 
 ### Ignore
@@ -319,7 +308,6 @@ git rm -r --cached <folder>
 ```
 
 
-
 ### Submodule
 
 Add a repo (at `url`) to the current repo's `dest_path` as a submodule:
@@ -329,7 +317,6 @@ git submodule add <submodule_url> <dest_path>
 ```
 
 This will automatically track the submodule's version by creating a `.gitmodules` file.
-
 
 
 ### Stash

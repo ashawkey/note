@@ -28,15 +28,9 @@ Special IPs:
   ```
 
 
-
-
-
 ### IPv6
 
 128bit
-
-
-
 
 
 ### NAT (Network Address Translation)

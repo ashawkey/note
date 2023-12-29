@@ -1,7 +1,6 @@
 # PyPi publish
 
 
-
 ### Prepare `setup.py`
 
 A simple example:
@@ -34,7 +33,6 @@ if __name__ == '__main__':
 ```
 
 `setup.cfg` is a static alternative of `setup.py`. Usually we don't need it. (although `setuptools` aims to transfer to the static one.)
-
 
 
 ### `pytest` for unit test
@@ -95,7 +93,6 @@ pytest -k Class.method
 ```
 
 
-
 ### `.gitignore`
 
 ```
@@ -110,7 +107,6 @@ __pycache__/
 build/
 dist/
 ```
-
 
 
 `LICENSE`
@@ -140,9 +136,6 @@ THE SOFTWARE.
 ```
 
 
-
-
-
 ### Publishing
 
 First, build the distributions by:
@@ -167,7 +160,6 @@ twine upload dist/numpytorch-0.1.2.tar.gz
 Note: you cannot delete or replace published versions! To update the code, you must change the version code and rebuild the package, then upload a different version (e.g., 0.1.3).
 
 
-
 ### Add static files
 
 By default `sdist` only bundle code files, if you have some data, like the `onnx` models, you should use `MANIFEST.in` to add them.
@@ -190,7 +182,6 @@ setup(
 ```
 
 Now you can run `python setup.py sdist` to check whether it copies your static files.
-
 
 
 ### Automatic publishing with github actions
@@ -236,7 +227,6 @@ Create secrets at repository.
 When you want to publish a new version, navigate to **release** and release a version tag.
 
 Then github actions will build and publish current repository state automatically!
-
 
 
 ### the setup script

@@ -8,7 +8,6 @@ padding character: =
 ```
 
 
-
 It encodes every 3 byte binary string to 4 byte base64 string.
 
 ```python
@@ -38,9 +37,6 @@ def base64_decode(s):
 ```
 
 
-
-
-
 ### python API
 
 ```python
@@ -51,7 +47,6 @@ bs64 = base64.b64encode(bs) # b'YWJpbmFyeXN0cmluZw=='
 
 bs == base64.b64decode(bs64) # True
 ```
-
 
 
 Note the difference between bytes and strings.

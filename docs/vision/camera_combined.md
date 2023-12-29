@@ -8,25 +8,32 @@
 
   * The Intrinsic Matrix use pixel height / width / focal, e.g. `H ~ [0, 1024), W ~ [0, 1024), focal = 1236 `, and face at `+z`.
     
+
 $$
+\displaylines{
 K = \begin{bmatrix}
     f_x & s & x_0 & 0 \\
     0 & f_y  & y_0 & 0 \\
     0 & 0 & 1 & 0
     \end{bmatrix}
+}
 $$
 
 
 * The Projection Matrix use NDC, e.g., `H ~ [-1, 1], W ~ [-1, 1], near = 0.1`, and face at `-z`:
   
+
 $$
+\displaylines{
     Persp = Ortho\cdot P = Ortho \cdot \begin{bmatrix}
     near & 0 & 0 & 0 \\
     0 & near & 0 & 0 \\
     0 & 0 & near+far & near * far \\
     0 & 0 & -1 & 0
     \end{bmatrix}
+}
 $$
+
 
 And here the $P$ can be seen as a modified $K$:
 
@@ -39,7 +46,6 @@ However, in most cases, the focal plane is not the near plane:
 
 
 ![enter image description here](camera_combined.assets/6wEgR.png)
-
 
 
 ### implementation
@@ -170,9 +176,6 @@ class Camera:
             return persp
 
 ```
-
-
-
 
 
 ### references

@@ -5,9 +5,13 @@
 并不用模拟，是有递推公式的。
 
 $f(n, m)$ 代表此问题最后剩下的人的编号。
+
 $$
+\displaylines{
 f(n, m) = f(n-1, m) + m \mod n
+}
 $$
+
 
 ```cpp
 class Solution {
@@ -34,7 +38,6 @@ public:
     }
 };
 ```
-
 
 
 ### [消除游戏](https://leetcode-cn.com/problems/elimination-game/)

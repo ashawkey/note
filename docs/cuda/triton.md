@@ -11,7 +11,6 @@ pip install -e .
 ```
 
 
-
 ### Questions
 
 * **how to debug, e.g., print from kernel?**
@@ -98,7 +97,6 @@ Some differences from writing CUDA :
 * We don't use `N_THREAD`, instead, we use `BLOCK_SIZE = N / N_THREAD`.
 
 
-
 parallel-on-batch-dim example (softmax):
 
 ```python
@@ -176,7 +174,6 @@ def benchmark(N, M, provider):
 
 benchmark.run(show_plots=False, print_data=True)
 ```
-
 
 
 > TODO: 

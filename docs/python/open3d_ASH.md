@@ -19,7 +19,6 @@ th_a = torch.utils.dlpack.from_dlpack(o3_a.to_dlpack())
 ```
 
 
-
 ### Hash API
 
 ```python
@@ -150,6 +149,5 @@ hashset.insert(keys)
 active_buf_indices = hashset.active_buf_indices().to(o3c.int64)
 active_keys = hashset.key_tensor()[active_buf_indices]
 ```
-
 
 

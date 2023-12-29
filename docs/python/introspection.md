@@ -30,7 +30,6 @@ vars(foo)
 ```
 
 
-
 ### `dir()`
 
 `dir(x)` returns the names of attributes & methods of all levels (both current class and base class).
@@ -99,7 +98,6 @@ dir(foo)
  'x']
 '''
 ```
-
 
 
 ### inspect

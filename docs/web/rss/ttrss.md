@@ -1,7 +1,6 @@
 # TTRSS
 
 
-
 ### install
 
 ```bash
@@ -22,7 +21,6 @@ wget https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml
 # run at foreground
 docker-compose up
 ```
-
 
 
 ### Nginx
@@ -68,7 +66,6 @@ server {
 ```
 
 
-
 As sub-directory mode: [DO NOT RECOMMEND!]
 
 * If use this mode, all the APIs in the web frontend needs to be modified. e.g., the fever API should be `https://kiui.moe/ttrss/plugins/fever`, but the web frontend shows `https://kiui.moe/plugins/fever/`. This will also lead to several bugs.
@@ -103,15 +100,11 @@ server {
 ```
 
 
-
-
-
 ### access web frontend
 
 At `kiui.moe/ttrss/` or `ttrss.kiui.moe`. 
 
 Default account is `admin`. Remember to change password at once.
-
 
 
 ### fever api for 3rd applications

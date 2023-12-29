@@ -4,23 +4,23 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [tyro.md](python\tyro/) <div style="text-align: right">2023-12-15 16:03:52.529119</div>
-- [camera_intrinsics_exintrics.md](vision\camera_intrinsics_exintrics/) <div style="text-align: right">2023-12-13 20:07:38.526265</div>
-- [monky_patch.md](python\monky_patch/) <div style="text-align: right">2023-12-12 18:58:16.041742</div>
-- [set_usual_apps_proxy.md](web\proxy\set_usual_apps_proxy/) <div style="text-align: right">2023-12-08 16:21:56.252977</div>
-- [slurm.md](linux\slurm/) <div style="text-align: right">2023-12-07 15:20:34.127883</div>
-- [zip.md](linux\zip/) <div style="text-align: right">2023-12-06 14:44:52.320809</div>
-- [huggingface.md](python\huggingface/) <div style="text-align: right">2023-12-06 14:44:52.316494</div>
-- [awscli.md](linux\awscli/) <div style="text-align: right">2023-12-06 14:44:52.315493</div>
-- [vs_code_hotkey.md](others\vs_code_hotkey/) <div style="text-align: right">2023-12-06 14:44:52.315493</div>
-- [powershell.md](windows\powershell/) <div style="text-align: right">2023-12-06 14:44:52.279341</div>
-- [blender_tutorial.md](model\blender_tutorial/) <div style="text-align: right">2023-12-06 14:44:52.277337</div>
-- [git.md](linux\git/) <div style="text-align: right">2023-11-28 20:33:56.409179</div>
-- [env.md](linux\env/) <div style="text-align: right">2023-11-27 19:54:33.115214</div>
-- [disk.md](linux\disk/) <div style="text-align: right">2023-11-23 11:12:45.079090</div>
-- [ddpm.md](math\ddpm/) <div style="text-align: right">2023-11-21 14:17:26.240711</div>
-- [quaternion.md](math\quaternion/) <div style="text-align: right">2023-11-20 15:05:44.199565</div>
-- [rebuttals.md](writings\rebuttals/) <div style="text-align: right">2023-11-18 11:39:03.764987</div>
-- [git_tricks.md](linux\git_tricks/) <div style="text-align: right">2023-11-18 11:04:41.502742</div>
-- [trojan.md](web\proxy\trojan/) <div style="text-align: right">2023-11-17 09:55:15.367723</div>
-- [bash.md](linux\bash/) <div style="text-align: right">2023-11-17 09:19:57.540734</div>
+- [societal_impact.md](writings\societal_impact/) <div style="text-align: right">2023-12-29 14:16:08.915191</div>
+- [review.md](writings\review/) <div style="text-align: right">2023-12-29 14:16:08.914190</div>
+- [rebuttals.md](writings\rebuttals/) <div style="text-align: right">2023-12-29 14:16:08.912181</div>
+- [pitfalls.md](writings\pitfalls/) <div style="text-align: right">2023-12-29 14:16:08.909348</div>
+- [examples.md](writings\examples/) <div style="text-align: right">2023-12-29 14:16:08.907343</div>
+- [cuda.md](windows\cuda/) <div style="text-align: right">2023-12-29 14:16:08.899009</div>
+- [xpath.md](web\scrape\xpath/) <div style="text-align: right">2023-12-29 14:16:08.897680</div>
+- [grab.md](web\scrape\grab/) <div style="text-align: right">2023-12-29 14:16:08.895679</div>
+- [ttrss.md](web\rss\ttrss/) <div style="text-align: right">2023-12-29 14:16:08.894582</div>
+- [rsshub.md](web\rss\rsshub/) <div style="text-align: right">2023-12-29 14:16:08.893581</div>
+- [trojan.md](web\proxy\trojan/) <div style="text-align: right">2023-12-29 14:16:08.892491</div>
+- [trojan-go.md](web\proxy\trojan-go/) <div style="text-align: right">2023-12-29 14:16:08.884487</div>
+- [ss.md](web\proxy\ss/) <div style="text-align: right">2023-12-29 14:16:08.876081</div>
+- [set_usual_apps_proxy.md](web\proxy\set_usual_apps_proxy/) <div style="text-align: right">2023-12-29 14:16:08.875081</div>
+- [frp_reverse_proxy.md](web\proxy\frp_reverse_proxy/) <div style="text-align: right">2023-12-29 14:16:08.873938</div>
+- [concepts.md](web\proxy\concepts/) <div style="text-align: right">2023-12-29 14:16:08.871939</div>
+- [plyloader.md](web\frontend\three\plyloader/) <div style="text-align: right">2023-12-29 14:16:08.870939</div>
+- [basic.md](web\frontend\three\basic/) <div style="text-align: right">2023-12-29 14:16:08.862816</div>
+- [web_api.md](web\frontend\html\web_api/) <div style="text-align: right">2023-12-29 14:16:08.860812</div>
+- [http.md](web\frontend\html\http/) <div style="text-align: right">2023-12-29 14:16:08.850490</div>
