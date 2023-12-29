@@ -7,13 +7,11 @@
   only support `.eps, .ps` image formats.
 
   
-
 - **pdfLaTeX** (default choice for English)
 
   supports `.png, .jpg, .pdf` image formats. 
 
   
-
 - **XeLaTeX & LuaLaTeX** (if use Chinese)
 
   UTF-8 support. 
@@ -62,7 +60,6 @@
   ```
 
   
-
 * define new command
 
   ```latex
@@ -91,7 +88,6 @@
   ```
 
   
-
 * text justification:
 
   ```latex
@@ -172,7 +168,6 @@
   ```
 
   
-
 ### Mathematics
 
 ##### Mode
@@ -431,8 +426,6 @@ Bibliography style file.
   one of the commands is not defined. e.g. `\R`, `\Zlpha`
 
   
-
-
 ### Lengths
 
 ##### Units

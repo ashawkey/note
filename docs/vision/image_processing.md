@@ -334,7 +334,6 @@ def affine(img, a, b, c, d, tx, ty):
 
 $$
 \displaylines{
-
   \left(
   \begin{matrix}
   x'\\
@@ -356,7 +355,6 @@ $$
   1
   \end{matrix}
   \right)
-  
 }
 $$
 
@@ -366,7 +364,6 @@ $$
 
 $$
 \displaylines{
-
   \left(
   \begin{matrix}
   x'\\
@@ -388,18 +385,15 @@ $$
   1
   \end{matrix}
   \right)
-  
 }
 $$
 
 
-  
 * Rotate
   
 
 $$
 \displaylines{
-
   \left(
   \begin{matrix}
   x'\\
@@ -421,18 +415,15 @@ $$
   1
   \end{matrix}
   \right)
-  
 }
 $$
 
 
-  
 * Sharing
   
 
 $$
 \displaylines{
-
   a=\frac{t_x}{h}\\
     \left[
     \begin{matrix}
@@ -476,7 +467,6 @@ $$
     1
     \end{matrix}
     \right]
-  
 }
 $$
 
@@ -660,7 +650,6 @@ def idft(G):
   ```
 
   
-
 ### JPEG Compression
 
 1. 将图像从RGB色彩空间变换到YCbCr色彩空间；

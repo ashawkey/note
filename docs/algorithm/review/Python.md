@@ -70,7 +70,6 @@ l = [x in l if x != val]
   Not well supported. Use list comprehension or filter.
 
   
-
 ### set
 
 ```python

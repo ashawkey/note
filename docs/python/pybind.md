@@ -349,7 +349,6 @@ TODO: https://github.com/pybind/pybind11/blob/master/tests/test_eigen.cpp
   ```
 
   
-
 * `Cmake`
 
   Start by adding `pybind11` as a sub-module:

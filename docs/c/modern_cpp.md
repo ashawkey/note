@@ -76,7 +76,6 @@ static_cast<string>(sv);
   ```
 
   
-
 * `const_cast`
 
   [do not use!] change the `const`-ness of the pointer.
@@ -140,8 +139,6 @@ static_cast<string>(sv);
   ```
 
   
-
-
 ### constexpr
 
 constant expression is different from constant value. 

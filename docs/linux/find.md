@@ -16,7 +16,6 @@
   ```
 
   
-
 * list recursively with max-depth, sort output
 
   ```bash
@@ -35,7 +34,6 @@
   ```
 
   
-
 * find all files that contain a string
 
   ```bash
@@ -46,7 +44,6 @@
   ```
 
   
-
 * delete recursively a certain patterned file
 
   ```sh

@@ -4,23 +4,23 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [societal_impact.md](writings\societal_impact/) <div style="text-align: right">2023-12-29 14:16:08.915191</div>
-- [review.md](writings\review/) <div style="text-align: right">2023-12-29 14:16:08.914190</div>
-- [rebuttals.md](writings\rebuttals/) <div style="text-align: right">2023-12-29 14:16:08.912181</div>
-- [pitfalls.md](writings\pitfalls/) <div style="text-align: right">2023-12-29 14:16:08.909348</div>
-- [examples.md](writings\examples/) <div style="text-align: right">2023-12-29 14:16:08.907343</div>
-- [cuda.md](windows\cuda/) <div style="text-align: right">2023-12-29 14:16:08.899009</div>
-- [xpath.md](web\scrape\xpath/) <div style="text-align: right">2023-12-29 14:16:08.897680</div>
-- [grab.md](web\scrape\grab/) <div style="text-align: right">2023-12-29 14:16:08.895679</div>
-- [ttrss.md](web\rss\ttrss/) <div style="text-align: right">2023-12-29 14:16:08.894582</div>
-- [rsshub.md](web\rss\rsshub/) <div style="text-align: right">2023-12-29 14:16:08.893581</div>
-- [trojan.md](web\proxy\trojan/) <div style="text-align: right">2023-12-29 14:16:08.892491</div>
-- [trojan-go.md](web\proxy\trojan-go/) <div style="text-align: right">2023-12-29 14:16:08.884487</div>
-- [ss.md](web\proxy\ss/) <div style="text-align: right">2023-12-29 14:16:08.876081</div>
-- [set_usual_apps_proxy.md](web\proxy\set_usual_apps_proxy/) <div style="text-align: right">2023-12-29 14:16:08.875081</div>
-- [frp_reverse_proxy.md](web\proxy\frp_reverse_proxy/) <div style="text-align: right">2023-12-29 14:16:08.873938</div>
-- [concepts.md](web\proxy\concepts/) <div style="text-align: right">2023-12-29 14:16:08.871939</div>
-- [plyloader.md](web\frontend\three\plyloader/) <div style="text-align: right">2023-12-29 14:16:08.870939</div>
-- [basic.md](web\frontend\three\basic/) <div style="text-align: right">2023-12-29 14:16:08.862816</div>
-- [web_api.md](web\frontend\html\web_api/) <div style="text-align: right">2023-12-29 14:16:08.860812</div>
-- [http.md](web\frontend\html\http/) <div style="text-align: right">2023-12-29 14:16:08.850490</div>
+- [mkdocs.md](python\mkdocs/) <div style="text-align: right">2023-12-29 14:32:16.436796</div>
+- [trojan.md](web\proxy\trojan/) <div style="text-align: right">2023-12-29 14:29:49.998239</div>
+- [frp_reverse_proxy.md](web\proxy\frp_reverse_proxy/) <div style="text-align: right">2023-12-29 14:29:49.994726</div>
+- [http.md](web\frontend\html\http/) <div style="text-align: right">2023-12-29 14:29:49.993438</div>
+- [css.md](web\frontend\html\css/) <div style="text-align: right">2023-12-29 14:29:49.990813</div>
+- [html.md](web\frontend\html\html/) <div style="text-align: right">2023-12-29 14:29:49.990813</div>
+- [react-basics.md](web\frontend\react-basics/) <div style="text-align: right">2023-12-29 14:29:49.986814</div>
+- [nodejs_basics.md](web\frontend\nodejs_basics/) <div style="text-align: right">2023-12-29 14:29:49.985230</div>
+- [javascript_basics.md](web\frontend\javascript_basics/) <div style="text-align: right">2023-12-29 14:29:49.984229</div>
+- [javascript_advanced.md](web\frontend\javascript_advanced/) <div style="text-align: right">2023-12-29 14:29:49.982230</div>
+- [nginx.md](web\deploy\nginx/) <div style="text-align: right">2023-12-29 14:29:49.978239</div>
+- [sql_sqlite.md](web\backend\sql_sqlite/) <div style="text-align: right">2023-12-29 14:29:49.977733</div>
+- [python_flask.md](web\backend\python_flask/) <div style="text-align: right">2023-12-29 14:29:49.973222</div>
+- [sql_mysql.md](web\backend\sql_mysql/) <div style="text-align: right">2023-12-29 14:29:49.973222</div>
+- [transformation.md](vision\transformation/) <div style="text-align: right">2023-12-29 14:29:49.969222</div>
+- [golang_basics.md](web\backend\golang_basics/) <div style="text-align: right">2023-12-29 14:29:49.969222</div>
+- [golang_gin.md](web\backend\golang_gin/) <div style="text-align: right">2023-12-29 14:29:49.969222</div>
+- [image_processing.md](vision\image_processing/) <div style="text-align: right">2023-12-29 14:29:49.968036</div>
+- [colmap.md](vision\colmap/) <div style="text-align: right">2023-12-29 14:29:49.961324</div>
+- [3d reconstruction and generation.md](readings\3d reconstruction and generation/) <div style="text-align: right">2023-12-29 14:29:49.957000</div>

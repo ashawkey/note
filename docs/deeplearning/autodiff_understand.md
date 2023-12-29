@@ -29,7 +29,6 @@
   > ```
 
   
-
 * `x.requires_grad`
 
   whether tensor `x` requires grad, which affects:
@@ -57,7 +56,6 @@
   ```
 
   
-
 * `x.grad_fn`
 
   the `torch.autograd.Function` (operation) that creates `x`.
@@ -65,7 +63,6 @@
   this is the place where the **computation DAG** is saved (i.e., saves all the inputs, and the exact operator used to compute `x`)
 
   
-
 * `x.backward()`
 
   calculate gradients through the DAG. 
@@ -77,7 +74,6 @@
   ```
 
   
-
 * `x.grad`
 
   the accumulated / populated gradients, default to `None`.
@@ -112,7 +108,6 @@
   `torch.enable_grad()` can be used inside `torch.no_grad()` block, to re-enable gradient calculation.
 
   
-
 * `nn.Module.eval()`
 
   not to be confused with `no_grad()`, it just sets the correct behavior for special modules like `BatchNorm` and `Dropout`.
@@ -126,7 +121,6 @@
   ```
 
   
-
 * `with torch.set_grad_enabled(True/False):`
 
   similar to `with torch.no_grad()/enable_grad():`.

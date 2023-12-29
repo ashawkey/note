@@ -57,8 +57,6 @@ const element = React.createElement(
   ```
 
   
-
-
 ### Render
 
 ```javascript
@@ -216,7 +214,6 @@ Only use `setState()` to update state.
   ```
 
   
-
 ### Event
 
 * Default Behavior
@@ -234,7 +231,6 @@ Only use `setState()` to update state.
   ```
 
   
-
 * `<button onClick={func}> `
 
   ```javascript
@@ -274,7 +270,6 @@ Only use `setState()` to update state.
   ```
 
   
-
 ### Conditional Rendering
 
 * Logic Expressions
@@ -288,7 +283,6 @@ Only use `setState()` to update state.
   ```
 
   
-
 * Return null to avoid rendering.
 
   ```javascript
@@ -305,7 +299,6 @@ Only use `setState()` to update state.
   ```
   
   
-
 ### List & Key
 
 ```javascript
@@ -508,7 +501,6 @@ class ThemedButton extends React.Component {
   For Functional Components without `this.context`, use this to get `value`.
 
   
-
 ```javascript
 // Multiple Context
 // Theme context，默认的 theme 是 “light” 值
@@ -657,7 +649,6 @@ Cannot be used in **class components**.
   ```
 
   
-
 * `useEffect(func, [condition])`
 
   ```javascript
@@ -747,7 +738,6 @@ Cannot be used in **class components**.
   ```
   
   
-  
 * `useContext(myContext)`
 
   Also need <Provider>.
@@ -793,11 +783,6 @@ Cannot be used in **class components**.
   ```
 
   
-
-  
-
-  
-
 ### Fragments
 
 ```javascript
@@ -877,7 +862,3 @@ class Columns extends React.Component {
   Clone an element with props shallow-merged.
 
   
-
-  
-
-

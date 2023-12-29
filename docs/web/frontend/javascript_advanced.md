@@ -146,7 +146,6 @@ undefined
   ```
 
   
-
 * `this`:
 
   it can refers to different things under different contexts:
@@ -169,7 +168,6 @@ undefined
   ```
 
   
-
   We can use `Function.prototype.bind()` to change `this`:
 
   ```js
@@ -183,7 +181,6 @@ undefined
   ```
 
   
-
 * Class definitions **are not hoisted**. You must declare it first, then use it.
 * Other examples:
 

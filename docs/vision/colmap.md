@@ -155,4 +155,3 @@ Then just follow the GUI.
   * use better dataset with more images (better poses).
 
   
-

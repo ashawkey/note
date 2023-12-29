@@ -122,7 +122,6 @@ go run test.go
   ```
 
   
-
 * Pass-by-Reference
 
   ```
@@ -130,7 +129,6 @@ go run test.go
   ```
 
   
-
 ### Variables
 
 ```go
@@ -185,8 +183,6 @@ const (
   ```
 
   
-
-
 ### Function
 
 ```go

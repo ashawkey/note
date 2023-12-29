@@ -54,6 +54,5 @@ pandas_df = df.toPandas() # pandas
 df.write.csv('foo.csv', header=True) # csv
 
 
-    
 ```
 

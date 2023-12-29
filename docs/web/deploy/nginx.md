@@ -167,7 +167,6 @@ Location: `/etc/nginx/nginx.conf`
   ```
 
   
-
 * Reverse Proxy
 
   Proxy to local port:

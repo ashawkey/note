@@ -36,7 +36,6 @@ var a = 1; // use ;
   > ```
 
   
-
 * `String`
 
   * `utf-16`
@@ -88,7 +87,6 @@ var a = 1; // use ;
     ```
 
     
-
 * `Boolean`
 
    * `true`

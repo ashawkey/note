@@ -53,7 +53,6 @@ These parts are **linked** together later.
   ```
 
   
-
 ### Relocatable Object Files
 
 * ELF (Executable and Linkable Format) header

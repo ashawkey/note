@@ -17,9 +17,7 @@ $$
 
 $$
 \displaylines{
-
   RAssoc(G) = max_{V_1,...,V_k }\sum_{c=1}^k \frac {links(V_c, V_c)}{|V_c|} 
-  
 }
 $$
 
@@ -29,9 +27,7 @@ $$
 
 $$
 \displaylines{
-
   RCut(G) = min_{V_1,...,V_k }\sum_{c=1}^k \frac {links(V_c, V \setminus V_c)}{|V_c|} \\
-  
 }
 $$
 
@@ -43,9 +39,7 @@ $$
 
 $$
 \displaylines{
-
   NCut(G) = min_{V_1,...,V_k }\sum_{c=1}^k \frac {links(V_c, V \setminus V_c)}{degree(V_c)} \\
-  
 }
 $$
 

@@ -43,7 +43,6 @@ It allows developers to write JavaScript outside of a browser.
   ```
 
   
-
 * REPL
 
   ```bash
@@ -66,7 +65,6 @@ It allows developers to write JavaScript outside of a browser.
   ```
 
   
-
 * Input from CMD
 
   ```javascript
@@ -102,8 +100,6 @@ It allows developers to write JavaScript outside of a browser.
   ```
 
   
-
-
 ### `npm`: Node Package Manager
 
 ```bash

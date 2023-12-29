@@ -202,8 +202,6 @@ Tips:
   ```
 
   
-
-
 ### assign value by a list of coordinates
 
 ```python

@@ -11,10 +11,8 @@
 
 $$
 \displaylines{
-
   loc(A[j_0, ..., j_{n-1}]) = loc(A[0,...,0])\\
   + size*[\sum_{i=0}^{n-2}(j_i\prod_{k=i+1}^{n-1}d_k)+j_{n-1}]
-  
 }
 $$
 
@@ -105,12 +103,10 @@ TAIL: 广义表中**第一个元素以外的元素构成的(!)广义表(!)**。
 
 $$
 \displaylines{
-
   \frac {p_i} W = \frac {q_j} W = \frac 1 {2n+1} \\
   ASL(n)  = \frac 1 {2n+1} (\sum_{i=1}^n(H(p_i)+1)+\sum_{j=0}^nH(q_j)) \\
   = \frac 1 {2n+1} (I+n+E)\\
   = \frac {2I+3n} {2n+1}
-  
 }
 $$
 

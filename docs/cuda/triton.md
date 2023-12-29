@@ -40,7 +40,6 @@ pip install -e .
   For example, I cannot think of a way to use triton to do raytracing/raymarching. It still requires blocked operation, but in this case each ray behaves differently, and cannot share in a block.
 
   
-
 ### basics
 
 There is no built doc for `triton.language`, search it [here](https://github.com/openai/triton/blob/master/python/triton/language/core.py).

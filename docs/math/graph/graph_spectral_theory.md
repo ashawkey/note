@@ -24,9 +24,7 @@
 
 $$
 \displaylines{
-
   Lf(i) = \sum_{j}w_{ij}(f(i)-f(j))
-  
 }
 $$
 
@@ -38,9 +36,7 @@ $$
 
 $$
 \displaylines{
-
   \hat{\mathcal{L}} = D^{-1/2}\mathcal{L}D^{-1/2} = I - D^{-1/2}WD^{-1/2}
-  
 }
 $$
 
@@ -145,9 +141,7 @@ $$
 
 $$
 \displaylines{
-
   f_{out}(i) = b_{i,i}f_{in}(i) + \sum_{j \in \mathcal{N}(i,K)}b_{i,j}f_{in}(j)
-  
 }
 $$
 

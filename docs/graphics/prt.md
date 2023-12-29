@@ -14,7 +14,6 @@
   $$
   
 
-
   ![image-20211012162805494](prt.assets/image-20211012162805494.png)
 
 * For any function $f$ defined on the sphere, we can represent it with a linear combination of SHs (usually truncated):
@@ -23,7 +22,6 @@
 $$
 \displaylines{
   f(\omega) = \sum_ic_iB_i(\omega)
-  
 }
 $$
 
@@ -35,7 +33,6 @@ $$
 \displaylines{
   \int_\Omega B_i(\omega)B_j(\omega) = 0, i\ne j \\
   \int_\Omega B_i(\omega)B_j(\omega) = 1, i= j \\
-  
 }
 $$
 
@@ -46,7 +43,6 @@ $$
 $$
 \displaylines{
   c_i = \int_\Omega f(\omega)B_i(\omega)d\omega
-  
 }
 $$
 
@@ -58,7 +54,6 @@ $$
   ![image-20211012164731580](prt.assets/image-20211012164731580.png)
 
   
-
 ### Precomputed Radiance Transfer
 
 * Basic idea:
@@ -71,7 +66,6 @@ $$
 $$
 \displaylines{
     L(o) = \int_\Omega \underbrace{L(i)}_{\text{lighting}}\underbrace{V(i)\rho(i, o)\max(0, n \cdot i)}_{\text{light transport}}di
-    
 }
 $$
 

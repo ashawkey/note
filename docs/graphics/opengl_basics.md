@@ -152,7 +152,6 @@ The way OpenGL works is like a **state machine**. We always call it **Sequential
   ```
 
   
-
 * VAO = Vertex Array Object. It saves the vertex attribute pointers, to make it easy to switch between different VBOs.
 
   Without VAO, we have to define vertex attribute every time before we draw:
@@ -166,7 +165,6 @@ The way OpenGL works is like a **state machine**. We always call it **Sequential
   ```
 
   
-
   ![img](opengl.assets/vertex_array_objects.png)
 
   ```cpp
@@ -193,7 +191,6 @@ The way OpenGL works is like a **state machine**. We always call it **Sequential
   ```
 
   
-
 * EBO/IBO = Element / Index Buffer Object. This is used to avoid drawing repeated vertices (e.g., for a rectangle composed of two triangles, we don't want to draw the diagonal line twice.)
 
   ```cpp
@@ -262,7 +259,6 @@ The way OpenGL works is like a **state machine**. We always call it **Sequential
   ```
 
   
-
 #### Shaders
 
 GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragment Shaders.
@@ -432,7 +428,6 @@ GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragm
   ```
 
   
-
 #### Textures
 
 * Texture can be mapped with UVs. 
@@ -615,7 +610,6 @@ GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragm
   ```
 
   
-
 #### Transformations
 
 * we pass in transformations as `mat4` simply:
@@ -649,7 +643,6 @@ GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragm
   ```
 
   
-
 #### Coordinate system
 
 * OpenGL use Left-hand coordinate system.
@@ -678,7 +671,6 @@ GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragm
   ```
 
   
-
 #### Camera
 
 * Yaw（偏航角）, Pitch（俯仰角）, Roll（滚转角）: 以自己为中心的三转轴。

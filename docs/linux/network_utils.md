@@ -125,7 +125,6 @@ arp -v
   ```
 
   
-
 * modifying route:
 
   ```bash
@@ -141,8 +140,6 @@ arp -v
   ```
 
   
-
-
 ### subnet mask
 
 Each host is configured with a unique IP address and subnet mask. 

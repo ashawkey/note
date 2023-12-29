@@ -35,7 +35,6 @@
   ```
 
   
-
 * `unordered_map<pair<int, int>, int>` throws error like `deleted implicit constructor`:
 
   this is because there is no built in `hash` function for `pair<>`. [see here.](https://stackoverflow.com/questions/62869571/call-to-implicitly-deleted-default-constructor-of-unordered-set-vectorint)
@@ -46,7 +45,6 @@
   * use `map<pair<int,int>, int>`.
 
   
-
 * `std::map::operator[]` will initialize the value if key doesn't exist. (instead of throw an error like `at()`)
 
   ```c++
@@ -79,7 +77,6 @@
   ```
 
   
-
 * `%` modulo operator will return **signed** value
 
   ```c++

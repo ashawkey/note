@@ -14,7 +14,6 @@
   ```
 
   
-
 * Delete user
 
   ```bash
@@ -23,7 +22,6 @@
   ```
 
   
-
 * switch user
 
   ```bash
@@ -38,7 +36,6 @@
   ```
 
   
-
 * add sudoer
 
   ```bash
@@ -60,7 +57,6 @@
   ```
 
   
-
 * Change shell
 
   ```bash

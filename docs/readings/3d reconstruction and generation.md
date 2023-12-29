@@ -161,7 +161,6 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 * Our goal is not rendering, but inverse rendering
 
   
-
 #### [CVPR 2018] Neural 3D mesh renderer.
 
 [paper](http://arxiv.org/abs/1711.07566)

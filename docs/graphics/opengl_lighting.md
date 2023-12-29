@@ -28,7 +28,5 @@
   ```
 
   
-
-
 ### gamma correction
 

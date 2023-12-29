@@ -136,8 +136,6 @@ To set the default charset to `utf8mb4`:
   ```
 
   
-
-
 ### Set password
 
 ```mysql

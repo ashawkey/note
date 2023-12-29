@@ -46,7 +46,6 @@ in the same folder, and a name keyword is necessary.
   ![image-20230914131227283](blender_tutorial.assets/image-20230914131227283.png)
 
   
-
 * Adjust the bone's size, rotation, make it as the main spine of your model.
 
 * Go to edit mode:
@@ -143,7 +142,6 @@ In the world properties:
   * `0`: toggle camera view
   
   
-  
 * Shift + A: add new objects
   
 * Shift + Z: toggle wireframe
@@ -151,11 +149,9 @@ In the world properties:
 * Ctrl + Space: toggle maximize area with the current application window.
   
    
-  
 * Ctrl + Dragging: discrete steps
 
 * Shift + Dragging: precise steps
-  
   
   
 * Ctrl + Z: undo

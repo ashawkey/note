@@ -24,7 +24,6 @@ $$
   ... \\
   f(n) = f(n-1)f(0) + f(n-2)f(1) + ... + f(1)f(n-2) + f(n-1)f(0) \\
   the\ solution\ is \ f(n) = \frac{C_{2n}^n}{n+1}
-  
 }
 $$
 
@@ -93,7 +92,6 @@ $$
         I_{n+1} = I_n + k \\
         E_{n+1} = E_n -k+2(k+1) = E_n+k+2 \\
         E_{n+1} = I_{n+1}+2(n+1)
-        
 }
 $$
 
@@ -110,7 +108,6 @@ $$
 $$
 \displaylines{
     P=NK - (N-1) = N(K-1)+1
-    
 }
 $$
 
@@ -123,7 +120,6 @@ $$
     N = N_0 + N_1 + N_2  = E +1\\
     E = N_1 + 2N_2 \\
     \Rightarrow N_0 = N_2 + 1
-    
 }
 $$
 
@@ -515,7 +511,6 @@ $$
   \frac {D(N)} {N+1} = \frac {D(N-1)}{N} + \frac{2(N-1)}{N(N+1)} \\
   f(n) = f(n-1)+O(1/n) \\
   f(n) \in \sum_{i=1}^nO(1/n) = O(log\ n)
-  
 }
 $$
 
@@ -530,7 +525,6 @@ $$
   \sum_{i=1}^{N}\frac 1 i \in O(logN) \\
   this \ follows \ continuous \ condition: \\
   \int \frac 1 xdx = lnx
-  
 }
 $$
 
@@ -627,7 +621,6 @@ $$
 $$
 \displaylines{
   \sum_{i=0}^{logn}2^i(logn - i) = \sum_{j=0}^{logn}n\frac j {2^j} \lt 2n
-  
 }
 $$
 

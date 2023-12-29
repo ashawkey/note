@@ -212,7 +212,6 @@
 $$
 \displaylines{
   m = l + m' = l + n - 1 = \sum_{i=1}^n(x_i + 1) = N + n
-  
 }
 $$
 
@@ -346,7 +345,6 @@ $$
   h \le 2k+1 \\
   n \ge 2^k - 1 \\
   \Rightarrow h\le 2log_2(n+1)+1
-  
 }
 $$
 

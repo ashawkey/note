@@ -45,7 +45,6 @@ Since the terminal of unraid do not support package manager (and the alternative
   ```
 
   
-
 * prepare the `config.json` for `trojan` and put it to `/boot/trojan/config.json`. The `local_port` must be `1086`!
 
   ```json
@@ -137,7 +136,6 @@ Since the terminal of unraid do not support package manager (and the alternative
   ```
 
   
-
 * Install Plugin: use `wget` to fetch (The code can be found in `/usr/local/sbin/plugin`).
 
   Add to `/boot/config/go`:
@@ -152,7 +150,6 @@ Since the terminal of unraid do not support package manager (and the alternative
   ```
 
   
-
 * Reboot and you are free to load Apps and install Plugins!
 
 

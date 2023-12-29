@@ -290,8 +290,6 @@ A way of storing data inside the partitions.
   ```
 
   
-
-
 ### testdisk
 
 TestDisk can undelete

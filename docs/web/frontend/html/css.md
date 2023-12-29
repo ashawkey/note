@@ -165,7 +165,6 @@ a[attr*=value] {} /* a with value in attr */
   ```
 
   
-
 ### References
 
 * `background`
@@ -181,4 +180,3 @@ a[attr*=value] {} /* a with value in attr */
   ```
 
   
-

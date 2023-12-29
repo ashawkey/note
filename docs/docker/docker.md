@@ -202,7 +202,6 @@ sudo systemctl restart docker
   ```
   
   
-  
 * commit to image
 
   ```bash
@@ -237,8 +236,6 @@ sudo systemctl restart docker
   Always use `Dockerfile` to build a image!
 
   
-
-
 ### Dockerfile
 
 To build an image, we should first create an empty folder and create a `Dockerfile`:

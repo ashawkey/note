@@ -32,7 +32,6 @@ Hardwares:
 * IO Bridge (system bus, memory bus, IO bus)
 
   
-
 Memory hierarchy: Balance between **Access Speed** and **Storage Size**!
 
 * Register: 100~1000 B

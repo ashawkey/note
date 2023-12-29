@@ -5,7 +5,7 @@ import glob
 files = glob.glob('docs/**/*.md', recursive=True)
 
 # fix math blocks to be correctly rendered by mathjax:
-# 1. $$..$$ will always be preceded and followed by an empty line, and there is no blank line following the left $$.
+# 1. $$..$$ will always be preceded and followed by an empty line, and there is no blank line inside.
 # 2. always wrap all content within \displaylines{}
 
 for file in files:
@@ -13,25 +13,30 @@ for file in files:
         lines = f.readlines()
 
     # naive matching $$...$$
-    is_left = True
+    outside = True
     modified = False
     for i, line in enumerate(lines):
         if re.match('^\$\$', line) is not None:
-            if is_left:
+            if outside:
                 if lines[i+1] != '\displaylines{\n':
                     lines[i] = '\n$$\n\displaylines{\n'
                     modified = True
-                is_left = False
+                outside = False
             else:
                 if lines[i-1] != '}\n':
                     lines[i] = '}\n$$\n\n'
                     modified = True
-                is_left = True
-    
+                outside = True
+
+        # remove blank lines inside
+        if not outside and re.match('^\s*\n$', line):
+            lines[i] = ''
+            modified = True
+            
     # remove excessive blank lines
     cnt = 0
     for i, line in enumerate(lines):
-        if line == '\n':
+        if re.match('^\s*\n$', line):
             cnt += 1
             if cnt >= 3:
                 lines[i] = ''
@@ -42,11 +47,10 @@ for file in files:
     if modified:
         lines = [line for line in lines if line != '']
     
-    if not is_left:
+    if not outside:
         print(f'[WARN] {file} unmatched $$, no modification is done.')
     else:
         if modified:
             with open(file, 'w') as f:
                 f.writelines(lines)
             print(f'[INFO] {file} fixed.')
-            

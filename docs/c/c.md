@@ -18,7 +18,6 @@
   `gcc program.c`
 
   
-
 ## Example
 
 ### Simple program
@@ -97,7 +96,6 @@ gcc -o hello.out hello.c
   ```
 
   
-
 ### Implicit type conversion
 
 ```

@@ -44,9 +44,7 @@
 
 $$
 \displaylines{
-
   z' = \frac {1/z - 1/near} {1/far - 1/near}
-  
 }
 $$
 
@@ -260,7 +258,6 @@ $$
   ```
 
   
-
 ### Frame Buffer Object (FBO)
 
 * OpenGL use frame buffers to store color, depth, stencil, ... GLFW creates default color buffer, depth buffer, stencil buffer for us to use. 
@@ -471,7 +468,6 @@ $$
   ```
 
   
-
 ### Cube map
 
 * A cube map is another type of texture, which contains six 2D texture that makes a box. Cube maps can be helpful for environment texture (such as the sky box), and we can use a direction vector to sample it (like sampling a sphere).
@@ -1036,7 +1032,6 @@ $$
   ```
 
   
-
 * example: astroids.
 
   ```glsl
@@ -1132,6 +1127,3 @@ $$
   ```
 
   
-
-  
-

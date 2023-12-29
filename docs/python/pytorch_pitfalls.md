@@ -41,7 +41,6 @@
     ```
 
     
-
 * Difference with `torch.take_along_dim & np.take_along_axis`.
 
   **In most normal use cases, it is the same.**
@@ -211,4 +210,3 @@ For the input specifications, it is very similar to `gather`.
   ```
 
   
-

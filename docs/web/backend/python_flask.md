@@ -45,7 +45,6 @@ Valid response:
   ```
 
   
-
 ### Blueprint
 
 A way to organize a group of views. (Modularization)
@@ -111,7 +110,6 @@ Request context is expensive.
   ```
 
   
-
   ```python
   @app.route("api/<arg1>/<arg2>")
   def func(arg1, args):
@@ -177,7 +175,6 @@ Request context is expensive.
   ```
 
   
-
 * `files`
 
   ```python 
@@ -185,7 +182,6 @@ Request context is expensive.
   ```
 
   
-
 ### flask.session
 
 Store data **in different requests from the same client**. (signed cookies)

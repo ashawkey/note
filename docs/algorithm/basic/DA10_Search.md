@@ -31,9 +31,7 @@ $$
 
 $$
 \displaylines{
-
   \sum_{i=1}^n\frac 1 n(n-i+1) = \frac {n+1} 2
-  
 }
 $$
 
@@ -133,9 +131,7 @@ $$
 
 $$
 \displaylines{
-
   x_{(a)} \rightarrow x_{(b)} = y_{(a)}
-  
 }
 $$
 
@@ -219,10 +215,8 @@ $$
 
 $$
 \displaylines{
-
   ASL_{succ} = \frac 1 {11} (1+5+1+2+2+1+1+1+1+2+3) = 20/11 \\
   ASL_{fail} = \frac 1 {13} (8+7+6+5+4+3+2+1+1+1+2+1+11) = 4
-  
 }
 $$
 
@@ -236,10 +230,8 @@ $$
 
 $$
 \displaylines{
-
     p(K, 2i-1) = i^2 \\
     p(K, 2i) = -i^2 
-    
 }
 $$
 
@@ -251,9 +243,7 @@ $$
 
 $$
 \displaylines{
-
     p(K, i) = perm[i-1]
-    
 }
 $$
 

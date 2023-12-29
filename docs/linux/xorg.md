@@ -41,7 +41,6 @@ log files:
 * `~/.xsession-error`  to see the recent errors
 
   
-
 config:
 
 * `/etc/X11/xorg.conf`  specifies all monitors, devices.
@@ -178,7 +177,6 @@ config:
   ```
   
   
-  
 * `~/.Xauthority`
 
   sometimes the ssh login is super slow, this maybe caused by Xauthority lock.
@@ -186,13 +184,9 @@ config:
   solution: `sudo rm -rf ~/.Xauthority*`
 
   
-
 * `~/.xsession`
 
   
-
-  
-
 ### display manager
 
 usually `lightdm`, alternatives are `gdm3, sddm, ...`

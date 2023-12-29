@@ -52,7 +52,6 @@ Therefore, we also have $v' = zv$ if the scaling factor $r=||z||=1$.
 
 $$
 \displaylines{
- 
 \mathbf R_x(\theta) = 
 \begin{bmatrix}
 1&0&0&0\\
@@ -60,7 +59,6 @@ $$
 0&\sin\theta & \cos\theta &0 \\
 0&0&0 &1
 \end{bmatrix} \\
-
 \mathbf R_y(\phi) = 
 \begin{bmatrix}
 \cos\phi &0 & -\sin\phi &0 \\
@@ -68,7 +66,6 @@ $$
 \sin\phi &0 & \cos\phi &0 \\
 0&0&0 &1
 \end{bmatrix} \\
-
 \mathbf R_z(\gamma) = 
 \begin{bmatrix}
 \cos\gamma & -\sin\gamma &0&0 \\

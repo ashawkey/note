@@ -49,9 +49,7 @@
 
 $$
 \displaylines{
-
     MAPE = \frac{1}{n}\sum_{i=1}^n|\frac{\hat y - y_i}{y_i}|
-    
 }
 $$
 
@@ -63,9 +61,7 @@ $$
 
 $$
 \displaylines{
-
     L = -\sum_{i=1}^n(y_ilog(\hat y) + (1-y_i)log(1-\hat y))
-    
 }
 $$
 
@@ -77,9 +73,7 @@ $$
 
 $$
 \displaylines{
-
     L = -\sum_{i=1}^n\sum_{t=1}^c(y_{i,t}log\hat y_t)
-    
 }
 $$
 

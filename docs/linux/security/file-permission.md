@@ -16,7 +16,6 @@ https://www.computerhope.com/unix/chattr.htm#list-of-attributes
   ```
 
   
-
 * `chattr [-R] [+/-/=<attr>] <file>`
 
   change the attributes of file or directory.

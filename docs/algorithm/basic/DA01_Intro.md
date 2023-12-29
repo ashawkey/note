@@ -75,11 +75,9 @@
 
 $$
 \displaylines{
-
     \exist C,N_0 \gt 0 \ \ s.t. \ \forall n \ge N_0:\\
     f(n) \le C \cdot g(n) \\
     \Rightarrow f(n) \in O(g(n))
-    
 }
 $$
 
@@ -93,11 +91,9 @@ $$
 
 $$
 \displaylines{
-
     \exist C,N_0 \gt 0 \ \ s.t. \ \forall n \ge N_0:\\
     f(n) \ge C \cdot g(n) \\
     \Rightarrow f(n) \in \Omega(g(n))
-    
 }
 $$
 
@@ -109,10 +105,8 @@ $$
 
 $$
 \displaylines{
-
     f(n) \in O(g(n)) \ and \ f(n) \in \Omega(g(n)) \\
     \Rightarrow f(n) \in \Theta(g(n))
-    
 }
 $$
 

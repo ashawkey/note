@@ -33,7 +33,6 @@ Copy and paste code from the library to the current `cpp` file.
   * avoid re-compilation.
 
   
-
 ### Libraries
 
 A collection of resources to provide **re-usable** code.
@@ -72,7 +71,6 @@ g++ main.cpp libxxx.cpp
   ```
 
   
-
 ##### Using at Linking
 
 This is the case when the library is **pre-compiled**.
@@ -98,7 +96,6 @@ You only have `libxxx.h` , and a compiled library file. (static or dynamic)
   ```
 
   
-
 * Dynamic Library
 
   When you include a dynamic library, your executable will load the used library code only at run time.

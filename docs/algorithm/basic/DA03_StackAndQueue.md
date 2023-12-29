@@ -17,7 +17,6 @@
   * **性质**：
 
   
-
 $$
 \displaylines{
 C_0 = 1 \ \  and \ \ C_{n+1} = \sum_{i=0}^nC_iC_{n-i}  \\

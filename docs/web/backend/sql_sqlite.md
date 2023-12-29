@@ -85,7 +85,6 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
   ```
 
   
-
 * DELETE
 
   ```sqlite
@@ -94,7 +93,6 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
   ```
 
   
-
 * SELECT
 
   ```sqlite
@@ -150,8 +148,6 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
     count starting from OFFSET.
 
     
-
-
 * UPDATE
 
   used to change value of inserted row.
@@ -167,8 +163,6 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
   ```
 
   
-
-
 ### PRAGMA
 
 Set default behavior.
@@ -269,7 +263,6 @@ conn.close()
   ```
 
   
-
 * `conn.row_factory`
 
   By default, `cur.fetchone()` returns a `tuple`.

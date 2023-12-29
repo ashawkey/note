@@ -95,11 +95,9 @@ Link the head and tail.
 
 $$
 \displaylines{
-
   2t - t = km \\
   2t'-t' = (k+1)m \\
   \therefore t'-t = m
-  
 }
 $$
 
@@ -111,12 +109,10 @@ $$
 
 $$
 \displaylines{
-
   t = n + x \\
   t = km \\
   \therefore km = n +x \\
   (k-1)m + (m-x) = n \\
-  
 }
 $$
 

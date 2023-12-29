@@ -33,7 +33,6 @@ HTTP is an Application-layer protocol to transmit hypermedia documents.
     ```
 
     
-
   * Responses
 
     ```bash
@@ -54,9 +53,6 @@ HTTP is an Application-layer protocol to transmit hypermedia documents.
     ```
 
     
-
-  
-
 ### Cache
 
 A technique that stores a copy of a given resource, and serves it back when requested.
@@ -104,8 +100,6 @@ Usually used to tell if two requests came from the same browser. (keeping logged
   ```
   
   
-
-
 ### CORS: Cross-Origin Resource Sharing
 
 A Mechanism that uses additional HTTP Headers, to tell browsers to give a web App access to resources from a different origin.

@@ -13,7 +13,6 @@ Contains 4 parts, each designed with different philosophy.
 * STL (standard library)
 
   
-
 ## Tutorial
 
 ### C Library

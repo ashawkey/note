@@ -60,9 +60,7 @@ solution = x.value
 
 $$
 \displaylines{
-
   R^n \rightarrow R\cup\{\infty\}
-  
 }
 $$
 
@@ -74,9 +72,7 @@ $$
 
 $$
 \displaylines{
-
   (1/m)\sum_i^nL(x_i, y_i, \theta) + r(\theta)
-  
 }
 $$
 

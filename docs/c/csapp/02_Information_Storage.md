@@ -50,13 +50,11 @@ Overflow:
   ![image-20221202114156987](02_Information_Storage.assets/image-20221202114156987.png)
 
   
-
 * Denormalized (zero, and near-zero small numbers)
 
   ![image-20221202114625408](02_Information_Storage.assets/image-20221202114625408.png)
 
   
-
 * Special (Infinity and NaN)
 
   ![image-20221202114331717](02_Information_Storage.assets/image-20221202114331717.png)

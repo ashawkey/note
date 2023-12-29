@@ -9,9 +9,6 @@
   ```
 
   
-
-  
-
 * Copy with exclusion
 
   ```bash
@@ -34,8 +31,6 @@
   ```
 
   
-
-
 * Super fast remove (for large and recursive directories)
 
   ```bash

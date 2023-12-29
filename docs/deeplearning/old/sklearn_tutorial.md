@@ -72,17 +72,14 @@
   * Linear regression model:
 
   
-
 $$
 \displaylines{
-
   y = Xw + \epsilon \\
   J(w) = min_w||Xw-y||^2 \\
   \nabla J(w) = 2X'(Xw-y) \\
   w_k = w_{k-1} - \alpha\nabla J(w) \\
   in \ fact \ we \ can \ solve \ it: \\
   w = (X'X)^{-1}X'y
-  
 }
 $$
 
@@ -104,9 +101,7 @@ $$
 
 $$
 \displaylines{
-
     J(W) = min_w\{||Xw-y||^2 + \alpha||w||^2\}
-    
 }
 $$
 

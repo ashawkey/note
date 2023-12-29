@@ -266,7 +266,6 @@
   ```
 
   
-
 * 变参模板（Variadic Template）
 
   c++11引入的原生变长模板参数支持。
@@ -282,7 +281,6 @@
   ```
 
   
-
 * SFINAE：替换失败不是错误（Substitution Failure Is Not An Error）
 
   出现在模板参数套娃的情况，例如`typename T::T2`使用了未知的`T`内定义的未知的`T2`。
