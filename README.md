@@ -1,6 +1,13 @@
-# [note](https://note.kiui.moe/)
 
-Kiui's notebook: A collection of random computer knowledge.
+<p align="center">
+    <picture>
+    <img alt="note_logo" src="docs/_assets/icon.png" width="20%">
+    </picture>
+    </br>
+    <b><a href="https://note.kiui.moe/">Kiui's notebook</a></b>
+</p>
+
+A collection of random computer knowledge.
 
 It works like a cheat sheet for whatever I have learnt, and hopefully it can help.
 
@@ -8,7 +15,7 @@ The contents are based on personal understanding and may be wrong, please take i
 
 Feel free to open an issue for any discussion!
 
-### If you want to build your own note
+### If you want to build your own note site
 
 All notes are in markdown format, and kept under `docs`.
 
