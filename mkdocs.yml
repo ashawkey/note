@@ -1,15 +1,19 @@
 site_name: Kiui's notebook
 theme:
-  #logo: _assets/icon.png
+  logo: _assets/icon.png
   favicon: _assets/icon.png
   name: material
   palette:
-    primary: grey
-    accent: amber
+    primary: brown
+    accent: lime
   features:
     - navigation.instant  
     - navigation.tracking
     - navigation.top
+    - header.autohide
+    - search.suggest
+    - search.highlight
+    - search.share
 repo_url: https://github.com/ashawkey/Notebooks
 plugins:
   - search
