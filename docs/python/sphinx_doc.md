@@ -55,7 +55,7 @@ http://127.0.0.1:5500/docs/build/html/index.html
 By default sphinx uses **ReStructuredText (.rst)** mark up language, which is less common. But we can use `m2r2` extension to convert markdown (.md) to rst formats:
 
 ```python
-  extensions = [
+extensions = [
     "m2r2",
 ]
 
@@ -99,7 +99,6 @@ To automatically document all APIs, use these extensions:
 ```python
 extensions = [
     'sphinx.ext.autodoc', # extract doc for single func/class
-    'sphinx.ext.autosummary', # extract doc for a file
 ]
 ```
 
@@ -151,16 +150,18 @@ To auto-generate the docs, you need to write in your doc file:
 .. autodoc a func
 .. autofunction:: kiui.func
 
-.. autodoc a class
+.. autodoc a class, including all members 
 .. autoclass:: kiui.myClass()
-
-.. autodoc a file (autosummary)
-.. autosummary::
-	:toctree: generated
-	kiui
+   :members:
+   
+.. autodoc a file, including all functions and classes, most useful!
+.. automodule:: kiui.utils
+   :members:
 ```
 
 Note that `autodoc` will import the file to doc it! Ensure there are no side effects for any import.
+
+Note the **number of spaces** before `:members:`! It must be **2 or 3 spaces**, and 4 spaces will complain `Explicit markup ends without a blank line; unexpected unindent` and won't correctly generate your doc!
 
 
 ### Publish 
@@ -178,12 +179,54 @@ Create a doc building `docs/requirements.txt`:
 
 ```
 sphinx
+sphinx_design
+sphinx-copybutton
 furo
 m2r2
 ```
 
+Make sure the setup of your lib includes all necessary dependencies (may use a `[full]` dependency setting), since the sphinx need to import all modules to perform auto doc.
 
-TODO
+Create workflow under `.github/workflows/docs.yaml`:
+
+```yaml
+name: docs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out source
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      # Build documentation
+      - name: Building documentation
+        run: |
+          pip install --upgrade pip
+          pip install -e ".[full]"
+          pip install -r docs/requirements.txt
+          sphinx-build docs/source docs/build -b dirhtml
+
+      # Deploy
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Note that the GITHUB_TOKEN is NOT a personal access token. A GitHub Actions runner automatically creates a GITHUB_TOKEN secret to authenticate in your workflow. So, you can start to deploy immediately without any configuration.
+          publish_dir: ./docs/build
+          cname: kit.kiui.moe
+```
+
+Push to your git repo and trigger the workflow. Don't forget to configure the github pages!
 
 
 ### Theme
@@ -200,26 +243,47 @@ Change conf.py:
 html_theme = 'furo'
 ```
 
+You may also want to add a badge to github and show the stars, this will need to create a file under `source/_templates/sidebar/brand.html`:
+
+```html
+<a class="sidebar-brand{% if logo %} centered{% endif %}" href="{{ pathto(master_doc) }}">
+    {% block brand_content %} {%- if logo_url %}
+    <div class="sidebar-logo-container">
+        <img class="sidebar-logo" src="{{ logo_url }}" alt="Logo" />
+    </div>
+    {%- endif %} {%- if theme_light_logo and theme_dark_logo %}
+    <div class="sidebar-logo-container" style="margin: .5rem auto .5rem auto">
+        <img class="sidebar-logo only-light" src="{{ pathto('_static/' + theme_light_logo, 1) }}" alt="Light Logo" />
+        <img class="sidebar-logo only-dark" src="{{ pathto('_static/' + theme_dark_logo, 1) }}" alt="Dark Logo" />
+    </div>
+    {%- endif %} {#- {% if not theme_sidebar_hide_name %}
+    <span class="sidebar-brand-text">{{ docstitle if docstitle else project }}</span>
+    {%- endif %} -#} {% endblock brand_content %}
+</a>
+
+<div style="text-align: center">
+    <b>kiuikit</b>
+    </br>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <a class="github-button" href="https://github.com/ashawkey/kiuikit"
+        data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true"
+        aria-label="Download buttons/github-buttons on GitHub">
+        Github
+    </a>
+</div>
+```
+
+The logo and website favicon should be put under `source/_static/`, and set in `conf.py`:
+
+```python
+html_favicon = '_static/icon.png'
+html_logo = '_static/logo.png'
+```
+
 
 ### Example conf
 
 ```python
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
-
-# -- Path setup --------------------------------------------------------------
-
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
-
 # -- Project information -----------------------------------------------------
 
 project = 'kiui'
@@ -237,12 +301,18 @@ release = '0.2.0'
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
     "sphinx.ext.githubpages",
     "sphinx.ext.viewcode",
+    "sphinx_design",
+    "sphinx_copybutton",
     "m2r2",
 ]
+
+# sort automodule generated doc by source
+autodoc_default_options = {
+    "member-order": "bysource",
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -259,12 +329,15 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'furo'
-html_title = "kiuikit"
+# html_title = "kiuikit" # default is name-version documentation
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_favicon = '_static/icon.png'
+html_logo = '_static/logo.png'
 
 sphinx_to_github = True
 sphinx_to_github_verbose = True

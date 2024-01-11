@@ -4,7 +4,7 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [sphinx_doc.md](python\sphinx_doc/) <div style="text-align: right">2024-01-09 22:31:34.777421</div>
+- [sphinx_doc.md](python\sphinx_doc/) <div style="text-align: right">2024-01-11 23:59:04.735043</div>
 - [basics.md](godot\basics/) <div style="text-align: right">2024-01-07 13:19:24.855045</div>
 - [rebuttals.md](writings\rebuttals/) <div style="text-align: right">2024-01-07 13:19:24.838534</div>
 - [review.md](writings\review/) <div style="text-align: right">2024-01-07 13:19:24.838534</div>
