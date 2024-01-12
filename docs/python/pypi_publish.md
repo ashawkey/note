@@ -136,7 +136,7 @@ THE SOFTWARE.
 ```
 
 
-### Publishing
+### Publishing [deprecated! please use workflows]
 
 First, build the distributions by:
 
@@ -184,45 +184,52 @@ setup(
 Now you can run `python setup.py sdist` to check whether it copies your static files.
 
 
-### Automatic publishing with github actions
+### Automatic publishing with github workflows
 
-create workflows at `.github/workflows/pypi-publish.yml`:
+**NOTE: this is updated on 2024.1.12, using pypi trusted publishers.**
+
+First configure your pypi project (https://pypi.org/manage/projects/), click `manage --> Publishing`, and add Github as a new publisher:
+
+![image-20240112152907640](pypi_publish.assets/image-20240112152907640.png)
+
+Then create workflows at `.github/workflows/pypi-publish.yml`:
 
 ```yaml
-# This workflows will upload a Python Package using Twine when a release is created
-# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
-
 name: Upload Python Package
 
 on:
-  release:
+  release: # publish when releasing a new tag on github.
     types: [created]
+  workflow_dispatch: # allow you to manually trigger this workflow from github.
 
 jobs:
   deploy:
 
     runs-on: ubuntu-latest
 
+    environment:
+      name: pypi
+      url: https://pypi.org/project/kiui/
+    permissions:
+      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
+
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
-        python-version: '3.x'
-    - name: Install dependencies
+        python-version: '3.10'
+    # prepare distributions in dist/
+    - name: Install dependencies and Build
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel twine
-    - name: Build and publish
-      env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-      run: |
+        pip install setuptools wheel
         python setup.py sdist bdist_wheel
-        twine upload dist/*
+    # publish by trusted publishers (need to first setup in pypi.org projects-manage-publishing!)
+    # ref: https://github.com/marketplace/actions/pypi-publish
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
 ```
-
-Create secrets at repository.
 
 When you want to publish a new version, navigate to **release** and release a version tag.
 
