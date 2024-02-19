@@ -4,8 +4,14 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [pypi_publish.md](python\pypi_publish/) <div style="text-align: right">2024-01-12 15:31:40.094346</div>
-- [blender_script.md](blender\blender_script/) <div style="text-align: right">2024-01-12 15:31:38.915473</div>
+- [powertoys.md](windows\powertoys/) <div style="text-align: right">2024-02-19 10:16:31.411208</div>
+- [huggingface.md](python\huggingface/) <div style="text-align: right">2024-02-19 10:16:30.803809</div>
+- [pbr.md](graphics\pbr/) <div style="text-align: right">2024-02-19 10:16:30.194905</div>
+- [blender_tutorial.md](blender\blender_tutorial/) <div style="text-align: right">2024-01-12 15:31:58.006811</div>
+- [pypi_publish.md](python\pypi_publish/) <div style="text-align: right">2024-01-12 15:31:57.991084</div>
+- [blender_script.md](blender\blender_script/) <div style="text-align: right">2024-01-12 15:31:57.975083</div>
+- [sphinx_doc.md](python\sphinx_doc/) <div style="text-align: right">2024-01-12 15:31:57.928192</div>
+- [basics.md](godot\basics/) <div style="text-align: right">2024-01-12 15:31:57.912180</div>
 - [mkdocs.md](python\mkdocs/) <div style="text-align: right">2023-12-29 14:32:16.436796</div>
 - [trojan.md](web\proxy\trojan/) <div style="text-align: right">2023-12-29 14:29:49.998239</div>
 - [frp_reverse_proxy.md](web\proxy\frp_reverse_proxy/) <div style="text-align: right">2023-12-29 14:29:49.994726</div>
@@ -18,9 +24,3 @@
 - [javascript_advanced.md](web\frontend\javascript_advanced/) <div style="text-align: right">2023-12-29 14:29:49.982230</div>
 - [nginx.md](web\deploy\nginx/) <div style="text-align: right">2023-12-29 14:29:49.978239</div>
 - [sql_sqlite.md](web\backend\sql_sqlite/) <div style="text-align: right">2023-12-29 14:29:49.977733</div>
-- [python_flask.md](web\backend\python_flask/) <div style="text-align: right">2023-12-29 14:29:49.973222</div>
-- [sql_mysql.md](web\backend\sql_mysql/) <div style="text-align: right">2023-12-29 14:29:49.973222</div>
-- [transformation.md](vision\transformation/) <div style="text-align: right">2023-12-29 14:29:49.969222</div>
-- [golang_basics.md](web\backend\golang_basics/) <div style="text-align: right">2023-12-29 14:29:49.969222</div>
-- [golang_gin.md](web\backend\golang_gin/) <div style="text-align: right">2023-12-29 14:29:49.969222</div>
-- [image_processing.md](vision\image_processing/) <div style="text-align: right">2023-12-29 14:29:49.968036</div>
