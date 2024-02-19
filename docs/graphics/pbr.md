@@ -9,7 +9,7 @@
   * $\mathbf h=\frac {w_i + w_o} {||w_i + w_o||}$ is the halfway vector (different from $\mathbf n$ !)
   * $m$ is the metalness
   * $\rho$ is the roughness
-  * $\mathbf a$ is the ambient color
+  * $\mathbf a$ is the ambient color (base color)
   * $s(\omega_i)$ is the occlusion probability from the shading point to light.
 * rendering Equation:
 
@@ -61,3 +61,20 @@ $$
 
   * direct term (from light): only dependent on the outgoing light direction.
   * indirect term (from other reflective surfaces): also dependent on the current shading point.
+
+
+### Metallic/Roughness v.s. Specular/Glossiness
+
+Except for the common metallic-roughness model, there is also specular-glossiness model for PBR (e.g., Unity).
+
+Both models can be converted between: https://kcoley.github.io/glTF/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/examples/convert-between-workflows/
+
+$$
+\displaylines{
+glossiness = 1 - roughness \\
+diffuse = (1 - metallic) * basecolor \\ 
+specular = metallic * basecolor \\
+}
+$$
+
+A detailed documentation can be found: https://kcoley.github.io/glTF/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/
