@@ -1,4 +1,4 @@
-### Coordinate system of `F.grid_sample`
+## Coordinate system of `F.grid_sample`
 
 ### 2D case
 
@@ -234,7 +234,7 @@ Internal coordinate system of `grid_sample` is:
         -              +y/j
 ```
 
-Notice that both `ijk` and `yzx` **cannot align the output with input, and we need `kji` (or `xyz`):
+Notice that both `ijk` and `yzx` **cannot align the output with input**, and instead we need `kji` (or `xyz`):
 
 ```python
 points_ijk = torch.stack(torch.meshgrid([line]*dim, indexing="ij"), dim=-1) # [N, N, N, 3]
