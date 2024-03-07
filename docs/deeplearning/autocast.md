@@ -1,5 +1,3 @@
-# Pitfalls pytorch
-
 ### autocast
 
 Native functions in an `autocast` context will incur the `fp16` version.
