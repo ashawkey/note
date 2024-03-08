@@ -161,6 +161,12 @@ y/j
 xy       xyz
 ji       kji
 <--      <---
+
+# why "xy" returns yzx instead of xyz?
+# this is because torch simply swaps the first and second dimensions when using "xy".
+# for 2D case, ij --> ji == xy
+# for 3D case, ijk --> jik == yzx
+# ref: https://github.com/pytorch/pytorch/blob/8ed093217272f9978e33799cdcc928ae591664c2/aten/src/ATen/native/TensorShape.cpp#L3584
 ```
 
 Try `grid_sample`:
