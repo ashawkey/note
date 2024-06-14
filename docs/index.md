@@ -4,8 +4,17 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [tips.md](mac\tips/) <div style="text-align: right">2024-06-11 09:12:38.218163</div>
-- [server.md](minecraft\server/) <div style="text-align: right">2024-01-27 06:20:34.988168</div>
+- [mac_shell.md](mac\mac_shell/) <div style="text-align: right">2024-06-13 20:23:29.814750</div>
+- [mac_tips.md](mac\mac_tips/) <div style="text-align: right">2024-06-13 20:23:29.814750</div>
+- [server.md](minecraft\server/) <div style="text-align: right">2024-06-11 09:14:13.460140</div>
+- [pypi_publish.md](python\pypi_publish/) <div style="text-align: right">2024-06-11 09:14:13.444597</div>
+- [powertoys.md](windows\powertoys/) <div style="text-align: right">2024-06-11 09:14:13.444597</div>
+- [pbr.md](graphics\pbr/) <div style="text-align: right">2024-06-11 09:14:13.443591</div>
+- [huggingface.md](python\huggingface/) <div style="text-align: right">2024-06-11 09:14:13.443591</div>
+- [grid_sample.md](deeplearning\grid_sample/) <div style="text-align: right">2024-06-11 09:14:13.443494</div>
+- [autocast.md](deeplearning\autocast/) <div style="text-align: right">2024-06-11 09:14:13.442990</div>
+- [blender_script.md](blender\blender_script/) <div style="text-align: right">2024-06-11 09:14:13.427379</div>
+- [blender_tutorial.md](blender\blender_tutorial/) <div style="text-align: right">2024-06-11 09:14:13.427379</div>
 - [sphinx_doc.md](python\sphinx_doc/) <div style="text-align: right">2024-01-11 07:59:04.735043</div>
 - [basics.md](godot\basics/) <div style="text-align: right">2024-01-06 21:19:24.855045</div>
 - [rebuttals.md](writings\rebuttals/) <div style="text-align: right">2024-01-06 21:19:24.838534</div>
@@ -15,12 +24,3 @@
 - [xpath.md](web\scrape\xpath/) <div style="text-align: right">2024-01-06 21:19:24.837537</div>
 - [cuda.md](windows\cuda/) <div style="text-align: right">2024-01-06 21:19:24.837537</div>
 - [examples.md](writings\examples/) <div style="text-align: right">2024-01-06 21:19:24.837537</div>
-- [pitfalls.md](writings\pitfalls/) <div style="text-align: right">2024-01-06 21:19:24.837537</div>
-- [trojan-go.md](web\proxy\trojan-go/) <div style="text-align: right">2024-01-06 21:19:24.836251</div>
-- [trojan.md](web\proxy\trojan/) <div style="text-align: right">2024-01-06 21:19:24.836251</div>
-- [rsshub.md](web\rss\rsshub/) <div style="text-align: right">2024-01-06 21:19:24.836251</div>
-- [ttrss.md](web\rss\ttrss/) <div style="text-align: right">2024-01-06 21:19:24.836251</div>
-- [grab.md](web\scrape\grab/) <div style="text-align: right">2024-01-06 21:19:24.836251</div>
-- [concepts.md](web\proxy\concepts/) <div style="text-align: right">2024-01-06 21:19:24.835251</div>
-- [frp_reverse_proxy.md](web\proxy\frp_reverse_proxy/) <div style="text-align: right">2024-01-06 21:19:24.835251</div>
-- [set_usual_apps_proxy.md](web\proxy\set_usual_apps_proxy/) <div style="text-align: right">2024-01-06 21:19:24.835251</div>
