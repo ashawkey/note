@@ -319,4 +319,21 @@ Then another long wait...
   sudo snap install snap-store --devmode
   ```
 
+* install chrome
+
+  ```bash
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sudo dpkg -i google-chrome-stable_current_amd64.deb
+  ```
+
+* install vscode
+
+  ```bash
+  # link may change, better use a browser gui to download
+  wget 
+  https://vscode.download.prss.microsoft.com/dbazure/download/stable/611f9bfce64f25108829dd295f54a6894e87339d/code_1.90.1-1718141439_amd64.deb
+  
+  sudo dpkg -i code_1.90.1-1718141439_amd64.deb
+  ```
+
   
