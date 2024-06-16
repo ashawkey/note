@@ -4,8 +4,8 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
+- [ubuntu_install_list.md](linux\ubuntu_install_list/) <div style="text-align: right">2024-06-16 11:33:24.468616</div>
 - [blender_tutorial.md](blender\blender_tutorial/) <div style="text-align: right">2024-06-16 10:46:21.611492</div>
-- [ubuntu_install_list.md](linux\ubuntu_install_list/) <div style="text-align: right">2024-06-16 10:35:23.062276</div>
 - [mac_shell.md](mac\mac_shell/) <div style="text-align: right">2024-06-15 20:36:50.452279</div>
 - [hub.md](docker\hub/) <div style="text-align: right">2024-06-15 20:29:45.368602</div>
 - [mac_tips.md](mac\mac_tips/) <div style="text-align: right">2024-06-13 20:23:29.814750</div>
