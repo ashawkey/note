@@ -58,3 +58,13 @@ brew install --cask firefox
 brew services start/stop/status colima
 ```
 
+
+### docker
+
+```bash
+brew install docker docker-compose colima
+colima start/stop/status
+brew services start colima
+docker ps
+```
+
