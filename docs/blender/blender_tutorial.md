@@ -4,15 +4,15 @@
 
 First set transparent rendering:
 
-![image-20230817121854933](D:\aa\Notebooks\docs\model\blender_tutorial.assets\image-20230817121854933.png)
+![image-20230817121854933](blender_tutorial.assets\image-20230817121854933.png)
 
 Then Change color view transform to standard (the same tab, just below `Film`):
 
-![image-20230817121902473](D:\aa\Notebooks\docs\model\blender_tutorial.assets\image-20230817121902473.png)
+![image-20230817121902473](blender_tutorial.assets\image-20230817121902473.png)
 
 Then open compositing window, and set use nodes, then add an "alpha over" layer like this:
 
-![image-20230817121909364](D:\aa\Notebooks\docs\model\blender_tutorial.assets\image-20230817121909364.png)
+![image-20230817121909364](blender_tutorial.assets\image-20230817121909364.png)
 
 
 ### Add-on
@@ -45,7 +45,6 @@ in the same folder, and a name keyword is necessary.
 
   ![image-20230914131227283](blender_tutorial.assets/image-20230914131227283.png)
 
-  
 * Adjust the bone's size, rotation, make it as the main spine of your model.
 
 * Go to edit mode:
@@ -141,18 +140,15 @@ In the world properties:
   * `5`: toggle perspective / orthogonal
   * `0`: toggle camera view
   
-  
 * Shift + A: add new objects
   
 * Shift + Z: toggle wireframe
   
 * Ctrl + Space: toggle maximize area with the current application window.
   
-   
 * Ctrl + Dragging: discrete steps
 
 * Shift + Dragging: precise steps
-  
   
 * Ctrl + Z: undo
 

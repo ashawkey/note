@@ -62,7 +62,6 @@ Then another long wait...
 
   TUNA source: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
 
-  
 * VPN
 
   ```bash
@@ -271,7 +270,8 @@ Then another long wait...
 
   ```bash
   # download the correct runfile and run it to install
-  # use sh, not bash, and do not run with sudo.
+  # use sh, not bash
+  # use root to run, do not run with sudo (will silently quit)
   sh cuda.xxxx.sh
   # just make sure the cuda version is compatible to the driver... (your driver is newer to the default one)
   # create soft link in /user/local/cuda
