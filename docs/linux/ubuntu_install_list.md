@@ -264,6 +264,29 @@ Then another long wait...
   >
   > In such case, reinstall a driver without (open kernel) !!!
   
+* OpenGL
+
+  should be installed along the Nvidia driver.
+  
+  ```bash
+  # if it says EGL/egl.h not found
+  sudo apt install mesa-utils libegl1-mesa-dev
+  
+  # if it says fails to open swrast 
+  sudo ln -s /usr/lib/x86_64-linux-gnu/dri/ /usr/lib/dri
+  
+  # if it then says cannot find GLIBCXX version in anaconda lib dir, this maybe because of a mismatch of anaconda and system lib versions... check by
+  l /usr/lib/x86_64-linux-gnu/libstdc* # 6.0.30
+  l ~/anaconda3/lib/libstdc* # 6.0.29
+  
+  # fix by replacing the old one and relink
+  cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30 ~/anaconda3/lib
+  cd ~/anaconda3/lib
+  chmod 775 libstdc++.so.6.0.30
+  ln -sf libstdc++.so.6.0.30 libstdc++.so.6
+  ln -sf libstdc++.so.6.0.30 libstdc++.so
+  ```
+  
 * CUDA
 
   https://developer.nvidia.com/cuda-downloads
