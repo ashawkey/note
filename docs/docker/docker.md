@@ -1,4 +1,4 @@
-# docker basics
+## docker basics
 
 ### install
 
@@ -265,6 +265,21 @@ You can even build from github repository:
 ```bash
 # the repo should contain a Dockerfile
 docker build -t hello-world https://github.com/docker-library/hello-world.git#master:amd64/hello-world
+```
+
+Push to registry:
+```bash
+# login to your registry
+docker login registry
+
+# tag your image with the name in remote registry
+docker image tag myimage:version registry/myname/myimage:version
+
+# you should see both images (share the same ID)
+docker image ls
+
+# then push it
+docker image push registry/myname/myimage:version
 ```
 
 Detailed command:
