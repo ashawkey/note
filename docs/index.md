@@ -4,8 +4,8 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
+- [s3.md](linux/s3/) <div style="text-align: right">2024-06-25 12:55:20.985834</div>
 - [docker.md](docker/docker/) <div style="text-align: right">2024-06-20 22:51:57.794032</div>
-- [s5cmd.md](linux/s5cmd/) <div style="text-align: right">2024-06-17 13:21:24.448713</div>
 - [powertoys.md](windows/powertoys/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
 - [powershell.md](windows/powershell/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
 - [win_install_list.md](windows/win_install_list/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
