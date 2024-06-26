@@ -4,7 +4,7 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [s3.md](linux/s3/) <div style="text-align: right">2024-06-25 23:56:39.556961</div>
+- [s3.md](linux/s3/) <div style="text-align: right">2024-06-26 10:39:22.137587</div>
 - [docker.md](docker/docker/) <div style="text-align: right">2024-06-20 22:51:57.794032</div>
 - [powertoys.md](windows/powertoys/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
 - [powershell.md](windows/powershell/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
