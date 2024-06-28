@@ -432,3 +432,27 @@ array([[0, 1, 2, 8, 9]])
 '''
 ```
 
+We can also take multiple elements from each row. For example, we want to cycle the smallest element of each row to the first column:
+
+```python
+x = np.random.randint(0, 10, (5, 3)) # [N, M]
+'''
+array([[2, 2, 5],
+       [8, 4, 1],
+       [7, 0, 7],
+       [5, 9, 0],
+       [9, 7, 4]])
+'''
+xx = np.concatenate([x, x[:, :-1]], axis=1) # [N, 2M-1], full cycle of each element
+start_inds = x.argmin(axis=1) # [N], the index of the smallest element in each row
+full_inds = start_inds[:, None] + np.arange(x.shape[1])[None, :] # [N, M] the full cycle index
+result = np.take_along_axis(xx, full_inds, axis=1) # [N, M], the result
+'''
+array([[2, 2, 5],
+       [1, 8, 4],
+       [0, 7, 7],
+       [0, 5, 9],
+       [4, 9, 7]])
+'''
+```
+
