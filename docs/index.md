@@ -4,6 +4,7 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
+- [numpy_tricks.md](python/numpy_tricks/) <div style="text-align: right">2024-06-28 16:28:12.382285</div>
 - [s3.md](linux/s3/) <div style="text-align: right">2024-06-26 10:39:22.137587</div>
 - [docker.md](docker/docker/) <div style="text-align: right">2024-06-20 22:51:57.794032</div>
 - [powertoys.md](windows/powertoys/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
@@ -23,4 +24,3 @@
 - [rsshub.md](web/rss/rsshub/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
 - [examples.md](writings/examples/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
 - [tables.md](writings/tables/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [societal_impact.md](writings/societal_impact/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
