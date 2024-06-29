@@ -160,4 +160,23 @@
   ##	%:%:
   ```
 
+* Structure binding of `tuple` cannot be used to assign value!
+  
+    ```cpp
+    // structure binding
+    tuple<int, int> t = {1, 2};
+    auto [a, b] = t; // will CREATE and assign a, b to 1, 2
+    
+    // however, if you already have a, b, you cannot assign value to them.
+    int a = 0, b = 0;
+    auto [a, b] = t; // error: conflicting declaration!
+
+    // in certain cases, it will not give error but silently go wrong...
+    int a = 0, b = 0;
+    { // any new scope
+        auto [a, b] = t; // a, b are local variables, not the a, b outside.
+    }
+    cout << a << " " << b << endl; // 0 0
+    ```    
+
   
