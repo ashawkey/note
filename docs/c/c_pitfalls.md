@@ -180,3 +180,29 @@
     ```    
 
   
+* Sorting vector of pointers should use actual object's comparator:
+  
+    ```cpp
+    struct Node {
+        int val;
+        Node(int val): val(val) {}
+        // define the comparator
+        bool operator<(const Node& other) const {
+            return val < other.val;
+        }
+    };
+    
+   
+    int main() {
+        vector<Node*> v;
+        v.push_back(new Node(3));
+        v.push_back(new Node(1));
+        v.push_back(new Node(2));
+
+        // direct sort will compare **pointer values**, which is totally wrong!
+        sort(v.begin(), v.end());
+
+        // use the actual object's comparator
+        sort(v.begin(), v.end(), [](Node* a, Node* b) { return *a < *b; });
+    }
+    ```
