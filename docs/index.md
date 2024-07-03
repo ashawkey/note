@@ -4,7 +4,7 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [cpitfalls.md](c/cpitfalls/) <div style="text-align: right">2024-06-29 11:13:02.805298</div>
+- [c_pitfalls.md](c/c_pitfalls/) <div style="text-align: right">2024-07-03 13:16:59.378300</div>
 - [numpy_tricks.md](python/numpy_tricks/) <div style="text-align: right">2024-06-28 16:28:12.382285</div>
 - [s3.md](linux/s3/) <div style="text-align: right">2024-06-26 10:39:22.137587</div>
 - [docker.md](docker/docker/) <div style="text-align: right">2024-06-20 22:51:57.794032</div>
