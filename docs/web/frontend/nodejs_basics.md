@@ -30,6 +30,8 @@ It allows developers to write JavaScript outside of a browser.
 | Node.js    | no DOM | require |
 | Browser    | DOM    | import  |
 
+(DOM = Document Object Model)
+
 * CMD
 
   ```bash
