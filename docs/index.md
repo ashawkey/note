@@ -4,6 +4,7 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
+- [basics.md](godot\basics/) <div style="text-align: right">2024-08-04 23:58:34.562944</div>
 - [s3.md](linux\s3/) <div style="text-align: right">2024-08-04 17:53:05.568494</div>
 - [numpy_tricks.md](python\numpy_tricks/) <div style="text-align: right">2024-08-04 17:53:05.568494</div>
 - [nodejs_basics.md](web\frontend\nodejs_basics/) <div style="text-align: right">2024-08-04 17:53:05.568494</div>
@@ -22,5 +23,4 @@
 - [grid_sample.md](deeplearning\grid_sample/) <div style="text-align: right">2024-06-11 09:14:13.443494</div>
 - [blender_script.md](blender\blender_script/) <div style="text-align: right">2024-06-11 09:14:13.427379</div>
 - [sphinx_doc.md](python\sphinx_doc/) <div style="text-align: right">2024-01-11 07:59:04.735043</div>
-- [basics.md](godot\basics/) <div style="text-align: right">2024-01-06 21:19:24.855045</div>
 - [rebuttals.md](writings\rebuttals/) <div style="text-align: right">2024-01-06 21:19:24.838534</div>
