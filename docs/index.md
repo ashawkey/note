@@ -4,23 +4,23 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [s3.md](linux/s3/) <div style="text-align: right">2024-07-24 17:22:42.828587</div>
-- [nodejs_basics.md](web/frontend/nodejs_basics/) <div style="text-align: right">2024-07-08 10:53:19.790716</div>
-- [c_pitfalls.md](c/c_pitfalls/) <div style="text-align: right">2024-07-03 13:16:59.378300</div>
-- [numpy_tricks.md](python/numpy_tricks/) <div style="text-align: right">2024-06-28 16:28:12.382285</div>
-- [docker.md](docker/docker/) <div style="text-align: right">2024-06-20 22:51:57.794032</div>
-- [powertoys.md](windows/powertoys/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [powershell.md](windows/powershell/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [win_install_list.md](windows/win_install_list/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [cuda.md](windows/cuda/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [web_overview.md](web/web_overview/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [concepts.md](web/proxy/concepts/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [trojan-go.md](web/proxy/trojan-go/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [frp_reverse_proxy.md](web/proxy/frp_reverse_proxy/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [trojan.md](web/proxy/trojan/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [set_usual_apps_proxy.md](web/proxy/set_usual_apps_proxy/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [ss.md](web/proxy/ss/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [grab.md](web/scrape/grab/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [xpath.md](web/scrape/xpath/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [ttrss.md](web/rss/ttrss/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
-- [rsshub.md](web/rss/rsshub/) <div style="text-align: right">2024-06-17 12:41:24.326751</div>
+- [s3.md](linux\s3/) <div style="text-align: right">2024-08-04 17:53:05.568494</div>
+- [numpy_tricks.md](python\numpy_tricks/) <div style="text-align: right">2024-08-04 17:53:05.568494</div>
+- [nodejs_basics.md](web\frontend\nodejs_basics/) <div style="text-align: right">2024-08-04 17:53:05.568494</div>
+- [c_tricks.md](c\c_tricks/) <div style="text-align: right">2024-08-04 17:53:05.567492</div>
+- [docker.md](docker\docker/) <div style="text-align: right">2024-08-04 17:53:05.567492</div>
+- [c_pitfalls.md](c\c_pitfalls/) <div style="text-align: right">2024-08-04 17:53:05.566493</div>
+- [ubuntu_install_list.md](linux\ubuntu_install_list/) <div style="text-align: right">2024-06-16 20:33:14.052610</div>
+- [blender_tutorial.md](blender\blender_tutorial/) <div style="text-align: right">2024-06-16 10:46:21.611492</div>
+- [mac_shell.md](mac\mac_shell/) <div style="text-align: right">2024-06-15 20:36:50.452279</div>
+- [hub.md](docker\hub/) <div style="text-align: right">2024-06-15 20:29:45.368602</div>
+- [mac_tips.md](mac\mac_tips/) <div style="text-align: right">2024-06-13 20:23:29.814750</div>
+- [pypi_publish.md](python\pypi_publish/) <div style="text-align: right">2024-06-11 09:14:13.444597</div>
+- [powertoys.md](windows\powertoys/) <div style="text-align: right">2024-06-11 09:14:13.444597</div>
+- [pbr.md](graphics\pbr/) <div style="text-align: right">2024-06-11 09:14:13.443591</div>
+- [huggingface.md](python\huggingface/) <div style="text-align: right">2024-06-11 09:14:13.443591</div>
+- [grid_sample.md](deeplearning\grid_sample/) <div style="text-align: right">2024-06-11 09:14:13.443494</div>
+- [blender_script.md](blender\blender_script/) <div style="text-align: right">2024-06-11 09:14:13.427379</div>
+- [sphinx_doc.md](python\sphinx_doc/) <div style="text-align: right">2024-01-11 07:59:04.735043</div>
+- [basics.md](godot\basics/) <div style="text-align: right">2024-01-06 21:19:24.855045</div>
+- [rebuttals.md](writings\rebuttals/) <div style="text-align: right">2024-01-06 21:19:24.838534</div>
