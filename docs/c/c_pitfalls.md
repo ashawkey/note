@@ -202,7 +202,18 @@
         // direct sort will compare **pointer values**, which is totally wrong!
         sort(v.begin(), v.end());
 
-        // use the actual object's comparator
+        // use the actual object's comparatorff
         sort(v.begin(), v.end(), [](Node* a, Node* b) { return *a < *b; });
     }
+    ```
+
+* For loop of container.size() will reflect the change of container size:
+
+    ```cpp
+    vector<int> v = {1, 2, 3};
+    for (int i = 0; i < v.size(); i++) { // at each iter, v.size() will be recalculated (different from python)
+        cout << v[i] << " ";
+        if (i < 3) v.push_back(i); // will change v.size()
+    }
+    // 1 2 3 0 1 2
     ```
