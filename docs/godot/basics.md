@@ -90,14 +90,20 @@ void _exit_tree()
 void _ready()
 void _process()
 void _physics_process()
+# input event handler
+void _input(InputEvent event)
+void _unhandled_input(InputEvent event)
 # enable/disable processing
 void set_process(bool enable)
 void set_physics_process(bool enable)
+void set_process_input(bool enable)
+void set_process_unhandled_input(bool enable)
 # check status
 bool is_node_ready()
 bool is_processing()
 bool is_physics_processing()
 bool is_in_group(StringName group)
+String get_class() # return class name
 # scenetree 
 SceneTree get_tree() # get SceneTree
 NodePath get_path() # get absolute path of current node
@@ -290,25 +296,198 @@ var seconds: int:
 ### assert
 assert(i == 0)
 assert(i == 0, 'i is not 0')
+
+### enums
+# unnamed
+enum {TILE_BRICK, TILE_FLOOR, TILE_SPIKE, TILE_TELEPORT}
+# Is the same as: const TILE_BRICK = 0; const TILE_FLOOR = 1
+
+# named
+enum State {STATE_IDLE, STATE_JUMP = 5, STATE_SHOOT} # Access values with State.STATE_IDLE, etc.
+# Is the same as: const State = {STATE_IDLE = 0, STATE_JUMP = 5, STATE_SHOOT = 6}
+
 ```
 
 
 ### User Input
 
-Project --> Project Settings --> Input Map (check Show built-in actions)
+User input will **propagate from-child-to-parent** through the node tree until one node consumes it. 
 
-Some commonly used input names:
+Each single user input (press a key, click mouse) will be propagated separately as a sub-class of `InputEvent`:
+
+```bash
+Resource --> InputEvent --> InputEventFromWindow --> InputEventWithModifiers --> InputEventKey/InputEventMouse/InputEventGesture
+                                                 ⊢-> InputEventScreenDrag/InputEventScreenTouch
+                        ⊢-> InputEventAction
+                        ⊢-> InputEventShortcut
+                        ⊢-> InputEventJoypadButton/InputEventJoypadMotion                 
+```
+
+```python
+### InputEvent
+
+# query action group press/release
+bool is_action_pressed(StringName action, bool allow_echo=false, bool exact_match=false)
+bool is_action_released(StringName action, bool allow_echo=false, bool exact_match=false)
+
+# key and mouse press/release
+bool is_pressed() const 
+bool is_released() const
+
+# return event name
+String as_text() const
+
+# 0-1, for joypad strength
+float get_action_strength(StringName action, bool exact_match=false) const 
+```
+
+Node should override `_input()` to handle targeted input. 
+
+`set_process_input(enable)` can be used to turn on/off input processing.
+
+The order of input processing:
+
+```python
+# firstly, all node can catch input
+Node._input()
+
+# secondly, GUI will catch input
+# GUI will not follow the child-to-parent order!
+Control._gui_input() 
+
+# then, node will catch again for InputEventKey/JoypadButton/Shortcut, no mouse input!
+Node._shortcut_input()
+
+# node will catch InputEventKey again.
+Node._unhandled_key_input()
+
+# finally...
+Node._unhandled_input()
+```
+
+#### Event and Poll
+
+**Event**: input that only respond once, e.g., click mouse, press enter.
+
+We should use the `_input()` system and `InputEvent` class to handle events:
+
+```python
+func _input(event):
+    if event.is_action_pressed("ui_left"):
+        # turn left
+```
+
+**Poll**: input that happens as long as it's pressed. e.g., press left key to move until released.
+
+We need to constantly check the status in `_process()`, which can be done by a built-in Singleton `Input`.
+
+```python
+func _physics_process(delta):
+    if Input.is_action_pressed("ui_left"):
+        # move left
+        position.x += speed * delta
+```
+
+#### Mouse
+
+`InputEventWithModifiers`: modifier means keys like shift or alt, it can distinguish `Shift+Click` from `Click`.
+
+`InputEventMouse` add `position` and `global_position` of mouse. Further it's inherited by:
+
+`InputEventMouseButton` for button click / wheel scroll.
+
+```python
+MouseButton button_index
+bool double_click
+bool pressed
+```
+
+```python
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print("Left button was clicked at ", event.position)
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			print("Wheel up")
+```
+
+`InputEventMouseMotion` for drag.
+
+```python
+float pressure
+Vector2 relative
+Vector2 velocity
+```
+
+```python
+var dragging = false
+var click_radius = 32 # Size of the sprite.
+
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+        # note that even if the mouse is not on your node, it will still get propagated! 
+        # we must detect if mouse is on our sprite.
+		if (event.position - $Sprite2D.position).length() < click_radius:
+			# Start dragging if the click is on the sprite.
+			if not dragging and event.pressed:
+				dragging = true
+		# Stop dragging if the button is released.
+		if dragging and not event.pressed:
+			dragging = false
+
+	if event is InputEventMouseMotion and dragging:
+		# While dragging, move the sprite with the mouse.
+		$Sprite2D.position = event.position
+```
+
+#### Touch
+
+`InputEventScreenTouch` is similar to `InputEventMouseButton`.
+
+`InputEventScreenDrag` is similar to `InputEventMouseMotion`.
+
+To test touch input using PC, enable `Project settings > Input Devices/Pointing > Emulate Touch From Mouse`
+
+#### Actions (Keyboard & Controller)
+
+For keyboard/Joypad input, we majorly use `InputEventAction` through `InputMap`, which is more flexible:
+
+* same code for different devices: left key & joypad push to left.
+* runtime reconfiguration.
+* runtime programmatic triggering.
+
+To find all predefined user input (ui) names: `Project --> Project Settings --> Input Map (check Show built-in actions)`
+
+Some commonly used input map names:
 
 * `ui_accept`: Enter, Space
 * `ui_cancel`: Escape
 * `ui_left/right/up/down`: Left/Right/Up/Down keys.
 
-
-To handle an input, we need to catch them in `_process()`:
+Although `InputEventAction` is recommended, sometime you may want to use the `InputEventKey` specially for keyboard:
 
 ```python
-if Input.is_action_pressed('ui_left'):
-    direction = 'left'
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_T:
+			if event.shift_pressed:
+				print("Shift+T was pressed")
+			else:
+				print("T was pressed")
+```
+
+#### Quit request
+
+By default, when the window is force closed, godot will send `NOTIFICATION_WM_CLOSE_REQUEST` and auto quit safely.
+
+To send your own quit notification (e.g., in-game button to quit to desktop), use
+
+```python
+# notify and allow actions to finish (e.g., saving)
+get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+
+# quit safely
+get_tree().quit()
 ```
 
 
@@ -534,6 +713,34 @@ bool one_way_collision = false
 ```
 
 `Shape2D` is an abstract class for 2D shape `Resource` (not `Node`! it won't show in the node editor, but show as a property of `CollisionShape2D` /`CollisionPolygon2D`  in the inspector). 
+
+
+### Math
+
+2D Coordinate system:
+
+```bash
+(0, 0) ------- +x
+|
+|
+|
++y
+```
+
+```python
+# vector 2
+var v = Vector2(2, 4)
+print(v.x, v.y)
+
+v = v.normalized()
+
+# matrix 2x2
+var t = Transform2D()
+print(v.x.x, v.y.x,
+      v.x.y, v.y.y) # colomn-major!
+```
+
+3D Coordinate system: OpenGL convention.
 
 
 ### Importing Assets

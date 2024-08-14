@@ -134,9 +134,13 @@ int main() {
     // iterator
     vector<int>::iterator v = vec.begin();
     while(v != vec.end()) {
-       cout << *v << endl;
+       cout << *v << endl; // same as a pointer
        v++;
     }
+    
+    // loop and reversed loop
+    for (auto it = v.begin(); it != v.end(); it++) {...}
+    for (auto it = v.rbegin(); it != v.rend(); it++) {...} // also use ++!
     
     // erase i-th element
     v.erase(v.begin() + i);
@@ -482,6 +486,9 @@ partial_sort(v, v + 2, v + 4); // only sort the first two elements
 //// swap
 swap(x, y);
 
+//// is_sorted
+bool flag = is_sorted(v, v+4);
+
 //// min/max_element
 cout << *min_element(v, v+4) << " ~ " << *max_element(v, v+4) << endl; // return pointer/iterator
 
@@ -540,15 +547,12 @@ else {
 string s = "string";
 reverse(s.begin(), s.end()); // inplace
 
-//// argsort (handy implementation)
+//// argsort (has to use another vector of pair)
 vector<pair<int, int>> v2;
 for (int i = 0; i < v.size(); i++) {
-    v2.push_back({v[i], i}); // pair value with indice
+    v2.push_back({v[i], i}); // pair value with index
 }
-sort(v2.begin(), v2.end(), [](pair<int, int> a, pair<int, int> b) {
-    if (a.first < b.first || (a.first == b.first && a.second < b.second)) return true;
-    else return false;
-});
+sort(v2.begin(), v2.end()); // can use default sorting of pair<int, int>, lower to higher
 vector<int> idx;
 for (int i = 0; i < v2.size(); i++) {
     idx.push_back(v2[i].second);
@@ -576,7 +580,7 @@ bs.all();
 bs.any();
 bs.none();
 
-int cnt = bs.count(); // count 1
+int cnt = bs.count(); // count number of 1
 int l = bs.size();
 
 bs.set(); // set all to 1
@@ -585,9 +589,11 @@ bs.reset(); // set all to 0
 bs.reset(pos); // set pos to 0, equals bs.set(pos, false);
 bs.flip(); // flip all
 bs.flip(pos); // flip pos
-
-string s = bs.to_string();
-unsigned long x = bs.to_ulo
+    
+// count bit function
+int countBit(int x) { // assume positive!
+    return bitset<32>(x).count();
+}
 ```
 
 
@@ -636,7 +642,7 @@ Struct is like an default-to-public Class:
 
 ```c++
 struct A {
-    int a; // public
+    int a; // everything is public
     void setA(int _a) { a = _a; }
 };
 ```
@@ -789,8 +795,6 @@ less powerful but safer than pointer. it works like an alias.
 * reference must be initialized as soon as created.
 
 * reference cannot be made to refer to another object once created. (cannot be re-initialized)
-
-  > in fact it is impossible to do so.
 
 * reference cannot be null. (thus there is no container of references.)
 
