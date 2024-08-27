@@ -106,6 +106,7 @@ bool is_in_group(StringName group)
 String get_class() # return class name
 # scenetree 
 SceneTree get_tree() # get SceneTree
+Viewport get_viewport() # get viewport, usually == get_tree().root
 NodePath get_path() # get absolute path of current node
 # other nodes
 void add_child(Node node, ...) # add a child node
@@ -126,6 +127,8 @@ bool visible = true
 Vector2 offset = Vector2(0, 0)
 float rotation = 0
 Vector2 scale = Vector2(1, 1)
+# drawing order
+int z_index = 0 # in [-4096, 4096], higher values will be drawn forward
 
 void hide() # visible = false
 void show() # visible = true
@@ -225,6 +228,7 @@ var range: int = 50
 
 @onready var my_label = get_node("MyLabel") # will defer initialization after ready.
 
+
 ### code regions (to fold code quickly, only supported in built-in code editor...)
 #region Description
 ...
@@ -233,12 +237,38 @@ var range: int = 50
 ### array
 var l = [1, 2, 3]
 var len = l.size()
-l.append(4)
+
+l.append(4) # == l.push_back(4)
+l.push_front(5)
+
+l.erase(4) # remove by value
+l.remove_at(0) # remove by index
+
+var i = l.find(2) # find by value, return index
+print(2 in l) # test containing by `in`
+print(l.count(2)) # count by value
+
+l.reverse()
+l.shuffle()
+l.clear()
 
 ### dict
 var d = {"key": 0}
 d.one = 1 # == d['one'] = 1
 print(d["one"])
+print('one' in d) # containing test by `in`
+
+### for loop
+for i in range(10): # range(s, e, i)
+    print(i)
+for i in [1, 2, 3]: # array
+    print(i)
+d = {"a": 0, "b": 1}    
+for key in d: # dict
+    print(d[key])
+l = ["a", "b"]
+for x: String in l: # typed array
+    print(x)
 
 ### function (Callable)
 # functions are first-class items (can be directly referenced by name, instead of by string)
@@ -252,6 +282,10 @@ func bar(f: Callable):
 func _ready():
 	foo() # just use the () operator is OK.
     bar()
+
+# gdscript DO NOT support named argument!
+# ref: https://github.com/godotengine/godot-proposals/issues/902
+bar(f=foo) # error!
 
 # lambda functions also need to use .call()
 var foo = func(): print('foo')
@@ -279,7 +313,11 @@ extends "res://src/MyClass.gd"
 const myclass = preload("myscript.gd") # load script (class definition) only once at compile time.
 if myclass is MyClass:
     pass
-var myinstance = myclass.new() # instantiate
+var myinstance = myclass.new() # instantiate a class
+
+const myscene = preload("myscene.tscn") # PackedScene
+var myscene_node = myscene.instantiate() # instantiate a scene
+add_child(myscene_node) # add to current node
 
 # use super to call parent methods
 func not_overriding():
@@ -297,7 +335,7 @@ var seconds: int:
 assert(i == 0)
 assert(i == 0, 'i is not 0')
 
-### enums
+### enums (a special constant)
 # unnamed
 enum {TILE_BRICK, TILE_FLOOR, TILE_SPIKE, TILE_TELEPORT}
 # Is the same as: const TILE_BRICK = 0; const TILE_FLOOR = 1
@@ -753,6 +791,100 @@ To ensure high-quality image, we have two approaches:
 * Use a normal base resolution (1920 x 1080) and high resolution texture images, and adjust the `scale` to down-scale it.
 
 Usually we prefer the first approach, as it doesn't need to calculate scales.
+
+### Groups
+
+Groups are a convenient container for nodes, which allows to:
+
+- Get a list of nodes in a group.
+- Call a method on all nodes in a group.
+- Send a notification to all nodes in a group.
+
+In the editor, you can manage groups manually in `right panel > nodes > groups`.
+
+Or use script to manage groups:
+
+```python
+# add current node to group
+add_to_group("guards") # will create the group automatically
+
+# call method
+get_tree().call_group("guards", "enter_alert_mode")
+
+# get all nodes in a group
+var guards = get_tree().get_nodes_in_group("guards")
+```
+
+### Tween Animation
+
+`Tween` is inherited from `RefCounted`, and is used for interpolation-based animation (in-betweening), e.g., moving the position smoothly.
+
+Tween animations are played after `_process()`.
+
+Tweens are not designed to be reused, always create one when needed:
+
+```python
+var tween;
+
+# must use this way to create!
+tween = create_tween() 
+
+# zoom up by 2 in 1 second (object, property, final_val, duration)
+tween.tween_property($Sprite, "scale", Vector2(2, 2), 1) # this is called a tweener
+
+# idle for 1 second interval
+tween.tween_interval(1)
+
+# call a method after 1 second
+tween.tween_callback(myfunc).set_delay(1)
+
+# call a method in the way of property
+func myfunc(x, y): ...
+tween.tween_method(myfunc.bind(Y), X0, X1, duration) # use bind(Y) to set a default y
+```
+
+Tweeners will be executed one-after-one by default. To parallel-tween multiple objects or multiple properties, use:
+
+```python
+var tween = create_tween()
+tween.tween_property(...)
+tween.parallel().tween_property(...) # parallel with the first one
+tween.parallel().tween_property(...) # parallel with the second one (and the first one)
+
+### or set_parallel by default
+var tween = create_tween()
+tween.set_parallel()
+# all later tweeners  will be parallel 
+```
+
+However, you should **not allow multiple tweeners on the same property** at the same time, this will be undefined behavior (race condition).
+
+
+### Thread Safety
+
+Interacting with the active scene is not thread-safe, always use deferred call:
+
+```python
+# Unsafe:
+node.add_child(child_node)
+# Safe:
+node.call_deferred("add_child", child_node)
+```
+
+Use `Mutex` to control safe-accessing from multiple threads:
+
+```python
+@onready var mutex = Mutex.new()
+var counter = 0
+
+# protect modification of counter using mutex
+mutex.lock()
+counter += 1
+mutex.unlock()
+```
+
+
+Signals?
 
 
 ### Editor tips
