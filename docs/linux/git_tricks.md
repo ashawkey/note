@@ -234,3 +234,23 @@ git fetch theirusername
 git checkout -b mynamefortheirbranch theirusername/theirbranch
 ```
 
+### Multiple accounts in the same shell
+
+This happens when you want to switch to another github account for a specific repo.Config local user name and email
+
+* Set local user name and email:
+
+```bash
+git config --local user.email "subaccount@gmail.com"
+git config --local user.name subaccount
+```
+
+* Normally init repo and commit.
+* Set remote URL in this format (**add `USERNAME@` before github.com!**)
+
+```bash
+git remote set-url origin https://USERNAME@github.com/USERNAME/PROJECTNAME.git
+```
+
+* Create a PAT through web client. (Settings > developer settings > personal access tokens)
+* Push, enter your PAT through the GUI.
