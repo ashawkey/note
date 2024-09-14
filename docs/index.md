@@ -4,23 +4,23 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [basics.md](godot\basics/) <div style="text-align: right">2024-08-27 15:10:11.340333</div>
-- [2D.md](godot\2D/) <div style="text-align: right">2024-08-27 15:10:11.327584</div>
-- [tricks.md](godot\tricks/) <div style="text-align: right">2024-08-13 23:54:02.248670</div>
-- [cpp.md](c\cpp/) <div style="text-align: right">2024-08-13 23:54:01.464269</div>
-- [photoshop_basics.md](godot\photoshop_basics/) <div style="text-align: right">2024-08-13 21:25:49.125332</div>
-- [c_pitfalls.md](c\c_pitfalls/) <div style="text-align: right">2024-08-10 23:19:29.248659</div>
-- [s3.md](linux\s3/) <div style="text-align: right">2024-08-04 17:53:05.568494</div>
-- [numpy_tricks.md](python\numpy_tricks/) <div style="text-align: right">2024-08-04 17:53:05.568494</div>
-- [nodejs_basics.md](web\frontend\nodejs_basics/) <div style="text-align: right">2024-08-04 17:53:05.568494</div>
-- [c_tricks.md](c\c_tricks/) <div style="text-align: right">2024-08-04 17:53:05.567492</div>
-- [docker.md](docker\docker/) <div style="text-align: right">2024-08-04 17:53:05.567492</div>
-- [ubuntu_install_list.md](linux\ubuntu_install_list/) <div style="text-align: right">2024-06-16 20:33:14.052610</div>
-- [blender_tutorial.md](blender\blender_tutorial/) <div style="text-align: right">2024-06-16 10:46:21.611492</div>
-- [mac_shell.md](mac\mac_shell/) <div style="text-align: right">2024-06-15 20:36:50.452279</div>
-- [hub.md](docker\hub/) <div style="text-align: right">2024-06-15 20:29:45.368602</div>
-- [mac_tips.md](mac\mac_tips/) <div style="text-align: right">2024-06-13 20:23:29.814750</div>
-- [pypi_publish.md](python\pypi_publish/) <div style="text-align: right">2024-06-11 09:14:13.444597</div>
-- [powertoys.md](windows\powertoys/) <div style="text-align: right">2024-06-11 09:14:13.444597</div>
-- [pbr.md](graphics\pbr/) <div style="text-align: right">2024-06-11 09:14:13.443591</div>
-- [huggingface.md](python\huggingface/) <div style="text-align: right">2024-06-11 09:14:13.443591</div>
+- [git_tricks.md](linux\git_tricks/) <div style="text-align: right">2024-09-14 16:13:44.132699</div>
+- [german.md](language\german/) <div style="text-align: right">2024-09-14 16:08:12.871415</div>
+- [french.md](language\french/) <div style="text-align: right">2024-09-14 16:08:12.869625</div>
+- [societal_impact.md](writings\societal_impact/) <div style="text-align: right">2024-09-14 16:08:12.815722</div>
+- [examples.md](writings\examples/) <div style="text-align: right">2024-09-14 16:08:12.814725</div>
+- [pitfalls.md](writings\pitfalls/) <div style="text-align: right">2024-09-14 16:08:12.814725</div>
+- [rebuttals.md](writings\rebuttals/) <div style="text-align: right">2024-09-14 16:08:12.814725</div>
+- [review.md](writings\review/) <div style="text-align: right">2024-09-14 16:08:12.814725</div>
+- [web_overview.md](web\web_overview/) <div style="text-align: right">2024-09-14 16:08:12.813728</div>
+- [xpath.md](web\scrape\xpath/) <div style="text-align: right">2024-09-14 16:08:12.813728</div>
+- [cuda.md](windows\cuda/) <div style="text-align: right">2024-09-14 16:08:12.813728</div>
+- [powershell.md](windows\powershell/) <div style="text-align: right">2024-09-14 16:08:12.813728</div>
+- [powertoys.md](windows\powertoys/) <div style="text-align: right">2024-09-14 16:08:12.813728</div>
+- [trojan.md](web\proxy\trojan/) <div style="text-align: right">2024-09-14 16:08:12.812731</div>
+- [rsshub.md](web\rss\rsshub/) <div style="text-align: right">2024-09-14 16:08:12.812731</div>
+- [ttrss.md](web\rss\ttrss/) <div style="text-align: right">2024-09-14 16:08:12.812731</div>
+- [grab.md](web\scrape\grab/) <div style="text-align: right">2024-09-14 16:08:12.812731</div>
+- [set_usual_apps_proxy.md](web\proxy\set_usual_apps_proxy/) <div style="text-align: right">2024-09-14 16:08:12.811731</div>
+- [ss.md](web\proxy\ss/) <div style="text-align: right">2024-09-14 16:08:12.811731</div>
+- [trojan-go.md](web\proxy\trojan-go/) <div style="text-align: right">2024-09-14 16:08:12.811731</div>
