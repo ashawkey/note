@@ -1,7 +1,10 @@
-## ffmpeg quick manual
+### ffmpeg
 
 ```bash
-### basics
+### info
+ffmpeg -i in.mp4
+
+### change format
 ffmpeg -i in.avi out.mp4
 ffmpeg -y -i in.avi out.mp4 # overwrite
 
@@ -18,6 +21,11 @@ ffmpeg -i in.mp4 -vf "scale=out_w:out_h" out.mp4
 ### change FPS
 ffmpeg -i in.mp4 -vf "fps=fps=30" out.mp4
 ffmpeg -i in.mp4 -r 30 out.mp4
+
+### change duration
+# e.g., in.mp4 is 46s, you want it to speed up and finish in 30s
+# calculate target/current ratio 30/46=0.6521
+ffmpeg -i in.mp4 -vf "setpts=0.6521*PTS" out.mp4
 
 ### merge audio to video
 ffmpeg -i in.mp4 -i aud.wav -c:v copy -c:a aac out.mp4
@@ -45,5 +53,31 @@ file a.mp4
 file b.mp4
 # run
 ffmpeg -safe 0 -f concat -i list.txt -c copy out.mp4
+```
+
+
+
+
+
+## ffplay
+
+```bash
+ffplay [opt] <input>
+-x, -y : force h,w
+-fs : full screen
+-sn : disable subtitles
+-an, -vn : disable audio/vidio
+-ss : start position
+-t : duration
+-loop <num> : 0 means forever
+-showmode <mode> : 0:video, 1:waves, 2:rdft
+
+### while playing
+q, ESC
+f # fs
+p, SPC # pause
+m # mute
+/, * # volume
+
 ```
 
