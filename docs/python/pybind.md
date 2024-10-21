@@ -169,22 +169,24 @@ example.add(1, 2)
     ```
 
     ```cpp
-    // private attribute
+    // private attribute and const attribute
     class Pet {
     public:
         Pet(const std::string &name) : name(name) { }
         void setName(const std::string &name_) { name = name_; }
         const std::string &getName() const { return name; }
+        const int x = 0;
     private:
         std::string name;
     };
     
     py::class_<Pet>(m, "Pet")
         .def(py::init<const std::string &>())
+        .def_readonly("x", &Pet::x)
         .def_property("name", &Pet::getName, &Pet::setName)
         ...
     ```
-
+  
     ```python
     import example
     p = example.Pet('Molly')
@@ -195,7 +197,7 @@ example.add(1, 2)
   * dynamic attribute
 
     By default, `pybind11` class doesn't support dynamic attribute like python class:
-
+  
     ```python
     import example
     p = example.Pet('Molly')
@@ -203,14 +205,14 @@ example.add(1, 2)
     ```
 
     To enable it, use `py::dynamic_attr()`:
-
+  
     ```cpp
     py::class_<Pet>(m, "Pet", py::dynamic_attr())
         .def(py::init<>())
         .def_readwrite("name", &Pet::name);
         ...
     ```
-
+  
     ```python
     import example
     p = example.Pet('Molly')
@@ -218,16 +220,17 @@ example.add(1, 2)
     ```
 
   * Inheritance
-
+  
     ```cpp
     // TBD...
     ```
 
   * Overloaded method
-
+  
     ```cpp
     // TBD...
     ```
+
 
 
 ### Misc
@@ -250,13 +253,21 @@ m.def("setString", &set<std::string>);
 
 ```
 
-### Type Conversion
+
+
+### [Type Conversion](https://pybind11.readthedocs.io/en/stable/advanced/cast/overview.html)
+
+
 
 #### Basic types
+
 This includes `int, float, bool, ...`
 Copy is made when conversion between.
 
+
+
 #### python str <--> std::string
+
 Also quite straight-forward, copy is made.
 ```cpp
 m.def("utf8_test",
@@ -271,8 +282,11 @@ m.def("utf8_test",
 utf8_test("🎂")
 ```
 
+
+
 #### list/tuple <--> std::vector/deque/array
-list and tuple are not distinguished, since there must be a COPY at every conversion.
+
+list and tuple are not distinguished. **Copy is made!**
 
 ```cpp
 #include <pybind11/stl.h>
@@ -290,8 +304,11 @@ assert m.load_vector(lst)
 assert m.load_vector(tuple(lst))
 ```
 
+
+
 #### dict <--> std::map
-key and value types are automatically handled.
+
+key and value types are automatically handled. 
 ```cpp
 #include <pybind11/stl.h>
 
@@ -310,7 +327,10 @@ assert "key2" in d
 assert m.load_map(d)
 ```
 
+
+
 #### set <--> std::set
+
 ```cpp
 m.def("cast_set", []() { return std::set<std::string>{"key1", "key2"}; });
 m.def("load_set", [](const std::set<std::string> &set) {
@@ -325,59 +345,11 @@ s.add("key3")
 assert m.load_set(s)
 ```
 
-#### numpy ndarray <--> Eigen Matrix
+
+
+#### numpy.ndarray <--> Eigen Matrix
+
 Pass-by-value are supported between `np.ndarray` and `Eigen::MatrixXd`. A copy is made for each conversion, which maybe unwanted.
 Pass-by-reference can be achieved through `Eigen::Ref<T>`. 
 
 TODO: https://github.com/pybind/pybind11/blob/master/tests/test_eigen.cpp
-
-##### numpy ndarray --> Eigen Matrix
-
-```cpp
-
-```
-
-##### Eigen Matrix --> numpy ndarray
-
-
-### Building
-
-* `Setuptools`
-
-  ```python
-  
-  ```
-
-  
-* `Cmake`
-
-  Start by adding `pybind11` as a sub-module:
-
-  ```bash
-  git init # must be a repo to add submodule
-  git submodule add -b stable https://github.com/pybind/pybind11.git pybind11
-  git submodule update --init
-  ```
-
-  Then, modify the `CMakeLists.txt`:
-
-  ````cmake
-  cmake_minimum_required(VERSION 3.4...3.18)
-  project(example)
-  
-  # the original dependencies
-  find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-  
-  # add pybind11
-  add_subdirectory(pybind11)
-  
-  # compile the library
-  pybind11_add_module(example example.cpp)
-  
-  # must use PRIVATE target_link_libraries !!!
-  # ref: https://github.com/pybind/pybind11/issues/387
-  target_link_libraries(example PRIVATE Eigen3::Eigen)
-  
-  ````
-
-  

@@ -157,3 +157,12 @@ In the world properties:
 
 * Ctrl + Alt + 0: **move camera to current view (very useful!)**
 
+
+
+### Convert Trigs back to Quads
+
+* Left-top: change Object Mode to **Edit Mode**
+* Press `A` to select all faces.
+* top bar: `Face > Tris to Quads`
+
+Although this is not a perfect solution.
