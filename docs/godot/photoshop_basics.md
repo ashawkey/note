@@ -12,4 +12,4 @@
 * 选中图层
 * 图像 > 调整 > 色相/饱和度
 
-![image-20240810225347545](photoshop_basics.assets\image-20240810225347545.png)
+![image-20240810225347545](photoshop_basics.assets/image-20240810225347545.png)

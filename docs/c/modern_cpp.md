@@ -75,7 +75,6 @@ static_cast<string>(sv);
   float* b = static_cast<float*>(&a);
   ```
 
-  
 * `const_cast`
 
   [do not use!] change the `const`-ness of the pointer.
@@ -352,7 +351,7 @@ int main() {
     function<void()> foo = []() {};
     function<bool(int, int)> foo = [](int a, int b) {};
     
-    // recursive lambda
+    // recursive lambda (cannot use auto)
     function<bool(int)> dfs = [&](int x) {
         for (int y: graph[x]) {
             dfs(y);
@@ -360,6 +359,16 @@ int main() {
     }
     
     dfs(0);
+    
+    // trick to avoid using explicit type for recursive lambda function: add another layer of abstraction
+    auto dfs = [&](int x) {
+        auto dfs_impl = [&](int x, auto& dfs_ref) {
+            for (int y: graph[x]) {
+                dfs_ref(y);
+            }
+        }
+        dfs_impl(x, dfs_impl);
+    }
     
 }
 ```

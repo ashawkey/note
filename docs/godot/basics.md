@@ -72,7 +72,7 @@ SceneTree --> root (Viewport) --> Scene --> Node
 
 `CanvasLayer` is for separate rendering of objects (its children) in 2D. 
 
-![image-20240809232549518](D:\aa\Notebooks\docs\godot\basics.assets\image-20240809232549518.png)
+![image-20240809232549518](basics.assets/image-20240809232549518.png)
 
 `Node` is the smallest building block for the game. 
 

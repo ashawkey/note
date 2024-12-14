@@ -4,15 +4,15 @@
 
 First set transparent rendering:
 
-![image-20230817121854933](blender_tutorial.assets\image-20230817121854933.png)
+![image-20230817121854933](blender_tutorial.assets/image-20230817121854933.png)
 
 Then Change color view transform to standard (the same tab, just below `Film`):
 
-![image-20230817121902473](blender_tutorial.assets\image-20230817121902473.png)
+![image-20230817121902473](blender_tutorial.assets/image-20230817121902473.png)
 
 Then open compositing window, and set use nodes, then add an "alpha over" layer like this:
 
-![image-20230817121909364](blender_tutorial.assets\image-20230817121909364.png)
+![image-20230817121909364](blender_tutorial.assets/image-20230817121909364.png)
 
 
 ### Add-on

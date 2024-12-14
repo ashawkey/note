@@ -1,4 +1,4 @@
-## docker basics
+# docker basics
 
 ### install
 
@@ -23,6 +23,14 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo docker run --rm hello-world
 ```
 
+Or install from [TUNA](https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/):
+
+```bash
+export DOWNLOAD_URL="https://mirrors.tuna.tsinghua.edu.cn/docker-ce"
+
+curl -fsSL https://raw.githubusercontent.com/docker/docker-install/master/install.sh | sh
+```
+
 You can control docker daemon by:
 
 ```bash
@@ -38,7 +46,7 @@ sudo usermod -aG docker $USER
 ```
 
 
-### mirrors
+### docker hub mirrors
 
 Add in `/etc/docker/daemon.json`:
 
@@ -200,7 +208,6 @@ sudo systemctl restart docker
   # top 
   docker top <ID/name>
   ```
-  
   
 * commit to image
 
