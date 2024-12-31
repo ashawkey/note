@@ -236,7 +236,7 @@ git checkout -b mynamefortheirbranch theirusername/theirbranch
 
 ### Multiple accounts in the same shell
 
-This happens when you want to switch to another github account for a specific repo.Config local user name and email
+This happens when you want to switch to another github/gitlab account for a specific repo:
 
 * Set local user name and email:
 
@@ -254,3 +254,59 @@ git remote set-url origin https://USERNAME@github.com/USERNAME/PROJECTNAME.git
 
 * Create a PAT through web client. (Settings > developer settings > personal access tokens)
 * Push, enter your PAT through the GUI.
+
+
+
+### Rebase remote commits from others
+
+In a collaborated project where you need to work on your branch, but keep updated with the main branch:
+
+```bash
+# create your branch from main
+git checkout -b mybranch
+# work on your branch and commits... maybe also push to your remote branch.
+
+# now you want to merge to main, but other people also merged many things already. 
+# fetch remote changes
+git fetch origin
+# rebase remote changes on main to your local branch
+git rebase origin/main
+# now your commits and other people's commits are both applied, but this has diverged from your remote branch since rebase will add other people's commits (if you have pushed before), so you need to force update your remote branch
+git push origin --force
+```
+
+
+
+### Merge part of your changes to main
+
+This is not easy, especially if these changes are in many different commits, and between them you have commits that you do not want to merge to main.
+
+We need to wipe the commit history and re-commit those needed changes:
+
+```bash
+# create new branch from current branch
+git checkout -b mybranch_to_merge
+
+# make sure you have synced all changes from origin/main !!!
+
+# mixed reset to origin/main
+git reset --mixed origin/main
+# now you see all the changes you have done, all unstaged.
+# add back those changes you want to merge, and commit
+# push to remote and create MR
+```
+
+
+
+>  About `git reset`:
+>
+> ```bash
+> # soft: revert commits (but changes are still staged, i.e., after `git add`)
+> git reset --soft origin/main
+> 
+> # mixed: revert commits and unstage changes.
+> git reset --mixed origin/main
+> 
+> # hard: revert commits, undo changes. Your branch will be the same as origin/main again.
+> git reset --hard origin/main
+> ```

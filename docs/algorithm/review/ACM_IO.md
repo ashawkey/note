@@ -90,15 +90,43 @@ If you want to get **a whole input line (may contain spaces)** to string:
 ```cpp
 #include <iostream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
 int main() {
 	string s;
 	getline(cin, s); // NOT cin.getline(c_str);
+    
+    // if s is a single int
+    int x = stoi(s);
+    
+    // if s is a list of int (unknown length), to extract them:
+    istringstream iss(s);
+    int x;
+    while (iss >> x) {
+        cout << x << " ";
+    }
 }
 ```
 
+Example of an input that contain N+1 lines, the first line is N, then the next N lines are integers of unknown length:
+
+```cpp
+int N;
+string s;
+getline(cin, s); // cannot cin >> N; cin won't consume the endline, and will cause the next getline to get an empty string!
+N = stoi(s);
+for (int i = 0; i < N; i++) {
+    // get a line of ints
+    getline(cin, s);
+    istringstream iss(s);
+    int x;
+    while (iss >> x) {
+        // ...
+    }
+}
+```
 
 `cout` precision:
 
@@ -117,5 +145,4 @@ int main() {
     cout << fixed << setprecision(5) << f << endl; // 3.14159
 }
 ```
-
 
