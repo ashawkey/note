@@ -271,9 +271,31 @@ git checkout -b mybranch
 git fetch origin
 # rebase remote changes on main to your local branch
 git rebase origin/main
+# or if you prefer merge, which might be easier
+git merge origin/main
 # now your commits and other people's commits are both applied, but this has diverged from your remote branch since rebase will add other people's commits (if you have pushed before), so you need to force update your remote branch
 git push origin --force
 ```
+
+
+
+### Pushed a branch with wrong name
+
+We need to create a new branch with correct name, delete the old branch and push new branch again.
+
+```bash
+# rename (move) local branch
+git branch -m <correct_name>
+# push it
+git push origin -u <correct_name>
+# delete wrongly named and pushed remote branch.
+git push origin --delete <wrong_name> 
+
+# delete a local branch.
+git branch -d <wrong_name>
+```
+
+
 
 
 
@@ -288,15 +310,17 @@ We need to wipe the commit history and re-commit those needed changes:
 git checkout -b mybranch_to_merge
 
 # make sure you have synced all changes from origin/main !!!
+# if this is impossible, at least fetch them
 
 # mixed reset to origin/main
 git reset --mixed origin/main
 # now you see all the changes you have done, all unstaged.
 # add back those changes you want to merge, and commit
 # push to remote and create MR
+
+# if you have unmerged changes from origin/main, you may want to undo those changes
+git checkout <file/folder>
 ```
-
-
 
 >  About `git reset`:
 >
