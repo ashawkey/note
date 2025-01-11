@@ -257,7 +257,7 @@ git remote set-url origin https://USERNAME@github.com/USERNAME/PROJECTNAME.git
 
 
 
-### Rebase remote commits from others
+### Merge your branch with origin/main
 
 In a collaborated project where you need to work on your branch, but keep updated with the main branch:
 
@@ -276,6 +276,33 @@ git merge origin/main
 # now your commits and other people's commits are both applied, but this has diverged from your remote branch since rebase will add other people's commits (if you have pushed before), so you need to force update your remote branch
 git push origin --force
 ```
+
+But sometimes this still cannot fix your problem: there are so many conflicts that you cannot rebase or merge. Here is a final solution to merge main (at the cost of losing your commit history):
+
+```bash
+# fetch remote
+git fetch origin
+
+# checkout to a new branch
+git checkout -b <fix_the_shit>
+
+# reset to origin/main
+git reset --mixed origin/main
+
+# now all your changes are applied after origin/main, without commit history.
+# this means even if you don't change a file, it shows you "undo" the others' changes.
+# you need to revert these files by
+git checkout <path> # e.g., git checkout not/my/projects/
+
+# do this until only files you concern are remained in changes.
+# now you can add your changes one by one!
+# finally, commit and push this new branch for merging.
+# this is equally to manually squashing your commits.
+```
+
+
+
+
 
 
 
