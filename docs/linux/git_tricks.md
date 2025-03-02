@@ -269,20 +269,30 @@ git checkout -b mybranch
 # now you want to merge to main, but other people also merged many things already. 
 # fetch remote changes
 git fetch origin
-# rebase remote changes on main to your local branch
+# rebase your changes to origin/main (ours are incoming changes)
 git rebase origin/main
-# or if you prefer merge, which might be easier
+# or merge your changes to origin/main
 git merge origin/main
 # now your commits and other people's commits are both applied, but this has diverged from your remote branch since rebase will add other people's commits (if you have pushed before), so you need to force update your remote branch
 git push origin --force
 ```
 
-But sometimes this still cannot fix your problem: there are so many conflicts that you cannot rebase or merge. Here is a final solution to merge main (at the cost of losing your commit history):
+But sometimes this still cannot fix your problem: there are so many conflicts that you cannot rebase or merge. 
+
+You may want to squash your commits before rebasing:
 
 ```bash
-# fetch remote
-git fetch origin
+# reset to that earliest+1 commit you want to squash
+git reset --soft HEAD~3 # go back 3 commit from head (will squash HEAD, HEAD~, HEAD~2)
+git reset --soft <commit id> # will squash commits AFTER this commit
 
+# now simply commit all changes
+git commit -m 'squash!'
+```
+
+Another way to squash your commits:
+
+```bash
 # checkout to a new branch
 git checkout -b <fix_the_shit>
 
@@ -302,10 +312,6 @@ git checkout <path> # e.g., git checkout not/my/projects/
 
 
 
-
-
-
-
 ### Pushed a branch with wrong name
 
 We need to create a new branch with correct name, delete the old branch and push new branch again.
@@ -321,8 +327,6 @@ git push origin --delete <wrong_name>
 # delete a local branch.
 git branch -d <wrong_name>
 ```
-
-
 
 
 
@@ -361,3 +365,17 @@ git checkout <file/folder>
 > # hard: revert commits, undo changes. Your branch will be the same as origin/main again.
 > git reset --hard origin/main
 > ```
+
+
+
+### reset git reset
+
+```bash
+git reset HEAD@{1}
+
+## reflog keeps all update history
+git reflog
+# ... HEAD@{0} (now, after git reset)
+# ... HEAD@{1} status before git reset, we want to return to this.
+```
+
