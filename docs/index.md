@@ -4,7 +4,8 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [git_tricks.md](linux\git_tricks/) <div style="text-align: right">2025-01-11 23:27:49.544525</div>
+- [git_tricks.md](linux\git_tricks/) <div style="text-align: right">2025-03-01 21:27:41.121755</div>
+- [vfx.md](godot\vfx/) <div style="text-align: right">2025-01-19 21:38:51.345927</div>
 - [flow_matching.md](deeplearning\flow_matching/) <div style="text-align: right">2024-12-30 19:36:47.488115</div>
 - [ACM_IO.md](algorithm\review\ACM_IO/) <div style="text-align: right">2024-12-15 11:36:10.245231</div>
 - [shader.md](godot\shader/) <div style="text-align: right">2024-12-04 22:16:07.260446</div>
@@ -23,4 +24,3 @@
 - [examples.md](writings\examples/) <div style="text-align: right">2024-09-14 16:08:12.814725</div>
 - [pitfalls.md](writings\pitfalls/) <div style="text-align: right">2024-09-14 16:08:12.814725</div>
 - [rebuttals.md](writings\rebuttals/) <div style="text-align: right">2024-09-14 16:08:12.814725</div>
-- [review.md](writings\review/) <div style="text-align: right">2024-09-14 16:08:12.814725</div>
