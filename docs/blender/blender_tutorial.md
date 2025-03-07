@@ -166,3 +166,11 @@ In the world properties:
 * top bar: `Face > Tris to Quads`
 
 Although this is not a perfect solution.
+
+
+
+
+
+### Modeling: select connected component from a vertex
+
+Click one vertex, and `Ctrl+L`, then all vertices belonging to the same CC is selected.

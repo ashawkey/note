@@ -22,12 +22,20 @@ alias taa="tmux a"
 alias ta="tmux a -t"
 alias tk="tmux kill-session"
 alias tn="tmux new -s"
+
+alias proxy_on="export http_proxy=http://127.0.0.1:7897/; export https_proxy=http://127.0.0.1:7897/"
+alias proxy_off="unset http_proxy; unset https_proxy"
 ```
+
 
 
 ### [iterm2](https://iterm2.com/)
 
-Change the appearance from settings --> Profiles.
+Enable unlimited scrollback buffer:
+
+iTerm2 --> Settings --> Profiles --> Terminal --> Check Unlimited scrooback.
+
+
 
 
 ### [Brew](https://brew.sh/)
@@ -59,7 +67,20 @@ brew services start/stop/status colima
 ```
 
 
-### docker
+
+### [Scroll Reverser](https://pilotmoon.com/scrollreverser/)
+
+Configure the scroll direction of mouse & touch pad to be different.
+
+Use brew: 
+
+```bash
+brew install scroll-reverser
+```
+
+
+
+### Docker
 
 ```bash
 brew install docker docker-compose colima

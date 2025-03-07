@@ -5,6 +5,7 @@ git submodule update --init --recursive
 ```
 
 
+
 ### add more things to the last commit (amend)
 
 ```bash
@@ -16,6 +17,48 @@ git commit --amend --no-edit
 # this will also allow you to change the commit message
 git commit --amend
 ```
+
+you can also fully revert the commit and commit again
+
+```bash
+git reset --hard HEAD~1
+```
+
+
+
+
+
+### undo/reset anything using reflog
+
+`git reflog` keeps track of all your git commands, which is very useful to undo/redo.
+
+```bash
+git reflog
+# output is like:
+# c4ddb13 (HEAD -> master, origin/master, origin/HEAD) HEAD@{0}: pull: Fast-forward
+# b9a8d4f HEAD@{1}: pull: Fast-forward
+# 040fa10 HEAD@{2}: pull: Fast-forward
+```
+
+Notation:
+
+* `HEAD` is the current state.
+* `HEAD~<n>` means the n-th ancestor of HEAD (back trace through commit history/graph)
+* `HEAD@{n}` means the n-th history command through `reflog` (it's different from ancestor!)
+
+After finding the aimed commit, we can reset by:
+
+```bash
+# soft: revert commits (but changes are still staged, i.e., after `git add`)
+git reset --soft <commit>
+
+# mixed: revert commits and unstage changes.
+git reset --mixed <commit>
+
+# hard: revert commits, undo changes. Your branch will be the same as <commit> again.
+git reset --hard <commit>
+```
+
 
 
 ### command line diff
@@ -30,27 +73,8 @@ git diff --staged
 ```
 
 
-### modify the last commit
-
-```bash
-# reset to the status before last commit
-git reset HEAD~1
-# now correct your mistakes...
-...
-# redo the commit
-git add *
-git commit -c ORIG_HEAD
-```
 
 
-### revert a commit
-
-```bash
-# find the commit hash
-git log
-# revert it
-git revert <hash>
-```
 
 
 ### checkout a history commit, and also update all submodules to the corresponding commits
@@ -64,50 +88,12 @@ git submodule update --recursive # checkout all submodules too.
 ```
 
 
-### undo `git pull`
-
-**git pull** performs two operations:
-
-```bash
-git fetch
-git merge
-```
-
-To undo it:
-
-```bash
-# find the commit id
-$ git reflog
-c4ddb13 (HEAD -> master, origin/master, origin/HEAD) HEAD@{0}: pull: Fast-forward
-b9a8d4f HEAD@{1}: pull: Fast-forward
-040fa10 HEAD@{2}: pull: Fast-forward
-6e544a4 HEAD@{3}: pull: Fast-forward
-56bab4d HEAD@{4}: pull: Fast-forward
-7e1f9de HEAD@{5}: pull: Fast-forward
-092a51f HEAD@{6}: pull: Fast-forward
-2cb2adc HEAD@{7}: pull: Fast-forward
-eb28445 HEAD@{8}: pull: Fast-forward
-fd23ebc HEAD@{9}: pull: Fast-forward
-5d31b72 HEAD@{10}: pull: Fast-forward
-c860334 HEAD@{11}: clone: from https://github.com/ashawkey/ashawkey.github.io.git
-
-# reset (e.g., to last commit, i.e., HEAD@{1})
-git reset --hard b9a8d4f 
-
-# also, you can use time:
-git reset --hard master@{5.days.ago}
-# like `10.minutes.ago`, `1.hours.ago`, `1.days.ago`
-```
-
-Improvement: **use `git pull --rebase` instead of `git pull`!**
-
-[It also syncs server change](https://gitolite.com/git-pull--rebase).
 
 
 ### [force `git pull`](https://stackoverflow.com/questions/1125968/git-how-do-i-force-git-pull-to-overwrite-local-files)
 
 ```bash
-# reset
+# reset all changes
 git reset --hard HEAD
 
 # WARN: this delete all untracked files & dirs.
@@ -117,6 +103,7 @@ git clean -f -d
 # pull
 git pull
 ```
+
 
 
 ### remove a large file wrongly committed and left in git history
@@ -140,6 +127,7 @@ git push --all --force
 ```
 
 
+
 ### embed mp4 in readme.md (github only)
 
 You just edit the markdown file in github webpage, drag and drop your mp4 video to it, and it will work.
@@ -153,52 +141,22 @@ https://user-images.githubusercontent.com/25863658/155265815-c608254f-2f00-4664-
 ```
 
 
-### reset to a history commit
-
-say you would like to reset to a previous commit.
-
-```bash
-# check log to get the commit reference
-git log --oneline
-
-# say you'll reset to xxxxx commit
-# --hard will rewrite the file content
-git reset --hard xxxxx
-
-# after that, you want to return to your previous commit.
-git reflog show
-
-# you found your previous commit is called HEAD@{y}
-git reset --hard HEAD@{y}
-```
 
 
-### change remote repo url
+### manage remote repo url
 
 ```bash
-# change remote
+# change remote origin
 git remote set-url origin [new_repo_url]
 
-# then you can normally push!
+# or you can add it as another remote
+git remote set-url origin2 [new_repo_url]
+git push -u origin2 main
 ```
 
 
-### push a new branch to remote
 
-```bash
-# to local branch
-git checkout -b <branch>
-
-# push branch to remote
-git push -u origin <branch>
-#To https://github.com/ashawkey/svd_nerf.git
-# * [new branch]      arithm -> arithm
-#Branch arithm set up to track remote branch arithm from origin.
-
-```
-
-
-### gitignore un-ignore specific files
+### un-ignore specific files
 
 say you want to exclude everything in `datasets/` except `datasets/splits/*`.`
 
@@ -208,6 +166,7 @@ datasets/* # the /* matters!
 
 !datasets/splits/
 ```
+
 
 
 ### use ssh for git command (avoid permission denied error)
@@ -226,6 +185,7 @@ Then copy the public key and add it in https://github.com/settings/keys
 Now you should be able to clone through ssh!
 
 
+
 ### fetch branch from a forked repo without clone
 
 ```bash
@@ -234,7 +194,9 @@ git fetch theirusername
 git checkout -b mynamefortheirbranch theirusername/theirbranch
 ```
 
-### Multiple accounts in the same shell
+
+
+### multiple accounts in the same shell
 
 This happens when you want to switch to another github/gitlab account for a specific repo:
 
@@ -257,7 +219,7 @@ git remote set-url origin https://USERNAME@github.com/USERNAME/PROJECTNAME.git
 
 
 
-### Merge your branch with origin/main
+### art of merge request
 
 In a collaborated project where you need to work on your branch, but keep updated with the main branch:
 
@@ -269,15 +231,14 @@ git checkout -b mybranch
 # now you want to merge to main, but other people also merged many things already. 
 # fetch remote changes
 git fetch origin
-# rebase your changes to origin/main (ours are incoming changes)
+# rebase (replay) your changes to origin/main (ours are incoming)
 git rebase origin/main
-# or merge your changes to origin/main
+# or origin/main's changes into your code (they are incoming), sometimes this is easier
 git merge origin/main
+
 # now your commits and other people's commits are both applied, but this has diverged from your remote branch since rebase will add other people's commits (if you have pushed before), so you need to force update your remote branch
 git push origin --force
 ```
-
-But sometimes this still cannot fix your problem: there are so many conflicts that you cannot rebase or merge. 
 
 You may want to squash your commits before rebasing:
 
@@ -290,47 +251,46 @@ git reset --soft <commit id> # will squash commits AFTER this commit
 git commit -m 'squash!'
 ```
 
-Another way to squash your commits:
+Another case is that you are working on a branch and submitted MR to origin/main, which is squash-merged later, but you are still working on the same branch with some new commits. (The best practice is not to work on the same branch until its MR is merged, but sometimes this does happen...)
+
+Now the origin/main's commit history has diverged from your branch (as it contains only some of your commits but squashed). To fix this:
 
 ```bash
-# checkout to a new branch
-git checkout -b <fix_the_shit>
+# sync local main first
+git checkout main
+git fetch origin
+git pull
 
-# reset to origin/main
-git reset --mixed origin/main
+# create a new branch for MR
+git checkout -b mr_branch
 
-# now all your changes are applied after origin/main, without commit history.
-# this means even if you don't change a file, it shows you "undo" the others' changes.
-# you need to revert these files by
-git checkout <path> # e.g., git checkout not/my/projects/
+# merge your old branch to it
+git merge old_branch
 
-# do this until only files you concern are remained in changes.
-# now you can add your changes one by one!
-# finally, commit and push this new branch for merging.
-# this is equally to manually squashing your commits.
+# now mr_branch contains exactly one commit from origin/main with your new commits squashed. we can submit MR with this branch now!
 ```
 
 
 
-### Pushed a branch with wrong name
+### pushed a branch with wrong name
 
 We need to create a new branch with correct name, delete the old branch and push new branch again.
 
 ```bash
 # rename (move) local branch
 git branch -m <correct_name>
-# push it
+# push it to remote
 git push origin -u <correct_name>
-# delete wrongly named and pushed remote branch.
-git push origin --delete <wrong_name> 
 
+# delete a remote branch.
+git push origin --delete <wrong_name> 
 # delete a local branch.
 git branch -d <wrong_name>
 ```
 
 
 
-### Merge part of your changes to main
+### merge part of your changes to main
 
 This is not easy, especially if these changes are in many different commits, and between them you have commits that you do not want to merge to main.
 
@@ -353,29 +313,4 @@ git reset --mixed origin/main
 git checkout <file/folder>
 ```
 
->  About `git reset`:
->
-> ```bash
-> # soft: revert commits (but changes are still staged, i.e., after `git add`)
-> git reset --soft origin/main
-> 
-> # mixed: revert commits and unstage changes.
-> git reset --mixed origin/main
-> 
-> # hard: revert commits, undo changes. Your branch will be the same as origin/main again.
-> git reset --hard origin/main
-> ```
-
-
-
-### reset git reset
-
-```bash
-git reset HEAD@{1}
-
-## reflog keeps all update history
-git reflog
-# ... HEAD@{0} (now, after git reset)
-# ... HEAD@{1} status before git reset, we want to return to this.
-```
 
