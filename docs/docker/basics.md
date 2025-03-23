@@ -108,7 +108,10 @@ sudo systemctl restart docker
   docker image rm <name[:tag]/image_ID>
   
   # rm all images named ubuntu*
-  docker image rm $(docker image ls -q ubuntu)
+  docker image rm -f $(docker image ls -q ubuntu)
+  
+  # prune to free storage
+  docker system prune -f
   ```
 
 * run & manage container
