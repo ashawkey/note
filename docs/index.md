@@ -4,6 +4,7 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
+- [mac_tips.md](mac\mac_tips/) <div style="text-align: right">2025-04-04 23:09:20.188873</div>
 - [basics.md](docker\basics/) <div style="text-align: right">2025-03-23 11:46:37.484370</div>
 - [s3.md](linux\s3/) <div style="text-align: right">2025-03-23 11:29:48.094759</div>
 - [cursor_tricks.md](others\cursor_tricks/) <div style="text-align: right">2025-03-09 00:00:05.089424</div>
@@ -23,4 +24,3 @@
 - [ffmpeg.md](linux\ffmpeg/) <div style="text-align: right">2024-09-19 11:18:35.102840</div>
 - [german.md](language\german/) <div style="text-align: right">2024-09-14 16:08:12.871415</div>
 - [french.md](language\french/) <div style="text-align: right">2024-09-14 16:08:12.869625</div>
-- [societal_impact.md](writings\societal_impact/) <div style="text-align: right">2024-09-14 16:08:12.815722</div>
