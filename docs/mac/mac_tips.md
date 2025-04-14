@@ -17,7 +17,7 @@
 * finder
   * cannot create a new file directly, instead open the corresponding app and save to file.
   * turn on actual path: finder --> view --> show path bar
-  * show hidden files: `command + shift + .`
+  * **show hidden files & folders**: `command + shift + .`
   * `command + x` is not Cut, instead use `command + c` to Copy and `command + shift + v` to Move (instead of Paste).
   * `command + delete` to delete a file (move to trash).
 
@@ -29,5 +29,4 @@
 * Screenshot: snipaste
 
 * Split screen: magnet (buy from app store)
-
 
