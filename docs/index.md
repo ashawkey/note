@@ -4,23 +4,23 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [mac_tips.md](mac\mac_tips/) <div style="text-align: right">2025-04-04 23:09:20.188873</div>
-- [basics.md](docker\basics/) <div style="text-align: right">2025-03-23 11:46:37.484370</div>
-- [s3.md](linux\s3/) <div style="text-align: right">2025-03-23 11:29:48.094759</div>
-- [cursor_tricks.md](others\cursor_tricks/) <div style="text-align: right">2025-03-09 00:00:05.089424</div>
-- [blender_tutorial.md](blender\blender_tutorial/) <div style="text-align: right">2025-03-07 20:33:18.855376</div>
-- [git_tricks.md](linux\git_tricks/) <div style="text-align: right">2025-03-07 20:33:18.855376</div>
-- [mac_shell.md](mac\mac_shell/) <div style="text-align: right">2025-03-07 20:33:18.855376</div>
-- [vfx.md](godot\vfx/) <div style="text-align: right">2025-01-19 21:38:51.345927</div>
-- [flow_matching.md](deeplearning\flow_matching/) <div style="text-align: right">2024-12-30 19:36:47.488115</div>
-- [ACM_IO.md](algorithm\review\ACM_IO/) <div style="text-align: right">2024-12-15 11:36:10.245231</div>
-- [shader.md](godot\shader/) <div style="text-align: right">2024-12-04 22:16:07.260446</div>
-- [particles.md](godot\particles/) <div style="text-align: right">2024-12-03 00:02:39.151692</div>
-- [tricks.md](godot\tricks/) <div style="text-align: right">2024-11-24 10:19:32.381924</div>
-- [basics.md](godot\basics/) <div style="text-align: right">2024-11-07 19:09:13.850590</div>
-- [photoshop_basics.md](godot\photoshop_basics/) <div style="text-align: right">2024-11-07 19:02:20.458254</div>
-- [modern_cpp.md](c\modern_cpp/) <div style="text-align: right">2024-10-21 19:32:57.583264</div>
-- [pybind.md](python\pybind/) <div style="text-align: right">2024-10-07 20:07:00.713517</div>
-- [ffmpeg.md](linux\ffmpeg/) <div style="text-align: right">2024-09-19 11:18:35.102840</div>
-- [german.md](language\german/) <div style="text-align: right">2024-09-14 16:08:12.871415</div>
-- [french.md](language\french/) <div style="text-align: right">2024-09-14 16:08:12.869625</div>
+- [image_processing.md](vision\image_processing/) <div style="text-align: right">2025-05-18 10:01:03.626066</div>
+- [transformation.md](vision\transformation/) <div style="text-align: right">2025-05-18 10:01:03.626066</div>
+- [camera_combined.md](vision\camera_combined/) <div style="text-align: right">2025-05-18 10:01:03.625068</div>
+- [camera_intrinsics_exintrics.md](vision\camera_intrinsics_exintrics/) <div style="text-align: right">2025-05-18 10:01:03.625068</div>
+- [camera_view_projection.md](vision\camera_view_projection/) <div style="text-align: right">2025-05-18 10:01:03.625068</div>
+- [nerf_gradient.md](others\nerf_gradient/) <div style="text-align: right">2025-05-18 10:01:03.624071</div>
+- [recommenders.md](others\recommenders/) <div style="text-align: right">2025-05-18 10:01:03.624071</div>
+- [quaternion.md](math\quaternion/) <div style="text-align: right">2025-05-18 10:01:03.623073</div>
+- [chebnet_understanding.md](others\chebnet_understanding/) <div style="text-align: right">2025-05-18 10:01:03.623073</div>
+- [prt.md](graphics\prt/) <div style="text-align: right">2025-05-18 10:01:03.622077</div>
+- [graph_clustering.md](math\graph\graph_clustering/) <div style="text-align: right">2025-05-18 10:01:03.622077</div>
+- [graph_spectral_theory.md](math\graph\graph_spectral_theory/) <div style="text-align: right">2025-05-18 10:01:03.622077</div>
+- [104_raytracing.md](graphics\104_raytracing/) <div style="text-align: right">2025-05-18 10:01:03.621079</div>
+- [opengl_advanced.md](graphics\opengl_advanced/) <div style="text-align: right">2025-05-18 10:01:03.621079</div>
+- [pbr.md](graphics\pbr/) <div style="text-align: right">2025-05-18 10:01:03.621079</div>
+- [roc_auc_understand.md](deeplearning\roc_auc_understand/) <div style="text-align: right">2025-05-18 10:01:03.620081</div>
+- [102_shading.md](graphics\102_shading/) <div style="text-align: right">2025-05-18 10:01:03.620081</div>
+- [103_geometry.md](graphics\103_geometry/) <div style="text-align: right">2025-05-18 10:01:03.620081</div>
+- [sklearn_tutorial.md](deeplearning\old\sklearn_tutorial/) <div style="text-align: right">2025-05-18 10:01:03.619084</div>
+- [sklearn_user_guide.md](deeplearning\old\sklearn_user_guide/) <div style="text-align: right">2025-05-18 10:01:03.619084</div>
