@@ -4,7 +4,7 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [ื๖ทน.md](cooking\ื๖ทน/) <div style="text-align: right">2025-07-23 13:24:23.411497</div>
+- [home.md](cooking\home/) <div style="text-align: right">2025-07-23 13:24:23.411497</div>
 - [basics.md](docker\basics/) <div style="text-align: right">2025-07-19 19:27:38.643873</div>
 - [disk.md](linux\disk/) <div style="text-align: right">2025-07-19 17:32:05.058830</div>
 - [ubuntu_install_list.md](linux\ubuntu_install_list/) <div style="text-align: right">2025-07-19 17:28:22.086388</div>
