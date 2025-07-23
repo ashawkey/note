@@ -13,5 +13,16 @@ Download the [releases](https://github.com/git-lfs/git-lfs/releases) and follow 
 ```bash
 # download large files under a repo using lfs.
 git lfs pull
+
+# initalize lfs in a git repo
+git lfs install
+
+# track certain files (png for example)
+git lfs track *.png
+
+# then it's safe to push, it will automatically handle all pngs as lfs
+git add *
+git commit -m 'lfs'
+git push
 ```
 

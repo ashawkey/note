@@ -860,31 +860,7 @@ tween.set_parallel()
 However, you should **not allow multiple tweeners on the same property** at the same time, this will be undefined behavior (race condition).
 
 
-### Thread Safety
 
-Interacting with the active scene is not thread-safe, always use deferred call:
-
-```python
-# Unsafe:
-node.add_child(child_node)
-# Safe:
-node.call_deferred("add_child", child_node)
-```
-
-Use `Mutex` to control safe-accessing from multiple threads:
-
-```python
-@onready var mutex = Mutex.new()
-var counter = 0
-
-# protect modification of counter using mutex
-mutex.lock()
-counter += 1
-mutex.unlock()
-```
-
-
-Signals?
 
 
 ### Editor tips

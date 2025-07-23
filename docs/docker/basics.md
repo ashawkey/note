@@ -43,6 +43,11 @@ By default, only root user (`sudo`) can use docker. A docker group can be create
 ```bash
 sudo groupadd docker
 sudo usermod -aG docker $USER
+newgrp docker # reset group information without logout
+
+# verify
+id -nG # should contain docker
+docker run --rm hello-world 
 ```
 
 

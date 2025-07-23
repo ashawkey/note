@@ -49,7 +49,7 @@ A way of storing data inside the partitions.
 
   current default for Windows.
 
-* VFAT
+* exFAT
 
   support both Windows and Linux, usually for swap and recovery.
 
@@ -147,7 +147,7 @@ A way of storing data inside the partitions.
   /dev/sda1 on /boot/efi type vfat 
   ```
 
-* `df`  simplified version.
+* `df`  only shows mounted fs and path.
 
   ```bash
   $ df -h
@@ -165,7 +165,7 @@ A way of storing data inside the partitions.
   tmpfs            26G     0   26G   0% /run/user/1002
   ```
 
-* `lsblk` another simplified version.
+* `lsblk` the most clear and useful one.
 
   ```bash
   $ sudo lsblk
@@ -190,52 +190,6 @@ A way of storing data inside the partitions.
   ```
 
   where ROTA == 1 means HDD, and ROTA == 0 means SSD.
-
-* `findmnt` specialized tool
-
-  ```bash
-  $ findmnt
-  TARGET                                SOURCE     FSTYPE     OPTIONS
-  /                                     /dev/sda2  ext4       rw,relatime,errors=remount-ro,data=ordered
-  ├─/sys                                sysfs      sysfs      rw,nosuid,nodev,noexec,relatime
-  │ ├─/sys/kernel/security              securityfs securityfs rw,nosuid,nodev,noexec,relatime
-  │ ├─/sys/fs/cgroup                    tmpfs      tmpfs      ro,nosuid,nodev,noexec,mode=755
-  │ │ ├─/sys/fs/cgroup/systemd          cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/lib/systemd/systemd-cgroups-agent,name=systemd
-  │ │ ├─/sys/fs/cgroup/freezer          cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,freezer
-  │ │ ├─/sys/fs/cgroup/rdma             cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,rdma
-  │ │ ├─/sys/fs/cgroup/devices          cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,devices
-  │ │ ├─/sys/fs/cgroup/cpu,cpuacct      cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,cpu,cpuacct
-  │ │ ├─/sys/fs/cgroup/blkio            cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,blkio
-  │ │ ├─/sys/fs/cgroup/net_cls,net_prio cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,net_cls,net_prio
-  │ │ ├─/sys/fs/cgroup/hugetlb          cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,hugetlb
-  │ │ ├─/sys/fs/cgroup/cpuset           cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,cpuset
-  │ │ ├─/sys/fs/cgroup/perf_event       cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,perf_event
-  │ │ ├─/sys/fs/cgroup/memory           cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,memory
-  │ │ └─/sys/fs/cgroup/pids             cgroup     cgroup     rw,nosuid,nodev,noexec,relatime,pids
-  │ ├─/sys/fs/pstore                    pstore     pstore     rw,nosuid,nodev,noexec,relatime
-  │ ├─/sys/firmware/efi/efivars         efivarfs   efivarfs   rw,nosuid,nodev,noexec,relatime
-  │ ├─/sys/kernel/debug                 debugfs    debugfs    rw,relatime
-  │ ├─/sys/fs/fuse/connections          fusectl    fusectl    rw,relatime
-  │ └─/sys/kernel/config                configfs   configfs   rw,relatime
-  ├─/proc                               proc       proc       rw,nosuid,nodev,noexec,relatime
-  │ └─/proc/sys/fs/binfmt_misc          systemd-1  autofs     rw,relatime,fd=35,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=55306
-  ├─/dev                                udev       devtmpfs   rw,nosuid,relatime,size=131978096k,nr_inodes=32994524,mode=755
-  │ ├─/dev/pts                          devpts     devpts     rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000
-  │ ├─/dev/shm                          tmpfs      tmpfs      rw,nosuid,nodev
-  │ ├─/dev/mqueue                       mqueue     mqueue     rw,relatime
-  │ └─/dev/hugepages                    hugetlbfs  hugetlbfs  rw,relatime,pagesize=2M
-  ├─/run                                tmpfs      tmpfs      rw,nosuid,noexec,relatime,size=26402968k,mode=755
-  │ ├─/run/lock                         tmpfs      tmpfs      rw,nosuid,nodev,noexec,relatime,size=5120k
-  │ └─/run/user/1002                    tmpfs      tmpfs      rw,nosuid,nodev,relatime,size=26402968k,mode=700,uid=1002,gid=1002
-  ├─/data2                              /dev/sdb   ext4       rw,relatime,data=ordered
-  ├─/data3                              /dev/sdc   ext4       rw,relatime,data=ordered
-  ├─/data4                              /dev/sdd   ext4       rw,relatime,data=ordered
-  └─/boot/efi                           /dev/sda1  vfat       rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro
-  
-  $ findmnt /
-  TARGET SOURCE    FSTYPE OPTIONS
-  /      /dev/sda2 ext4   rw,relatime,errors=remount-ro,data=ordered
-  ```
 
 
 ### Add a new disk
@@ -263,6 +217,10 @@ A way of storing data inside the partitions.
   ```bash
   sudo mkfs -t ext4 /dev/sdb 
   # sudo mkfs -t ext4 /dev/sdb1 # if partitioned
+  
+  # exfat is supported by both Windows and Linux, you can use it too:
+  sudo apt install exfatprogs
+  sudo mkfs.exfat /dev/sdb
   ```
 
 * mount
@@ -290,39 +248,3 @@ A way of storing data inside the partitions.
   ```
 
   
-### testdisk
-
-TestDisk can undelete
-
-- [files and directory from FAT12, FAT16 and FAT32 filesystem](https://www.cgsecurity.org/wiki/TestDisk:_undelete_file_for_FAT),
-- [files from ext2 filesystem](https://www.cgsecurity.org/wiki/TestDisk:_undelete_file_for_ext2),
-- [files from NTFS partition](https://www.cgsecurity.org/wiki/Undelete_files_from_NTFS_with_TestDisk) since version [6.11](https://www.cgsecurity.org/wiki/TestDisk_6.11_Release).
-
-If it doesn't work or for other filesystem! (which means the most used ext4 cannot use it.)
-
-
-### extundelete
-
-Need to unmount the device.
-
-Usually we need a live-USB boot. (very difficult, not recommended)
-
-
-### if the process is not killed (the only practical way)
-
-> ref: https://www.jianshu.com/p/662293f12a47
-
-```bash
-# find the pid that occupies the deleted file.
-lsof | grep <deletedfilename>
-# copy the proc, then you can find it in /backup
-cp /proc/<pid>/fd /backup
-```
-
-```
-$ ls /proc/<pid>/fd
-lrwx------ 1 root root 64 1月  18 22:21 0 -> /dev/pts/0
-l-wx------ 1 root root 64 1月  18 22:21 1 -> /root/deletefile.txt (deleted)
-lrwx------ 1 root root 64 1月  18 22:21 2 -> /dev/pts/0
-```
-

@@ -14,24 +14,52 @@ Use the default settings are OK.
 Zlab servers: 
 
 * omnisky:`F11`
+* ASUS:`Del/F2`
 
 Select your USB as the starter, and choose `try or install ubuntu`.
 
-To change the default boot order (e.g., if you installed new system on a different disk), you should check `Hard Disk Drive BBS Priorities`  in BIOS config.
+If your machine only has NVIDIA GPU and use it as the display output, it might freeze during install (at the logo) and overheat the GPU. In this case, choose `Ubuntu (Safe Graphics)` to install, and make sure to check `install third-party drivers`.
+
+In case you installed but the system still gets stuck, choose `advanced options for Ubuntu` during boot and enter `recovery` mode, and then choose `root` to enter the shell:
+
+```bash
+# mount file system
+mount -o remount,rw /
+
+# connect network
+systemctl start NetworkManager
+ip -4 addr # check
+
+# (optional) change to tuna sources
+sudo sed -i 's|http://.*.archive.ubuntu.com|https://mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list
+
+# install nvidia drivers
+apt update
+add-apt-repository ppa:graphics-drivers/ppa
+ubuntu-drivers devices
+apt install nvidia-driver-570 # choose the recommended one is OK.
+
+# reboot and it should start
+reboot
+```
 
 
-### Installing...
+
+
+### Install
 
 Wait until you see graphics.
 
 Choose language, how to install (alongside or erase old OS), enter your name and password.
 
-Then another long wait...
+Usually Minimal Install is OK.
+
+
 
 
 ### Setting up
 
-* Network connection
+* Network connection (cable or wifi)
 
 * Basic softwares
 
