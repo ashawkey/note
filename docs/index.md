@@ -4,6 +4,14 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
+- [ื๖ทน.md](cooking\ื๖ทน/) <div style="text-align: right">2025-07-23 13:24:23.411497</div>
+- [basics.md](docker\basics/) <div style="text-align: right">2025-07-19 19:27:38.643873</div>
+- [disk.md](linux\disk/) <div style="text-align: right">2025-07-19 17:32:05.058830</div>
+- [ubuntu_install_list.md](linux\ubuntu_install_list/) <div style="text-align: right">2025-07-19 17:28:22.086388</div>
+- [cute.md](cuda\cute/) <div style="text-align: right">2025-07-11 20:29:56.078456</div>
+- [git_lfs.md](linux\git_lfs/) <div style="text-align: right">2025-06-01 11:21:05.578758</div>
+- [thread_safety.md](godot\thread_safety/) <div style="text-align: right">2025-05-19 13:40:25.208493</div>
+- [basics.md](godot\basics/) <div style="text-align: right">2025-05-19 12:35:28.658442</div>
 - [theory.md](driving\theory/) <div style="text-align: right">2025-05-18 10:27:09.275470</div>
 - [image_processing.md](vision\image_processing/) <div style="text-align: right">2025-05-18 10:01:03.626066</div>
 - [transformation.md](vision\transformation/) <div style="text-align: right">2025-05-18 10:01:03.626066</div>
@@ -16,11 +24,3 @@
 - [chebnet_understanding.md](others\chebnet_understanding/) <div style="text-align: right">2025-05-18 10:01:03.623073</div>
 - [prt.md](graphics\prt/) <div style="text-align: right">2025-05-18 10:01:03.622077</div>
 - [graph_clustering.md](math\graph\graph_clustering/) <div style="text-align: right">2025-05-18 10:01:03.622077</div>
-- [graph_spectral_theory.md](math\graph\graph_spectral_theory/) <div style="text-align: right">2025-05-18 10:01:03.622077</div>
-- [104_raytracing.md](graphics\104_raytracing/) <div style="text-align: right">2025-05-18 10:01:03.621079</div>
-- [opengl_advanced.md](graphics\opengl_advanced/) <div style="text-align: right">2025-05-18 10:01:03.621079</div>
-- [pbr.md](graphics\pbr/) <div style="text-align: right">2025-05-18 10:01:03.621079</div>
-- [roc_auc_understand.md](deeplearning\roc_auc_understand/) <div style="text-align: right">2025-05-18 10:01:03.620081</div>
-- [102_shading.md](graphics\102_shading/) <div style="text-align: right">2025-05-18 10:01:03.620081</div>
-- [103_geometry.md](graphics\103_geometry/) <div style="text-align: right">2025-05-18 10:01:03.620081</div>
-- [sklearn_tutorial.md](deeplearning\old\sklearn_tutorial/) <div style="text-align: right">2025-05-18 10:01:03.619084</div>
