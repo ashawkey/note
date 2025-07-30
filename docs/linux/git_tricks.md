@@ -110,20 +110,19 @@ git pull
 
 large file, even if removed in current branch, will be left in history and every clone suffers from it.
 
-The best choice is never to upload any, but if you have committed, this will save you:
+The best choice is never to upload any, but if you have committed, the best way is to soft reset these commits and re-commit again, although this will squash all the later commits:
 
 ```bash
-# FOLDERNAME is what you want to remove from ALL history
-git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch FOLDERNAME" -- --all
+# find the last commit before adding the large files
+git reflog
 
-# further clean
-rm -rf .git/refs/original/
-git reflog expire --expire=now --all
-git gc --prune=now
-git gc --aggressive --prune=now
+# soft reset
+git reset --soft <commit id>
 
-# push to remote
-git push --all --force
+# delete the large files, add all other files and commit again.
+rm <big_file>
+git add *
+git commit -m 'squash commits'
 ```
 
 
@@ -312,5 +311,4 @@ git reset --mixed origin/main
 # if you have unmerged changes from origin/main, you may want to undo those changes
 git checkout <file/folder>
 ```
-
 
