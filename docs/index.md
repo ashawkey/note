@@ -4,7 +4,9 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [home.md](cooking\home/) <div style="text-align: right">2025-07-23 13:24:23.411497</div>
+- [home.md](cooking\home/) <div style="text-align: right">2025-07-30 22:38:06.284933</div>
+- [react-basics.md](web\frontend\react-basics/) <div style="text-align: right">2025-07-29 14:58:25.710443</div>
+- [git_tricks.md](linux\git_tricks/) <div style="text-align: right">2025-07-28 10:07:23.036258</div>
 - [basics.md](docker\basics/) <div style="text-align: right">2025-07-19 19:27:38.643873</div>
 - [disk.md](linux\disk/) <div style="text-align: right">2025-07-19 17:32:05.058830</div>
 - [ubuntu_install_list.md](linux\ubuntu_install_list/) <div style="text-align: right">2025-07-19 17:28:22.086388</div>
@@ -22,5 +24,3 @@
 - [recommenders.md](others\recommenders/) <div style="text-align: right">2025-05-18 10:01:03.624071</div>
 - [quaternion.md](math\quaternion/) <div style="text-align: right">2025-05-18 10:01:03.623073</div>
 - [chebnet_understanding.md](others\chebnet_understanding/) <div style="text-align: right">2025-05-18 10:01:03.623073</div>
-- [prt.md](graphics\prt/) <div style="text-align: right">2025-05-18 10:01:03.622077</div>
-- [graph_clustering.md](math\graph\graph_clustering/) <div style="text-align: right">2025-05-18 10:01:03.622077</div>
