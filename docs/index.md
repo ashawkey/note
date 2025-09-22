@@ -4,7 +4,7 @@
 [kiui](https://kiui.moe/)'s notebook.
 
 ## Recent Updates
-- [home.md](cooking\home/) <div style="text-align: right">2025-07-30 22:38:06.284933</div>
+- [home.md](cooking\home/) <div style="text-align: right">2025-08-08 13:03:49.885815</div>
 - [react-basics.md](web\frontend\react-basics/) <div style="text-align: right">2025-07-29 14:58:25.710443</div>
 - [git_tricks.md](linux\git_tricks/) <div style="text-align: right">2025-07-28 10:07:23.036258</div>
 - [basics.md](docker\basics/) <div style="text-align: right">2025-07-19 19:27:38.643873</div>
