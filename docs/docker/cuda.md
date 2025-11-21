@@ -1,4 +1,4 @@
-# docker for CUDA
+# Docker for CUDA
 
 ### [nvidia-docker](https://github.com/NVIDIA/nvidia-docker)
 

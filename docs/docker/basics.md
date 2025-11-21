@@ -1,4 +1,4 @@
-# docker basics
+# Docker Basics
 
 ### install
 
