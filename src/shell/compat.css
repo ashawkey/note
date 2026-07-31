@@ -1,0 +1,90 @@
+/*
+ * Bridges the gap between Typora's app shell and ours.
+ *
+ * Community themes are written against a Typora window, and a handful of things they take
+ * for granted were provided by Typora's own chrome rather than by base.css or by any theme.
+ * This recreates just that much, and nothing more.
+ *
+ * Sits in typora-base.compat: above base.css, below the theme, so a theme
+ * can still override anything here.
+ *
+ * This is Typora's app environment minus everything only an editor needed. Gone are the
+ * <content> scroller (we let the viewport scroll, and paint the field on a fixed layer in
+ * shell.css instead), the .milkdown wrapper neutralisation, ProseMirror's required styles,
+ * and the .md-meta/.md-content reveal-on-focus rules — a viewer emits no syntax markers, so
+ * there is nothing to hide or reveal. What is left is the parts that are about Typora, not
+ * about editing.
+ */
+
+@layer typora-base.compat {
+  /* base.css leaves #write at `width: inherit`, relying on Typora's window chrome to size
+     it. Give it the full column and let shell.css decide the reading measure. */
+  #write {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  /*
+   * Typora renders fenced code through CodeMirror 5, so themes style code text via
+   * `.cm-s-inner .cm-*` and reach for CodeMirror's own wrappers for layout. We emit a
+   * flattened <pre class="md-fences cm-s-inner …">, so the wrapper rules are re-pointed at
+   * the <pre> itself.
+   */
+  #write .md-fences {
+    position: relative;
+    display: block;
+    white-space: pre;
+    tab-size: 4;
+  }
+
+  /*
+   * In Typora the scroller is CodeMirror's own wrapper *inside* the fence, not the fence
+   * itself. Ours is the <code>, for the same reason: anything absolutely positioned in a
+   * scroll container scrolls away with the content, and the language label has to stay in
+   * the corner however far the code runs.
+   */
+  #write .md-fences > code {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /*
+   * The language label, bottom right.
+   *
+   * Typora positions this from its app code rather than from base.css, so themes that style
+   * `.code-tooltip` and `.ty-cm-lang-input` — kiwi.css does both — assume it is already
+   * placed. Quiet at rest, since it doubles as the label saying what the block is, and
+   * fully legible once the fence is hovered.
+   *
+   * Typora's is an <input> the author types a language into. Ours is a <span>: there is
+   * nothing to edit, and a focusable form control in a read-only page is a tab stop that
+   * leads nowhere.
+   */
+  #write .md-fences > .code-tooltip {
+    position: absolute;
+    right: 0.35em;
+    bottom: 0.15em;
+    z-index: 2;
+    line-height: 1;
+    opacity: 0.35;
+    transition: opacity 120ms ease;
+  }
+
+  #write .md-fences:hover > .code-tooltip {
+    opacity: 1;
+  }
+
+  #write .ty-cm-lang-input {
+    display: inline-block;
+    padding: 2px 4px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: 0.75em;
+    line-height: 1.2;
+    text-align: right;
+    user-select: none;
+  }
+}

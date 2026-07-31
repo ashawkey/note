@@ -1,0 +1,1001 @@
+/*
+ * The chrome: navigation panel, top bar, contents, search.
+ *
+ * glassy.css makes #write a frosted sheet floating on a soft field of colour painted on
+ * <html>. So the panels around it are not containers *around* the sheet — they are further
+ * panes lying on the same field, at the same depth, catching light the same way — and the
+ * document scrolling under them is what gives the blur something to work with.
+ *
+ * Everything here is therefore drawn with the theme's own material tokens — --lg-pane,
+ * --lg-gloss, --lg-sheen, --lg-rim, --lg-shadow, --lg-blur — and its palette tokens
+ * --kiwi-ink, --kiwi-accent and friends. Not one colour is written literally. That is what
+ * makes the chrome correct in both Su and Qi without a single dark-mode override in this
+ * file, and what will keep it correct if the palettes are ever retuned upstream.
+ *
+ * Layer `app` is declared last in dist/theme.css, so everything here outranks the theme
+ * regardless of selector specificity. That is a licence to be simple, not a licence to be
+ * careless: nothing here should reach inside #write, which is the theme's business.
+ */
+
+/* ── Page transitions ─────────────────────────────────────────────────────────────────
+ *
+ * Cross-document view transitions: the browser snapshots the outgoing page, loads the next
+ * one, and animates between them. One at-rule and no JavaScript — no router, no intercepted
+ * clicks, no fetch-and-swap, and nothing to go wrong when scripting is off. A browser
+ * without support simply navigates, which is what it did before.
+ *
+ * Deliberately outside `@layer app`: `@view-transition` is a top-level rule, like `@import`
+ * and `@font-face`, and its `navigation` descriptor is not part of the cascade.
+ *
+ * The named elements below are lifted out of the root snapshot and paired with their
+ * counterparts on the next page, so the chrome holds still while the note changes under it.
+ * That is the whole effect: the panels are furniture, the document is what moves.
+ */
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /*
+   * Turn off the group animations, and do it first — this is what actually decides how long
+   * a navigation takes.
+   *
+   * Every pairing gets three pseudo-elements: a `group` that interpolates position and size,
+   * and the `old`/`new` images that fade. The group carries the UA's default 250ms animation
+   * and it runs whether or not the geometry changed. Tuning only the old/new durations
+   * therefore does close to nothing: measured end to end, cutting them from 330ms to 195ms
+   * moved the transition from 259ms to 250ms, because the group was the floor all along.
+   *
+   * Nothing here changes geometry between pages — the panels are the same size, the field is
+   * the same field — so there is nothing for a group to interpolate and every one of them can
+   * go. The transition is then exactly as long as the fade below.
+   */
+  ::view-transition-group(*) {
+    animation: none;
+  }
+
+  /*
+   * The document is deliberately *not* given a name of its own, and that is the whole trick.
+   *
+   * Naming `.main` is the obvious thing to do and it looks wrong. A named element is
+   * snapshotted at its own size, and `.main` is as tall as the note — three thousand pixels
+   * on a long page, eight hundred on a short one. The pairing then animates one to the size
+   * of the other, scaling a picture of a whole document; and because the outgoing page was
+   * scrolled somewhere and the incoming one starts at the top, the two arrive at different
+   * offsets. The result is two documents superimposed at mismatched positions, which reads
+   * exactly like the page failing to redraw.
+   *
+   * Unnamed, the document stays part of `root` — and the root snapshot is the size of the
+   * *viewport*, not the page. So what cross-fades is what the reader can actually see, at
+   * the size they see it, which is the honest thing to animate.
+   */
+  /*
+   * Out, then in — with no overlap.
+   *
+   * Cross-fading two documents shows both at once, and half of one page laid over half of
+   * another is not a fade, it is a double exposure: the reader sees two sets of paragraphs
+   * interleaved and reads it as the page failing to redraw. So the outgoing page leaves
+   * completely before the incoming one starts.
+   *
+   * That is only possible because the field below is named and held still. Without it, the
+   * gap between the two would be blank — during a transition the live page is not painted,
+   * only these snapshots are, so two snapshots at zero opacity is an empty window. With the
+   * field pinned, the gap is the background, and the note simply fades away and returns.
+   */
+  /*
+   * Timing, measured rather than guessed.
+   *
+   * A click already costs ~85ms of navigation before any of this can start, and the browser
+   * adds ~50ms of its own around the animation. Those are fixed. So the animation is the
+   * only part worth spending care on, and sequencing it doubles whatever it costs.
+   *
+   * What actually reads as lag is not the total but the wait before the new page starts
+   * appearing: with a leisurely fade-out the reader stares at a dissolving copy of where
+   * they just were. So the old page leaves quickly and the new one begins almost at once,
+   * taking its time only on the way in — where the motion is telling you something arrived
+   * rather than making you wait for it to go.
+   */
+  ::view-transition-old(root) {
+    animation: page-leave 45ms linear both;
+  }
+
+  ::view-transition-new(root) {
+    animation: page-enter 115ms cubic-bezier(0, 0, 0.2, 1) 45ms both;
+  }
+
+  /*
+   * Opacity only, and `normal` blending. The UA cross-fades with `plus-lighter`, which is
+   * right when two layers overlap and wrong here: with no overlap it only makes each
+   * snapshot glow against the field as it passes through half opacity.
+   */
+  @keyframes page-leave {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes page-enter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    mix-blend-mode: normal;
+  }
+
+
+  /*
+   * The chrome holds still: the note fades, the furniture does not.
+   *
+   * The outgoing copy is hidden outright rather than simply left un-animated. `animation:
+   * none` alone removes the fade from *both* halves, so both render at full opacity for the
+   * length of the transition — and two copies of a scrolled tree at different offsets is a
+   * legible double image, the very ghosting this arrangement exists to avoid. Dropping the
+   * old one and showing the new one immediately is what "does not animate" has to mean here.
+   *
+   * The contents pane is included even though its entries really do differ per note. A
+   * cross-fade between two lists of headings is still two lists of headings on screen at
+   * once; the panel is small enough that cutting reads as instant rather than as abrupt.
+   */
+  ::view-transition-old(field),
+  ::view-transition-old(topbar),
+  ::view-transition-old(sidebar),
+  ::view-transition-old(contents) {
+    animation: none;
+    opacity: 0;
+  }
+
+  ::view-transition-new(field),
+  ::view-transition-new(topbar),
+  ::view-transition-new(sidebar),
+  ::view-transition-new(contents) {
+    animation: none;
+    opacity: 1;
+    mix-blend-mode: normal;
+  }
+}
+
+/*
+ * With reduced motion asked for, the transition still *happens* — it is what keeps the
+ * navigation from flashing white between documents — but every part of it is instant.
+ */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+@layer app {
+  /* ── Shared material ──────────────────────────────────────────────────────────────── */
+
+  :root {
+    /*
+     * 15% each side, 70% for the document. The floor stops the tree collapsing to an
+     * unreadable ribbon on a narrower desktop — 15% of 1100px is 165px, which wraps a
+     * two-word note title onto three lines. Above ~1170px the percentage wins and the split
+     * is exactly 15/70/15.
+     */
+    --app-sidebar-width: minmax(11rem, 15%);
+    --app-toc-width: minmax(10rem, 15%);
+    --app-topbar-height: 3.5rem;
+    --app-gap: 1.25rem;
+    --app-radius: 20px;
+    --app-ease: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  /*
+   * The glass material, shared by the three docks and the search dialog.
+   *
+   * Only the dialog floats, so only the dialog is a card. The docks are the same material
+   * run to the edge of the screen: no radius, and a single hairline along the edge that
+   * faces the document — see the dock rules below, which replace the box-shadow outright.
+   */
+  .pane {
+    background: linear-gradient(to bottom, var(--lg-gloss), transparent 120px), var(--lg-pane);
+    backdrop-filter: var(--lg-blur);
+    -webkit-backdrop-filter: var(--lg-blur);
+  }
+
+  /* Without backdrop-filter the tint alone is a washed-out film with no material to it —
+     the same fallback glassy.css makes for the sheet. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .pane {
+      background: var(--kiwi-bg);
+    }
+  }
+
+  /* ── The field ────────────────────────────────────────────────────────────────────── */
+
+  /*
+   * glassy.css paints the field on <html> and notes that it must not scroll: the sheet
+   * travelling over a stationary field is most of what sells the material. It gets that for
+   * free in an editor, where a <content> element scrolls rather than the viewport.
+   *
+   * Here the viewport scrolls — a website should have the browser's own scrollbar, its
+   * find-in-page, and its address-bar behaviour on mobile. So the field moves to a fixed
+   * layer behind everything, which holds it still without `background-attachment: fixed`
+   * and the repaint cost that carries on iOS.
+   *
+   * ── Why it is dimmed ────────────────────────────────────────────────────────────────
+   *
+   * The field's hues were chosen to be seen *through* the sheet: #write blurred them at
+   * 26px, desaturated whatever it did not cover, and composited a 55% pane over the whole
+   * reading column. This site has no sheet, so the same gradients now meet the eye raw and
+   * at full strength — much louder than the palette intends, and loudest in Qi, whose pools
+   * are saturated enough to survive being seen through lacquer.
+   *
+   * Dimming the layer rather than restating the gradients keeps the fix to one number, and
+   * keeps it correct if the palettes are ever retuned upstream: the ground fades toward
+   * --kiwi-bg on <html>, which glassy-su.css deliberately keeps "close to the field's own
+   * ground, so the two never disagree visibly". `light-dark()` reads the palette's own
+   * `color-scheme`, so the value tracks the active palette with no second copy of the
+   * light/dark resolution rules to fall out of step.
+   */
+  /*
+   * Note there is deliberately no `scrollbar-gutter: stable` here.
+   *
+   * It is the obvious fix for the small horizontal shift when moving from a note that
+   * scrolls to one that fits the window, and it costs more than it saves: it reserves the
+   * scrollbar's width inside the layout, which pulls all three docked panels off the edge of
+   * the screen. Docking them flush is the point. `overflow-y: scroll` would do the same job
+   * and is worse — it makes html a scroll container and breaks every `position: sticky` on
+   * the page, which is the trap described above.
+   */
+  html {
+    background: var(--kiwi-bg);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    background: var(--lg-field);
+    /* Fallback first, for browsers without light-dark(). */
+    opacity: 0.5;
+    opacity: light-dark(0.58, 0.36);
+    /* Lifted out of the page transition and held still — see the @view-transition block. */
+    view-transition-name: field;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: transparent;
+    color: var(--kiwi-ink);
+    font-family: var(--kiwi-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /*
+   * Note there is deliberately no `overflow-x: hidden` on html or body. It is the obvious
+   * way to stop a wide table pushing the page sideways, and it silently breaks every
+   * `position: sticky` on the page: an overflow value other than `visible` makes the element
+   * a scroll container, and descendants then stick to *it* rather than to the viewport. The
+   * top bar and both side panels would scroll away.
+   *
+   * Long code lines scroll inside their own <code> (compat.css). A table wider than the
+   * measure will push the page sideways, which is ugly but leaves the content reachable —
+   * the failure mode of clipping it is worse.
+   */
+
+  :focus-visible {
+    outline: 2px solid var(--kiwi-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .skip-link {
+    position: fixed;
+    z-index: 100;
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    background: var(--kiwi-bg);
+    color: var(--kiwi-ink);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transform: translateY(-200%);
+    transition: transform 160ms var(--app-ease);
+  }
+
+  .skip-link:focus {
+    transform: none;
+  }
+
+  /* ── Layout ───────────────────────────────────────────────────────────────────────── */
+
+  /*
+   * Three docks and the document between them, edge to edge.
+   *
+   * No gap, no outer padding and no max-width: the panels are docked to the sides of the
+   * screen, so any gutter here would float them off it. Breathing room is the document's own
+   * padding instead, which keeps the glass edges hard against the viewport.
+   */
+  .layout {
+    display: grid;
+    grid-template-columns: var(--app-sidebar-width) minmax(0, 1fr) var(--app-toc-width);
+    align-items: start;
+  }
+
+  /* ── Top bar ──────────────────────────────────────────────────────────────────────── */
+
+  .topbar {
+    view-transition-name: topbar;
+    position: sticky;
+    z-index: 30;
+    top: 0;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    height: var(--app-topbar-height);
+    padding: 0 1.1rem;
+    /* Docked, so the hairline goes along the bottom edge — the one facing the document. */
+    box-shadow: inset 0 -1px 0 var(--lg-rim);
+  }
+
+  .topbar__home {
+    display: flex;
+    gap: 0.55rem;
+    align-items: center;
+    padding: 0.3rem 0.5rem;
+    border-radius: 10px;
+    color: var(--kiwi-ink-strong);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+
+  .topbar__home:hover {
+    background: var(--lg-pane-inner);
+  }
+
+  .topbar__spacer {
+    flex: 1;
+  }
+
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--kiwi-ink-soft);
+    cursor: pointer;
+    transition:
+      background 140ms var(--app-ease),
+      color 140ms var(--app-ease);
+  }
+
+  .icon-button:hover {
+    background: var(--lg-pane-inner);
+    color: var(--kiwi-ink);
+  }
+
+  .icon-button svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  /* The toggle shows the palette it will switch *to*, so the two icons swap on [data-theme]
+     rather than on the button's own state. */
+  .icon-button__sun {
+    display: none;
+  }
+
+  :root[data-theme='dark'] .icon-button__sun {
+    display: block;
+  }
+
+  :root[data-theme='dark'] .icon-button__moon {
+    display: none;
+  }
+
+  /* ── Search trigger ───────────────────────────────────────────────────────────────── */
+
+  .search-trigger {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    width: min(20rem, 34vw);
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--lg-rim);
+    border-radius: 12px;
+    background: var(--lg-pane-inner);
+    color: var(--kiwi-ink-faint);
+    font-family: inherit;
+    font-size: 0.9rem;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 140ms var(--app-ease);
+  }
+
+  .search-trigger:hover {
+    border-color: var(--kiwi-wash-edge);
+    color: var(--kiwi-ink-soft);
+  }
+
+  .search-trigger svg {
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .search-trigger__label {
+    flex: 1;
+  }
+
+  kbd.search-trigger__key {
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--lg-rim);
+    border-radius: 5px;
+    background: var(--lg-chip);
+    color: var(--kiwi-ink-faint);
+    font-family: var(--monospace);
+    font-size: 0.72rem;
+  }
+
+  /* ── Navigation panel ─────────────────────────────────────────────────────────────── */
+
+  /*
+   * Docked to the left edge and the full height of the viewport below the top bar, so the
+   * three docks read as one continuous frame around the document rather than as three cards
+   * on the field.
+   */
+  .sidebar {
+    view-transition-name: sidebar;
+    position: sticky;
+    top: var(--app-topbar-height);
+    height: calc(100vh - var(--app-topbar-height));
+    padding: 1.1rem 0.75rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: inset -1px 0 0 var(--lg-rim);
+  }
+
+  .sidebar__heading {
+    margin: 0 0 0.5rem 0.75rem;
+    color: var(--kiwi-ink-faint);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Indent one step per level, drawn from the parent's padding rather than a per-level
+     class, so the tree nests to any depth without generated CSS. */
+  .nav-list .nav-list {
+    margin-left: 0.7rem;
+    padding-left: 0.35rem;
+    border-left: 1px solid var(--lg-rim);
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.32rem 0.55rem;
+    border-radius: 9px;
+    color: var(--kiwi-ink-soft);
+    font-size: 0.895rem;
+    line-height: 1.45;
+    text-decoration: none;
+    transition:
+      background 130ms var(--app-ease),
+      color 130ms var(--app-ease);
+  }
+
+  .nav-link:hover {
+    background: var(--lg-pane-inner);
+    color: var(--kiwi-ink);
+  }
+
+  .nav-link.is-current {
+    background: var(--kiwi-accent-wash);
+    color: var(--kiwi-accent-ink);
+    font-weight: 600;
+  }
+
+  .nav-summary {
+    display: flex;
+    gap: 0.15rem;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  /* Safari still paints its own disclosure triangle without this. */
+  .nav-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav-summary .nav-link {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .nav-chevron {
+    flex: none;
+    width: 0.85rem;
+    height: 0.85rem;
+    color: var(--kiwi-ink-faint);
+    transition: transform 160ms var(--app-ease);
+  }
+
+  .nav-folder[open] > .nav-summary .nav-chevron {
+    transform: rotate(90deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-chevron,
+    .skip-link {
+      transition: none;
+    }
+  }
+
+  /* ── Main column ──────────────────────────────────────────────────────────────────── */
+
+  /*
+   * No `view-transition-name` here on purpose — see the note above `@view-transition`. This
+   * element is as tall as the document, and naming it makes the transition scale a picture
+   * of a whole page against another one. Left unnamed it rides in the viewport-sized root
+   * snapshot, which is what should be cross-fading.
+   */
+  .main {
+    min-width: 0;
+  }
+
+  /*
+   * The document, not a card.
+   *
+   * glassy.css makes #write a frosted sheet floating on the field — the right call in the
+   * editor, where the document is the only thing on screen and needs an edge. Here the three
+   * docks already frame it, so a second glass surface inside that frame reads as a card in a
+   * box. Stripped back to plain content on the field; the blocks within it (fences, tables,
+   * quotes, the contents) keep their own glass and now sit directly on the field, which is
+   * what the material was doing on the sheet anyway.
+   *
+   * The theme's rules are overridden rather than deleted: this is @layer app, which outranks
+   * typora-theme, so glassy.css keeps describing the material and this file keeps the
+   * layout decisions — the two stay separable rather than tangled.
+   */
+  #write {
+    max-width: none;
+    margin-block: 0;
+    padding: 2.5rem 2.75rem 6rem;
+    border-radius: 0;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .note-footer {
+    margin: 0 0 4rem;
+    padding: 0 2.75rem;
+    color: var(--kiwi-ink-faint);
+    font-size: 0.82rem;
+  }
+
+  /* ── Folder listing, for a directory with no index.md ─────────────────────────────── */
+
+  .listing {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 0.75rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .listing__link {
+    display: block;
+    padding: 0.9rem 1.1rem;
+    border-radius: var(--lg-radius-pane);
+    background: var(--lg-pane-inner);
+    box-shadow: inset 0 0 0 1px var(--lg-rim);
+    color: var(--kiwi-ink);
+    text-decoration: none;
+    transition: transform 140ms var(--app-ease);
+  }
+
+  .listing__link:hover {
+    transform: translateY(-2px);
+  }
+
+  .listing__title {
+    font-weight: 600;
+  }
+
+  .listing__kind {
+    color: var(--kiwi-ink-faint);
+    font-size: 0.78rem;
+  }
+
+  /* ── Contents ─────────────────────────────────────────────────────────────────────── */
+
+  .toc {
+    view-transition-name: contents;
+    position: sticky;
+    top: var(--app-topbar-height);
+    height: calc(100vh - var(--app-topbar-height));
+    padding: 1.1rem 0.9rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: inset 1px 0 0 var(--lg-rim);
+  }
+
+  .toc__heading {
+    margin: 0 0 0.5rem;
+    color: var(--kiwi-ink-faint);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  /*
+   * The contents itself is Typora's own `.md-toc` markup, so kiwi.css and glassy.css style
+   * it — but they style it as a pane *inside* the document, which is not what it is here.
+   * These few rules undo the pane and leave the type.
+   */
+  .toc .md-toc {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .toc .md-toc-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    margin: 0;
+  }
+
+  .toc .md-toc-inner {
+    display: block;
+    padding: 0.24rem 0.5rem;
+    border-radius: 8px;
+    color: var(--kiwi-ink-soft);
+    font-size: 0.84rem;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+  .toc .md-toc-inner:hover {
+    background: var(--lg-pane-inner);
+    color: var(--kiwi-ink);
+  }
+
+  .toc .md-toc-h3 .md-toc-inner {
+    padding-left: 1.35rem;
+  }
+
+  .toc .md-toc-h4 .md-toc-inner {
+    padding-left: 2.1rem;
+    font-size: 0.8rem;
+  }
+
+  .toc .md-toc-item.is-active .md-toc-inner {
+    background: var(--kiwi-accent-wash);
+    color: var(--kiwi-accent-ink);
+  }
+
+  /* Anchors must clear the sticky top bar, or clicking a contents entry lands the heading
+     underneath it. */
+  #write :is(h1, h2, h3, h4, h5, h6)[id] {
+    scroll-margin-top: calc(var(--app-topbar-height) + 1rem);
+  }
+
+  /*
+   * Moving between sections of a note is a scroll, not a navigation, so it animates rather
+   * than jumps — a contents entry, a footnote reference, any link to a `#heading`.
+   *
+   * Set on the scroll container rather than per link, which is what makes it apply to the
+   * links inside notes too, and to the browser's own fragment handling. An explicit
+   * `behavior` passed to scrollTo still wins, which is how src/shell/highlight.ts keeps
+   * control of its own jump.
+   */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* ── Search-term highlighting ─────────────────────────────────────────────────────── */
+
+  /*
+   * Painted by the CSS Custom Highlight API, on ranges src/shell/highlight.ts registers. No
+   * element is involved — which is the point, since wrapping matches in <mark> would insert
+   * markup inside #write and break the DOM contract.
+   *
+   * Only background and colour are permitted on ::highlight() by the spec; anything
+   * geometric is ignored, so there is no padding or radius to reach for here.
+   */
+  ::highlight(note-search) {
+    background: var(--kiwi-accent-wash);
+    color: var(--kiwi-ink-strong);
+  }
+
+  /* ── Search modal ─────────────────────────────────────────────────────────────────── */
+
+  .search-dialog {
+    width: min(38rem, calc(100vw - 2rem));
+    max-height: min(32rem, calc(100vh - 6rem));
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* The dialog is a pane on the field like any other, so it uses the same material — but
+       it floats above the document rather than beside it, so the blur is stronger. */
+    border-radius: var(--app-radius);
+    background: linear-gradient(to bottom, var(--lg-gloss), transparent 140px), var(--lg-pane);
+    backdrop-filter: saturate(190%) blur(34px);
+    -webkit-backdrop-filter: saturate(190%) blur(34px);
+    box-shadow:
+      inset 0 1px 0 var(--lg-sheen),
+      inset 0 0 0 1px var(--lg-rim),
+      var(--lg-shadow);
+    color: var(--kiwi-ink);
+    overflow: hidden;
+  }
+
+  .search-dialog:not([open]) {
+    display: none;
+  }
+
+  .search-dialog::backdrop {
+    background: rgb(0 0 0 / 28%);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  /* position-area is not widely supported yet, so the dialog is centred the old way. */
+  .search-dialog[open] {
+    position: fixed;
+    inset: auto;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-field {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex: none;
+    padding: 0.9rem 1.1rem;
+    border-bottom: 1px solid var(--lg-rim);
+  }
+
+  .search-field svg {
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--kiwi-ink-faint);
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: none;
+    color: var(--kiwi-ink);
+    font-family: inherit;
+    font-size: 1.02rem;
+  }
+
+  .search-input:focus {
+    outline: none;
+  }
+
+  /* Chrome draws its own clear button on type=search, in its own blue, over the glass. */
+  .search-input::-webkit-search-cancel-button,
+  .search-input::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .search-results {
+    flex: 1;
+    margin: 0;
+    padding: 0.5rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    list-style: none;
+  }
+
+  /* Each part is a <span>, so each needs telling it is a line of its own — without this the
+     breadcrumb, title and excerpt run together into one paragraph. */
+  .search-result__link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 12px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .search-result.is-active .search-result__link,
+  .search-result__link:hover {
+    background: var(--lg-pane-inner);
+  }
+
+  .search-result__crumb {
+    color: var(--kiwi-ink-faint);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+
+  .search-result__title {
+    color: var(--kiwi-ink-strong);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  /* Pagefind stitches its excerpt from wherever the term occurs, so a hit inside a long code
+     block can run on. Two lines is enough to judge a result by. */
+  .search-result__excerpt {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color: var(--kiwi-ink-soft);
+    font-size: 0.83rem;
+    line-height: 1.5;
+  }
+
+  .search-result__excerpt mark {
+    padding: 0 0.15em;
+    border-radius: 3px;
+    background: var(--kiwi-accent-wash);
+    color: inherit;
+  }
+
+  .search-empty {
+    padding: 1.5rem 1.1rem;
+    color: var(--kiwi-ink-faint);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* ── Responsive ───────────────────────────────────────────────────────────────────── */
+
+  .topbar__menu {
+    display: none;
+  }
+
+  /* Below this the contents pane has nowhere useful to go and the document takes its width. */
+  @media (max-width: 78rem) {
+    .layout {
+      grid-template-columns: var(--app-sidebar-width) minmax(0, 1fr);
+    }
+
+    .toc {
+      display: none;
+    }
+  }
+
+  @media (max-width: 56rem) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    #write {
+      padding-inline: 1.25rem;
+    }
+
+    .note-footer {
+      padding-inline: 1.25rem;
+    }
+
+    .topbar__menu {
+      display: inline-flex;
+    }
+
+    /*
+     * The panel becomes an overlay drawer. It stays in the DOM and keeps its sticky position
+     * rules overridden here rather than being re-parented, so the tree's open state and
+     * scroll position survive the breakpoint.
+     *
+     * A fixed width, not the 15% column: a percentage of a phone viewport is unreadable, and
+     * off-canvas there is no column to be a percentage of.
+     */
+    .sidebar {
+      position: fixed;
+      z-index: 40;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: min(20rem, 82vw);
+      height: auto;
+      transform: translateX(-102%);
+      transition: transform 260ms var(--app-ease);
+    }
+
+    body[data-drawer='open'] .sidebar {
+      transform: none;
+    }
+
+    .drawer-scrim {
+      position: fixed;
+      z-index: 39;
+      inset: 0;
+      background: rgb(0 0 0 / 32%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms var(--app-ease);
+    }
+
+    body[data-drawer='open'] .drawer-scrim {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .search-trigger__label,
+    .search-trigger__key {
+      display: none;
+    }
+
+    .search-trigger {
+      width: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sidebar,
+    .drawer-scrim,
+    .listing__link {
+      transition: none;
+    }
+  }
+
+  /* ── Print ────────────────────────────────────────────────────────────────────────── */
+
+  @media print {
+    .topbar,
+    .sidebar,
+    .toc,
+    .drawer-scrim,
+    .search-dialog,
+    .skip-link {
+      display: none !important;
+    }
+
+    .layout {
+      display: block;
+      padding: 0;
+    }
+
+    body::before {
+      display: none;
+    }
+  }
+}

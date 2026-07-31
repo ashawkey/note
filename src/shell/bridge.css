@@ -1,0 +1,64 @@
+/*
+ * Corrections for the one place our DOM differs from Typora's.
+ *
+ * This layer sits *above* the theme, and the distinction from compat.css is deliberate:
+ *
+ *   typora-base.compat  recreates what Typora's app provided. A theme is entitled to
+ *                       override any of it, so it sits below the theme.
+ *   typora-bridge       undoes damage caused by an element Typora never emitted. A theme
+ *                       cannot be expected to guard against markup it has never seen, so
+ *                       this has to outrank it.
+ *
+ * Keep it small. Every rule here is a place where our DOM failed to match
+ * doc/dom-contract.md and we compensated in CSS instead — debt, not design.
+ *
+ * In an editor this file would be much longer, because it would also have to hide the source of
+ * formulas and diagrams until the caret arrives. We never emit that source, so all of it
+ * goes; what remains is the fence's <code>.
+ */
+
+@layer typora-bridge {
+  /*
+   * Typora's fences contain no <code> at all — the text lives in CodeMirror's elements. So
+   * themes style `code` purely as *inline* code, and that lands on the <code> inside our
+   * fence. The plain case is a `code { background-color; padding }` rule: a tinted, padded
+   * box painted around every line of every code block. glassy.css:217 styles `#write code`
+   * as a glass chip, which is exactly that.
+   *
+   * Strip the inline decoration back off and let the fence's own styling, which themes
+   * apply to .md-fences, come through untouched.
+   */
+  #write pre.md-fences > code {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-shadow: none;
+    white-space: inherit;
+  }
+
+  /* Insurance for the same reason: a theme that hangs backticks or quotes off inline code
+     would otherwise repeat them on every fence. */
+  #write pre.md-fences > code::before,
+  #write pre.md-fences > code::after {
+    content: none;
+  }
+
+  /*
+   * Typora's footnote body is inline content; remark-rehype gives the definition a <p>,
+   * which would break the footnote across two lines. Scoped to footnote bodies, so it
+   * cannot affect paragraphs anywhere else.
+   */
+  #write .md-def-footnote > .md-def-content > p {
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+}

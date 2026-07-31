@@ -1,0 +1,85 @@
+/*
+ * Glassy Su 璃素 — Su, glazed.
+ *
+ * Everything Su is, seen through glass: the same LXGW WenKai, the same warm charcoal ink,
+ * the same seal vermilion in the same few places. What changes is that the page is no
+ * longer paper. It is a frosted sheet lying on a field of very pale colour, and the field
+ * shows through — warm at one corner, celadon at another, so the sheet's own tint drifts as
+ * the document scrolls over it.
+ *
+ * The field is kept close to white on purpose. 素 is undyed; glaze does not dye it, it only
+ * catches the light. So there is colour here, but only just enough for the glass to have
+ * something to be glass about.
+ *
+ * Structure and type come from kiwi.css, the material from glassy.css. This file is the
+ * palette for both, and is variables only — src/site/theme.ts enforces that, because it
+ * emits these declarations three times over under different [data-theme] scopes.
+ *
+ * There is no @import here: src/site/theme.ts concatenates the files in order, and the
+ * webfont is linked separately so its relative url()s keep resolving.
+ */
+
+:root {
+  color-scheme: light;
+
+  /*
+   * The field. Three wide, low-contrast pools on a warm pale ground — no edges anywhere,
+   * because anything with an edge would show the blur as a smear rather than as depth.
+   *
+   * Their centres sit *under* the reading column rather than out in the margins. Pushed to
+   * the corners the colour only ever appears beside the sheet, which makes the page look
+   * like a white card on a tinted wall; overlapping it is what lets the glass pick the
+   * colour up and shift as the document scrolls past.
+   */
+  --lg-field: radial-gradient(70rem 46rem at 24% 6%, rgba(226, 193, 166, 0.62), transparent 60%),
+    radial-gradient(62rem 44rem at 80% 26%, rgba(176, 206, 200, 0.58), transparent 62%),
+    radial-gradient(72rem 50rem at 48% 96%, rgba(208, 168, 158, 0.5), transparent 60%) #eae7e1;
+
+  --lg-pane: rgba(255, 255, 255, 0.55);
+  --lg-gloss: rgba(255, 255, 255, 0.5);
+  /* A film, not a fill: this composites over the sheet's own 55%, so anything substantial
+     here lands near-opaque and the field's colour stops reaching the block. */
+  --lg-pane-inner: rgba(255, 255, 255, 0.2);
+  --lg-chip: rgba(255, 255, 255, 0.42);
+  --lg-sheen: rgba(255, 255, 255, 0.85);
+  --lg-rim: rgba(64, 52, 40, 0.11);
+  --lg-shadow: 0 26px 60px -26px rgba(62, 47, 36, 0.42);
+  --lg-blur: saturate(175%) blur(26px);
+  /* Saturated harder than the sheet, so the field reads *more* vivid inside a block than
+     outside it. That difference is what marks the pane, in place of the fill. */
+  --lg-blur-inner: saturate(210%) blur(10px);
+
+  /* The ground kiwi.css falls back to where glass is unavailable, and what base.css reads
+     as --bg-color. Close to the field's own ground, so the two never disagree visibly. */
+  --kiwi-bg: #f3f1ed;
+
+  /*
+   * A step darker than Su's ink at every level. On paper the ground is a known colour; here
+   * it moves, so the text has further to be from it.
+   */
+  --kiwi-ink: #241f19;
+  --kiwi-ink-strong: #120f0b;
+  --kiwi-ink-soft: #5f574c;
+  --kiwi-ink-faint: #948b7e;
+
+  --kiwi-rule: rgba(60, 48, 36, 0.16);
+  --kiwi-wash: rgba(255, 255, 255, 0.46);
+  --kiwi-wash-edge: rgba(64, 52, 40, 0.11);
+
+  --kiwi-accent: #9c4f43;
+  --kiwi-accent-ink: #8a4234;
+  --kiwi-accent-wash: rgba(201, 122, 96, 0.28);
+
+  /* Translucent, so the selection lies on the glass instead of cutting through it. */
+  --kiwi-select: rgba(201, 140, 110, 0.3);
+
+  /* Su's four hues, each deepened slightly: a token sitting on a translucent pane has less
+     contrast to spend than one on solid paper. */
+  --cm-comment: #948a7c;
+  --cm-keyword: #42557a;
+  --cm-string: #52684a;
+  --cm-number: #94563b;
+  --cm-name: #241f18;
+  --cm-punct: #7a7268;
+  --cm-error: #a2331f;
+}

@@ -1,0 +1,289 @@
+/*
+ * 璃 — the glass material shared by the glazed palettes.
+ *
+ * 璃 is the 璃 of 琉璃, glazed and translucent. These are not a new family: they are Su, Qi
+ * and Ye seen through glass. Each palette loads its structural foundation first — kiwi.css
+ * for Su and Qi, ye.css for Ye — so the type, rhythm, accent and every selector the DOM
+ * contract asks for arrive already set; this file changes only their material.
+ *
+ * That layering is deliberate. A theme has to answer for the whole of doc/dom-contract.md,
+ * and a second copy of those answers is a second place to forget one. Here the only rules
+ * are the ones where glass differs from paper.
+ *
+ * ── What the material is ──────────────────────────────────────────────────────────────
+ *
+ * Liquid Glass is not a colour, it is a stack, and it needs something behind it or there is
+ * nothing to be glass *about*. So:
+ *
+ *   1. the page gets a soft field of colour, wide and low-contrast — the thing that shows
+ *      through, and the reason the sheet's tint shifts as you scroll;
+ *   2. #write becomes a frosted sheet floating on it, blurring and saturating what is
+ *      behind rather than painting over it;
+ *   3. blocks inside — fences, tables, quotes, the contents — are a second layer of glass
+ *      on the first, so depth reads as depth and not as a border;
+ *   4. every pane carries a specular edge: a bright hairline along the top where light
+ *      would catch, a dim rim elsewhere, and a soft shadow underneath to lift it.
+ *
+ * The docked panels are this same material (src/shell/shell.css), and because the document
+ * scrolls *under* it, its blur has the sheet to work with and the two read as one surface.
+ *
+ * ── Legibility ────────────────────────────────────────────────────────────────────────
+ *
+ * Translucency is the one thing that can make text unreadable, since the ground moves. Both
+ * palettes answer it the same way the material is supposed to: the sheet is opaque enough
+ * that ink never sits directly on the backdrop, and the ink is pushed a step further from
+ * the ground than in Su and Qi, where the page was a known colour.
+ *
+ * ── What each glassy palette must define ─────────────────────────────────────────────
+ * Everything kiwi.css asks for, plus:
+ *   --lg-field        the backdrop: a background shorthand, gradients and all
+ *   --lg-pane         the sheet's own fill, translucent
+ *   --lg-gloss        the sheet's highlight, strongest at the top edge
+ *   --lg-pane-inner   fill for blocks sitting on the sheet — kept very low, see below
+ *   --lg-chip         fill for inline code and kbd, which are too small to blur
+ *   --lg-sheen        the specular hairline along a top edge
+ *   --lg-rim          the hairline everywhere else
+ *   --lg-shadow       what lifts a pane off the field
+ *   --lg-blur         the backdrop-filter for the sheet
+ *   --lg-blur-inner   the backdrop-filter for blocks on it
+ *
+ * ── Curvature ─────────────────────────────────────────────────────────────────────────
+ *
+ * The radii are variables rather than literals because how round the glass is turns out to
+ * be a property of the theme and not of the material: the same stack that reads as soft
+ * and app-like under Su reads as flippant under Ye, whose type is a conference paper. The
+ * defaults below are the soft end; a palette that wants the material without the softness
+ * retunes them after the import, as glassy-ye.css does.
+ */
+
+:root {
+  --lg-radius-sheet: 28px;
+  /* fences, the contents, tables */
+  --lg-radius-pane: 16px;
+  /* the smaller panes: front matter, quotes */
+  --lg-radius-inner: 14px;
+  /* inline chips: code, kbd, marks */
+  --lg-radius-chip: 6px;
+}
+
+/* ── The field ───────────────────────────────────────────────────────────────────────── */
+
+/*
+ * Painted on html so it reaches the whole canvas, and it does not scroll: <content> is the
+ * scroller here, not the viewport, so the field stays put while the sheet travels over it.
+ * That relative movement is most of what sells the material.
+ */
+html {
+  background: var(--lg-field);
+}
+
+body {
+  background: transparent;
+}
+
+/* ── The sheet ───────────────────────────────────────────────────────────────────────── */
+
+/*
+ * The sheet has no border, and that is the point.
+ *
+ * A hairline all the way round a pane this size stops reading as an edge and starts reading
+ * as a frame — the sheet becomes a card sitting on the field rather than a thickness of
+ * glass over it. An earlier version went further and put a masked ring of extra blur just
+ * inside the rim, on the theory that a lens bends light most where it curves; because the
+ * mask had a hard boundary it came out as a bright mat around the page, which is the least
+ * liquid thing a piece of glass can do.
+ *
+ * So the edge is drawn by the material instead: the fill is lighter than the field, a
+ * specular hairline catches the top edge where light would land, and a soft shadow lifts
+ * the whole thing. Nothing anywhere has a hard outline, and where the sheet ends is
+ * something you read from the change in depth rather than from a line.
+ *
+ * The gloss is the other half of it — real glass is brighter where it faces the light, not
+ * uniformly tinted, so the fill carries a gradient down from the top edge instead of a flat
+ * wash. It falls off over a fixed distance rather than a percentage: this element is as tall
+ * as the document, and a percentage would stretch the highlight down the whole page.
+ */
+#write {
+  margin-block: 1.25rem 4rem;
+  padding: 2.75rem 2.25rem 6rem;
+  border: 0;
+  border-radius: var(--lg-radius-sheet);
+  background:
+    linear-gradient(to bottom, var(--lg-gloss), transparent 240px),
+    var(--lg-pane);
+  backdrop-filter: var(--lg-blur);
+  -webkit-backdrop-filter: var(--lg-blur);
+  box-shadow:
+    inset 0 1px 0 var(--lg-sheen),
+    var(--lg-shadow);
+}
+
+/* Without backdrop-filter the tint alone is a washed-out film with no material to it, so
+   fall back to a pane opaque enough to read on. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  #write {
+    background: var(--kiwi-bg);
+  }
+}
+
+/* ── Blocks on the sheet ─────────────────────────────────────────────────────────────── */
+
+/*
+ * The second layer of glass.
+ *
+ * The fill here is deliberately almost nothing. A block sits *on* the sheet, so its own
+ * tint composites over one that is already there — 40% white over a 55% white sheet lands
+ * near 73%, and at that point the field's colour is gone and the block reads as a solid
+ * card someone pasted onto the glass. Whatever fill these panes carry, they carry it twice.
+ *
+ * So the tint is dropped to a film and the work is given to the other three things a pane
+ * has: the rim, the specular hairline, and its own backdrop-filter. That last one is what
+ * actually distinguishes a block, and it does it in the right currency — the extra
+ * saturation makes the field *more* vivid inside the pane than outside, so a code block
+ * reads as thicker glass rather than as opaque material.
+ *
+ * Legibility is unaffected: body text already sits directly on the sheet, so text in a pane
+ * that is nearly clear is on exactly the same ground as the paragraph above it.
+ */
+#write .md-fences,
+#write .md-toc,
+#write pre.md-meta-block,
+#write table {
+  border: 1px solid var(--lg-rim);
+  border-radius: var(--lg-radius-pane);
+  background: var(--lg-pane-inner);
+  backdrop-filter: var(--lg-blur-inner);
+  -webkit-backdrop-filter: var(--lg-blur-inner);
+  box-shadow: inset 0 1px 0 var(--lg-sheen);
+}
+
+#write pre.md-meta-block {
+  border-radius: var(--lg-radius-inner);
+  padding: 0.9rem 1.15rem;
+}
+
+#write .md-fences {
+  padding: 1rem 1.2rem 1.2rem;
+}
+
+/*
+ * Tables become a pane too, which means the collapsed borders base.css sets have to go:
+ * a collapsed table paints its cell borders over the pane's rounded corners. Separated
+ * borders with no spacing draw the same fine grid and stay inside the radius.
+ */
+#write table {
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+#write table th,
+#write table td {
+  border-right: 1px solid var(--lg-rim);
+  border-bottom: 1px solid var(--lg-rim);
+  /* Paper themes may pull the outer columns flush with the text; inside a pane they need
+     the inset back, or the first character sits on the rim. */
+  padding: 0.6em 1em;
+}
+
+#write table th {
+  border-bottom: 1px solid var(--kiwi-ink-faint);
+  background: var(--lg-pane-inner);
+}
+
+#write table th:first-child,
+#write table td:first-child {
+  padding-left: 1em;
+}
+
+#write table th:last-child,
+#write table td:last-child {
+  padding-right: 1em;
+}
+
+/* A quote is the lightest pane of all — barely a fill, and the accent rule doing the work. */
+#write blockquote {
+  padding: 0.6rem 1.1rem;
+  border-left: 3px solid color-mix(in srgb, var(--kiwi-accent) 65%, transparent);
+  border-radius: 0 var(--lg-radius-inner) var(--lg-radius-inner) 0;
+  background: var(--lg-pane-inner);
+  backdrop-filter: var(--lg-blur-inner);
+  -webkit-backdrop-filter: var(--lg-blur-inner);
+}
+
+/* Inline chips are small enough that a blur would cost more than it shows, so they take a
+   fill and the rim and stop there — and that fill has to be stronger than a block's, since
+   without a backdrop-filter there is nothing else to say a chip is there. */
+#write code,
+#write kbd {
+  border: 1px solid var(--lg-rim);
+  border-radius: var(--lg-radius-chip);
+  background: var(--lg-chip);
+}
+
+/* A diagram is a figure: it takes the pane, not the fence's own darker fill. */
+#write .md-fences.md-diagram {
+  border-color: var(--lg-rim);
+  background: var(--lg-pane-inner);
+}
+
+/* ── Rules and marks ─────────────────────────────────────────────────────────────────── */
+
+/* On glass a flat hairline reads as a scratch. Fading it out at both ends makes it a
+   highlight lying on the surface instead. */
+#write hr,
+#write .md-hr {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--kiwi-rule) 15%, var(--kiwi-rule) 85%, transparent);
+}
+
+#write mark {
+  border-radius: var(--lg-radius-chip);
+}
+
+#write .md-toc {
+  padding: 1.1rem 1.35rem;
+}
+
+/* ── Selection ───────────────────────────────────────────────────────────────────────── */
+
+/* Translucent, so the band lies over the glass rather than punching a hole in it. */
+::selection {
+  background: var(--kiwi-select);
+  color: var(--kiwi-ink-strong);
+}
+
+/* ── Print ───────────────────────────────────────────────────────────────────────────── */
+
+/*
+ * None of this survives paper: there is nothing behind a sheet of paper to refract. Flatten
+ * every pane back to plain rules, and drop the field so the printer is not asked to lay
+ * down a full-page gradient.
+ */
+@media print {
+  html {
+    background: #ffffff;
+  }
+
+  #write {
+    margin-block: 0;
+    border-radius: 0;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  #write .md-fences,
+  #write .md-toc,
+  #write pre.md-meta-block,
+  #write table,
+  #write blockquote,
+  #write code,
+  #write kbd {
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+}

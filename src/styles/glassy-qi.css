@@ -1,0 +1,77 @@
+/*
+ * Glassy Qi 璃漆 — Qi, glazed.
+ *
+ * Qi's lacquer with a glaze over it. Dark glass is the harder half of the material: a light
+ * film over a dark ground reads as fog rather than glass, so this is the other way round —
+ * a dark, saturated pane whose specular edge is the only bright thing about it. That edge
+ * is what says "glass"; take it away and the pane is a grey box.
+ *
+ * The field beneath is lacquer with something burning behind it: a warm amber pool, a cold
+ * teal one, and violet between them. Deep enough that the page still reads as black, alive
+ * enough that the sheet's tint shifts as it travels.
+ *
+ * Structure and type come from kiwi.css, the material from glassy.css. This file is the
+ * palette for both, and is variables only — src/site/theme.ts enforces that, because it
+ * emits these declarations three times over under different [data-theme] scopes.
+ *
+ * There is no @import here: src/site/theme.ts concatenates the files in order, and the
+ * webfont is linked separately so its relative url()s keep resolving.
+ */
+
+:root {
+  /*
+   * Says "this page is dark" to the browser itself — the document scrollbar and the empty
+   * task-list checkbox are drawn by it, not by us, and an unticked checkbox arrives as a
+   * solid white square otherwise. Pinned rather than left to the system, so the page
+   * follows the theme and not the desktop.
+   */
+  color-scheme: dark;
+
+  /* Centred under the reading column, not out in the margins: pushed to the corners the
+     glow only ever appears beside the sheet, and the page reads as a dark card on a lit
+     wall rather than as glass with something burning behind it. */
+  --lg-field: radial-gradient(68rem 46rem at 22% 4%, rgba(168, 98, 56, 0.46), transparent 60%),
+    radial-gradient(60rem 44rem at 82% 26%, rgba(44, 92, 106, 0.42), transparent 62%),
+    radial-gradient(72rem 50rem at 50% 96%, rgba(92, 62, 92, 0.4), transparent 60%) #0e0b09;
+
+  --lg-pane: rgba(30, 25, 21, 0.55);
+  --lg-gloss: rgba(255, 255, 255, 0.06);
+  /* Barely a film. On lacquer a pane is marked by being *lifted* — a trace of white and a
+     brighter rim — not by being filled in. */
+  --lg-pane-inner: rgba(255, 255, 255, 0.045);
+  --lg-chip: rgba(255, 255, 255, 0.09);
+  --lg-sheen: rgba(255, 255, 255, 0.14);
+  --lg-rim: rgba(255, 255, 255, 0.1);
+  --lg-shadow: 0 26px 60px -24px rgba(0, 0, 0, 0.72);
+  --lg-blur: saturate(165%) blur(28px);
+  /* Saturated harder than the sheet, so the glow behind is more present inside a block than
+     outside it — the pane is marked by more colour, not by more material. */
+  --lg-blur-inner: saturate(200%) blur(10px);
+
+  --kiwi-bg: #16120f;
+
+  --kiwi-ink: #e6e0d4;
+  --kiwi-ink-strong: #f7f2e7;
+  --kiwi-ink-soft: #a89e8e;
+  --kiwi-ink-faint: #7d7466;
+
+  --kiwi-rule: rgba(255, 255, 255, 0.13);
+  --kiwi-wash: rgba(255, 255, 255, 0.055);
+  --kiwi-wash-edge: rgba(255, 255, 255, 0.1);
+
+  --kiwi-accent: #c96a4f;
+  --kiwi-accent-ink: #dd8b68;
+  --kiwi-accent-wash: rgba(191, 102, 70, 0.3);
+
+  --kiwi-select: rgba(191, 112, 80, 0.34);
+
+  /* Qi's hues, lifted a little further: a translucent pane is lighter than lacquer was, and
+     the tokens have to stay clear of it. */
+  --cm-comment: #8b8170;
+  --cm-keyword: #9db3d1;
+  --cm-string: #a8bf94;
+  --cm-number: #dd9673;
+  --cm-name: #f0eae0;
+  --cm-punct: #9c9384;
+  --cm-error: #e87864;
+}

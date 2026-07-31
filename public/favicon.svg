@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!--
+    A pane of glass on the field, which is what the whole site is.
+
+    Colours are literals rather than the palette's tokens because a favicon is rendered
+    outside the page and inherits nothing from it: the field's warm pale ground, the sheet's
+    translucent white, the specular hairline along the top edge, and Su's seal vermilion.
+  -->
+  <defs>
+    <linearGradient id="field" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2c1a6"/>
+      <stop offset="0.55" stop-color="#eae7e1"/>
+      <stop offset="1" stop-color="#b0cec8"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0.28"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="14" fill="url(#field)"/>
+  <rect x="9" y="9" width="46" height="46" rx="11" fill="url(#gloss)"/>
+  <rect x="9.5" y="9.5" width="45" height="45" rx="10.5" fill="none"
+        stroke="#403428" stroke-opacity="0.14"/>
+
+  <!-- Three lines of a note, the middle one short, in the accent. -->
+  <g stroke="#9c4f43" stroke-width="3.4" stroke-linecap="round">
+    <path d="M19 25h26" opacity="0.95"/>
+    <path d="M19 33h17" opacity="0.7"/>
+    <path d="M19 41h22" opacity="0.45"/>
+  </g>
+</svg>
