@@ -2,7 +2,7 @@
 
 A cross-browser JS library and API to create and display 3D graphics using WebGL.
 
-### basic usage
+## basic usage
 
 `index.html`
 
@@ -110,7 +110,7 @@ function animate2(time) {
 ```
 
 
-### app structure
+## app structure
 
 ![](https://threejsfundamentals.org/threejs/lessons/resources/images/threejs-structure.svg)
 

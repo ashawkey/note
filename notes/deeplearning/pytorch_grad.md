@@ -1,6 +1,6 @@
 # autograd
 
-### basics
+## basics
 
 Gradients can only be calculated for **float** tensor.
 
@@ -28,7 +28,7 @@ print(x.is_leaf) # True. see below.
 ```
 
 
-### leaf 
+## leaf 
 
 A node is leaf if:
 
@@ -39,7 +39,7 @@ A node is leaf if:
 Gradients are only populated to tensors with both `required_grad` and `is_leaf` are `True`.
 
 
-### backward
+## backward
 
 backward will calculate the target tensor's gradients w.r.t all is_leaf and requires_grad tensors.
 
@@ -52,7 +52,7 @@ z.backward(torch.Tensor([1.0 ,1.0 ,1.0]))
 ```
 
 
-### dynamic computation graph 
+## dynamic computation graph 
 
 A DAG to track gradient flow.
 

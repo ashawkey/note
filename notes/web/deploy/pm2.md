@@ -2,14 +2,14 @@
 
 A daemon manager for `node.js` backend servers.
 
-### install
+## install
 
 ```bash
 npm install -g pm2
 ```
 
 
-### usage
+## usage
 
 ```bash
 # start a server in background

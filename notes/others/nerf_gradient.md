@@ -1,4 +1,4 @@
-## NeRF gradients from instant-ngp
+# NeRF gradients from instant-ngp
 Basic notations:
 (assume single color channel denoted as $R$)
 

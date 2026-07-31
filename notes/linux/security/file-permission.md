@@ -1,4 +1,4 @@
-### chattr
+# chattr
 
 https://www.computerhope.com/unix/chattr.htm#list-of-attributes
 
@@ -21,7 +21,7 @@ https://www.computerhope.com/unix/chattr.htm#list-of-attributes
   change the attributes of file or directory.
 
 
-### chown
+# chown
 
 change ownership of file or directory.
 
@@ -36,7 +36,7 @@ sudo chown -R <new-owner> <dir>
 ```
 
 
-### umask
+# umask
 
 set/check default user permission mask for new files.
 
@@ -50,7 +50,7 @@ umask u+x # rwxr--r--
 ```
 
 
-### chmod
+# chmod
 
 set user permission mask for a specific file.
 
@@ -62,7 +62,7 @@ chmod -R 777 <dir>
 ```
 
 
-### note the escaped space!
+# note the escaped space!
 
 ```bash
 `python\ ` looks the same as `python ` in default ls and top.

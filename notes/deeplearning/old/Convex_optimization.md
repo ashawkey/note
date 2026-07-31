@@ -1,6 +1,6 @@
 # Optimization
 
-### Mathematical optimization
+## Mathematical optimization
 
 Optimization arises everywhere.
 
@@ -9,9 +9,9 @@ But most of them are intractable.
 Exception is the tractable Convex optimization.
 
 
-### Convex optimization
+## Convex optimization
 
-##### Problem definition (standard form)
+### Problem definition (standard form)
 
 
 $$
@@ -26,9 +26,9 @@ $$
 - $f_0, ..., f_m$ are convex.
 
 
-### Solvers
+## Solvers
 
-##### CVXPY
+### CVXPY
 
 ```python
 from cvxpy import *
@@ -43,15 +43,15 @@ solution = x.value
 
 # Applications
 
-### Portfolio Optimization
+## Portfolio Optimization
 
 
-### Regression variation
+## Regression variation
 
 
-### Model fitting
+## Model fitting
 
-##### Regularized loss minimization
+### Regularized loss minimization
 
 * Regression Problem
   
@@ -78,9 +78,9 @@ $$
 
 # Constructive Convex Analysis & DCP
 
-### Convex Optimization
+## Convex Optimization
 
-##### Conic form
+### Conic form
 
 
 $$
@@ -93,9 +93,9 @@ $$
 - $K$ is convex cone.
 - linear objective, equality constraints.
 
-### How to solve a convex optimization problem?
+## How to solve a convex optimization problem?
 
-##### Curvature
+### Curvature
 
 - convex (凹)
   - definition: $f(\theta x+(1-\theta)y) \le \theta f(x)+(1-\theta)f(y)$
@@ -108,7 +108,7 @@ $$
   - has the form $f(x) = a^Tx+b$
 
 
-##### Basic convex functions
+### Basic convex functions
 
 - $x^p,\ p\ge1\ or\ p\le 0$
 - $e^x$
@@ -128,7 +128,7 @@ Less basic ones:
 - $\lambda_{max}(X), X=X^T$
 
 
-##### Basic concave functions
+### Basic concave functions
 
 - $x^p,\ 0 \le p\le 1$
 - $logx$
@@ -141,7 +141,7 @@ Less basic ones:
 - $\lambda_{min}(X), X=X^T$
 
 
-##### Calculus rules that keeps convexity
+### Calculus rules that keeps convexity
 
 - nonnegative scaling
 
@@ -167,7 +167,7 @@ f(u, v) = (u+1)log(\frac {u+1}{min(u,v)})
 $$
 
 
-##### Constructive Convexity verification
+### Constructive Convexity verification
 
 view the function as an expression tree, and use the general composition rule to determine the convexity.
 
@@ -176,11 +176,11 @@ sufficient, but not necessary for convexity.
 - $f(x)=\sqrt{1+x^2}$ is convex, but can't be proved by Constructive Convexity verification.
 
 
-### Disciplined Convex Program (DCP)
+## Disciplined Convex Program (DCP)
 
 framework for describing convex optimization problems based on constructive convex analysis.
 
-##### Definition
+### Definition
 
 a DCP has
 
@@ -194,7 +194,7 @@ a DCP has
 
 Expressions are formed from variables, constants, and functions have known convexity, monotonicity and sign properties.
 
-##### Canonicalization
+### Canonicalization
 
 DCP is very easy to build a parser/analyzer, and be transformed to cone form, then solved by some generic solver.
 

@@ -7,7 +7,7 @@
 
   eg. C99, C11, C17
 
-  supported by GCC, MSCV.
+  supported by GCC, MSVC.
 
   `gcc -std=c11 program.c`
 
@@ -129,7 +129,7 @@ Some concepts:
 int a[5]; // a is a ptr to the first element in this array.
 int* pa = &a[0]; // *pa == *a == a[0]
 
-int b[3][3]; // b is a ptr to ptr
+int b[3][3]; // b 的类型是 int (*)[3]（指向含 3 个 int 的数组的指针），不是 int**
 int** pb = &b[0][0]; // **pb == **b == b[0]
 
 // initalize
@@ -146,7 +146,7 @@ int y[4][3] = { // array of 4 arrays of 3 ints each (4x3 matrix)
 };              // row 3 initialized to {0, 0, 0}
 ```
 
-##### Size of c arrays:
+#### Size of c arrays:
 
 ```c++
 
@@ -187,7 +187,7 @@ void printLength(int intArray[])
 
 ```
 
-##### Pass & Return array in c function:
+#### Pass & Return array in c function:
 
 * pass: pointer + size is the most recommended way.
 
@@ -288,9 +288,9 @@ int i = atoi(s); // 12
 // this doesn't work, because calls in C are pass-by-value.
 void inc(int x) { x += 1; }
 // this works, by pass-by-reference
-void inc(int &x) { x += 1; }
+void inc(int &x) { x += 1; }  // (C++) 引用参数，C 语言中没有引用
 // this also works, by pointer, but need to pass in ptr.
-void int(int *px) { *px += 1; }
+void inc(int *px) { *px += 1; }
 
 ```
 

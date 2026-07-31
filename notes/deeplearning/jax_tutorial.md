@@ -1,7 +1,7 @@
-## [JAX tutorial](https://jax.readthedocs.io/en/latest/index.html)
+# [JAX tutorial](https://jax.readthedocs.io/en/latest/index.html)
 
 
-### why
+## why
 
 `jax` is more suitable for:
 
@@ -11,7 +11,7 @@
 * data parallel, especially on TPU.
 
 
-### install
+## install
 
 ```bash
 # Installs the wheel compatible with CUDA 11 and cuDNN 8.2 or newer.
@@ -19,7 +19,7 @@ pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases
 ```
 
 
-### basics
+## basics
 
 ```python
 import numpy as np
@@ -33,7 +33,7 @@ from jax import random
 ```
 
 
-### jax.numpy
+## jax.numpy
 
 `jax.numpy` mimics `numpy` API:
 
@@ -60,7 +60,7 @@ arr.device() # it's a function! GpuDevice(id=0, process_index=0)
   ```
 
 
-### jax.grad
+## jax.grad
 
 `jax.grad` for gradient calculation:
 
@@ -100,7 +100,7 @@ l, x_grad = jax.value_and_grad(mse_loss)(x, y)
   ```
 
 
-### jax.jit
+## jax.jit
 
 `jax.jit` for just-in-time compilation of functions.
 
@@ -185,7 +185,7 @@ Tips to use `jit`:
 * Do not jit function in loops, always jit the function before using it in a loop.
 
 
-### vmap
+## vmap
 
 `jax.vmap` for automatic vectorization (batch).
 
@@ -224,7 +224,7 @@ zsb = func_batch_broadcast(xs, y)
 `jit`, `vmap`, `grad` can be combined in arbitrary orders and all works well.
 
 
-### RNG
+## RNG
 
 random number generator in jax is very different from numpy, to be reproducible, parallelizable, vectorizable.
 
@@ -245,7 +245,7 @@ key, subkeys = random.split(key, num=10)
 ```
 
 
-### Pytree
+## Pytree
 
 Any nested data structures.
 
@@ -308,7 +308,7 @@ Tips:
 * since array  `shape` are tuples, it will be treated as a node instead of a leaf.
 
 
-### pmap
+## pmap
 
 `jax.pmap` performs parallel evaluation. Different from `jax.vmap` which vectorizes on the same device, `jax.pmap` aims to map the function to **different devices** and run in parallel (data parallelism).
 
@@ -446,7 +446,7 @@ Tips:
 * `pmap` will call `jit` internally.
 
 
-### misc
+## misc
 
 * synchronization for timing:
 

@@ -12,7 +12,7 @@ A function that maps **data of arbitrary size** to **a hash of a fixed size**.
 
 * even smallest changes to the data should change the hash completely (Avalanche effect).
 
-### MD5
+## MD5
 
 the most usual algorithm for checking if two files are exactly the same.
 
@@ -22,7 +22,7 @@ This is feasible because MD5 only has 128 bits, so it can be assumed to be invar
 
 MD5 is compromised and unsafe for cryptography! Now we can easily find collisions of MD5.
 
-### SHA family
+## SHA family
 
 Secure Hash Algorithms. A large series of well known hash functions.
 
@@ -44,7 +44,7 @@ asymmetric cryptosystem guarantees a secure message sending:
 * A uses A's private key to decrypt the message.
 ```
 
-###  
+## 常见非对称密码系统
 
 Some widely used asymmetric cryptosystem:
 
@@ -53,7 +53,7 @@ Some widely used asymmetric cryptosystem:
 * ECDSA (Elliptic Curve Digital Signature Algorithm)
 
 
-### digital signature
+## digital signature
 
 asymmetric cryptosystem guarantees that **only you can read the messages sent to you**. （加密）
 

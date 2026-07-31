@@ -1,11 +1,11 @@
 # swap
 
-### check swap
+## check swap
 
 use `htop`.
 
 
-### create swap
+## create swap
 
 ```bash
 sudo fallocate -l 4G /swapfile
@@ -15,7 +15,7 @@ sudo swapon /swapfile
 ```
 
 
-### delete swap
+## delete swap
 
 ```bash
 sudo swapoff /swapfile
@@ -23,7 +23,7 @@ sudo rm /swapfile
 ```
 
 
-### check swap file location
+## check swap file location
 
 ```bash
 sudo swapon -s
@@ -33,7 +33,7 @@ sudo cat /proc/swaps
 ```
 
 
-### `kswapd0` high CPU usage.
+## `kswapd0` high CPU usage.
 
 This is usually caused by unmounted Swap if there is not enough memory.
 

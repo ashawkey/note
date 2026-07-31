@@ -1,7 +1,7 @@
 # conda
 
 
-### install
+## install
 
 download the runfile from [here](https://www.anaconda.com/products/individual), then simply run it with bash.
 
@@ -9,7 +9,7 @@ download the runfile from [here](https://www.anaconda.com/products/individual), 
 * uninstall: `rm -rf ~/anaconda`
 
 
-### envs
+## envs
 
 ```bash
 # list all envs (not `conda env ls`)
@@ -34,7 +34,7 @@ conda env remove -n <name>
 ```
 
 
-### conda file locations
+## conda file locations
 
 In `.bashrc`:
 
@@ -75,7 +75,7 @@ The directory structures:
 ```
 
 
-### package management
+## package management
 
 ```bash
 # install

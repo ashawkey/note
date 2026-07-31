@@ -1,4 +1,4 @@
-### Supervised learning
+# Supervised learning
 
 * Generalized Linear Models
 

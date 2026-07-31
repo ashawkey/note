@@ -1,6 +1,6 @@
 # Web APIs
 
-### DOM (Document Object Model)
+## DOM (Document Object Model)
 
 DOM connects Web pages to scripts by representing the structure of a document.
 
@@ -20,7 +20,7 @@ element.setAttribute()
 
 ```
 
-### Storage
+## Storage
 
 `localStorage` maintains a separate storage space for each given origin.
 
@@ -65,7 +65,7 @@ else {
 ```
 
 
-### URL Parameters
+## URL Parameters
 
 `https://example.com/?product=shirt&color=blue&newuser&size=m`
 
@@ -81,7 +81,7 @@ size=m
 This allows to pass simple data to the server in `GET` and `POST`.
 
 
-### Fetch
+## Fetch
 
 ```javascript
 // Promise<Response> fetch(input[, init]);

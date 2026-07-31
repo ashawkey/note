@@ -39,7 +39,7 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 > * Output: Voxels --> Point Cloud / Implicit Function / Mesh
 
 
-#### [ECCV 2016] 3D-R2N2: 3D Recurrent Reconstruction Neural Network
+### [ECCV 2016] 3D-R2N2: 3D Recurrent Reconstruction Neural Network
 
 ```
 @inproceedings{Choy20163DR2N2AU,
@@ -52,12 +52,12 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 
 [paper](http://arxiv.org/abs/1604.00449) | [code](https://github.com/chrischoy/3D-R2N2)
 
-##### Problem
+#### Problem
 
 * Input: RGB Image (Single or Multiple View), Instance Segmentation + 3D GT
 * Output: Voxels
 
-##### Contributions
+#### Contributions
 
 * LSTM framework for single or multiple view 3d reconstruction.
 
@@ -66,11 +66,11 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 ![image-20210401215040718](3d reconstruction and generation.assets/image-20210401215040718.png)
 
 
-#### [3DV 2017] Hierarchical Surface Prediction for 3D Object Reconstruction
+### [3DV 2017] Hierarchical Surface Prediction for 3D Object Reconstruction
 
 [paper](https://arxiv.org/abs/1704.00710)
 
-##### Problem
+#### Problem
 
 * Input: Single-view RGB Image / Depth Image / Partial Volume + 3D GT
 * Output: Voxels
@@ -78,38 +78,38 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 ![image-20210401215558646](3d reconstruction and generation.assets/image-20210401215558646.png)
 
 
-#### [ICCVW 2017] 3D Object Reconstruction from a Single Depth View with Adversarial Learning
+### [ICCVW 2017] 3D Object Reconstruction from a Single Depth View with Adversarial Learning
 
 [paper](https://arxiv.org/abs/1708.07969)
 
 
-#### [ICCV 2017] Octree Generating Networks: Efficient Convolutional Architectures for High-resolution 3D Outputs
+### [ICCV 2017] Octree Generating Networks: Efficient Convolutional Architectures for High-resolution 3D Outputs
 
 [paper](https://arxiv.org/abs/1703.09438) | [code](https://github.com/lmb-freiburg/ogn)
 
 
-#### [NIPS 2017] MarrNet: 3D Shape Reconstruction via 2.5D Sketches
+### [NIPS 2017] MarrNet: 3D Shape Reconstruction via 2.5D Sketches
 
 [paper](https://arxiv.org/abs/1711.03129) 
 
 ![image-20210401220252010](3d reconstruction and generation.assets/image-20210401220252010.png)
 
 
-#### [CVPR 2017] A point set generation network for 3d object reconstruction from a single image.
+### [CVPR 2017] A point set generation network for 3d object reconstruction from a single image.
 
 [paper](https://arxiv.org/pdf/1612.00603.pdf)
 
-##### Problem
+#### Problem
 
 * Input: Single RGB Image, Instance Segmentation, Camera Pose + 3D GT
 * Output: Point Cloud
 
 
-#### [ECCV 2018] Pixel2Mesh: Generating 3D Mesh Models from Single RGB Images
+### [ECCV 2018] Pixel2Mesh: Generating 3D Mesh Models from Single RGB Images
 
 [paper](https://arxiv.org/pdf/1804.01654.pdf) | [code](https://github.com/nywang16/Pixel2Mesh)
 
-##### Problem
+#### Problem
 
 * Input: Single RGB Image, Camera Intrinsics + 3D GT
 * Output: Mesh
@@ -117,7 +117,7 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 ![image-20210401222806763](3d reconstruction and generation.assets/image-20210401222806763.png)
 
 
-#### [ECCV 2018] Learning Category-Specific Mesh Reconstruction from Image Collections. 
+### [ECCV 2018] Learning Category-Specific Mesh Reconstruction from Image Collections. 
 
 ```
 @inproceedings{Kanazawa2018LearningCM,
@@ -130,12 +130,12 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 
 [paper](https://arxiv.org/abs/1803.07549) | [code](https://github.com/akanazawa/cmr) 
 
-##### Problem
+#### Problem
 
 * Input: Single RGB Image. Instance Segmentation, Semantic Key-points
 * Output: Camera Pose, Mesh, Texture.
 
-##### Contribution
+#### Contribution
 
 * Deformable Mesh Representation (need categorical mean shape as mesh template)
 * Only need Single-view RGB (w/o Multi-view or 3D GT)
@@ -144,47 +144,47 @@ The problem is usually ill-posed (ambiguous), and needs to guess / generate some
 ![image-20210401212228981](3d reconstruction and generation.assets/image-20210401212228981.png)
 
 
-#### [ECCV 2014] OpenDR: An approximate differentiable renderer.
+### [ECCV 2014] OpenDR: An approximate differentiable renderer.
 
 [paper](https://files.is.tue.mpg.de/black/papers/OpenDR.pdf)
 
 Inverse graphics: reverse-engineer the physical process that produced a real image.
 
-##### Problem
+#### Problem
 
 * body shape estimation from image and range data.
 
-##### Contributions
+#### Contributions
 
 * We define a differentiable renderer (DR) as a process that (1) supplies pixels as a function of model parameters to simulate a physical imaging system and (2) supplies derivatives of the pixel values with respect to those parameters. To be practical, the DR also has to be fast; this means it must have hardware support. Consequently we work directly with OpenGL. Because we make it publicly available, we call our framework OpenDR (http://open-dr.org).
 
 * Our goal is not rendering, but inverse rendering
 
   
-#### [CVPR 2018] Neural 3D mesh renderer.
+### [CVPR 2018] Neural 3D mesh renderer.
 
 [paper](http://arxiv.org/abs/1711.07566)
 
-##### Problem
+#### Problem
 
 * single-image unsupervised 3D mesh reconstruction
 * 2D-to-3D style transfer
 
-##### Contributions
+#### Contributions
 
 * we propose an approximate gradient for rasterization that enables the integration of rendering into neural networks.
 
 
-#### [ICCV 2019] Soft Rasterizer: A differentiable renderer for image-based 3d reasoning.
+### [ICCV 2019] Soft Rasterizer: A differentiable renderer for image-based 3d reasoning.
 
 [paper](https://arxiv.org/abs/1904.01786) | [code](https://github.com/ShichenLiu/SoftRas)
 
-##### Problem
+#### Problem
 
 * 3D unsupervised single-view reconstruction
 * image-based shape fitting
 
-##### Contributions
+#### Contributions
 
 * Unlike the state-of-the-art differentiable renderers [opendr, neural 3d mesh renderer], which only approximate the rendering gradient in the back propagation, we propose a truly differentiable rendering framework that is able to (1) directly render colorized mesh using differentiable functions and (2) back-propagate efficient supervision signals to mesh vertices and their attributes from various forms of image representations, including silhouette, shading and color images.
 
@@ -192,42 +192,42 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 
 ![image-20210413224908057](3d reconstruction and generation.assets/image-20210413224908057.png)
 
-#### [NIPS 2019] Learning to predict 3d objects with an interpolation-based differentiable renderer
+### [NIPS 2019] Learning to predict 3d objects with an interpolation-based differentiable renderer
 
 [paper](https://arxiv.org/pdf/1908.01210.pdf) | [code](https://github.com/nv-tlabs/DIB-R)
 
-##### Problem
+#### Problem
 
 * Input: Mesh, Texture, Camera Pose
 * Output: rendered Image & gradient 
 
-##### Contribution
+#### Contribution
 
 * Key to our approach is to view foreground rasterization as a weighted interpolation of local properties and background rasterization as a distance-based aggregation of global geometry
 
 ![image-20210402101531055](3d reconstruction and generation.assets/image-20210402101531055.png)
 
 
-#### [NIPS 2019] DISN: Deep Implicit Surface Network for High-quality Single-view 3D Reconstruction
+### [NIPS 2019] DISN: Deep Implicit Surface Network for High-quality Single-view 3D Reconstruction
 
 [paper](https://arxiv.org/pdf/1905.10711.pdf) | [code](https://github.com/laughtervv/DISN)
 
-##### Problem
+#### Problem
 
 * Input: Single RGB Image + 3D GT
 * Output: Implicit Function
 
 
-#### [ECCV 2020] Shape and viewpoint without keypoints.
+### [ECCV 2020] Shape and viewpoint without keypoints.
 
 [paper](https://arxiv.org/abs/2007.10982) | [code](https://github.com/shubham-goel/ucmr)
 
-##### Problem
+#### Problem
 
 * Input: Single RGB Image, Instance Segmentation, categorical mesh templates
 * Output: Camera Pose, Mesh, Texture
 
-##### Contribution
+#### Contribution
 
 * keypoint-free, by using a canonical mesh template for each category, and estimate pose by fitting silhouette. (template based)
 
@@ -236,15 +236,15 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210402103514003](3d reconstruction and generation.assets/image-20210402103514003.png)
 
 
-#### [ECCV 2020] Self-supervised single-view 3d reconstruction via semantic consistency
+### [ECCV 2020] Self-supervised single-view 3d reconstruction via semantic consistency
 [paper](https://arxiv.org/pdf/2003.06473.pdf)
 
-##### Problem
+#### Problem
 
 * Input: Single RGB Image, Part Segmentation
 * Output: Camera Pose, Mesh, Texture
 
-##### Contribution
+#### Contribution
 
 * keypoint-free, by using self-supervised part segmentations (SCOPS) to infer a 3d semantic template. (semantic based)
 * Leverage the semantic part invariance property of object instances of a category as a deformable parts model
@@ -253,7 +253,7 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210402102613777](3d reconstruction and generation.assets/image-20210402102613777.png)
 
 
-#### [CVPR 2020] From Image Collections to Point Clouds with Self-supervised Shape and Pose Networks
+### [CVPR 2020] From Image Collections to Point Clouds with Self-supervised Shape and Pose Networks
 
 ```
 @inproceedings{navaneet2020ssl3drecon,
@@ -266,7 +266,7 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 
 [paper](https://arxiv.org/pdf/2005.01939.pdf) | [code](https://github.com/klnavaneet/ssl_3d_recon)
 
-##### Problem
+#### Problem
 
 * Input: Single RGB Image
 * Output: Camera Pose, Point Cloud
@@ -274,7 +274,7 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210401221826288](3d reconstruction and generation.assets/image-20210401221826288.png)
 
 
-#### [NIPS 2020] Convolutional Generation of Textured 3D Meshes
+### [NIPS 2020] Convolutional Generation of Textured 3D Meshes
 
 ```
 @article{Pavllo2020ConvolutionalGO,
@@ -288,12 +288,12 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 
 [paper](https://arxiv.org/abs/2006.07660) | [code](https://github.com/dariopavllo/convmesh)
 
-##### Problem
+#### Problem
 
 * Input: Single-view RGB Image, class label / caption (for GAN text conditioning), Instance Segmentation, Camera Pose.
 * Output: Mesh, Texture
 
-##### Contribution
+#### Contribution
 
 * Displacement Map for a smooth convolutional mesh representation
 * GAN for producing textured mesh.
@@ -304,7 +304,7 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210401213317770](3d reconstruction and generation.assets/image-20210401213317770.png)
 
 
-#### [Arxiv 2021] Learning Generative Models of Textured 3D Meshes from Real-World Images
+### [Arxiv 2021] Learning Generative Models of Textured 3D Meshes from Real-World Images
 
 ```
 @inproceedings{Pavllo2021LearningGM,
@@ -316,12 +316,12 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 
 [paper](https://arxiv.org/pdf/2103.15627.pdf)
 
-##### Problem
+#### Problem
 
 * Input: Single view RGB image, categorical mesh template.
 * Output: Camera Pose, Mesh, Texture
 
-##### Contributions
+#### Contributions
 
 * keypoint-free, combines template-based and semantic-based approaches.
 * single GAN for all categories.
@@ -331,7 +331,7 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210402101126321](3d reconstruction and generation.assets/image-20210402101126321.png)
 
 
-#### [Arxiv 2021] NeuTex: Neural Texture Mapping for Volumetric Neural Rendering
+### [Arxiv 2021] NeuTex: Neural Texture Mapping for Volumetric Neural Rendering
 
 ```
 @article{Xiang2021NeuTexNT,
@@ -345,12 +345,12 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 
 [paper](https://arxiv.org/abs/2103.00762)
 
-##### Problem
+#### Problem
 
 * Input: Multi-view RGB Images, Camera Pose, point cloud from COLMAP.
 * Output: Radiance Field, Texture.
 
-##### Contribution
+#### Contribution
 
 * Disentangled NeRF ($F_{\sigma}: \mathbf{x} \rightarrow \sigma, F_{\mathbf c}: (\mathbf{x}, \mathbf d) \rightarrow \mathbf c$)
 * regress coordinate ($u,v$) of a Texture map ($F_{\mathbf c}(\mathbf{x}, \mathbf d) = F_{tex}(F_{uv}(x), \mathbf d)$)
@@ -359,11 +359,11 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ![image-20210402105216141](3d reconstruction and generation.assets/image-20210402105216141.png)
 
 
-#### [Arxiv 2021] Putting NeRF on a Diet: Semantically Consistent Few-Shot View Synthesis 
+### [Arxiv 2021] Putting NeRF on a Diet: Semantically Consistent Few-Shot View Synthesis 
 
 [paper](https://arxiv.org/pdf/2104.00677.pdf)
 
-##### Contributions
+#### Contributions
 
 *  Scenes share high-level semantic properties across viewpoints, and pre-trained 2D visual encoders can extract these semantics. *"An X is an X from any viewpoint."*
 
@@ -383,7 +383,7 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 ## Scene Level
 
 
-#### [CVPR 2018] ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans
+### [CVPR 2018] ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans
 
 ```
 @article{Dai2018ScanCompleteLS,
@@ -397,35 +397,35 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 
 [paper](https://arxiv.org/pdf/1712.10215.pdf)
 
-##### Problem
+#### Problem
 
 * Input: Multi-view RGBD Images (Scan) --> TSDF + 3D GT
 * Output: Voxels, Semantics
 
-##### Contributions
+#### Contributions
 
 * In fact Multi-view SSC.
 
 ![img](https://github.com/angeladai/ScanComplete/raw/master/images/teaser_mesh.jpg)
 
 
-#### [CVPR 2020] SynSin: End-to-end View Synthesis from a Single Image
+### [CVPR 2020] SynSin: End-to-end View Synthesis from a Single Image
 
 [paper](https://arxiv.org/abs/1912.08804) | [code](https://github.com/facebookresearch/synsin)
 
-##### Problem
+#### Problem
 
 * Input: Single-view RGB, Camera Pose + Multiple-view RGB
 * Output: Novel-view RGB
 
-##### Contribution
+#### Contribution
 
 * differentiable point cloud render
 
 ![image-20210402151112751](3d reconstruction and generation.assets/image-20210402151112751.png)
 
 
-#### [CVPR 2020] SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans
+### [CVPR 2020] SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans
 
 ```
 @article{Dai2020SGNNSG,
@@ -439,29 +439,29 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 
 [paper]()
 
-##### Problem
+#### Problem
 
 * Input: Multi-view Depth Images (Scan) --> TSDF
 * Output: Voxels
 
-##### Contributions
+#### Contributions
 
 * Self-supervised Scene Completion.
 
 ![img](https://github.com/angeladai/sgnn/raw/master/sgnn.jpg)
 
 
-#### [TPAMI 2020] Semantic Scene Completion using Local Deep Implicit Functions on LiDAR Data
+### [TPAMI 2020] Semantic Scene Completion using Local Deep Implicit Functions on LiDAR Data
 
 [paper](https://arxiv.org/abs/2011.09141)
 
-##### Problem
+#### Problem
 
 * Input: Single view LiDAR --> Point Cloud
 * Output: Implicit Function with semantics.
 
 
-#### [Arxiv 2021] SPSG: Self-Supervised Photometric Scene Generation from RGB-D Scans
+### [Arxiv 2021] SPSG: Self-Supervised Photometric Scene Generation from RGB-D Scans
 
 ```
 @article{Dai2020SPSGSP,
@@ -475,12 +475,12 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 
 [paper](https://arxiv.org/pdf/2006.14660)
 
-##### Problem
+#### Problem
 
 * Input: Multi-view RGBD Images (Scan) --> TSDF
 * Output: Voxels (with color, high resolution)
 
-##### Contributions
+#### Contributions
 
 * Self-supervised Geometry and Color Completion
 * 2D view guided synthesis for RGB, by rendering TSDF to the original views. (a differentiable TSDF render)
@@ -513,15 +513,15 @@ Inverse graphics: reverse-engineer the physical process that produced a real ima
 -------
 
 
-#### []
+### []
 
 ``
 
 [paper]()
 
-##### Problem
+#### Problem
 
 * Input: 
 * Output: 
 
-##### Contributions
+#### Contributions

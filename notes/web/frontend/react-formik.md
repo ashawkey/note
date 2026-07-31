@@ -1,6 +1,6 @@
 # Form
 
-### Controlled Form
+## Controlled Form
 
 ```javascript
 function NameForm() {
@@ -45,7 +45,7 @@ function SelectForm() {
 ```
 
 
-### Uncontrolled Form: File Input 
+## Uncontrolled Form: File Input 
 
 ```javascript
 class FileInput extends React.Component {
@@ -82,7 +82,7 @@ ReactDOM.render(
 ```
 
 
-### Formik & Yup
+## Formik & Yup
 
 ```javascript
 import React from 'react';
@@ -130,7 +130,7 @@ const SignupForm = () => {
 ```
 
 
-### Dynamic Form
+## Dynamic Form
 
 ```javascript
 

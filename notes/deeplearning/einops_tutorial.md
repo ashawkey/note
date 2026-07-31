@@ -5,7 +5,7 @@ pip install einops
 ```
 
 
-### operations
+## operations
 
 ```python
 from einops import rearrange, reduce

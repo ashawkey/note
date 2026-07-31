@@ -1,11 +1,12 @@
-import { refractor } from 'refractor'
+import { refractor } from 'refractor/all'
 
 /*
  * Language grammars for fenced code.
  *
- * `refractor` (its default entry) ships the 36 grammars its authors curate as the common
- * set — the usual suspects plus their dependencies. This runs at build time only, so the
- * cost is a few milliseconds per fence and nothing reaches the browser.
+ * `refractor/all` registers every Prism grammar (~270 languages), covering the tags these
+ * notes actually use (`cmake`, `powershell`, `glsl`, `latex`, `nginx`, `protobuf`, …).
+ * This runs at build time only, so the cost is a few milliseconds per fence and nothing
+ * reaches the browser.
  *
  * If a language is missing, swap the import for `refractor/all`, or register a single
  * grammar here; the resolver below already treats "unknown" as a normal outcome. The build

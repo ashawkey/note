@@ -1,4 +1,6 @@
-### Install List for New Windows Machine
+# Windows 安装清单
+
+## Install List for New Windows Machine
 
 - clash-win & pkuwalless: https://189854.xyz/
 - chrome: https://www.google.com/intl/en_sg/chrome/

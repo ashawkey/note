@@ -1,8 +1,8 @@
 # Geometry
 
- ### Representation
+## Representation
 
-##### Implicit
+## Implicit
 
 abstract functions. (Signed Distance Function, SDF)
 
@@ -17,7 +17,7 @@ $$
 easy to test inside/outside, but hard to sample.
 
 
-##### Explicit
+## Explicit
 
 directly given as Meshes, Point Clouds, Voxels.
 
@@ -26,11 +26,11 @@ Or 2d parameter maps ($f(u,v)\rightarrow (x,y,z)$)
 easy to sample, but hard to test inside/outside.
 
 
-### Bezier Curves
+## Bezier Curves
 
 ![image-20210519161328028](geometry.assets/image-20210519161328028.png)
 
-##### De Casteljau Algorithm:
+### De Casteljau Algorithm:
 
 Given 4 control points, an interpolation parameter $t$, and order $n$, **recursively** linear interpolate each segment to generate new segments for $n$ times.
 
@@ -43,10 +43,10 @@ $$
 B_i^n(t) = C_n^it^i(1-t)^{n-i}
 $$
 
-In particular, for a $n=4 $ Bezier curve:
+In particular, for a cubic ($n=3$, 4 control points) Bezier curve:
 
 $$
-\mathbf b^n(t) = \mathbf b_0(1-t)^3 + \mathbf b_13t(1-t)^2 + \mathbf b_23t^2(1-t) + \mathbf b_3 t^3
+\mathbf b^n(t) = \mathbf b_0(1-t)^3 + \mathbf b_1 3t(1-t)^2 + \mathbf b_2 3t^2(1-t) + \mathbf b_3 t^3
 $$
 
 
@@ -58,7 +58,7 @@ Bezier Curve can be extended to Bezier Surface in 3D, and use separable 1D de Ca
 
 
 ```c++
-// explicit solution for Bezier curve of n = 4.
+// explicit solution for cubic (degree-3, 4 control points) Bezier curve.
 void algebra_bezier(const std::vector<cv::Point2f> &points, cv::Mat &window) 
 {
     auto &p_0 = points[0];
@@ -100,26 +100,26 @@ cv::Point2f recursive_bezier_func(const std::vector<cv::Point2f> &points, float 
 ```
 
 
-### Mesh Operations
+## Mesh Operations
 
-##### Subdivision (Magnification)
+### Subdivision (Magnification)
 
 Loop and add vertices.
 
 ![image-20210314212313681](geometry.assets/image-20210314212313681.png)
 
-##### Simplification
+### Simplification
 
 Collapse edges and minimize quadric error.
 
 ![image-20210314212536499](geometry.assets/image-20210314212536499.png)
 
 
-### Shadow
+## Shadow
 
 A pixel NOT in shadow must be seen both by the light and camera.
 
-##### Two pass search algorithm:
+### Two pass search algorithm:
 
 * compute depth from light to object.
 * compute depth from camera to object.

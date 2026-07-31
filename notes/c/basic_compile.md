@@ -1,14 +1,14 @@
 # Compile
 
 
-### Header `(.h/hpp)` vs Implementation `(.c/cpp)`
+## Header `(.h/hpp)` vs Implementation `(.c/cpp)`
 
-##### Concepts
+### Concepts
 
 * Header(interface): only class and function declarations .
 * Implementation: all the detailed definition.
 
-##### How c++ compiles ?
+### How c++ compiles ?
 
 * compile `cpp` implementation into `objects`. 
 
@@ -16,11 +16,11 @@
 
 * linking all the `objects` to create the final binary executable / library.
 
-##### what does #include do ?
+### what does #include do ?
 
 Copy and paste code from the library to the current `cpp` file.
 
-##### WHY ?
+### WHY ?
 
 * Historical Reason. 
   * the final executable code does not carry any symbol information.
@@ -33,14 +33,14 @@ Copy and paste code from the library to the current `cpp` file.
   * avoid re-compilation.
 
   
-### Libraries
+## Libraries
 
 A collection of resources to provide **re-usable** code.
 
 Generally, any code you include can be viewed as a library.
 
 
-##### Using at Compiling
+### Using at Compiling
 
 This is the case when you **have the source code of the library**.
 
@@ -71,7 +71,7 @@ g++ main.cpp libxxx.cpp
   ```
 
   
-##### Using at Linking
+### Using at Linking
 
 This is the case when the library is **pre-compiled**.
 
@@ -129,7 +129,7 @@ g++ main.cpp -I /path/to/include -L /path/to/lib -lunuseful
 ```
 
 
-##### use`pkg-config` to auto-find `-l<libname>`
+### use`pkg-config` to auto-find `-l<libname>`
 
 ```bash
 g++ main.cpp `pkg-config <libname> --cflags --libs`
@@ -140,7 +140,7 @@ g++ main.cpp `pkg-config <libname> --cflags --libs`
 `pkg-config --cflags <library>` outputs the include arguments and any other needed compile flags.
 
 
-### gcc / g++
+## gcc / g++
 
 Used to compile **Single** source code.
 
@@ -198,7 +198,7 @@ g++ -std=c++11 main.cpp
 ```
 
 
-### make
+## make
 
 Batch-compile for **multiple** source files.
 
@@ -213,9 +213,9 @@ make install # install to where ?
 ```
 
 
-### makefile
+## makefile
 
-##### example
+### example
 
 ```makefile
 ### grammar (use Tab for all indent !!!)
@@ -277,7 +277,7 @@ clean :
 ```
 
 
-### compilers
+## compilers
 
 * **Visual C++**: GUI compiler, mainly used in Windows.
 

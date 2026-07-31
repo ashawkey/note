@@ -1,6 +1,6 @@
 # numpy tricks
 
-### automatic broadcast from front
+## automatic broadcast from front
 
 ```python
 import numpy as np
@@ -37,7 +37,7 @@ print(a[:, None] + b)
 ```
 
 
-### View
+## View
 
 Without touching underlying data, a `view` is the datatype and shape of the data.
 
@@ -65,11 +65,11 @@ Cons:
 * [space] even if only a small slice is used, the pointed data maybe large and cannot be released. Use `.copy()` if you are sure the old data will not be used and should be garbage-collected!
 
 
-### indexing & Slicing (IMPORTANT!)
+## indexing & Slicing (IMPORTANT!)
 
 We discuss the behavior of  `x[obj]`, which can be classified as:
 
-#### Basic Indexing
+### Basic Indexing
 
 Features:
 
@@ -99,7 +99,7 @@ Some tips:
 * `x[s1] = v` is in-place modification (and support broadcast).
 * `np.intp == np.int64` is the smallest data type sufficient to safely index any array; for advanced indexing it may be faster than other types.
 
-#### Advanced Indexing
+### Advanced Indexing
 
 Features:
 
@@ -202,7 +202,7 @@ Tips:
   ```
 
   
-### assign value by a list of coordinates
+## assign value by a list of coordinates
 
 ```python
 import numpy as np
@@ -228,7 +228,7 @@ tuple(coords.T) is: (array([0, 1, 2, 3]), array([1, 2, 3, 4]))
 ```
 
 
-### slice
+## slice
 
 ```python
 import numpy as np
@@ -243,7 +243,7 @@ print(a[s_odd]) # equals a[1::2]
 ```
 
 
-### meshgrid
+## meshgrid
 
 ```python
 # default behaviour
@@ -283,7 +283,7 @@ torch.meshgrid(torch.arange(3), torch.arange(4))
 ```
 
 
-### numpy add by index, with duplicated indices
+## numpy add by index, with duplicated indices
 
 In numpy >= 1.8, you can also use the `at` method of the addition 'universal function' ('ufunc'). As the [docs note](http://docs.scipy.org/doc/numpy/reference/generated/numpy.ufunc.at.html):
 
@@ -336,7 +336,7 @@ torch_scatter.scatter_add(c, b, out=a) # ([0, 0, 2, 1, 0, 1]), correctly accumul
 Note: the name `index_put_` is tricky, `index_add_` is another different thing in torch, which is less flexible to achieve what we are doing.
 
 
-### numpy add by 2D (or nD) index 
+## numpy add by 2D (or nD) index 
 
 The desired operation:
 
@@ -371,7 +371,7 @@ a.index_put_(tuple(b.T), c, accumulate=True) # as expected.
 ```
 
 
-### take v.s. take_along_axis
+## take v.s. take_along_axis
 
 `np.take` is in fact simple indexing.
 

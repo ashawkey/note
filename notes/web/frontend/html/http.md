@@ -1,6 +1,6 @@
 # HTTP
 
-### Overview
+## Overview
 
 HTTP is an Application-layer protocol to transmit hypermedia documents.
 
@@ -53,14 +53,14 @@ HTTP is an Application-layer protocol to transmit hypermedia documents.
     ```
 
     
-### Cache
+## Cache
 
 A technique that stores a copy of a given resource, and serves it back when requested.
 
 It eases the load of server, and improves performance.
 
 
-### Cookies
+## Cookies
 
 A small piece of data that a server sends to the user's web browser.
 
@@ -100,7 +100,7 @@ Usually used to tell if two requests came from the same browser. (keeping logged
   ```
   
   
-### CORS: Cross-Origin Resource Sharing
+## CORS: Cross-Origin Resource Sharing
 
 A Mechanism that uses additional HTTP Headers, to tell browsers to give a web App access to resources from a different origin.
 

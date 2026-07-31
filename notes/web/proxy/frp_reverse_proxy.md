@@ -1,6 +1,6 @@
 # reverse proxy with `frp`
 
-### install
+## install
 
 download from [releases](https://github.com/fatedier/frp/releases).
 
@@ -8,7 +8,7 @@ download from [releases](https://github.com/fatedier/frp/releases).
 * `frpc`: client
 
 
-### deploy
+## deploy
 
 * `frps`:
 

@@ -1,6 +1,6 @@
 # Godot 4.2 Basics
 
-### Concepts and Classes
+## Concepts and Classes
 
 A **Game** is a loop (`MainLoop --> SceneTree`) that iterates over time.
 
@@ -141,7 +141,7 @@ void show() # visible = true
 `Node3D` is the base class for 3D-related objects.
 
 
-### Game Logic
+## Game Logic
 
 What happens on starting the game:
 
@@ -175,7 +175,7 @@ What happens on starting the game:
     ```
 
 
-### GDScript
+## GDScript
 
 `Script` is a kind of `Resource` to extend functionality of an `Object` by **attaching** to a Node.
 
@@ -347,7 +347,7 @@ enum State {STATE_IDLE, STATE_JUMP = 5, STATE_SHOOT} # Access values with State.
 ```
 
 
-### User Input
+## User Input
 
 User input will **propagate from-child-to-parent** through the node tree until one node consumes it. 
 
@@ -403,7 +403,7 @@ Node._unhandled_key_input()
 Node._unhandled_input()
 ```
 
-#### Event and Poll
+### Event and Poll
 
 **Event**: input that only respond once, e.g., click mouse, press enter.
 
@@ -426,7 +426,7 @@ func _physics_process(delta):
         position.x += speed * delta
 ```
 
-#### Mouse
+### Mouse
 
 `InputEventWithModifiers`: modifier means keys like shift or alt, it can distinguish `Shift+Click` from `Click`.
 
@@ -478,7 +478,7 @@ func _input(event):
 		$Sprite2D.position = event.position
 ```
 
-#### Touch
+### Touch
 
 `InputEventScreenTouch` is similar to `InputEventMouseButton`.
 
@@ -486,7 +486,7 @@ func _input(event):
 
 To test touch input using PC, enable `Project settings > Input Devices/Pointing > Emulate Touch From Mouse`
 
-#### Actions (Keyboard & Controller)
+### Actions (Keyboard & Controller)
 
 For keyboard/Joypad input, we majorly use `InputEventAction` through `InputMap`, which is more flexible:
 
@@ -514,7 +514,7 @@ func _input(event):
 				print("T was pressed")
 ```
 
-#### Quit request
+### Quit request
 
 By default, when the window is force closed, godot will send `NOTIFICATION_WM_CLOSE_REQUEST` and auto quit safely.
 
@@ -529,7 +529,7 @@ get_tree().quit()
 ```
 
 
-### Signals
+## Signals
 
 Signals are used to communicate between Nodes.
 
@@ -596,7 +596,7 @@ func _ready():
 ```
 
 
-### Singletons (Autoload)
+## Singletons (Autoload)
 
 Singletons is a special Node that is always loaded, and can be referenced by all other Nodes.
 
@@ -648,7 +648,7 @@ func _level_completed():
 ```
 
 
-### Physics
+## Physics
 
 2D physics is basically about collision detection & response.
 
@@ -753,7 +753,7 @@ bool one_way_collision = false
 `Shape2D` is an abstract class for 2D shape `Resource` (not `Node`! it won't show in the node editor, but show as a property of `CollisionShape2D` /`CollisionPolygon2D`  in the inspector). 
 
 
-### Math
+## Math
 
 2D Coordinate system:
 
@@ -781,7 +781,7 @@ print(v.x.x, v.y.x,
 3D Coordinate system: OpenGL convention.
 
 
-### Importing Assets
+## Importing Assets
 
 Images will be imported as `Texture` by default.
 
@@ -792,7 +792,7 @@ To ensure high-quality image, we have two approaches:
 
 Usually we prefer the first approach, as it doesn't need to calculate scales.
 
-### Groups
+## Groups
 
 Groups are a convenient container for nodes, which allows to:
 
@@ -815,7 +815,7 @@ get_tree().call_group("guards", "enter_alert_mode")
 var guards = get_tree().get_nodes_in_group("guards")
 ```
 
-### Tween Animation
+## Tween Animation
 
 `Tween` is inherited from `RefCounted`, and is used for interpolation-based animation (in-betweening), e.g., moving the position smoothly.
 
@@ -863,7 +863,7 @@ However, you should **not allow multiple tweeners on the same property** at the 
 
 
 
-### Editor tips
+## Editor tips
 
 * When resize something in the scene viewer:
   * `Shift` to keep aspect ratio.

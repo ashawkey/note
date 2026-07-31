@@ -1,4 +1,4 @@
-## custom search keyword
+# custom search keyword
 
 
 Chrome: 设置-搜索引擎-管理搜索引擎和网站搜索-网站搜索-添加
@@ -11,6 +11,6 @@ Chrome: 设置-搜索引擎-管理搜索引擎和网站搜索-网站搜索-添�
 * twitter: https://twitter.com/search?q=%s
 
 
-### Reference
+## Reference
 
 https://gist.github.com/siboehm/53d2b498e1470d32f0af13b2c39a9520

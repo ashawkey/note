@@ -1,7 +1,7 @@
-## View & Projection
+# View & Projection
 
 
-### Right-handed system
+## Right-handed system
 
 It is a convention.
 
@@ -13,18 +13,18 @@ It is a convention.
 >- Now bend your middle finger downwards 90 degrees.
 
 
-### Global Picture of transformations
+## Global Picture of transformations
 
 ![img](transformations.assets/coordinate_systems.png)
 
 
-### Model Transformation
+## Model Transformation
 
 It transform the object from its local coordinate system to the world coordinate system. 
 
 Usually this transformation is pre-applied to the model, so we don't use it here.
 
-### View/Camera Transformation
+## View/Camera Transformation
 
 It transform both the camera and objects, until **the camera is at the origin, up at Y axis and look at -Z axis.** (from world coordinate system to camera coordinate system)
 
@@ -36,7 +36,7 @@ V_{camera} = \mathbf M_{view} \cdot V_{world} \\
 $$
 
 
-### Projection Transformation
+## Projection Transformation
 
 It projects 3D objects into a Clip space, such that we can transform it to the final 2D plane. 
 
@@ -51,7 +51,7 @@ First, we project the objects (from camera coordinate system) into a canonical c
 Second, we perform viewport transform, i.e., simply look at -Z direction and get the 2D projection plane.
 
 
-#### Orthographic projection
+### Orthographic projection
 
 ![](transformations.assets/gl_projectionmatrix02.png)
 
@@ -75,7 +75,7 @@ $$
 (Note: since we look at -Z, we use $-n$ and $-f$ for near and far plane, so that $0<n<f$.)
 
 
-#### Perspective projection
+### Perspective projection
 
 ![](transformations.assets/gl_projectionmatrix01.png)
 

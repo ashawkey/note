@@ -1,4 +1,4 @@
-### torch
+# torch
 
 ```python
 ### Settings
@@ -137,7 +137,7 @@ det(x)
 
 ```
 
-### torch.Tensor
+# torch.Tensor
 
 
 default torch.Tensor is `FloatTensor`
@@ -175,7 +175,7 @@ class Tensor:
 	view_as(other)
 ```
 
-### torch.nn
+# torch.nn
 
 ```python
 ### parameters
@@ -326,7 +326,7 @@ eq. BCEWithLogitLoss(x)
 '''
 ```
 
-### torch.nn.functional
+# torch.nn.functional
 
 ```python
 # mostly correspond to layers.
@@ -334,7 +334,7 @@ interpolate(input, size=None, scale_factor=None, mode="nearest", align_corners=N
 ```
 
 
-### torch.optim
+# torch.optim
 
 ```python
 optimizer = optim.SGD(model.parameters(), lr=..., momentum=...)
@@ -373,7 +373,7 @@ mode: min means metric stops decreasing.
 '''
 ```
 
-### torch.autograd
+# torch.autograd
 
 ```python
 backward(tensors)

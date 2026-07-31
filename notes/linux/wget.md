@@ -1,4 +1,4 @@
-### wget
+# wget
 
 ```bash
 # download 
@@ -9,7 +9,7 @@ wget -c https://example.com/test.txt
 ```
 
 
-### cURL (client URL)
+# cURL (client URL)
 
 ```bash
 # GET and print response

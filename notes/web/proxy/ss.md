@@ -3,7 +3,7 @@
 Server is CentOS 7 (Digital Oceans)..
 
 
-### Shadowsocks
+## Shadowsocks
 
 edit `/etc/shadowsocks.json`
 
@@ -71,7 +71,7 @@ Always remember to check the `logs` if something is wrong!
 ```
 
 
-### Fail2ban
+## Fail2ban
 
 fail2ban is used to secure the server from brute-force ssh attack.
 
@@ -121,7 +121,7 @@ fail2ban-client set sshd unbanip xxx.xxx.xxx.xxx # unban
 ```
 
 
-### set up FirewallD
+## set up FirewallD
 
 ```bash
 systemctl enable firewalld
@@ -132,7 +132,7 @@ firewall-cmd --reload
 ```
 
 
-### change SSH default port 
+## change SSH default port 
 
 first add a new port, and test on it (make sure you can log in on that port).
 
@@ -155,7 +155,7 @@ firewall-cmd --reload
 ```
 
 
-### Else
+## Else
 
 * add user
 

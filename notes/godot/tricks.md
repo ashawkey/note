@@ -1,6 +1,6 @@
 # Pitfalls & Tricks
 
-### Panel
+## Panel
 
 `Panel` is used to represent a box-like UI, e.g.
 
@@ -12,7 +12,7 @@ To change the look, we need to create a new `StyleBox` inside `Inspector > Theme
 ![image-20240813212521766](tricks.assets/image-20240813212521766.png)
 
 
-### Mouse_entered/exited
+## Mouse_entered/exited
 
 Note that `mouse_exited` will be triggered if the mouse enter a child `Control/CollisionObject2D` element!
 
@@ -26,7 +26,7 @@ To avoid this, we need to set `mouse filter` in Inspector:
 
   
 
-### VisibleOnScreenNotifier2D
+## VisibleOnScreenNotifier2D
 
 ```python
 signal screen_exited()
@@ -46,7 +46,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 
-### Different Resolutions
+## Different Resolutions
 
 The base size can be set in `Project Settings --> Display --> Window --> Size`
 
@@ -73,7 +73,7 @@ print(window.content_scale_size) # 3820x2160
 
 
 
-### Steps for a new project
+## Steps for a new project
 
 * Configure viewport resolution in `Project settings --> Display --> Window --> Size` .
 * Configure main scene in `Project settings --> Application --> Run`.

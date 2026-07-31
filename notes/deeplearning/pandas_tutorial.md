@@ -8,7 +8,7 @@ import pandas as pd
 ```
 
 
-### IO
+## IO
 
 ```python
 # load
@@ -19,9 +19,9 @@ df.to_csv(path, header=False, index=False) # do not write row and column names (
 ```
 
 
-### Data Structure
+## Data Structure
 
-##### Series (Ordered, Indexed, Homogenous, One-Dimensional)
+### Series (Ordered, Indexed, Homogenous, One-Dimensional)
 
 ```python
 pd.Series(data=None, index=None, dtype=None, name=None, copy=False)
@@ -38,7 +38,7 @@ s.index
 s.dtype
 ```
 
-##### DataFrame (Indexed, Heterogenous, Two-Dimensional)
+### DataFrame (Indexed, Heterogenous, Two-Dimensional)
 
 Series of Series.
 
@@ -76,9 +76,9 @@ df = pd.read_excel(io, sheetname=0, header=0)
 ```
 
 
-### Manipulate Data
+## Manipulate Data
 
-##### Series
+### Series
 
 ```python
 ### Access
@@ -118,7 +118,7 @@ s.unique()
 ```
 
 
-##### DataFrame
+### DataFrame
 
 ```python
 data = [[1,2,3],
@@ -179,7 +179,7 @@ df[df['list'].str.len() > 0]
 ```
 
 
-### Conditioned Query
+## Conditioned Query
 
 ```python
 df.loc[df.country == 'Italy']
@@ -189,7 +189,7 @@ df.loc[df.price.notnull()] # or isnull()
 ```
 
 
-### Grouping and Sorting
+## Grouping and Sorting
 
 ```python
 df.groupby(by=None, axis=0, ...)
@@ -213,7 +213,7 @@ Parrot       25.0
 ```
 
 
-### Missing values
+## Missing values
 
 ```python
 ### find na rows
@@ -248,7 +248,7 @@ def impute(train, columns, test=None):
 ```
 
 
-### Melting
+## Melting
 
 ```python
 df.melt(id_vars=None, value_vars=None, var_name=None, value_name='value', col_level=None)
@@ -284,7 +284,7 @@ df.melt(id_vars=None, value_vars=None, var_name=None, value_name='value', col_le
 2      Age     21
 ```
 
-### Pivoting
+## Pivoting
 
 ```python
 df.pivot(index=None, columns=None, values=None)
@@ -320,7 +320,7 @@ two  4   5   6
 ```
 
 
-### Merging
+## Merging
 
 ```python
 pd.merge(left, right, how='inner', on=None)
@@ -328,7 +328,7 @@ pd.merge(left, right, how='inner', on=None)
 ```
 
 
-### Options
+## Options
 
 ```python
 pd.get_option(key)
@@ -343,7 +343,7 @@ pd.reset_option(key)
 ```
 
 
-### Others
+## Others
 
 ```python
 # arithm

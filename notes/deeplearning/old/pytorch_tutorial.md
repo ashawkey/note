@@ -1,6 +1,6 @@
 # PyTorch
 
-### Tensors
+## Tensors
 
 ```python
 ## create a tensor
@@ -42,7 +42,7 @@ torch.cat((A, B), dim=1)
 ```
 
 
-### autograd
+## autograd
 
 ```python
 ## Variable
@@ -74,7 +74,7 @@ out = \frac {3}{4} \sum (x + 2)^2 \\
 $$
 
 
-### Neural Network
+## Neural Network
 
 Affine Layer: Fully connected layer.
 
@@ -234,7 +234,7 @@ def weights_init(m):
 ```
 
 
-#### Low level functional
+### Low level functional
 
 ```python
 ## Function
@@ -258,7 +258,7 @@ F.cross_entropy(input, target, weight=None, size_average=True)
 ```
 
 
-### dataset & torchvision
+## dataset & torchvision
 
 ```python
 # CIFAR10
@@ -387,7 +387,7 @@ print('Accuracy of the network on the 10000 test images: %d %%' % (
 ```
 
 
-### Save Model
+## Save Model
 
 ```python
 class Net(nn.Module):

@@ -1,7 +1,7 @@
-## Information Storage
+# Information Storage
 
 
-### Integer
+## Integer
 
 ![image-20221202105118312](02_Information_Storage.assets/image-20221202105118312.png)
 
@@ -26,7 +26,7 @@ assert(a > b); // true, signed -1 --> unsigned 2^{32}-1 > 0
 ```
 
 
-### Integer Arithmetic
+## Integer Arithmetic
 
 Overflow:
 
@@ -39,7 +39,7 @@ Overflow:
   ![image-20221202110308769](02_Information_Storage.assets/image-20221202110308769.png)
 
 
-### Floating Point
+## Floating Point
 
 ![image-20221202113856519](02_Information_Storage.assets/image-20221202113856519.png)
 

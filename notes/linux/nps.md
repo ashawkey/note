@@ -1,21 +1,21 @@
 # NPS tutorial
 
-### VPS port open
+## VPS port open
 
 * 控制台添加安全组开放端口
 * `ufw allow 8080`
 
 
-### Server
+## Server
 
 ```bash
 nps start
 ```
 
-##### TCP tunnel
+### TCP tunnel
 
 
-### Client
+## Client
 
 ```bash
 npc 

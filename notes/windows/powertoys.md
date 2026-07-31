@@ -1,9 +1,9 @@
-## Power Toys
+# Power Toys
 
 Install from: https://github.com/microsoft/PowerToys/releases
 
 
-### Power Rename
+## Power Rename
 
 https://learn.microsoft.com/zh-cn/windows/powertoys/powerrename
 

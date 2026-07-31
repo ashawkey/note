@@ -1,6 +1,6 @@
-## Huggingface
+# Huggingface
 
-### Install
+## Install
 
 ```bash
 # install
@@ -11,9 +11,9 @@ huggingface-cli login
 ```
 
 
-### upload models to a repo
+## upload models to a repo
 
-##### using python API:
+### using python API:
 
 ```python
 from huggingface_hub import HfApi
@@ -37,7 +37,7 @@ api.upload_folder(
 )
 ```
 
-##### using CLI:
+### using CLI:
 
 If the repo is not existing, it will be created automatically!
 
@@ -57,9 +57,9 @@ huggingface-cli upload <user/repo> --include="*.mp4" --exclude="unwanted*"
 ```
 
 
-### download models
+## download models
 
-##### using CLI:
+### using CLI:
 
 By default these commands will download to `~/.cache/huggingface/hub`, use `--local-dir` to change it!
 

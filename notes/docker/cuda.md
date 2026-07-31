@@ -1,6 +1,6 @@
 # Docker for CUDA
 
-### [nvidia-docker](https://github.com/NVIDIA/nvidia-docker)
+## [nvidia-docker](https://github.com/NVIDIA/nvidia-docker)
 
 Enable GPU in docker >= 19.03.
 

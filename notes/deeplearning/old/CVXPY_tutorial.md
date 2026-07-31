@@ -1,6 +1,6 @@
 # CVXPY
 
-### Basics
+## Basics
 
 ```python
 import cvxpy as cp
@@ -109,7 +109,7 @@ print(x.value, y.value)
   ```
 
 
-### DCP
+## DCP
 
 DCP is used to ensure the optimization problem is convex. (sufficient but not necessary)
 
@@ -152,9 +152,9 @@ DCP is used to ensure the optimization problem is convex. (sufficient but not ne
   `prob.is_dcp()`
 
 
-### Atomic functions
+## Atomic functions
 
-##### Index and slice and transpose and power 
+### Index and slice and transpose and power 
 
 like numpy
 
@@ -162,7 +162,7 @@ like numpy
 
 `expr**2 ` or `power(expr, 2)`
 
-##### scalar functions
+### scalar functions
 
 * max() convex
 
@@ -184,7 +184,7 @@ like numpy
 
 * ...
 
-##### element-wise functions
+### element-wise functions
 
 * abs(x) convex
 
@@ -198,7 +198,7 @@ like numpy
 
 * sqrt(x), power(x)
 
-##### vector/matrix functions
+### vector/matrix functions
 
 * reshape() affine
 * diag() affine

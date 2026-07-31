@@ -1,6 +1,6 @@
 # Git tutorial
 
-### Log in
+## Log in
 
 ```bash
 git config --global user.name "ashawkey"
@@ -11,9 +11,9 @@ git config --global credential.helper cache
 ```
 
 
-### Start Projects & Make Changes
+## Start Projects & Make Changes
 
-##### file status lifespan
+### file status lifespan
 
 ![Git 下文件生命周期图。](https://git-scm.com/book/en/v2/images/lifecycle.png)
 
@@ -53,8 +53,8 @@ git status
 git status -s # compressed
 
 # show detailed differences
-git diff           # unstaged vs. workspace
-git diff --cached  # or --staged, staged vs. workspace
+git diff           # 工作区 vs 暂存区（未暂存的修改）
+git diff --cached  # or --staged, 暂存区 vs 最近一次提交（已暂存的修改）
 
 # commit changes
 git commit                 # open editor 
@@ -64,7 +64,7 @@ git commit -a -m "message" # auto add all modified (tracked) files and commit (o
 ```
 
 
-### History
+## History
 
 ```bash
 git log # all commits in details
@@ -80,7 +80,7 @@ git log --grep="keyword"
 ```
 
 
-### Undo
+## Undo
 
 ```bash
 # amend commit
@@ -98,7 +98,7 @@ git checkout -- [file] # dangerous operation. all changes to [file] will be lost
 ```
 
 
-### Remote 
+## Remote 
 
 ```bash
 Bob   $ git clone /home/alice/project myrepo
@@ -180,14 +180,14 @@ git push origin master
 ```
 
 
-### Tag
+## Tag
 
 ```bash
 git tag
 ```
 
 
-### Alias
+## Alias
 
 ```bash
 git config --global alias.ci commit # git ci == git commit
@@ -195,7 +195,7 @@ git config --global alias.st status # git st == git status
 ```
 
 
-### Branching
+## Branching
 
 **Branch is a pointer** pointing to a commit object. 
 
@@ -236,7 +236,7 @@ git branch -D dev # forcely delete unmerged "dev"
 ```
 
 
-### Remote Branching
+## Remote Branching
 
 ```bash
 ### fetch from remote server "origin", this will mentain a remote branch called "origin/master", while you work at local branch "master".
@@ -265,7 +265,7 @@ git push origin/exp exp
 ```
 
 
-### Rebase Branch
+## Rebase Branch
 
 Another method to merge branches.
 
@@ -291,7 +291,7 @@ While normal merge will generate:
 ![通过合并操作来整合分叉了的历史。](https://git-scm.com/book/en/v2/images/basic-rebase-2.png)
 
 
-### Ignore
+## Ignore
 
 `.gitignore`
 
@@ -308,7 +308,7 @@ git rm -r --cached <folder>
 ```
 
 
-### Submodule
+## Submodule
 
 Add a repo (at `url`) to the current repo's `dest_path` as a submodule:
 
@@ -319,7 +319,7 @@ git submodule add <submodule_url> <dest_path>
 This will automatically track the submodule's version by creating a `.gitmodules` file.
 
 
-### Stash
+## Stash
 
 Use situation: You want to switch to another branch, but there are uncommitted modifications in the current branch.
 

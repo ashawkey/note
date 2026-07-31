@@ -3,7 +3,7 @@
 Another solution except for `react`.
 
 
-### init project
+## init project
 
 ```bash
 npm init -y
@@ -32,7 +32,7 @@ this creates `package.json`
 ```
 
 
-### files organization
+## files organization
 
 we can install any package by `npm`:
 
@@ -92,7 +92,7 @@ document.body.appendChild(component());
 ```
 
 
-### build
+## build
 
 * directly use `npx`
 

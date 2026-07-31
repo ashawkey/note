@@ -5,14 +5,14 @@ pip install wordcloud
 ```
 
 
-### CLI
+## CLI
 
 ```
 wordcloud_cli --text mytext.txt --imagefile wordcloud.png
 ```
 
 
-### API
+## API
 
 ```python
 from wordcloud import WordCloud

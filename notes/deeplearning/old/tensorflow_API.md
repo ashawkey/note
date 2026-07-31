@@ -1,4 +1,4 @@
-#### tips
+# tips
 
 * `axis`
 
@@ -72,7 +72,7 @@ $$
 $$
 
 
-#### tensorflow
+# tensorflow
 
 ```python
 Session()
@@ -176,14 +176,14 @@ tf.reset_default_graph()
 tf.get_default_graph()
 ```
 
-#### train
+# train
 
 ```python
 GradientDescentOptimizer(learning_rate)
 ```
 
 
-#### layers
+# layers
 
 An encapsulation of `tf.nn `.
 
@@ -245,7 +245,7 @@ average_pooling2d()
 ```
 
 
-#### nn
+# nn
 
 ```python
 ## activation -----
@@ -308,9 +308,9 @@ logits # same as labels
 '''
 ```
 
-#### contrib
+# contrib
 
-#### keras
+# keras
 
 ```python
 from keras.models import Sequential

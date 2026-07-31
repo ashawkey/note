@@ -1,7 +1,7 @@
 # update-alternatives
 
 
-### gcc example
+## gcc example
 
 ```bash
 # install gcc/g++ 7

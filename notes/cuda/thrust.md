@@ -1,6 +1,6 @@
 # thrust 
 
-### Vectors
+## Vectors
 
 Just like the `std::vector`.
 
@@ -44,7 +44,7 @@ int main(void) {
 ```
 
 
-### Algorithms
+## Algorithms
 
 Thrust algorithms will auto detect host/device and run the correct version.
 
@@ -145,7 +145,7 @@ float norm = std::sqrt(thrust::transform_reduce(d_x.begin(), d_x.end(), square<f
 ```
 
 
-### iterators
+## iterators
 
 ```cpp
 #include <thrust/iterator/constant_iterator.h>

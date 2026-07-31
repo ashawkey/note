@@ -15,7 +15,7 @@ Official (slow): https://www.qt.io/offline-installers
 To manage different Qt versions, use `PATH` and `LD_LIBRARY_PATH`.
 
 
-### Qt 5.5.1 ~ 5.9.7
+## Qt 5.5.1 ~ 5.9.7
 
 The default version, in `/usr/libx86_64-linux-gnu/`. 
 
@@ -24,7 +24,7 @@ what `sudo apt install qt-default` will install.
 However, this is terribly outdated, e.g., `PyQt5, PySide2` do not support it.
 
 
-### Qt 5.12.11
+## Qt 5.12.11
 
 The last version that supports a GUI installer.
 
@@ -67,7 +67,7 @@ qmake -v
 ```
 
 
-##### PyQt5 support
+### PyQt5 support
 
 ```bash
 pip install PyQt5==5.12.11
@@ -75,7 +75,7 @@ pip install PyQt5==5.12.11
 ```
 
 
-### Qt 5.15
+## Qt 5.15
 
 You must build it from source. 
 

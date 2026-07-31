@@ -1,6 +1,6 @@
 # Trojan with Nginx 
 
-### Server
+## Server
 
 * Get trojan 
 
@@ -97,7 +97,7 @@
   * using a trojan/clash/... client to connect! 
 
     
-#### Nginx reuse 443
+### Nginx reuse 443
 
 this happens if we also use Nginx to host other websites.
 
@@ -228,7 +228,7 @@ server {
   ![image-20210305154420993](trojan_nginx_server.assets/image-20210305154420993.png)
 
 
-### Client
+## Client
 
 * Get trojan
 

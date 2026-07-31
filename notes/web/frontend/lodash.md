@@ -4,14 +4,14 @@ A JS utility library imported as `_`.
 
 Mainly for arrays, numbers, objects, strings.
 
-### install
+## install
 
 ```bash
 npm install -S lodash
 ```
 
 
-### usage
+## usage
 
 ```js
 import _ f

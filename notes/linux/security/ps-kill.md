@@ -1,4 +1,4 @@
-### ps
+# ps
 
 ```bash
 # find by name
@@ -9,7 +9,7 @@ ps aux | grep <pid>
 ```
 
 
-### kill
+# kill
 
 kill by pid. single wrapper to kill system call.
 
@@ -29,7 +29,7 @@ kill -SIGKILL <pid>
 ```
 
 
-### killall
+# killall
 
 kill by name.
 
@@ -44,7 +44,7 @@ killall -I <name>
 ```
 
 
-### pkill
+# pkill
 
 kill by name, use `pgrep` for matching.
 

@@ -1,4 +1,4 @@
-### Basics
+# Basics
 
 * Input
   * add Chinese input: settings --> text input --> edit --> +
@@ -22,7 +22,7 @@
   * `command + delete` to delete a file (move to trash).
 
 
-### Applications
+# Applications
 
 * Terminal: iterm2
 

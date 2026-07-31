@@ -1,6 +1,6 @@
 
 
-### An example `go` settings:
+# An example `go` settings:
 
 ```bash
 #!/bin/bash

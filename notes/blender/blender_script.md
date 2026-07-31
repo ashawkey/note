@@ -1,8 +1,8 @@
 # blender script
 
-### Install blender on ubuntu
+## Install blender on ubuntu
 
-#### Install blender 
+### Install blender 
 
 ```bash
 sudo snap install blender --classic
@@ -11,7 +11,7 @@ sudo snap install blender --classic
 This will install the blender binary and all environments.
 
 
-#### Install blender as python modules
+### Install blender as python modules
 
 ```bash
 pip install bpy mathutils
@@ -25,7 +25,7 @@ To enable GPU, go `Edit --> Preferences --> System --> Cycles Engine --> Choose 
 logs are printed to the terminal console, use `window --> toggle system console` to open it.
 
 
-### auto import many objects
+## auto import many objects
 
 assume you have a folder with lots of obj models (each in a sub-folder):
 
@@ -55,7 +55,7 @@ for i, name in enumerate(obj_dirs):
         obj.location = (h, w, 0)
 ```
 
-### locate objects in current scene
+## locate objects in current scene
 
 ```python
 import bpy
@@ -73,7 +73,7 @@ bpy.data.objects['Light']
 bpy.data.objects['Light'].location = (0, 0, 0)
 ```
 
-### Complete render script
+## Complete render script
 
 ```python
 import os

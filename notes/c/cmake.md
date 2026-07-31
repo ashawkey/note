@@ -1,4 +1,4 @@
-## cmake
+# cmake
 
 To make cross-platform compilation less painful (or maybe more painful ?)
 
@@ -9,7 +9,7 @@ To make cross-platform compilation less painful (or maybe more painful ?)
 cmake --version
 ```
 
-### `CMakeLists.txt`
+## `CMakeLists.txt`
 
 The rules to generate makefile.
 * commands are not case-sensitive (e.g., `project()` or `PROJECT()`) for historical reason.
@@ -17,7 +17,7 @@ The rules to generate makefile.
 * paths can be string or raw (e.g., `include` or `"include"`)
 * command parameters are separated by spaces or line breaks.
 
-### Project structure
+## Project structure
 
 A regular C/C++/CUDA project layout:
 ```bash
@@ -30,7 +30,7 @@ CMakeLists.txt
     main.cpp # it #include "mylib.h"
 ```
 
-### Build with cmake
+## Build with cmake
 
 Traditional way:
 ```bash
@@ -50,7 +50,7 @@ cmake --build build -j 8 # invoke make
 cmake --build build --config Release -j 8 # set build type
 ```
 
-### Built in variables
+## Built in variables
 
 Like shell variables, use with `${CAPITAL_NAME}`
 ```CMake
@@ -65,7 +65,7 @@ set(SOURCES
 )
 ```
 
-### Basic example
+## Basic example
 
 To include  `mylib`, we can use `target_include_directories` for our target:
 ```cmake
@@ -149,9 +149,9 @@ if (MSVC)
 endif()
 ```
 
-### Configurations
+## Configurations
 
-#### Build types
+### Build types
 
 Built-in build types and their equal command:
 * Release: `-O3 -DNDEBUG`
@@ -169,7 +169,7 @@ if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 ```
 
-#### Compile flags
+### Compile flags
 
 Set default (global) c++ flags:
 ```cmake
@@ -193,7 +193,7 @@ target_compile_definitions(test PUBLIC
 )
 ```
 
-#### Thrid party dependency
+### Thrid party dependency
 
 `find_package()` can handle about 142 common third party libraries, to automatically handle it for your project.
 ```cmake
@@ -215,7 +215,7 @@ add_executable(test src/main.cpp)
 target_link_libraries(test PRIVATE Boost::filesystem) # alias target, equals to ${Boost_FILESYSTEM_LIBRARY}
 ```
 
-#### Build with ninja
+### Build with ninja
 > what is `ninja`?
 > A small build system (i.e., alternative to `make`) focusing on speed.
 
@@ -225,7 +225,7 @@ cmake -B build -G Ninja . # generate ./build/build.ninja
 ninja -C build # build in ./build
 ```
 
-### Sub-projects
+## Sub-projects
 
 Let say your projects include some sub-projects that contain individual `CMakeLists.txt`:
 ```bash
@@ -278,7 +278,7 @@ target_link_libraries(test PUBLIC
 ```
 
 
-### Misc
+## Misc
 * Should I use `#include <mylib/mylib.h>` or `#include "mylib/mylib.h"`?
     * If you use CMakelists.txt to manage the include directories, `<>` is the only thing you need.
     * `<>` only searches the include dirs, while `""` searches the current directory first (e.g., when `.h` are in the same dir as `.cpp`), then the include dirs.

@@ -20,7 +20,7 @@ hash(10.1) == hash(230584300921368586) # True
 ```
 
 
-### The exact algorithms
+## The exact algorithms
 
 in `cpython` source, e.g.,
 

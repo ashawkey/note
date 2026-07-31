@@ -1,6 +1,6 @@
 # package install 
 
-### apt package manager
+## apt package manager
 
 ```bash
 sudo apt install <pkg>
@@ -26,7 +26,7 @@ apt will read & download sources from `/etc/apt/sources.list`
 We recommend to use the [TUNA mirror](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/).
 
 
-### build from source
+## build from source
 
 ```bash
 wget <pkg_source.tar.gz>
@@ -42,7 +42,7 @@ sudo make install
 This will install to `/usr/local/bin`
 
 
-### PPA
+## PPA
 
 Personal Package Achieve. To install **unofficial** softwires by `apt`.
 
@@ -107,7 +107,7 @@ $ sudo apt-key del BE1229CF
 ```
 
 
-### unmet dependencies
+## unmet dependencies
 
 Sometimes we meet errors like:
 

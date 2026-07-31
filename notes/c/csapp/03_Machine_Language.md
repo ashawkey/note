@@ -1,6 +1,6 @@
-## Machine Language
+# Machine Language
 
-### Compile
+## Compile
 
 ```bash
 # -Og: do not optimize, generate assembly code according to the program
@@ -10,7 +10,7 @@ gcc -Og -c test.c # test.o, binary machine code
 ```
 
 
-#### Registers
+### Registers
 
 * **Caller-saved / Callee-saved** Register: different strategies to save register context at calling functions.
 
@@ -42,7 +42,7 @@ gcc -Og -c test.c # test.o, binary machine code
   ![image-20221203193139631](03_Machine_Language.assets/image-20221203193139631.png)
 
 
-### Instructions
+## Instructions
 
 * Operation Code: `movq, addq, subq, xorq, ret`
 

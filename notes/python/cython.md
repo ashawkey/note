@@ -8,7 +8,7 @@
 The extension of Cython file is `.pyx`
 
 
-### Example
+## Example
 
 `primes.pyx`:
 
@@ -63,7 +63,7 @@ primes.primes(10)
 ```
 
 
-### C library
+## C library
 
 ```python
 from libc.stdlib cimport atoi
@@ -80,7 +80,7 @@ cdef double f(double x):
 ```
 
 
-### C++ library
+## C++ library
 
 ```python
 # distutils: language=c++

@@ -1,6 +1,6 @@
 # LaTeX tutorial
 
-### Compiler
+## Compiler
 
 - **LaTeX** 
 
@@ -21,7 +21,7 @@
   XeLaTeX supports `pstricks`(draw images with code), but LuaLaTeX doesn't.
 
 
-### Misc.
+## Misc.
 
 * document class
 
@@ -168,9 +168,9 @@
   ```
 
   
-### Mathematics
+## Mathematics
 
-##### Mode
+### Mode
 
 * Inline: `$inline math$`
 
@@ -191,7 +191,7 @@
   ```
 
 
-##### parentheses
+### parentheses
 
 ```latex
 % use \left and \right to auto-adjust size
@@ -214,7 +214,7 @@ s & = \left\{ x \middle| x < 10 \notag \right. \\
 ```
 
 
-##### Align (package amsmath)
+### Align (package amsmath)
 
 ```latex
 % auto-wrap
@@ -237,7 +237,7 @@ p(x) = 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3\\
 ```
 
 
-##### Matrices
+### Matrices
 
 ```latex
 % () parenthesis
@@ -271,7 +271,7 @@ $\big(\begin{smallmatrix}
 ```
 
 
-##### spacings
+### spacings
 
 ```latex
 \! % -3/18 quad
@@ -285,7 +285,7 @@ $\big(\begin{smallmatrix}
 ```
 
 
-##### fonts
+### fonts
 
 ```latex
 \usepackage{amssymb} 
@@ -300,16 +300,16 @@ RQSZ \\
 ```
 
 
-### Bibliography
+## Bibliography
 
 ```latex
 \bibliography{ref} % ref.bib
 \bibliographystyle{ieeetr} % ieeetr.bst
 ```
 
-##### `.bib` file
+### `.bib` file
 
-```bibtex
+```latex
 @book{DUMMY:1,
 AUTHOR="Who",
 TITLE={"Chat"},
@@ -317,12 +317,12 @@ YEAR="3200",
 }
 ```
 
-##### `.bst` file
+### `.bst` file
 
 Bibliography style file.
 
 
-### Figures
+## Figures
 
 ```latex
 \usepackage{graphicx}
@@ -378,7 +378,7 @@ Bibliography style file.
 ```
 
 
-### Tables
+## Tables
 
 ```latex
 % regular table
@@ -419,16 +419,16 @@ Bibliography style file.
 ```
 
 
-### Errors
+## Errors
 
 * `undefined control sequence`
 
   one of the commands is not defined. e.g. `\R`, `\Zlpha`
 
   
-### Lengths
+## Lengths
 
-##### Units
+### Units
 
 * pt: point, 1pt = 0.3515mm
 * mm: milimeter
@@ -437,7 +437,7 @@ Bibliography style file.
 * ex: height of an 'x' in current font
 * em: width of an 'M' in current font.
 
-##### Constants
+### Constants
 
 ```latex
 % two-column 
@@ -466,7 +466,7 @@ Bibliography style file.
 \oddsidemargin
 ```
 
-##### Example
+### Example
 
 ```latex
 % set figure length

@@ -1,6 +1,6 @@
 # fastapi
 
-### install
+## install
 
 ```bash
 # install fastapi and uvicorn
@@ -8,7 +8,7 @@ pip install fastapi[all]
 ```
 
 
-### basic usage
+## basic usage
 
 ```python
 from fastapi import FastAPI
@@ -105,7 +105,7 @@ def getitem(id: int):
 ```
 
 
-### debug
+## debug
 
 the `main.py`:
 
@@ -130,7 +130,7 @@ python main.py
 ```
 
 
-### deploy
+## deploy
 
 assume the APIs are in `main.py`, and the backend is called `app`:
 

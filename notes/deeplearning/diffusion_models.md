@@ -1,6 +1,6 @@
 # Diffusion models
 
-### The forward pass (image to noise)
+## The forward pass (image to noise)
 
 The forward process can be described with a sequence of gaussian distributions:
 
@@ -38,7 +38,7 @@ $$
 **This means we can express any $x_t$ with $x_0$, $\{\beta_1, \beta_2, \cdots, \beta_t\}$, and a random noise $\epsilon_{t}$.**
 
 
-### The backward pass (noise to image)
+## The backward pass (noise to image)
 
 Given $$x_{t}$$, we want to get $$x_{t-1}$$, and eventually restore the real image $x_0$.
 
@@ -82,7 +82,7 @@ $$
 The neural network is usually an **U-Net with attention** since we need same-size output as input.
 
 
-### DDPM (Denoising Diffusion Probabilistic Model)
+## DDPM (Denoising Diffusion Probabilistic Model)
 
 DDPM exactly describes the above idea.
 
@@ -91,7 +91,7 @@ Note that DDPM use $\tilde \beta_t = \beta_t$ as an approximation.
 ![image-20221212213705784](diffusion_models.assets/image-20221212213705784.png)
 
 
-### DDIM (Denoising Diffusion Implicit Model)
+## DDIM (Denoising Diffusion Implicit Model)
 
 DDIM use a different formula for the backward step:
 
@@ -121,22 +121,22 @@ DDPM usually requires $T=1000$ steps for both training and inference ($S = T = 1
 To speed up inference, DDIM use strided sampling where $S <T$, and shows when $\eta = 0$, $S=50\sim100$ steps are enough to generate good images.
 
 
-### LDM (Latent Diffusion Model)
+## LDM (Latent Diffusion Model)
 
 Instead of diffusing in the pixel space, LDM first use a VQVAE to compress the image space (e.g., 512x512x3) into a latent space (e.g., 64x64x4).
 
 This greatly reduces the computation cost for both training and testing.
 
 
-### Conditioned Generation
+## Conditioned Generation
 
 Assume we want to condition the generation to an input $y$ which may be class labels or **text**.
 
-#### Classifier-Guided Diffusion
+### Classifier-Guided Diffusion
 
 A pretrained classifier is required, not flexible.
 
-#### Classifier-Free Guidance
+### Classifier-Free Guidance
 
 Train **both conditioned denoiser $\epsilon_\theta(x_0, t)$ and unconditioned denoiser $\epsilon_\theta(x_0, t, y)$** in the same neural network together.
 

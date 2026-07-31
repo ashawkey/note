@@ -2,14 +2,14 @@
 
 A fast-to-use Web UI library.
 
-### install
+## install
 
 ```bash
 pip install gradio
 ```
 
 
-### example
+## example
 
 ```python
 import gradio as gr
@@ -92,7 +92,7 @@ gr.Interface(fn=predict,
 ```
 
 
-### Components
+## Components
 
 ```python
 name = gr.Textbox(label="Name")
@@ -100,7 +100,7 @@ name = gr.Textbox(label="Name")
 ```
 
 
-### Event Listener
+## Event Listener
 
 ```python
 def greet(name):
@@ -119,7 +119,7 @@ inp.change(greet, inp, out)
 ```
 
 
-### Iterative Outputs
+## Iterative Outputs
 
 ```python
 import gradio as gr
@@ -148,7 +148,7 @@ demo.launch()
 ```
 
 
-### Queuing
+## Queuing
 
 Control the concurrency rate. Should be used if the core function takes > 1min to process.
 
@@ -158,7 +158,7 @@ demo.launch()
 ```
 
 
-### State
+## State
 
 To preserve information between multiple submits.
 
@@ -204,7 +204,7 @@ with gr.Blocks() as demo:
 demo.launch()
 ```
 
-### Proxy Trouble shooting
+## Proxy Trouble shooting
 
 If `ValueError: Unknown scheme for proxy URL`.
 

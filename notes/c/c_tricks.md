@@ -1,6 +1,6 @@
-## c tricks
+# c tricks
 
-### [do ... while (0)](https://bruceblinn.com/linuxinfo/DoWhile.html#:~:text=You%20may%20see%20a%20do,single%20statement%20can%20be%20used.)
+## [do ... while (0)](https://bruceblinn.com/linuxinfo/DoWhile.html#:~:text=You%20may%20see%20a%20do,single%20statement%20can%20be%20used.)
 
 A trick (idiom) used to correctly define macros with multiple lines / containing `if`.
 
@@ -22,7 +22,7 @@ Just using `{...}` is also wrong, but `({...})` is OK.
 #define FOO {statement1; statement2;}
 
 // note the last ;, it breaks the if-else and will throw compile error!
-if (cond) FOO; // if (cind) {statement1; statement2;};
+if (cond) FOO; // if (cond) {statement1; statement2;};
 else ...;
 
 // another correct way (recommended!)
@@ -30,7 +30,7 @@ else ...;
 ```
 
 
-### Playing with #define
+## Playing with #define
 
 ```cpp
 // variable
@@ -52,9 +52,12 @@ int XN(1) = 1; // int x1 = 1;
 PXN(1); // printf("x1 = %d\n", x1);
 
 // multi-line: do while(0)
-#define M(x, y) do { /
-stmt1; /
-stmt2; /
+#define M(x, y) do { \
+\
+stmt1; \
+\
+stmt2; \
+\
 } while(0)
 
 // example
@@ -67,7 +70,7 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
 ```
 
 
-### static
+## static
 
 General meaning: **only initialized once**.
 

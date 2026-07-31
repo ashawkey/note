@@ -1,14 +1,14 @@
-## PyMeshLab
+# PyMeshLab
 
 
-### install
+## install
 
 ```bash
 pip install pymeshlab
 ```
 
 
-### usage
+## usage
 
 Basics:
 
@@ -102,7 +102,7 @@ ms.apply_filter_script()
 ```
 
 
-### Useful Filters
+## Useful Filters
 
 ```python
 ### mesh cleaning

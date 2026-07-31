@@ -1,4 +1,4 @@
-### I forget adding recursive when cloning
+# I forget adding recursive when cloning
 
 ```bash
 git submodule update --init --recursive
@@ -6,7 +6,7 @@ git submodule update --init --recursive
 
 
 
-### add more things to the last commit (amend)
+# add more things to the last commit (amend)
 
 ```bash
 # add the modifications
@@ -28,7 +28,7 @@ git reset --hard HEAD~1
 
 
 
-### undo/reset anything using reflog
+# undo/reset anything using reflog
 
 `git reflog` keeps track of all your git commands, which is very useful to undo/redo.
 
@@ -61,7 +61,7 @@ git reset --hard <commit>
 
 
 
-### command line diff
+# command line diff
 
 If you cannot use VS Code or Github.
 
@@ -77,7 +77,7 @@ git diff --staged
 
 
 
-### checkout a history commit, and also update all submodules to the corresponding commits
+# checkout a history commit, and also update all submodules to the corresponding commits
 
 ```bash
 git log # find your commit
@@ -90,7 +90,7 @@ git submodule update --recursive # checkout all submodules too.
 
 
 
-### [force `git pull`](https://stackoverflow.com/questions/1125968/git-how-do-i-force-git-pull-to-overwrite-local-files)
+# [force `git pull`](https://stackoverflow.com/questions/1125968/git-how-do-i-force-git-pull-to-overwrite-local-files)
 
 ```bash
 # reset all changes
@@ -106,7 +106,7 @@ git pull
 
 
 
-### remove a large file wrongly committed and left in git history
+# remove a large file wrongly committed and left in git history
 
 large file, even if removed in current branch, will be left in history and every clone suffers from it.
 
@@ -127,7 +127,7 @@ git commit -m 'squash commits'
 
 
 
-### embed mp4 in readme.md (github only)
+# embed mp4 in readme.md (github only)
 
 You just edit the markdown file in github webpage, drag and drop your mp4 video to it, and it will work.
 
@@ -142,7 +142,7 @@ https://user-images.githubusercontent.com/25863658/155265815-c608254f-2f00-4664-
 
 
 
-### manage remote repo url
+# manage remote repo url
 
 ```bash
 # change remote origin
@@ -155,7 +155,7 @@ git push -u origin2 main
 
 
 
-### un-ignore specific files
+# un-ignore specific files
 
 say you want to exclude everything in `datasets/` except `datasets/splits/*`.`
 
@@ -168,7 +168,7 @@ datasets/* # the /* matters!
 
 
 
-### use ssh for git command (avoid permission denied error)
+# use ssh for git command (avoid permission denied error)
 
 You need to generate a SSH key for your machine and add it to github.
 
@@ -185,7 +185,7 @@ Now you should be able to clone through ssh!
 
 
 
-### fetch branch from a forked repo without clone
+# fetch branch from a forked repo without clone
 
 ```bash
 git remote add theirusername https://github.com/theirusername/reponame
@@ -195,7 +195,7 @@ git checkout -b mynamefortheirbranch theirusername/theirbranch
 
 
 
-### multiple accounts in the same shell
+# multiple accounts in the same shell
 
 This happens when you want to switch to another github/gitlab account for a specific repo:
 
@@ -218,7 +218,7 @@ git remote set-url origin https://USERNAME@github.com/USERNAME/PROJECTNAME.git
 
 
 
-### art of merge request
+# art of merge request
 
 In a collaborated project where you need to work on your branch, but keep updated with the main branch:
 
@@ -271,7 +271,7 @@ git merge old_branch
 
 
 
-### pushed a branch with wrong name
+# pushed a branch with wrong name
 
 We need to create a new branch with correct name, delete the old branch and push new branch again.
 
@@ -289,7 +289,7 @@ git branch -d <wrong_name>
 
 
 
-### merge part of your changes to main
+# merge part of your changes to main
 
 This is not easy, especially if these changes are in many different commits, and between them you have commits that you do not want to merge to main.
 

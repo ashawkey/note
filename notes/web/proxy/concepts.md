@@ -1,4 +1,6 @@
-### Proxy protocols
+# Proxy Concepts
+
+## Proxy protocols
 
 Protocol that exchanges packets through a proxy server.
 
@@ -6,7 +8,7 @@ Protocol that exchanges packets through a proxy server.
 * socks5:
 
 
-### [ShadowSocks](https://github.com/shadowsocks/shadowsocks)
+## [ShadowSocks](https://github.com/shadowsocks/shadowsocks)
 
 A client software that connects to a third-party socks5 proxy server, similar to an SSH tunnel.
 
@@ -17,7 +19,7 @@ First written in python.
 Most usual client in Windows.
 
 
-### [trojan](https://github.com/trojan-gfw)
+## [trojan](https://github.com/trojan-gfw)
 
 A lightweight **idea** that imitating HTTPS to bypass GFW.
 
@@ -28,7 +30,7 @@ in C++.
 Easy to use, best client to use in Linux.
 
 
-### [v2ray (Project V) ](https://github.com/v2ray/v2ray-core)
+## [v2ray (Project V) ](https://github.com/v2ray/v2ray-core)
 
 A network toolset to build own computer network.
 
@@ -37,7 +39,7 @@ in Golang.
 Support nearly all platforms.
 
 
-### proxychains
+## proxychains
 
 A Linux command line tool to use proxy in the followed command.
 

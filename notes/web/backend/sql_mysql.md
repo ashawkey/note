@@ -1,6 +1,6 @@
 # MySQL
 
-### Install
+## Install
 
 ```bash
 apt install mysql-server
@@ -13,7 +13,7 @@ vim /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 
 
-### CLI
+## CLI
 
 ```bash
 # login
@@ -42,7 +42,7 @@ show full columns from <tb>;
 ```
 
 
-### backup & recovery
+## backup & recovery
 
 ```bash
 # backup
@@ -57,7 +57,7 @@ mysql $ source backup.sql;
 ```
 
 
-### Char set
+## Char set
 
 > ref: https://mathiasbynens.be/notes/mysql-utf8mb4#character-sets
 
@@ -102,7 +102,7 @@ To set the default charset to `utf8mb4`:
 
   Check by:
 
-  ```mysql
+  ```sql
   mysql> SHOW VARIABLES WHERE Variable_name LIKE 'character\_set\_%' OR Variable_name LIKE 'collation%';
   +--------------------------+--------------------+
   | Variable_name            | Value              |
@@ -129,16 +129,16 @@ To set the default charset to `utf8mb4`:
 
   (or in a per-table form)
 
-  ```mysql
+  ```sql
   # For each table
   REPAIR TABLE table_name;
   OPTIMIZE TABLE table_name;
   ```
 
   
-### Set password
+## Set password
 
-```mysql
+```sql
 USE mysql;
 UPDATE user SET plugin='mysql_native_password' WHERE User='root';
 FLUSH PRIVILEGES;
@@ -148,7 +148,7 @@ exit;
 the default password is ''.
 
 
-### Data types
+## Data types
 
 * TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT
 * DEMICAL, FLOAT, DOUBLE, BIT
@@ -172,11 +172,11 @@ the default password is ''.
 * DATE, TIME, DATETIME, TIMESTAMP
 
 
-### Create database
+## Create database
 
 You must create database first, then select database, then create table.
 
-```mysql
+```sql
 CREATE DATABASE [IF NOT EXISTS] database_name;
 [CHARACTER SET charset_name]
 [COLLATE collation_name]
@@ -185,9 +185,9 @@ USE database_name;
 ```
 
 
-### Create table
+## Create table
 
-```mysql
+```sql
 CREATE TABLE [IF NOT EXISTS] table_name(
    column_1_definition,
    column_2_definition,
@@ -200,16 +200,16 @@ column_name data_type(length) [NOT NULL] [DEFAULT value] [AUTO_INCREMENT] column
 ```
 
 
-### Operations
+## Operations
 
 Nearly the same as SQLite.
 
 
-### Full text search
+## Full text search
 
 * Create index by `FULLTEXT (columns) WITH PARSER ngram`
 
-  ```mysql
+  ```sql
   CREATE TABLE articles (
       id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
       title VARCHAR (200),
@@ -223,7 +223,7 @@ Nearly the same as SQLite.
   * Default: `IN NATURAL LANGUAGE MODE`
   * Bool operation: `IN BOOLEAN MODE`
 
-  ```mysql
+  ```sql
   SELECT * FROM articles
   WHERE MATCH (title,body) -- must be same as FULLTEXT
   AGAINST ('一路 一带' IN NATURAL LANGUAGE MODE);
@@ -240,7 +240,7 @@ Nearly the same as SQLite.
   ```
 
 
-### Python API
+## Python API
 
 ```python
 import mysql.connector

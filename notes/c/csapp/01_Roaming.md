@@ -1,6 +1,6 @@
 # Roaming in Computer System
 
-### The compilation system
+## The compilation system
 
 ```bash
 # compile
@@ -15,7 +15,7 @@ What happened:
 * linker (ld): `hello.o, printf.o, ... --> hello`
 
 
-### Hardware Organization of a System
+## Hardware Organization of a System
 
 Hardwares:
 
@@ -48,7 +48,7 @@ Memory Organization:
 ![image-20221202103252080](roaming.assets/image-20221202103252080.png)
 
 
-### Concurrency and Parallelism
+## Concurrency and Parallelism
 
 Amdahl's Law: How much can a program be accelerated.
 

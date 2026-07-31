@@ -1,4 +1,4 @@
-#### Convolution
+# Convolution
 
 convolution in spectral domain is just a frequency filter.
 
@@ -37,7 +37,7 @@ so we avoided computing eigenvalues and Fourier basis $U$ , and just use $L$ and
 time complexity is from $O(n^2)$ to $O(K|\mathcal E|)$
 
 
-#### Pooling
+# Pooling
 
 pooling is clustering or cutting for a graph.
 
@@ -55,7 +55,7 @@ Then we pool it by adding fake nodes to build a balanced binary tree.
 Finally, we feed it to a Fully connected Layer for Output.
 
 
-#### Codes
+# Codes
 
 * graph
 

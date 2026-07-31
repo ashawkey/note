@@ -1,6 +1,6 @@
 # uWSGI
 
-### Install
+## Install
 
 ```bash
 # error link: gcc version
@@ -17,7 +17,7 @@ ln -s /root/anaconda3/lib/libpcre.so.1 /lib
 ```
 
 
-### Config
+## Config
 
 uwsgi.ini
 
@@ -42,7 +42,7 @@ pidfile = uwsgi.pid
 ```
 
 
-### Setup  Nginx
+## Setup  Nginx
 
 ```
 server {
@@ -66,7 +66,7 @@ server {
 ```
 
 
-### CLI
+## CLI
 
 ```bash
 # run

@@ -1,6 +1,6 @@
 # JavaScript Advanced
 
-### Strict mode
+## Strict mode
 
 ```javascript
 "use strict";
@@ -11,7 +11,7 @@ function foo(){
 ```
 
 
-### [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis)
+## [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis)
 
 A standard way to access the global environment in different js environments. 
 
@@ -30,7 +30,7 @@ var globals = getGlobal();
 ```
 
 
-### Prototype Chain
+## Prototype Chain
 
 * All the reference types are Objects.
 * All the reference types have `_proto_` attribute.
@@ -39,7 +39,7 @@ var globals = getGlobal();
 * If an attribute cannot be found in an object, then find it in the object's `_proto_`.
 
 
-### Hoisting (声明提前)
+## Hoisting (声明提前)
 
 Function and Variable declarations will be hoisted at runtime (in their domains, i.e., global or local function). 
 
@@ -73,9 +73,9 @@ undefined
 ```
 
 
-### Class (ES6)
+## Class (ES6)
 
-##### basics
+### basics
 
 * Classes are "special functions".
 
@@ -331,7 +331,7 @@ l.speak();
 ```
 
 
-### Tips
+## Tips
 
 * `var` is deprecated. Use `const` and `let`.
 * use `for (elem of collection)`, not `for (elem in collection)`

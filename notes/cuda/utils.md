@@ -1,4 +1,6 @@
-### [A useful snippet for all atomics](https://github.com/rusty1s/pytorch_scatter/blob/master/csrc/cuda/atomics.cuh)
+# CUDA Utils
+
+## [A useful snippet for all atomics](https://github.com/rusty1s/pytorch_scatter/blob/master/csrc/cuda/atomics.cuh)
 
 ```c
 // atomics.cuh
@@ -276,7 +278,7 @@ static inline __device__ void atomMin(double *address, double val) {
 ```
 
 
-### `atomicAdd` for `at::Half`
+## `atomicAdd` for `at::Half`
 
 ```cpp
 // at::Half atomicAdd, requires CUDA >= 10 && arch >= 7.x
@@ -287,7 +289,7 @@ static inline  __device__ at::Half atomicAdd(at::Half *address, at::Half val) {
 ```
 
 
-### `atomicMax` for `at::Half, float, double`
+## `atomicMax` for `at::Half, float, double`
 
 ```cpp
 // atomicMax for __half, float, double (requires arch > 7.0 for ushort ver of atomicCAS)

@@ -233,7 +233,7 @@ int main() {
     
 	// get the smallest (first) or largest (last) element
     int mn = *s.begin();
-    int mx = *s.end();
+    int mx = *s.rbegin(); // 注意 *s.end() 是未定义行为
     
     // get the k-th smallest element
     auto i = s.begin();
@@ -262,7 +262,7 @@ using namespace std;
 int main() {
     // init
     map<int, string> m;
-    map<int, int> n = {{0:1}, {1:2}};
+    map<int, int> n = {{0, 1}, {1, 2}};
     // insert
     m[0] = "zero"; // m[key] = val
     m.insert(pair<int, string>(1, "one")); // m.insert(pair)
@@ -798,7 +798,7 @@ less powerful but safer than pointer. it works like an alias.
 
 * reference cannot be null. (thus there is no container of references.)
 
-###### ref as an alias:
+#### ref as an alias:
 
 ```c++
 int i = 0;
@@ -811,7 +811,7 @@ int f() { return 42 ; };
 int (& rf)() = f; // reference to a func
 ```
 
-###### ref as function return value:
+#### ref as function return value:
 
 ```c++
 double vals[] = {10.1, 12.6, 33.1, 24.1, 50.0};
@@ -819,7 +819,7 @@ double& setValues(int i) { return vals[i]; }
 setValues(0) = 0; // okay
 ```
 
-###### ref as function args:
+#### ref as function args:
 
 ```c++
 void swap(int& x, int& y) {

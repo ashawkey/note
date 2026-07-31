@@ -1,15 +1,15 @@
 # asynchronous programming
 
 
-### Promise
+## Promise
 
 A `Promise`  is an object representing the eventual completion or failure of an asynchronous operation.
 
 e.g., `fetch()` returns a `Promise`.
 
-It is always in one of these states: `pending, fufilled, rejected.`
+It is always in one of these states: `pending, fulfilled, rejected.`
 
-Use `then()` to add callbacks to `fufilled` promises, and `catch()` for `rejected` promises.
+Use `then()` to add callbacks to `fulfilled` promises, and `catch()` for `rejected` promises.
 
 
 Some guarantees:
@@ -52,7 +52,7 @@ new Promise((resolve, reject) => {
 ```
 
 
-### Create promises manually
+## Create promises manually
 
 ```js
 let p = new Promise((resolveFunc[, rejectFunc]) => {
@@ -84,7 +84,7 @@ console.log(1); // not in task queue
 ```
 
 
-### async / await
+## async / await
 
 `async` can be put in front of a function to make it async, i.e., return a Promise.
 

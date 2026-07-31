@@ -1,6 +1,6 @@
-## Coordinate system of `F.grid_sample`
+# Coordinate system of `F.grid_sample`
 
-### 2D case
+## 2D case
 
 First we use `meshgrid` to build grid coordinates:
 
@@ -98,7 +98,7 @@ assert torch.allclose(grid, val_xy)
 ```
 
 
-### 3D case
+## 3D case
 
 ```python
 import torch

@@ -11,9 +11,9 @@
 > In Tensorflow 2.0 `tf.keras` will be the default and I highly recommend to start working using `tf.keras`
 
 
-### Model
+## Model
 
-##### Sequential 
+### Sequential 
 
 ```python
 from keras.models import Sequential
@@ -41,7 +41,7 @@ classes = model.predict(X, y, batch_size=1)
 
 ```
 
-##### Functional (More flexible)
+### Functional (More flexible)
 
 ```python
 from keras.layers import Input, Dense
@@ -85,7 +85,7 @@ def build_densenet():
 ```
 
 
-### Data Loaders
+## Data Loaders
 
 ```python
 ### built-in datasets
@@ -145,7 +145,7 @@ class DataGenerator(keras.utils.Sequence):
 ```
 
 
-### Preprocess
+## Preprocess
 
 ```python
 ### Mostly, just use numpy (eg. albumentations) inside DataLoader.
@@ -181,9 +181,9 @@ for e in range(epochs):
 ```
 
 
-### Callbacks
+## Callbacks
 
-##### Built-ins
+### Built-ins
 
 ```python
 # define callbacks
@@ -200,7 +200,7 @@ history = model.fit_generator(datagen.flow(X_train,Y_train, batch_size=batch_siz
                               , callbacks=[learning_rate_reduction])
 ```
 
-##### Custom Callbacks
+### Custom Callbacks
 
 ```python
 class MyCallback(keras.callbacks.Callback):
@@ -219,7 +219,7 @@ class MyCallback(keras.callbacks.Callback):
 ```
 
 
-### Custom Metrics
+## Custom Metrics
 
 ```python
 import keras.backend as K ### here K == tf
@@ -237,7 +237,7 @@ model.compile(optimizer='rmsprop',
 ```
 
 
-### Custom Losses
+## Custom Losses
 
 ```python
 ### Just wrap metrics
@@ -259,7 +259,7 @@ model.compile(loss=dice_loss(smooth=0.001))
 ```
 
 
-### Custom Layers
+## Custom Layers
 
 ```python
 ### Lambda
@@ -302,7 +302,7 @@ class MyLayer(Layer):
 ```
 
 
-### Examples
+## Examples
 
 ```python
 # Create Model

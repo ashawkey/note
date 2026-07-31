@@ -3,7 +3,7 @@
 `moderngl ` supports OpenGL >= 3.3.
 
 
-### install
+## install
 
 ```bash
 pip install moderngl # only headless
@@ -11,7 +11,7 @@ pip install moderngl-window # for window creation
 ```
 
 
-### troubles
+## troubles
 
 version `5.6` just fails: (maybe caused by the new `glcontext`)
 
@@ -35,7 +35,7 @@ SystemError: <built-in function create_context> returned NULL without setting an
 however, version`5.5` is OK.
 
 
-### example
+## example
 
 ```python
 import struct
@@ -82,7 +82,7 @@ for i in range(0, 20, 2):
 ```
 
 
-#### Context
+### Context
 
 the GL Context, all the operations are called in this context.
 
@@ -103,7 +103,7 @@ ctx.version_code
 ```
 
 
-### Primitive Modes
+## Primitive Modes
 
 ```python
 ctx.POINTS
@@ -115,7 +115,7 @@ Context.TRIANGLES
 ```
 
 
-#### program
+### program
 
 `shader` programs.
 
@@ -137,7 +137,7 @@ program = ctx.program(
 ```
 
 
-#### buffer (vbo)
+### buffer (vbo)
 
 OpenGL objects that stores an array in GPU allocated by the context.
 
@@ -155,7 +155,7 @@ vbo.ctx
 ```
 
 
-#### vertex_array (vao)
+### vertex_array (vao)
 
 describes how `buffer` is read by `shader`. 
 
@@ -172,7 +172,7 @@ vao.extra
 ```
 
 
-### Texture
+## Texture
 
 texture contains one or more images of the same format, can be the source access from a shader, or a render target.
 

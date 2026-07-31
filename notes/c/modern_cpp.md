@@ -1,6 +1,6 @@
 # modern c++
 
-### nullptr (c++11)
+## nullptr (c++11)
 
 To replace `NULL`'s use as a pointer.
 
@@ -20,14 +20,14 @@ To replace `NULL`'s use as a pointer.
 > ```
 
 
-### value initialization (c++11)
+## value initialization (c++11)
 
 ```cpp
 int x{}; // default initialization, equals to `int x = 0;`
 ```
 
 
-### string_view (c++17)
+## string_view (c++17)
 
 make a view of a string without copying it.
 
@@ -45,7 +45,7 @@ static_cast<string>(sv);
 ```
 
 
-### cast
+## cast
 
 * Implicit (Automatic) conversion
 
@@ -59,8 +59,7 @@ static_cast<string>(sv);
   ```cpp
   int a = (int) 1.0;
   
-  float* p;
-  malloc((void*)p, sizeof(float) * 10);
+  float* p;\n  p = (float*)malloc(sizeof(float) * 10);
   ```
 
 * `static_cast`
@@ -138,7 +137,7 @@ static_cast<string>(sv);
   ```
 
   
-### constexpr
+## constexpr
 
 constant expression is different from constant value. 
 
@@ -159,7 +158,7 @@ char a[fibonacci(5)]; // OK
 ```
 
 
-### declare variable inside if (c++17)
+## declare variable inside if (c++17)
 
 ```cpp
 if (size_t n = v.size(); n > 10) {
@@ -172,7 +171,7 @@ if (n := len(v)) > 10:
 ```
 
 
-### initializer list
+## initializer list
 
 ```cpp
 class A {
@@ -188,7 +187,7 @@ A f() { return {1,2,3}; }
 ```
 
 
-### tuple (c++17)
+## tuple (c++17)
 
 ```cpp
 #include <tuple>
@@ -252,7 +251,7 @@ cout << s.a << endl;
 ```
 
 
-### std::optional (c++17)
+## std::optional (c++17)
 
 Any instance of `optional<T>` at any given point in time either *contains a value* or *does not contain a value*.
 
@@ -308,7 +307,7 @@ modifying it changed it to Mothra
 ```
 
 
-### lambda function (c++11)
+## lambda function (c++11)
 
 Lambdas can be used as an anonymous in-place function, or a nested function.
 

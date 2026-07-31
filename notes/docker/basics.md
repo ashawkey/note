@@ -1,6 +1,6 @@
 # Docker Basics
 
-### install
+## install
 
 Follow https://docs.docker.com/engine/install/ubuntu/
 
@@ -51,7 +51,7 @@ docker run --rm hello-world
 ```
 
 
-### docker hub mirrors
+## docker hub mirrors
 
 Add in `/etc/docker/daemon.json`:
 
@@ -70,7 +70,7 @@ sudo systemctl restart docker
 ```
 
 
-### command line
+## command line
 
 * get image from docker hub:
 
@@ -251,7 +251,7 @@ sudo systemctl restart docker
   Always use `Dockerfile` to build a image!
 
   
-### Dockerfile
+## Dockerfile
 
 To build an image, we should first create an empty folder and create a `Dockerfile`:
 

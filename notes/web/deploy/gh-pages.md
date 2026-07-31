@@ -1,7 +1,7 @@
 # gh-pages
 
 
-##### `package.json`
+## `package.json`
 
 ```json
 {
@@ -17,7 +17,7 @@
 }
 ```
 
-##### Command
+## Command
 
 ```bash
 npm install -D gh-pages

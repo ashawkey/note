@@ -1,7 +1,7 @@
 # Writing Issues
 
 
-### Avoid Ambiguity
+## Avoid Ambiguity
 
 * since --> because
 * while --> although, whereas
@@ -9,14 +9,14 @@
 * if --> whether
 
 
-### Avoid Strong Words
+## Avoid Strong Words
 
 * always --> often
 
 * 
 
 
-### Avoid Informal Words
+## Avoid Informal Words
 
 * though --> although
 * above --> preceding
@@ -49,12 +49,12 @@
 * note ... --> note that ...
 
 
-### Avoid Complicated Words
+## Avoid Complicated Words
 
 * utilize --> use
 
 
-### Which vs That
+## Which vs That
 
 * restrictive clause: that (without preceding comma)
 
@@ -81,7 +81,7 @@
 > ABC, that is the best method, ... [WRONG]
 
 
-### Misc
+## Misc
 
 * No need to add "the" before Figure/Table 1.
 
@@ -98,19 +98,19 @@
   e.g., "Tools proposed in [2]" --> "Tools proposed by AAA et al. [2]"
 
 
-### Uncountable
+## Uncountable
 
 * work: use several pieces of work.
 * research: use several research projects.
 * software: use several software programs.
 
 
-### Abbreviation
+## Abbreviation
 
 * ABC (Aaa Bbb Ccc) --> Aaa Bbb Ccc (ABC)
 
 
-### As follows
+## As follows
 
 * The paper makes the following contributions.
 

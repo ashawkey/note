@@ -1,13 +1,13 @@
 # DearPyGUI
 
-### Install
+## Install
 
 ```bash
 pip install dearpygui
 ```
 
 
-### Pipeline
+## Pipeline
 
 Context --> Viewport --> DearPyGUI
 

@@ -1,4 +1,4 @@
-## types of languages
+# types of languages
 
 ![img](programming_language_type.assets/b0aeb7ffd1667b9162e5329154d43777_1440w.jpg)
 

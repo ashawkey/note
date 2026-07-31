@@ -4,7 +4,7 @@ Docker hosts images in a **registry** server.
 
 Docker hub is the official site for hosting images pushed by all users.
 
-### publish image
+## publish image
 
 ```bash
 # build the image locally.

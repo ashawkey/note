@@ -1,4 +1,6 @@
-### coalesced atomics
+# CUDA Atomic Utils
+
+## coalesced atomics
 
 From [`nvdiffrast common.h`](https://github.com/NVlabs/nvdiffrast/blob/main/nvdiffrast/common/common.h)
 
@@ -63,7 +65,7 @@ TODO: how much will it improve performance???
 ```
 
 
-### `atomicAdd` for `at::Half`
+## `atomicAdd` for `at::Half`
 
 ```cpp
 // at::Half atomicAdd, requires CUDA >= 10 && arch >= 7.x
@@ -75,7 +77,7 @@ static inline  __device__ at::Half atomicAdd(at::Half *address, at::Half val) {
 ```
 
 
-### `atomicMax` for `at::Half, float, double`
+## `atomicMax` for `at::Half, float, double`
 
 ```cpp
 // atomicMax for __half, float, double (requires arch > 7.0 for ushort ver of atomicCAS)

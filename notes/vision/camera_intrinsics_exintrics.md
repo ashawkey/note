@@ -1,4 +1,4 @@
-## Camera Pose
+# Camera Pose
 
 
 Very good reference: https://ksimek.github.io/2012/08/22/extrinsic/
@@ -6,7 +6,7 @@ Very good reference: https://ksimek.github.io/2012/08/22/extrinsic/
 Good demo of look-at camera: https://learnwebgl.brown37.net/07_cameras/camera_lookat/camera_lookat.html
 
 
-### Homogeneous Coordinates
+## Homogeneous Coordinates
 
 
 $$
@@ -15,7 +15,7 @@ $$
 $$
 
 
-### Projection from 3D to 2D
+## Projection from 3D to 2D
 
 We usually first transform the 3D points to the camera coordinate system by the camera pose, then project the 3D points to 2D image plane by the camera matrix:
 
@@ -49,7 +49,7 @@ Camera Intrinsic (determined only by the camera itself): $\mathbf K \in \mathbb 
 Camera Extrinsic (describes the transformation from **world to camera**, inversion of camera pose): $\begin{bmatrix}\mathbf R& \mathbf T \\ 0&  1 \end{bmatrix} \in \mathbb R ^ {4 \times 4}$.
 
 
-### Intrinsic
+## Intrinsic
 
 A $3 \times 4$ matrix used to **project** 3D points to 2D coordinates:
 
@@ -96,7 +96,7 @@ z_c
 $$
 
 
-### Extrinsic (w2c)
+## Extrinsic (w2c)
 
 A $4 \times 4$ matrix, a regular **3D transformation from world coordinate system to camera coordinate system**.
 
@@ -144,7 +144,7 @@ thus, $\mathbf C = -\mathbf R^{-1}\mathbf T$
 this also gives a way to calculate $\mathbf{T} = -\mathbf{RC}$.
 
 
-### Pose (c2w)
+## Pose (c2w)
 
 Also a $4 \times 4$ matrix, but it describes the **3D transformation from camera to world**.
 
@@ -160,7 +160,7 @@ $$
 Note that now the translation vector $\mathbf{C}$ is the camera's position in the world coordinate system now.
 
 
-### Construct by `LookAt`
+## Construct by `LookAt`
 
 The camera pose matrix in OpenGL is defined as:
 

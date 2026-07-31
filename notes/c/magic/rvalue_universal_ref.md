@@ -1,6 +1,6 @@
 # right-value reference
 
-### left-value, right-value
+## left-value, right-value
 
 * `lvalue`: have an address (can use `&` operator)
 * `rvalue`: no address, a temporary value  (cannot use `&` operator)
@@ -14,7 +14,7 @@ struct A {};
 A a = A();
 ```
 
-### left-value reference
+## left-value reference
 
 The most common reference we use.
 
@@ -28,7 +28,7 @@ int& r2 = 5; // Error! right-value cannot be referenced.
 const int& r2 = 5; // OK! right-value can be const referenced. This is necessary in cases such as vector::push_back(const T& val), we want both v.push_back(complex_obj) and v.push_back(1) work.
 ```
 
-### right-value reference
+## right-value reference
 
 `rvalue` can be further categorized:
 
@@ -122,7 +122,7 @@ int main() {
 ```
 
 
-### Applications
+## Applications
 
 右值引用主要在函数传参时**用移动代替拷贝**，即**需要拷贝但被拷贝者之后又不再需要**的场景，例如临时变量。因为`std::move`只改变地址指向，而不会物理上的移动（即拷贝）数据。
 
@@ -216,7 +216,7 @@ v.push_back(A(1)); // A(1) is still copied.
 > python默认的对象传值方式就是引用，例如`l.append(obj), obj2 = obj1`均为引用。相反，如果需要拷贝，则要通过`deepcopy`显式实现。
 
 
-### 通用引用 Universal Reference
+## 通用引用 Universal Reference
 
 表现形式为**T && (模板+右值引用)**，利用编译器对模板的推导多义性，可以同时绑定左值与右值。
 
@@ -245,7 +245,7 @@ typename remove_reference<T>::type&& move(T&& t) {
 ```
 
 
-### 完美转发问题
+## 完美转发问题
 
 完美转发指的是在函数内部将参数**包括类型原封不动**的传递给内部的另一函数。但由于右值引用传入函数后会变成左值，简单的参数转发是错误的！
 

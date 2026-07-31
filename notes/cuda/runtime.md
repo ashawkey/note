@@ -1,6 +1,6 @@
 # Runtime
 
-### Memory transfer
+## Memory transfer
 
 ```c
 #include <stdio.h>
@@ -41,7 +41,7 @@ int main()
 
     // Copy result from device memory to host memory
     // h_C contains the result in host memory
-    float *h_C;
+    float *h_C = (float*)malloc(size);
     cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
 
     // Free device memory
@@ -56,7 +56,7 @@ int main()
 }
 ```
 
-### Error check
+## Error check
 
 ```cpp
 #include <cuda_runtime.h>

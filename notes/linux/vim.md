@@ -1,14 +1,14 @@
 # vim
 
 
-### remove ^M at line ending (dos to unix format)
+## remove ^M at line ending (dos to unix format)
 
 ```
 :e ++ff=dos 
 ```
 
 
-### slow startup
+## slow startup
 
 First, try `vim -X`.
 

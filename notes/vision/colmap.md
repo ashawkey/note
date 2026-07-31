@@ -1,7 +1,7 @@
 # colmap
 
 
-### Install in Ubuntu
+## Install in Ubuntu
 
 To enable CUDA, you must build from source.
 
@@ -57,7 +57,7 @@ sudo make install
 ```
 
 
-### CLI
+## CLI
 
 ```bash
 # help
@@ -133,7 +133,7 @@ colmap ...
 ```
 
 
-### GUI
+## GUI
 
 ```bash
 # gui
@@ -143,7 +143,7 @@ colmap gui
 Then just follow the GUI.
 
 
-### Troubleshooting
+## Troubleshooting
 
 * `No good initial image pair found.`
 

@@ -1,7 +1,7 @@
 # authorization
 
 
-### last logins
+## last logins
 
 ```bash
 # last (last logins)
@@ -22,7 +22,7 @@ who
 ```
 
 
-### auth.log
+## auth.log
 
 `/var/log/auth.log`
 
@@ -46,7 +46,7 @@ sudo chown syslog:adm /var/log/auth.log
 ```
 
 
-### syslog
+## syslog
 
 `/var/log/syslog`
 

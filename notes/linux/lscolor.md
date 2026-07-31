@@ -1,6 +1,6 @@
 # ls color
 
-### code to show it.
+## code to show it.
 
 ```bash
 #!/bin/bash
@@ -51,17 +51,17 @@ echo
 ```
 
 
-### default output
+## default output
 
 ![gnome-terminal screenshot - default](lscolor.assets/6kknG.png)
 
 
-### other-writable (o+w)
+## other-writable (o+w)
 
 can be write by users other than owner.
 
 
-### sticky bit
+## sticky bit
 
 Sticky means ONLY root or owner can delete/move this file/directory.
 
@@ -80,7 +80,7 @@ chmod 0777 <dir>
 ```
 
 
-### change ls color
+## change ls color
 
 the environment variable `LS_COLORS` takes charge of this.
 
@@ -91,7 +91,7 @@ rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:
 
 the grammar is `<file type>=<decoration>;<fore-ground>[;<back-ground>]`
 
-##### color code table
+### color code table
 
 |                   |                               |                            |
 | ----------------- | ----------------------------- | -------------------------- |
@@ -112,7 +112,7 @@ the grammar is `<file type>=<decoration>;<fore-ground>[;<back-ground>]`
 | 97 = white        | 106 = turquoise background    |                            |
 |                   | 107 = white background        |                            |
 
-##### example (remove 777 shit green)
+### example (remove 777 shit green)
 
 ```bash
 # ~/.bashrc

@@ -1,7 +1,7 @@
-## CUDA on Windows
+# CUDA on Windows
 
 
-### [install](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html)
+## [install](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html)
 
 Very easy, just follow the [link](https://developer.nvidia.com/cuda-downloads?target_os=Windows) and get a installer.
 
@@ -18,14 +18,14 @@ nvcc --version
 ```
 
 
-### CUDA_VISIBLE_DEVICES
+## CUDA_VISIBLE_DEVICES
 
 ```powershell
 set CUDA_VISIBLE_DEVICES=2,3 & python my_script.py
 ```
 
 
-### Where is the damn `cl.exe` ?
+## Where is the damn `cl.exe` ?
 
 For the error `Command '['where', 'cl']' returned non-zero exit status 1`.
 

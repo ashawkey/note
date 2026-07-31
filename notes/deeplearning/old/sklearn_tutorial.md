@@ -1,4 +1,4 @@
-#### Introduction
+# Introduction
 
 1. Machine Learning
 
@@ -48,7 +48,7 @@
    clf = joblib.load("file.pkl")
    ```
 
-#### Supervised Learning
+# Supervised Learning
 
 * k-NN algorithm for classification
 
@@ -145,7 +145,7 @@ $$
     ```
 
 
-#### Model Selection
+# Model Selection
 
 * Score
 
@@ -195,7 +195,7 @@ $$
   ```
 
 
-#### Unsupervised learning
+# Unsupervised learning
 
 * Clustering
 

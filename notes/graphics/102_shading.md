@@ -2,12 +2,12 @@
 
 ![image-20210314194732691](shading.assets/image-20210314194732691.png)
 
-### Blinn-Phong reflectance model
+## Blinn-Phong reflectance model
 
 ![image-20210314200305193](shading.assets/image-20210314200305193.png)
 
 
-##### Ambient Term
+### Ambient Term
 
 Not depend on anything. Just a constant environment light.
 
@@ -16,7 +16,7 @@ L_a = k_aI_a
 $$
 
 
-##### Diffuse Term (Lambertian) 
+### Diffuse Term (Lambertian) 
 
 depend on light direction, independent of view direction.
 
@@ -27,7 +27,7 @@ $$
 where $k_d$ is a coefficient, $\frac I {r^2}$ is the energy received at radius $r$. $\mathbf n\cdot \mathbf l = \cos \alpha$ (assume unit vector.)
 
 
-##### Specular Term (Blinn-Phong, the highlight)
+### Specular Term (Blinn-Phong, the highlight)
 
 depends on both light direction and view direction.
 
@@ -98,15 +98,15 @@ Eigen::Vector3f texture_fragment_shader(const fragment_shader_payload& payload)
 ![image-20210314200203442](shading.assets/image-20210314200203442.png)
 
 
-### Shading Frequency
+## Shading Frequency
 
 ![image-20210314200644548](shading.assets/image-20210314200644548.png)
 
-##### Flat shading: Each Triangle
+### Flat shading: Each Triangle
 
 Direct shade each triangle. Not smooth.
 
-##### Gouraud Shading: Each Vertex
+### Gouraud Shading: Each Vertex
 
 DEF: **vertex normal** is defined as the average of surrounding face normals.
 
@@ -114,14 +114,14 @@ DEF: **vertex normal** is defined as the average of surrounding face normals.
 * compute color for each vertex.
 * interpolate **color** for each pixel inside each triangle.
 
-##### Phong Shading: Each Pixel
+### Phong Shading: Each Pixel
 
 * compute vertex normals.
 * interpolate **normals** for each pixel inside each triangle.
 * compute color for each pixel.
 
 
-##### Barycentric Interpolation
+### Barycentric Interpolation
 
 Interpolate by area. suppose $X = (x, y)$:
 
@@ -140,7 +140,7 @@ Properties:
 * $(x,y)$ is inside $\Delta ABC$ if and only if $\alpha, \beta, \gamma$ are all non-negative.
 
 
-### Texture Mapping
+## Texture Mapping
 
 Each triangle copies a piece of texture image (2d, uv-space) to the surface (3d).
 
@@ -149,7 +149,7 @@ Each triangle copies a piece of texture image (2d, uv-space) to the surface (3d)
 * Interpolate color at UV, and assign it to the pixel. (nearest, bilinear, bicubic)
 
 
-##### Texture can affect shading: (bump / displacement shading)
+### Texture can affect shading: (bump / displacement shading)
 
 ![image-20210314203342299](shading.assets/image-20210314203342299.png)
 

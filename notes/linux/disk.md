@@ -9,7 +9,7 @@ ref: https://stackoverflow.com/questions/24429949/device-vs-partition-vs-file-sy
 ```
 
 
-### Partition Table Type
+## Partition Table Type
 
 A data structure that provides basic information for the OS about the partition of the hard disk.
 
@@ -27,7 +27,7 @@ A data structure that provides basic information for the OS about the partition 
 
   GPT contains a fake MBR at the beginning of its space. This MBR shows the drive as being a single MBR partition to cope with tools which do not recognize GPT.
 
-### Filesystem
+## Filesystem
 
 A way of storing data inside the partitions.
 
@@ -35,26 +35,26 @@ A way of storing data inside the partitions.
 
   older version of EXT.
 
-* **EXT4**
+**EXT4**
 
-  current default for Linux, Android.
+  current default for Linux, Android. 支持最大 1 EiB（= 2^20 TB）的文件系统。
 
-  support both Windows and Linux. support < 1EB = 2^20 TB.
+  Windows 无法原生读取，需要第三方驱动（如 ext2fsd）或 WSL2。
 
-* FAT
+**FAT**
 
-  much older, for Windows. FAT16 < 4GB, FAT32 < 32 GB.
+  much older, for Windows. FAT16 < 4GB；FAT32 最大约 2TB（但 Windows 格式化工具限制为 32GB）。
 
 * **NTFS**
 
   current default for Windows.
 
-* exFAT
+**exFAT**
 
-  support both Windows and Linux, usually for swap and recovery.
+  support both Windows and Linux natively, 适合 U 盘/外接盘等移动存储与大文件（用于 swap 是错的，swap 需要独立的 swap 分区或文件）。
 
 
-### check disk state and mount point
+## check disk state and mount point
 
 * `fdisk`: check all physically loaded disks
 
@@ -192,7 +192,7 @@ A way of storing data inside the partitions.
   where ROTA == 1 means HDD, and ROTA == 0 means SSD.
 
 
-### Add a new disk
+## Add a new disk
 
 * Plug in the hardware
 

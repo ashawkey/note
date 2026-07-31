@@ -1,6 +1,6 @@
 # Websites
 
-### Static Websites
+## Static Websites
 
 HTML + CSS + JavaScript
 
@@ -40,13 +40,13 @@ HTML + CSS + JavaScript
 > Should I write all JavaScript?
 
 
-### Dynamic Websites (Server-side programming)
+## Dynamic Websites (Server-side programming)
 
 Application Server + Database
 
-##### Django (Python)
+### Django (Python)
 
-##### Express/Node.js (JavaScript)
+### Express/Node.js (JavaScript)
 
 * `Express`：基于 Node.js 平台，快速、开放、极简的 Web 开发框架。
 * `Vue`：构建数据驱动的Web界面的渐进式框架

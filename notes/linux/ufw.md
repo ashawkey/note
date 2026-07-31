@@ -1,7 +1,7 @@
 # ufw
 
 
-### enable
+## enable
 
 ```bash
 sudo apt install ufw

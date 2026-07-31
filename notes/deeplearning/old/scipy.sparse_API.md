@@ -1,4 +1,4 @@
-#### Sparse matrix class
+# Sparse matrix class
 
 * bsr_matrix
 
@@ -48,7 +48,7 @@
 
   Linked List format
 
-#### Functions
+# Functions
 
 ```python
 eye(m[, dtype, format="dia"])
@@ -59,7 +59,7 @@ issparse(x) # isspmatrix(x)
 isspmatrix_csc(x)
 ```
 
-#### linalg
+# linalg
 
 ```python
 inv(A)

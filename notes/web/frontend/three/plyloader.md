@@ -1,6 +1,8 @@
+# PLY Loader (Three.js)
 
 
-### PLY loader example
+
+## PLY loader example
 
 `index.html`
 

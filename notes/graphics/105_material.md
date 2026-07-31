@@ -2,27 +2,27 @@
 
 Material == BRDF
 
-### Diffuse (Lambertian) Material
+## Diffuse (Lambertian) Material
 
 ![image-20210318190831635](material.assets/image-20210318190831635.png)
 
-### Glossy Material
+## Glossy Material
 
 ![image-20210318190908144](material.assets/image-20210318190908144.png)
 
-### Ideal Reflective / Refractive Material
+## Ideal Reflective / Refractive Material
 
 ![image-20210318190942601](material.assets/image-20210318190942601.png)
 
 
-### Microfacet Theory
+## Microfacet Theory
 
-### Anisotropic Materials
+## Anisotropic Materials
 
 ![image-20210318191307366](material.assets/image-20210318191307366.png)
 
 
-### Properties of BRDF
+## Properties of BRDF
 
 * Non-negativity
 * Linearity

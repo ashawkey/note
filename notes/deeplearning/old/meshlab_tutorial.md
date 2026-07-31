@@ -1,6 +1,6 @@
 # MeshLab Tutorial
 
-### Input format
+## Input format
 
 * XYZ (.txt)
 
@@ -12,12 +12,12 @@
 
   (separator and format can be changed)
 
-### Coloring
+## Coloring
 
 can only use the RGB to color.
 
 
-### Codelet
+## Codelet
 
 ```python
 palette = [[255,0,0], [0,255,0], [0,0,255], [255,255,0], [0,255,255], [255,0,255], [192,192,192], [128, 0, 0], [128, 128, 0], [0, 128, 0], [128, 0, 128], [0, 128, 128], [0, 0, 128]]

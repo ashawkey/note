@@ -5,7 +5,7 @@ import datatable as dt
 ```
 
 
-### Load
+## Load
 
 ```python
 dt.Frame(A=range(5), B=['a','b','c','d','e'])
@@ -19,7 +19,7 @@ dt.fread(data, sep=None, header=None, fill=False, skip_blank_lines=False, column
 ```
 
 
-### Properties
+## Properties
 
 ```python
 DT.shape
@@ -28,7 +28,7 @@ DT.stypes # column types
 ```
 
 
-### Data Manipulation
+## Data Manipulation
 
 
 $$
@@ -94,7 +94,7 @@ DT[:, :, sort(f.A)]
 ```
 
 
-### Save
+## Save
 
 ```python
 DT.to_pandas()

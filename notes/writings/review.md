@@ -1,4 +1,6 @@
-### strengths
+# Review
+
+## strengths
 
 * In general, the paper is well-written and easy to follow.
 * The proposed method is intuitive and reasonable for practical application.
@@ -6,13 +8,13 @@
 * The paper addresses an important research topic on ...
 
 
-### weaknesses
+## weaknesses
 
 * Some parts of the paper are difficult to understand, ...
 * 
 
 
-### post rebuttal
+## post rebuttal
 
 After reading the other reviews and the rebuttal, I still remain at a reject rating.
 

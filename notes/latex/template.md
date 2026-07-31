@@ -1,6 +1,6 @@
 # LaTeX Templates
 
-### Article
+## Article
 
 ```latex
 \documentclass{article}

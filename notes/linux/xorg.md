@@ -1,4 +1,4 @@
-### X.org / X11
+# X.org / X11
 
 install: (usually you will never need to do these)
 
@@ -11,7 +11,7 @@ sudo apt install ubuntu-desktop
 ```
 
 
-### ubuntu 18.04 issues
+# ubuntu 18.04 issues
 
 since ubuntu 18.04 changes from `lightdm` to `gdm3`, there are somethings to do if it fails to start.
 
@@ -32,7 +32,7 @@ since ubuntu 18.04 changes from `lightdm` to `gdm3`, there are somethings to do 
 * reconfigure `xorg.conf` and restart `gdm3`
 
 
-### basics
+# basics
 
 log files:
 
@@ -187,7 +187,7 @@ config:
 * `~/.xsession`
 
   
-### display manager
+# display manager
 
 usually `lightdm`, alternatives are `gdm3, sddm, ...`
 
@@ -201,7 +201,7 @@ sudo systemctl status display-manager
 log files:`/var/log/lightdm/lightdm.log`
 
 
-### nomachine related
+# nomachine related
 
 ```
 /usr/NX/var/log/nxerror.log
@@ -220,7 +220,7 @@ sudo /etc/NX/nxserver --restart
 ```
 
 
-### reinstall ubuntu-desktop
+# reinstall ubuntu-desktop
 
 ```bash
 # do not use taskel in terminal... it stucks with no reason and once you unfocus from the tab, it somewhat freezes..
@@ -230,7 +230,7 @@ sudo apt install --reinstall ubuntu-desktop
 sudo apt install --reinstall unity
 ```
 
-### restart those machines and find nomachine fails to connect...
+# restart those machines and find nomachine fails to connect...
 
 * your machine is running in low-graphics mode --> black screen with X mouse mark. (ubuntu16)
   * likely lightdm is not running. Check by `sudo systemctl status lightdm`, usually something is wrong with `/etc/X11/xorg.conf`, just configure it like above.

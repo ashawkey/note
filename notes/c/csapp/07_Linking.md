@@ -1,12 +1,12 @@
 # Linking
 
-### Why
+## Why
 
 Separate source code (especially for large systems) into multiple smaller parts, so we can compile each part independently, which avoids re-building everything when we modify one part. 
 
 These parts are **linked** together later.
 
-### The Compilation System
+## The Compilation System
 
 * Preprocessor
 
@@ -53,7 +53,7 @@ These parts are **linked** together later.
   ```
 
   
-### Relocatable Object Files
+## Relocatable Object Files
 
 * ELF (Executable and Linkable Format) header
 
@@ -110,9 +110,9 @@ These parts are **linked** together later.
   ```
 
 
-### Handling Symbols
+## Handling Symbols
 
-#### Undefined symbols
+### Undefined symbols
 
 Compilation won't report error on **undefined** symbols (but must be **declared**!), they are assumed to be linked in.
 
@@ -138,7 +138,7 @@ gcc -o main main.c
 # ... error: ld returned 1 exit status
 ```
 
-#### Duplicate symbols
+### Duplicate symbols
 
 * Strong symbols: functions, initialized global variables.
 * Weak symbols: uninitialized global variables.
@@ -158,7 +158,7 @@ void bar() {
 }
 ```
 
-#### Library Archive
+### Library Archive
 
 Linux saves static library into `*.a` archive files. Each archive file is a collection of many `*.o` files.
 
@@ -177,7 +177,7 @@ gcc -static -o main main.o lib.a # append the lib archive
 ```
 
 
-### Static Linking
+## Static Linking
 
 ```bash
 # main.o uses add.o & printf.o, but not uses mul.o
@@ -209,7 +209,7 @@ gcc -static -o foo foo.c libx.a liby.a libx.a # must duplicate libx.a twice here
 ```
 
 
-### Relocation
+## Relocation
 
 After determining the set **E**xecutable, linker performs relocation to merge all the `*.o` files into one.
 
@@ -228,7 +228,7 @@ Two steps are performed:
   ![image-20221219203503532](07_Linking.assets/image-20221219203503532.png)
 
 
-### Executable Files
+## Executable Files
 
 Similar to ELF files:
 
@@ -249,7 +249,7 @@ What happens when we run an executable file:
 ![image-20221219204229506](07_Linking.assets/image-20221219204229506.png)
 
 
-### Dynamic Linking
+## Dynamic Linking
 
 Static linking (static libraries, `*.o`) has various disadvantages:
 

@@ -1,6 +1,6 @@
 # ip
 
-### basics
+## basics
 
 ```bash
 # show all network interfaces & IP address

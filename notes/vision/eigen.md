@@ -3,7 +3,7 @@
 A matrix/vector arithmetic library for c/c++.
 
 
-### Install
+## Install
 
 download the source at [homepage](https://eigen.tuxfamily.org/index.php?title=Main_Page).
 
@@ -22,7 +22,7 @@ or simply symbol link it to `\usr\local\include`.
 > To use the `dev` branch, download the source at https://eigen.tuxfamily.org/dox/
 
 
-### Examples
+## Examples
 
 simple matrix
 
@@ -64,7 +64,7 @@ int main()
 ```
 
 
-### Matrix
+## Matrix
 
 all matrices and vectors are instances of the `Matrix` class:
 
@@ -96,7 +96,7 @@ Built-in typedefs for `N in [2,3,4,X]` and `t in [i, f, d, cf, cd]`:
 * `RowVectorNt` == `Matrix<t, 1, N>`
 
 
-#### dynamic matrix
+### dynamic matrix
 
 Eigen also supports **dynamic** matrix size: `typedef Matrix<double, Dynamic, Dynamic> MatrixXd;`
 
@@ -113,7 +113,7 @@ using Triangles = Matrix<uint32_t, Dynamic, 3, RowMajor>;
 ```
 
 
-#### Access coefficients
+### Access coefficients
 
 Coefficient accessors: `m(i, j)`
 
@@ -127,7 +127,7 @@ m << 1, 2, 3,
 ```
 
 
-#### Size
+### Size
 
 Size and resize: `rows(), cols(), size()`
 
@@ -150,9 +150,9 @@ a = b; // a is now 3x3
 ```
 
 
-### Arithmetic
+## Arithmetic
 
-#### Add/Sub:
+### Add/Sub:
 
 ```c++
 #include <iostream>
@@ -186,7 +186,7 @@ int main()
 }
 ```
 
-#### Scalar Mul/Div:
+### Scalar Mul/Div:
 
 ```c++
 int main()
@@ -205,7 +205,7 @@ int main()
 }
 ```
 
-#### Transpose/Conjugate:
+### Transpose/Conjugate:
 
 ```c++
 MatrixXcf a = MatrixXcf::Random(2,2);
@@ -223,7 +223,7 @@ However, `a = a.tranpose()` is WRONG and never use it. (e.g., it will cause`[[12
 
 Instead, if must, use `a = a.transposeInPlace()`.
 
-#### Matrix Mul:
+### Matrix Mul:
 
 ```c++
 int main()
@@ -247,7 +247,7 @@ Note: `m = m*m` is safe as a special case. It equals: `tmp = m*m; m = tmp;`
 
 We can avoid this default copy if we are sure there is no aliasing problem by: `a.noalias() += b * c;`
 
-#### Dot/Cross product of vectors
+### Dot/Cross product of vectors
 
 ```c++
 int main()
@@ -264,7 +264,7 @@ int main()
 }
 ```
 
-#### norm and normalization of vectors
+### norm and normalization of vectors
 
 ```c++
 int main() {
@@ -278,7 +278,7 @@ int main() {
 ```
 
 
-#### Basic reductions
+### Basic reductions
 
 ```c++
 int main()
@@ -309,7 +309,7 @@ int main()
 }
 ```
 
-#### Element-wise Mat Mul:
+### Element-wise Mat Mul:
 
 Since `*` is overload by Mat Mul, we have to use `cwiseProduct` for coefficient-wise (element-wise) product,
 
@@ -320,7 +320,7 @@ a.cwiseProduct(b);
 ```
 
 
-### Array
+## Array
 
 `Array` provides general-purposed arrays, while `Matrix` provides linear-algebra purposed arrays.
 
@@ -359,7 +359,7 @@ Since array expressed both `Vector` and `Matrix`, the name convention is slightl
 * for vector: `ArrayNt` == `Array<type, N, 1>`
 * for matrix: `ArrayNNt` == `Array<type, N, N>`
 
-#### Conversion between Matrix and Array
+### Conversion between Matrix and Array
 
 use `.array()` and `.matrix()`. 
 
@@ -406,7 +406,7 @@ int main()
 ```
 
 
-### Block Operations
+## Block Operations
 
 use `.block(i,j,p,q)` for dynamic-size block or `.block<p,q>(i,j)` for a fixed-size block, starting at `(i,j)` with size `(p,q)`.
 
@@ -427,7 +427,7 @@ int main()
 }
 ```
 
-#### special case: only one row or col
+### special case: only one row or col
 
 Use `.row()` and `.col()` for optimized performance.
 
@@ -446,7 +446,7 @@ int main()
 }
 ```
 
-#### special case: corner-centered blocks
+### special case: corner-centered blocks
 
 Some short names. For example:
 
@@ -457,7 +457,7 @@ m.topLeftCorner<p, q>() == m.block<p, q>(0, 0)
 
 Also have `bottemLeftCorner, topRightCorner, bottomRightCorner, topRows, bottomRows, leftCols, rightCols `.
 
-#### special case: block for vectors
+### special case: block for vectors
 
 ```c++
 v.head(n) == v.head<n>()
@@ -466,9 +466,9 @@ v.segment(i, n) == v.segment<n>(i)
 ```
 
 
-### Advanced Initializations
+## Advanced Initializations
 
-#### joined comma 
+### joined comma 
 
 ```c++
 RowVectorXd vec1(3);
@@ -483,7 +483,7 @@ std::cout << "joined = " << joined << std::endl;
 ```
 
 
-### Special matrices
+## Special matrices
 
 ```c++
 // zero matrices
@@ -533,9 +533,9 @@ mat = (MatrixXf(2,2) << 0, 1, 1, 0).finished() * mat; // .finished() is a must!
 ```
 
 
-### Reductions
+## Reductions
 
-#### norm
+### norm
 
 ```c++
 int main()
@@ -559,7 +559,7 @@ int main()
 }
 ```
 
-#### boolean
+### boolean
 
 ```c++
 int main()
@@ -574,7 +574,7 @@ int main()
 }
 ```
 
-#### visitors
+### visitors
 
 to retrieve location of min/max reduction.
 
@@ -601,7 +601,7 @@ int main()
 }
 ```
 
-#### partial reduction
+### partial reduction
 
 since we at most consider 2-dimensional arrays...
 
@@ -640,7 +640,7 @@ int main()
 }
 ```
 
-#### Broadcast
+### Broadcast
 
 Element-wise broadcasts are achieved by `Array`
 
@@ -671,7 +671,7 @@ int main()
 ```
 
 
-### Map: from raw data to eigen
+## Map: from raw data to eigen
 
 ```cpp
 float* data;
@@ -679,7 +679,7 @@ Map<const Vector3f> pos(data, 3); // (pointer, size)
 ```
 
 
-### Ref: generic type without template
+## Ref: generic type without template
 
 ```cpp
 void fn(const Ref<const MatrixXf>& a) {

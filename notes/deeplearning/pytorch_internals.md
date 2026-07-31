@@ -1,8 +1,8 @@
-## PyTorch Internals
+# PyTorch Internals
 
 A summary of [ezyang's blog](http://blog.ezyang.com/2019/05/pytorch-internals/).
 
-### Tensor View and Storage
+## Tensor View and Storage
 
 ```python
 ## View (logical)
@@ -66,7 +66,7 @@ def is_contiguous(stride):
   * dtype: int, float, ...
 
 
-### Source Structure
+## Source Structure
 
 ```bash
 torch/ # torch frontend
@@ -93,7 +93,7 @@ Then you should write kernels as the real implementation.
 You'll need to `dispatch` based on `dtype`, and implement each (or use template).
 
 
-### Workflow efficiency
+## Workflow efficiency
 
 * Editing headers sparingly, since it may cause re-compilation of lots of files...
 * [setup ccache](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md#use-ccache)

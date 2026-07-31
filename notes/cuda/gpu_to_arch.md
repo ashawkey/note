@@ -1,3 +1,5 @@
+# GPU Architecture and Compute Capability
+
 reference: https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
 
 |            |             |              |        |       |        |        |           |          |
@@ -13,7 +15,7 @@ reference: https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-vario
 ** Hopper is NVIDIA’s rumored “tesla-next” series, with a 5nm process.
 
 
-### Fermi cards (CUDA 3.2 until CUDA 8)
+## Fermi cards (CUDA 3.2 until CUDA 8)
 
 Deprecated from CUDA 9, support completely dropped from CUDA 10.
 
@@ -21,7 +23,7 @@ Deprecated from CUDA 9, support completely dropped from CUDA 10.
   GeForce 400, 500, 600, GT-630.
   ***Completely dropped from CUDA 10 onwards.\***
 
-### Kepler cards (CUDA 5 until CUDA 10)
+## Kepler cards (CUDA 5 until CUDA 10)
 
 Deprecated from CUDA 11.
 
@@ -38,7 +40,7 @@ Deprecated from CUDA 11.
   Adds a few more registers.
   ***Deprecated from CUDA 11, will be dropped in future versions***, strongly suggest replacing with a [32GB PCIe Tesla V100](https://www.amazon.com/gp/product/B07JVNHFFX/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07JVNHFFX&linkCode=as2&tag=arnonshimoni-20&linkId=039f38074e50b581e71d500cd08bca85).
 
-### Maxwell cards (CUDA 6 until CUDA 11)
+## Maxwell cards (CUDA 6 until CUDA 11)
 
 - **SM50 or `SM_50, compute_50`** –
   Tesla/Quadro M series.
@@ -48,7 +50,7 @@ Deprecated from CUDA 11.
 - **SM53 or `SM_53, compute_53`** –
   Tegra (Jetson) TX1 / Tegra X1, Drive CX, Drive PX, Jetson Nano.
 
-### **Pascal (CUDA 8 and later)**
+## **Pascal (CUDA 8 and later)**
 
 - **SM60 or `SM_60, compute_60`** –
   Quadro GP100, Tesla P100, DGX-1 (Generic Pascal)
@@ -57,19 +59,19 @@ Deprecated from CUDA 11.
 - **SM62 or `SM_62, compute_62`** – 
   Integrated GPU on the NVIDIA Drive PX2, Tegra (Jetson) TX2
 
-### Volta (CUDA 9 and later)
+## Volta (CUDA 9 and later)
 
 - **SM70 or `SM_70, compute_70`** –
   DGX-1 with Volta, Tesla V100, GTX 1180 (GV104), Titan V, Quadro GV100
 - **SM72 or `SM_72, compute_72`** –
   Jetson AGX Xavier, Drive AGX Pegasus, Xavier NX
 
-### Turing (CUDA 10 and later)
+## Turing (CUDA 10 and later)
 
 - **SM75 or `SM_75, compute_75`** –
   GTX/RTX Turing – GTX 1660 Ti, RTX 2060, [RTX 2070](https://www.amazon.com/gp/product/B082P1BF7H/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B082P1BF7H&linkCode=as2&tag=arnonshimoni-20&linkId=68e78b128dd90f652eb7796404e2126f), RTX 2080, Titan RTX, Quadro RTX 4000, Quadro RTX 5000, Quadro RTX 6000, Quadro RTX 8000, Quadro T1000/T2000, Tesla T4
 
-### Ampere (CUDA 11.1 and later)
+## Ampere (CUDA 11.1 and later)
 
 - **SM80 or `SM_80, compute_80`** –
   NVIDIA A100 (the name “Tesla” has been dropped – GA100), NVIDIA DGX-A100
@@ -80,7 +82,7 @@ Deprecated from CUDA 11.
 >
 > https://docs.nvidia.com/cuda/ampere-tuning-guide/index.html#improved_fp32
 
-### Hopper (CUDA 12 [planned] and later)
+## Hopper (CUDA 12 [planned] and later)
 
 - **SM90 or `SM_90, compute_90`** –
   NVIDIA H100 (GH100)

@@ -1,9 +1,9 @@
-## trojan-go
+# trojan-go
 
 Support CDN like Cloudflare to hide your server's IP, or use it even if it's blocked.
 
 
-### download
+## download
 
 https://github.com/p4gefau1t/trojan-go/releases
 
@@ -14,7 +14,7 @@ unzip trojan-go-linux-amd64.zip
 ```
 
 
-### Cloudflare settings
+## Cloudflare settings
 
 Go to `SSL/TLS`:
 
@@ -31,7 +31,7 @@ Go to `DNS`:
 * make sure to use `Proxied`.
 
 
-### server
+## server
 
 A [config](https://p4gefau1t.github.io/trojan-go/basic/config/) example:
 
@@ -243,9 +243,9 @@ systemctl status nginx
 ```
 
 
-### Client
+## Client
 
-#### trojan-go client
+### trojan-go client
 
 a config:
 
@@ -321,7 +321,7 @@ systemctl statue trojan-go
 ```
 
 
-#### Clash client (recommended)
+### Clash client (recommended)
 
 get clash:
 

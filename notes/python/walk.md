@@ -1,6 +1,6 @@
 # os
 
-### os.path
+## os.path
 
 ```python
 # safe join of dirs & files
@@ -12,7 +12,7 @@ os.path.dirname(path) # a/b/c --> a/b
 ```
 
 
-### os.walk
+## os.walk
 
 ```python
 # regular usage: find all files under path recursively

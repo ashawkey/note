@@ -2,7 +2,7 @@
 
 protobuf is developed to **serialize and retrieve structured data** with high efficiency.
 
-### Basics
+## Basics
 
 ```protobuf
 // addressbook.proto
@@ -70,13 +70,13 @@ message AddressBook {
   ```
 
 
-### Proto3
+## Proto3
 
-##### Message
+### Message
 
 can be viewed as class in python.
 
-##### Field
+### Field
 
 * field type
 
@@ -127,12 +127,12 @@ can be viewed as class in python.
   ```
 
 
-##### comments
+### comments
 
 same as C/C++.
 
 
-##### reserved field
+### reserved field
 
 ```protobuf
 message Foo {
@@ -144,7 +144,7 @@ message Foo {
 you should reserve the field number or name for your deleted fields, in case of later modifications reuse these fields and cause bugs.
 
 
-##### import
+### import
 
 ```protobuf
 // old.proto
@@ -158,12 +158,12 @@ when `old.proto` is imported by another proto file saying `client.proto,`
 
 ​	
 
-##### package
+### package
 
 python will ignore package declarations, since python modules are organized according to locations in file system.
 
 
-##### oneof
+### oneof
 
 oneof is a type that means the message will only record one of its fields or subclasses.
 

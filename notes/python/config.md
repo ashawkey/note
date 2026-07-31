@@ -1,4 +1,4 @@
-### argparse
+# argparse
 
 when you just have a simple project, and don't want to write `yaml` config files.
 
@@ -11,7 +11,7 @@ opt = parser.parse_args()
 ```
 
 
-### omega conf
+# omega conf
 
 for large projects, when you need different configs (`yaml`) for different running.
 
@@ -93,6 +93,6 @@ python main.py --config configs/base.yaml --train --gpu 0 x=2 # now x is 2
 ```
 
 
-### tyro
+# tyro
 
 An even better library, satisfying all the need, check the separate note [here](./tyro.md).

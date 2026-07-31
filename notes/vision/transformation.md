@@ -1,6 +1,6 @@
-### Transformation
+# Transformation
 
-#### 2D
+## 2D
 
 The transformation matrix is **Rotate THEN Translate (and scale)**
 
@@ -34,7 +34,7 @@ $$
 $$
 
 
-#### 3D
+## 3D
 
 Main difference from 2D is the three rotation matrices **along three axes**:
 
@@ -80,7 +80,7 @@ n_z & 0 & -n_x \\
 $$
 
 
-### Decompose 3D transformation
+# Decompose 3D transformation
 
 > ref: https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati/417813
 >

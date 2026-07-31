@@ -6,7 +6,7 @@ run python in javascript!
 * Includes `NumPy, Pandas, Matplotlib, Scipy, scikit-learn`.
 * transparent access between python and js.
 
-### example in web browsers
+## example in web browsers
 
 ```html
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ run python in javascript!
 ```
 
 
-### example in nodejs
+## example in nodejs
 
 Install:
 
@@ -56,7 +56,7 @@ await pyodide.runPythonAsync("1+1");
 ```
 
 
-### JS API (`namedLikeThis`)
+## JS API (`namedLikeThis`)
 
 * `globals`: `PyProxy`, alias to the global python environment.
 
@@ -81,7 +81,7 @@ await pyodide.runPythonAsync("1+1");
   * `toJs(options)`: convert to a native js object.
 
 
-### Python API (`named_like_this`)
+## Python API (`named_like_this`)
 
 * `js`: alias to the global js environment (`window`).
 * `JsProxy`: A js object proxied to python.
@@ -92,12 +92,12 @@ await pyodide.runPythonAsync("1+1");
   Most time we just use `PyProxy.toJs()` in js.
 
 
-### Micropip API
+## Micropip API
 
 * `install(requirements)`: install given packages and dependencies.
 
 
-### access python from js
+## access python from js
 
 ```js
 pyodide.runPython(`
@@ -165,7 +165,7 @@ let sys = pyodide.globals.get("sys");
 ```
 
 
-### access js from python
+## access js from python
 
 ```python
 import js # js is `window` in browser
@@ -214,7 +214,7 @@ reload_page()
 ```
 
 
-### load python packages
+## load python packages
 
 ```js
 // load official supported packages

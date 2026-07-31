@@ -1,4 +1,4 @@
-## profiling in pytorch
+# profiling in pytorch
 
 Never use `time.time()` for CUDA time measuring!
 

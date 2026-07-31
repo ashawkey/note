@@ -1,4 +1,4 @@
-### Color
+# Color
 
 * Why multiply mixes color:
 

@@ -1,4 +1,4 @@
-## Physically-based Rendering
+# Physically-based Rendering
 
 * notations:
   * $\mathbf p$ is the shading point.
@@ -61,7 +61,7 @@ $$
   * indirect term (from other reflective surfaces): also dependent on the current shading point.
 
 
-### Metallic/Roughness v.s. Specular/Glossiness
+## Metallic/Roughness v.s. Specular/Glossiness
 
 Except for the common metallic-roughness model, there is also specular-glossiness model for PBR (e.g., Unity).
 

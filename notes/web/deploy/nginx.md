@@ -1,12 +1,12 @@
 # Nginx
 
-### Concepts
+## Concepts
 
 * Proxy (Server): An intermediary for requests from clients.
 * Reverse Proxy (Server): An intermediary for responses from servers.
 
 
-### Systemd
+## Systemd
 
 `Systemd` is a series of commands, it replaces `initd`  and has `pid=1`.
 
@@ -37,7 +37,7 @@ systemctl cat apache.service # cat config file
 ```
 
 
-### CLI
+## CLI
 
 ```bash
 systemctl start nginx.service
@@ -51,7 +51,7 @@ nginx -t # test, check config files.
 ```
 
 
-### Logs
+## Logs
 
 default:
 
@@ -61,7 +61,7 @@ default:
 ```
 
 
-### Configs
+## Configs
 
 Location: `/etc/nginx/nginx.conf`
 

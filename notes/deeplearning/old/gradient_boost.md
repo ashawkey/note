@@ -1,6 +1,6 @@
 # Gradient Boost
 
-### LightGBM
+## LightGBM
 
 ```python
 import lightgbm as lgb

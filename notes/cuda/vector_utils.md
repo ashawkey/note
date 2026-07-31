@@ -1,6 +1,6 @@
 # CUDA built in vector utils
 
-### [vector](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#built-in-vector-types)
+## [vector](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#built-in-vector-types)
 
 CUDA has built in support for simple vectors like `float2, float3, float4, int2, ...`
 

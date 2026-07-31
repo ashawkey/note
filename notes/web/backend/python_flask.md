@@ -1,6 +1,6 @@
 # Flask (Pallets Project)
 
-### CLI
+## CLI
 
 ```bash
 ## Set
@@ -15,7 +15,7 @@ flask run # python -m flask run
 ```
 
 
-### Views
+## Views
 
 A function to respond to requests.
 
@@ -45,7 +45,7 @@ Valid response:
   ```
 
   
-### Blueprint
+## Blueprint
 
 A way to organize a group of views. (Modularization)
 
@@ -84,7 +84,7 @@ def login_required(view):
 ```
 
 
-### Context
+## Context
 
 **How flask handle request: **
 
@@ -101,7 +101,7 @@ APP context is cheap, and can be created without a request, for accessing `curre
 Request context is expensive.
 
 
-### URL arguments
+## URL arguments
 
 * simple arguments
 
@@ -182,7 +182,7 @@ Request context is expensive.
   ```
 
   
-### flask.session
+## flask.session
 
 Store data **in different requests from the same client**. (signed cookies)
 
@@ -195,7 +195,7 @@ session.clear()
 ```
 
 
-### flask.g
+## flask.g
 
 Store data **in the same request**.
 
@@ -226,7 +226,7 @@ def teardown_db():
 ```
 
 
-### Jinja
+## Jinja
 
 A template library.
 

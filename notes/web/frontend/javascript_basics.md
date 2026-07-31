@@ -1,6 +1,6 @@
 # JavaScript Basics
 
-### Commons
+## Commons
 
 ```javascript
 var a = 1; // use ;
@@ -9,7 +9,7 @@ var a = 1; // use ;
 ```
 
 
-### Types
+## Types
 
 * `Number`
 
@@ -102,7 +102,7 @@ var a = 1; // use ;
 * `undefined`: uninitialized variable
 
 
-### Variables
+## Variables
 
 Pass by value.
 
@@ -141,7 +141,7 @@ Pass by value.
   Maybe Global or Local, depending on where we declare it.
 
 
-### Operators
+## Operators
 
 ```javascript
 '3' + 4 + 5;  // "345"
@@ -157,7 +157,7 @@ Pass by value.
 ```
 
 
-### Controls
+## Controls
 
 ```javascript
 for (let value of array) {}
@@ -176,7 +176,7 @@ switch (action) {
 ```
 
 
-### Objects
+## Objects
 
 Objects in JavaScript are like Dictionaries in Python.
 
@@ -204,7 +204,7 @@ Pass by Reference.
   ```
 
 
-### Arrays
+## Arrays
 
 A special type of Object. (Not a list, still a dictionary!)
 
@@ -232,7 +232,7 @@ a.splice(a.indexOf('x'), 1) // delete 'x'
 ```
 
 
-### Functions
+## Functions
 
 * If no `return`, return `undefined`.
 
@@ -306,7 +306,7 @@ a.splice(a.indexOf('x'), 1) // delete 'x'
   ```
 
 
-### Exports & Imports
+## Exports & Imports
 
 Export by:
 
@@ -346,7 +346,7 @@ import(".App.js").then(
 ```
 
 
-### Closures
+## Closures
 
 ```javascript
 function makeAdder(a) {

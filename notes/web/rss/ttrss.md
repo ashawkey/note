@@ -1,7 +1,7 @@
 # TTRSS
 
 
-### install
+## install
 
 ```bash
 # install docker
@@ -23,7 +23,7 @@ docker-compose up
 ```
 
 
-### Nginx
+## Nginx
 
 As sub-domain mode: 
 
@@ -100,14 +100,14 @@ server {
 ```
 
 
-### access web frontend
+## access web frontend
 
 At `kiui.moe/ttrss/` or `ttrss.kiui.moe`. 
 
 Default account is `admin`. Remember to change password at once.
 
 
-### fever api for 3rd applications
+## fever api for 3rd applications
 
 * activate in prefs.
 * set a new password.

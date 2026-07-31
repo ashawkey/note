@@ -1,6 +1,6 @@
 # rm & mv
 
-### move with exclusion
+## move with exclusion
 
 ```bash
 # move all files except dir into dir, a usual trick.
@@ -11,7 +11,7 @@ mv !(dir1|dir2) dir1
 ```
 
 
-### remove with exclusion
+## remove with exclusion
 
 ```bash
 # rm all files except `file`

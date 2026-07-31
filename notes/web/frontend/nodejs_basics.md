@@ -1,6 +1,6 @@
 # Node.js
 
-### install & update in ubuntu
+## install & update in ubuntu
 
 ubuntu default install is low-version:
 
@@ -19,7 +19,7 @@ sudo npm install -g npm
 need to restart shell to use new version!
 
 
-### `node`
+## `node`
 
 Node.js is a **JavaScript run-time environment.**
 
@@ -102,7 +102,7 @@ It allows developers to write JavaScript outside of a browser.
   ```
 
   
-### `npm`: Node Package Manager
+## `npm`: Node Package Manager
 
 ```bash
 npm install # based on package.json, install in local node_modules folder.
@@ -138,7 +138,7 @@ npx npm-check-updates -u
 npm install
 ```
 
-#### init a project
+### init a project
 
 ```bash
 npm init -y # --yes
@@ -175,7 +175,7 @@ React provides a better init setup by:
 It installs lots of default packages.
 
 
-### `npx`: Node Package Runner
+## `npx`: Node Package Runner
 
 ```bash
 npm install cowsay # executables in .bin
@@ -191,7 +191,7 @@ npx https://xxx # run code from web
 ```
 
 
-### `package.json`
+## `package.json`
 
 ```json
 {

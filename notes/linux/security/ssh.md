@@ -1,6 +1,6 @@
 # ssh
 
-### ssh-gen-key & ssh-copy-id
+## ssh-gen-key & ssh-copy-id
 
 ```bash
 # create a key-pair on client.
@@ -14,7 +14,7 @@ ssh-copy-id user@remote_host
 ```
 
 
-### sshd_config
+## sshd_config
 
 located in `/etc/ssh/sshd_config`.
 

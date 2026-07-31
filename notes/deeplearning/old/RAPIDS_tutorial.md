@@ -1,15 +1,15 @@
 # RAPIDS
 
-### cudf
+## cudf
 
 GPU DataFrame.
 
 
-### cuml
+## cuml
 
 Machine Learning Algorithms.
 
-##### k-NN
+### k-NN
 
 * find duplicates from image embedding
 
@@ -26,7 +26,7 @@ Machine Learning Algorithms.
   ```
 
 
-##### k-Means
+### k-Means
 
 ```python
 import cuml
@@ -38,7 +38,7 @@ train.head()
 ```
 
 
-##### T-SNE
+### T-SNE
 
 ```python
 import cuml

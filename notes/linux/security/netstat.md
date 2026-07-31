@@ -1,7 +1,7 @@
 # port
 
 
-### netstat
+## netstat
 
 check for network communications on every port.
 
@@ -11,7 +11,7 @@ sudo netstat -anup # ... udp ...
 ```
 
 
-### fuser
+## fuser
 
 identify processes using files or sockets.
 
@@ -27,7 +27,7 @@ fuser -i -k .
 ```
 
 
-### ufw
+## ufw
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04
 

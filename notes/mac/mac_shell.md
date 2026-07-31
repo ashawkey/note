@@ -1,4 +1,4 @@
-## Mac shell
+# Mac shell
 
 Mac use ZSH by default.
 
@@ -29,16 +29,16 @@ alias proxy_off="unset http_proxy; unset https_proxy"
 
 
 
-### [iterm2](https://iterm2.com/)
+## [iterm2](https://iterm2.com/)
 
 Enable unlimited scrollback buffer:
 
-iTerm2 --> Settings --> Profiles --> Terminal --> Check Unlimited scrooback.
+iTerm2 --> Settings --> Profiles --> Terminal --> Check Unlimited scrollback.
 
 
 
 
-### [Brew](https://brew.sh/)
+## [Brew](https://brew.sh/)
 
 The all-in-one shell package manager.
 
@@ -68,7 +68,7 @@ brew services start/stop/status colima
 
 
 
-### [Scroll Reverser](https://pilotmoon.com/scrollreverser/)
+## [Scroll Reverser](https://pilotmoon.com/scrollreverser/)
 
 Configure the scroll direction of mouse & touch pad to be different.
 
@@ -80,7 +80,7 @@ brew install scroll-reverser
 
 
 
-### Docker
+## Docker
 
 ```bash
 brew install docker docker-compose colima

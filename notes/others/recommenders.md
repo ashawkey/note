@@ -1,11 +1,11 @@
 # Recommender System
 
-### Reference
+## Reference
 
 * https://developers.google.com/machine-learning/recommendation
 
 
-### Problem Definition
+## Problem Definition
 
 Recommender algorithm can be defined as  a matrix completion problem.
 
@@ -13,28 +13,28 @@ We have $n$ users and $m$ items, then we get a matrix $R _{n \times m}$ with spa
 
 The goal is to complete the missing entries to estimate unobserved ratings.
 
-##### CTR (Click-Through Rate) Estimation
+### CTR (Click-Through Rate) Estimation
 
 an application of recsys. (e.g., in app store)
 
 Each user/item may have additional features to use.
 
 
-### Large scale Recommendation System pipeline
+## Large scale Recommendation System pipeline
 
-#### Candidate Generation
+### Candidate Generation
 
 Motivation: We don't need to predict a dense $R$, for each user, only a smaller candidate set is needed.
 
 A coarse & fast model is used.
 
-##### Content-based filtering
+#### Content-based filtering
 
 Uses *similarity between items* to recommend items similar to what the user likes.
 
 Example: If user A watches two cute cat videos, then the system can recommend cute animal videos to that user.
 
-##### Collaborative filtering
+#### Collaborative filtering
 
 Uses *similarities between queries and items simultaneously* to provide recommendations.
 
@@ -43,16 +43,16 @@ Example: If user A is similar to user B, and user B likes video 1, then the syst
 * ALS is an example of collaborative filtering.
 * DL based.
 
-#### Scoring
+### Scoring
 
 A precise & slower model is used.
 
-#### Re-ranking
+### Re-ranking
 
 post processing, such as remove explicitly disliked items.
 
 
-### Alternating Least Square (ALS)
+## Alternating Least Square (ALS)
 
 Main idea: Matrix factorization.
 
@@ -96,7 +96,7 @@ $$
 $$
 
 
-### Wide & Deep (2016, Google)
+## Wide & Deep (2016, Google)
 
 wide = Linear Regression (Memorization)
 

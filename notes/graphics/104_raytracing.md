@@ -1,13 +1,13 @@
 # Ray Tracing
 
-### Why?
+## Why?
 
 Rasterization Shading cannot handle global effect (e.g., soft shadow, multiple light sources, glossy reflection, indirect illumination).
 
 Ray-tracing is slow, but can generate high quality shades.
 
 
-### Whitted-Style Ray Tracing
+## Whitted-Style Ray Tracing
 
 Cast ray and trace the route recursively.
 
@@ -58,7 +58,7 @@ bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1, const Vector3f
 ```
 
 
-#### BVH (Bounding Volume Hierarchy)
+### BVH (Bounding Volume Hierarchy)
 
 BVH partitions **object** directly, compared to KD-Tree/Oct-Tree/BSP-Tree that partitions **space**.
 
@@ -67,7 +67,7 @@ BVH's bounding boxes **may overlap in space, but each object is uniquely contain
 ![image-20210521223715017](104_raytracing.assets/image-20210521223715017.png)
 
 
-### Basic Radiometry
+## Basic Radiometry
 
 ![image-20210314222140206](raytracing.assets/image-20210314222140206.png)
 
@@ -104,7 +104,7 @@ The Rendering Equation:
 ![image-20210314224100205](raytracing.assets/image-20210314224100205.png)
 
 
-### Path Tracing
+## Path Tracing
 
 Whitted-Style Ray Tracing's assumptions are too simple (in fact wrong).
 

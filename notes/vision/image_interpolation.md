@@ -1,19 +1,19 @@
 # Image Interpolation
 
-### Interpolation Method
+## Interpolation Method
 
 ![image-20210310122314387](interpolation.assets/image-20210310122314387.png)
 
 
-### Align Corners
+## Align Corners
 
 https://zhuanlan.zhihu.com/p/87572724
 
 
-### Up-sampling
+## Up-sampling
 
 
-### Down-sampling
+## Down-sampling
 
 ```bash
 ----- x -----
@@ -69,7 +69,7 @@ https://zhuanlan.zhihu.com/p/87572724
 ```
 
 
-### PIL resize problem
+## PIL resize problem
 
 `PIL.resize` behaves differently compared to `cv2.resize`.
 

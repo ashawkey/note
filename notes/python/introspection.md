@@ -1,6 +1,6 @@
 # inspect
 
-### `vars()`
+## `vars()`
 
 `vars(x)` equals `x.__dict__`, which returns a dict of the **current class**'s attributes & methods of  `x`. (both name and value)
 
@@ -30,7 +30,7 @@ vars(foo)
 ```
 
 
-### `dir()`
+## `dir()`
 
 `dir(x)` returns the names of attributes & methods of all levels (both current class and base class).
 
@@ -100,7 +100,7 @@ dir(foo)
 ```
 
 
-### inspect
+## inspect
 
 ```python
 import inspect

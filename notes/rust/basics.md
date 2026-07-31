@@ -1,6 +1,6 @@
-## Rust basics
+# Rust basics
 
-### Install
+## Install
 
 ```bash
 # install rustup
@@ -20,7 +20,7 @@ rustup doc
 ```
 
 
-### Hello World
+## Hello World
 
 ```rust
 /* The main function is the entry of any program.
@@ -41,7 +41,7 @@ rustc hello.rs
 ```
 
 
-### Package manager: Cargo
+## Package manager: Cargo
 ```bash
 # check cargo version
 cargo --version
@@ -101,11 +101,11 @@ cargo update
 # to update MAJOR or MINOR version, you must change the toml manually.
 ```
 
-### Variables
+## Variables
 Rust is a **statically and strongly typed** language.
 However, rust can infer the data type from code, so you can declare variables without annotating data type.
 
-#### Scalar types
+### Scalar types
 - integers
 	- signed: `i8, i16, i32, i64,  i128, isize` (isize means arch-dependent) 
 	- unsigned: `u8, u16, u32, u64, u128, usize`
@@ -142,7 +142,7 @@ let c = 'z'; // char
 let c = '😻'; // char, supports unicode emoji
 ```
 
-#### Compound types
+### Compound types
 * tuple
 	* A general way of grouping a number of values with any type.
 	* fixed-length.
@@ -203,7 +203,7 @@ let arr = [1, 2, 3];
 let res = sum(&arr); // 6
 ```
 
-#### Mutability
+### Mutability
 
 ```rust
 fn main() {
@@ -234,7 +234,7 @@ fn main() {
 - (convention) name should be UPPER_CASE connected by underscores.
 
 
-### Functions
+## Functions
 rust will find the definition of function automatically, so you can define it anywhere like python and not like c.
 * use `fn` to define a function
 * must declare the parameter data type.
@@ -291,8 +291,8 @@ inc(x); // x == 2
 
 ```
 
-### Controls
-#### condition
+## Controls
+### condition
 
 ```rust
 let x = 3;
@@ -313,7 +313,7 @@ let x = if cond {5} else {6}; // data type must be the same in two branches.
 
 ```
 
-#### loop
+### loop
 
 ```rust
 // pure loop
@@ -363,7 +363,7 @@ for x in (0..5).rev() {} // for x in [4, 3, 2, 1, 0]
 ```
 
 
-### Strings
+## Strings
 
 ```rust
 // &str (string literals)
@@ -378,7 +378,7 @@ s.push_str(", world"); // s == "hello, world"
 ```
 
 
-### Ownership
+## Ownership
 Rules of Ownership:
 - Each value has a variable called its owner.
 * There can only be one owner at a time.

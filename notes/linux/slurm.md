@@ -1,9 +1,9 @@
-## Slurm workload manager
+# Slurm workload manager
 
 Simple Linux Utility for Resource Management.
 
 
-### sinfo
+## sinfo
 
 check information of the system.
 
@@ -21,7 +21,7 @@ cinfo -p <partition> occupy-reserved # only show reserved quota
 ```
 
 
-### squeue
+## squeue
 
 check the current running (R) and pending (PD) jobs.
 
@@ -31,7 +31,7 @@ squeue -l # list all info
 ```
 
 
-### srun/sbatch
+## srun/sbatch
 
 launch/submit a job.
 
@@ -148,7 +148,7 @@ echo "END TIME: $(date)"
 **make sure the --output and --err log directory (`logs` here) exists!** Else the task will fail immediately without any information!
 
 
-### scontrol
+## scontrol
 
 re-config a pending job.
 
@@ -161,7 +161,7 @@ scontrol release JOBID # release
 ```
 
 
-### scancel 
+## scancel 
 
 stop/cancel a job.
 
@@ -170,7 +170,7 @@ scancel <jobid>
 ```
 
 
-### sacct
+## sacct
 
 show status of running and (recently) finished jobs.
 
@@ -186,7 +186,7 @@ sacct
 ```
 
 
-### swatch
+## swatch
 
 identify why my job is pending.
 

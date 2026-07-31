@@ -1,13 +1,13 @@
 # pybind11
 
-### install
+## install
 
 ```bash
 pip install pybind11
 ```
 
 
-### example
+## example
 
 `example.cpp`:
 
@@ -41,7 +41,7 @@ example.add(1, 2)
 ```
 
 
-### binding basics
+## binding basics
 
 * functions
 
@@ -233,7 +233,7 @@ example.add(1, 2)
 
 
 
-### Misc
+## Misc
 
 * Binding template functions. 
 
@@ -255,18 +255,18 @@ m.def("setString", &set<std::string>);
 
 
 
-### [Type Conversion](https://pybind11.readthedocs.io/en/stable/advanced/cast/overview.html)
+## [Type Conversion](https://pybind11.readthedocs.io/en/stable/advanced/cast/overview.html)
 
 
 
-#### Basic types
+### Basic types
 
 This includes `int, float, bool, ...`
 Copy is made when conversion between.
 
 
 
-#### python str <--> std::string
+### python str <--> std::string
 
 Also quite straight-forward, copy is made.
 ```cpp
@@ -284,7 +284,7 @@ utf8_test("🎂")
 
 
 
-#### list/tuple <--> std::vector/deque/array
+### list/tuple <--> std::vector/deque/array
 
 list and tuple are not distinguished. **Copy is made!**
 
@@ -306,7 +306,7 @@ assert m.load_vector(tuple(lst))
 
 
 
-#### dict <--> std::map
+### dict <--> std::map
 
 key and value types are automatically handled. 
 ```cpp
@@ -329,7 +329,7 @@ assert m.load_map(d)
 
 
 
-#### set <--> std::set
+### set <--> std::set
 
 ```cpp
 m.def("cast_set", []() { return std::set<std::string>{"key1", "key2"}; });
@@ -347,7 +347,7 @@ assert m.load_set(s)
 
 
 
-#### numpy.ndarray <--> Eigen Matrix
+### numpy.ndarray <--> Eigen Matrix
 
 Pass-by-value are supported between `np.ndarray` and `Eigen::MatrixXd`. A copy is made for each conversion, which maybe unwanted.
 Pass-by-reference can be achieved through `Eigen::Ref<T>`. 

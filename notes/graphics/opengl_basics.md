@@ -5,7 +5,7 @@ A definition of a set of APIs to call GPU to render images.
 Kudos to [learnopengl](https://learnopengl-cn.github.io/) !
 
 
-### Versions
+## Versions
 
 * **OpenGL < 3.3**: Legacy, not used now. Use fixed pipeline.
 * **OpenGL >= 3.3**: Modern. Use programmable pipeline (shaders).
@@ -14,17 +14,17 @@ Kudos to [learnopengl](https://learnopengl-cn.github.io/) !
 * **DirectX** (Not OpenGL, Windows's graphic library.)
 
 
-### APIs
+## APIs
 
 The way OpenGL works is like a **state machine**. We always call it **Sequentially**.
 
-#### Window
+### Window
 
 * `glViewport(0, 0, 800, 600)`: init a window of size (800, 600).
 * `glClearColor(r, g, b, a)`: set the color used to clear the window (fill with this color after clear)
 * `glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)`: clear the window in act.
 
-#### Triangles
+### Triangles
 
 * VBO = Vertex Buffer Object, used to save triangle vertices (coordinates).
 
@@ -259,7 +259,7 @@ The way OpenGL works is like a **state machine**. We always call it **Sequential
   ```
 
   
-#### Shaders
+### Shaders
 
 GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragment Shaders.
 
@@ -428,7 +428,7 @@ GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragm
   ```
 
   
-#### Textures
+### Textures
 
 * Texture can be mapped with UVs. 
 
@@ -610,7 +610,7 @@ GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragm
   ```
 
   
-#### Transformations
+### Transformations
 
 * we pass in transformations as `mat4` simply:
 
@@ -643,7 +643,7 @@ GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragm
   ```
 
   
-#### Coordinate system
+### Coordinate system
 
 * OpenGL use Left-hand coordinate system.
 
@@ -671,14 +671,14 @@ GLSL (OpenGL Shading Language): Small c-like programs to describe Vertex & Fragm
   ```
 
   
-#### Camera
+### Camera
 
 * Yaw（偏航角）, Pitch（俯仰角）, Roll（滚转角）: 以自己为中心的三转轴。
 
   ![img](opengl.assets/camera_pitch_yaw_roll.png)
 
 
-### [A complete program example in C++](https://github.com/JoeyDeVries/LearnOpenGL/tree/master/src/1.getting_started/6.2.coordinate_systems_depth)
+## [A complete program example in C++](https://github.com/JoeyDeVries/LearnOpenGL/tree/master/src/1.getting_started/6.2.coordinate_systems_depth)
 
 ```glsl
 #version 330 core

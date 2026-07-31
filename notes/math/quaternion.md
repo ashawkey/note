@@ -3,7 +3,7 @@
 > Ref & Credits: https://github.com/Krasjet/quaternion
 
 
-### Basics about complex number $\mathbb C$
+## Basics about complex number $\mathbb C$
 
 $$
 i^2 = -1 \\
@@ -12,7 +12,7 @@ z_1z_2=z_2z_1 \\
 ||z|| = \sqrt{a^2 + b^2} = \sqrt{z \bar z}
 $$
 
-### 2D Rotation
+## 2D Rotation
 
 2D rotation (counter-clockwise by $\theta$) can be represented by:
 
@@ -39,7 +39,7 @@ $$
 Therefore, we also have $v' = zv$ if the scaling factor $r=||z||=1$.
 
 
-### 3D Rotation
+## 3D Rotation
 
 3D rotation can be represented by three **Euler angles** $(\theta, \phi, \gamma)$, but it relies on the axes system and can lead to Gimbal Lock.
 
@@ -81,7 +81,7 @@ $$
 $$
 
 
-### Basics about Quaternion $\mathbb H$
+## Basics about Quaternion $\mathbb H$
 
 
 $$
@@ -155,7 +155,7 @@ q_1q_2=[ae-\mathbf v \cdot \mathbf u,a\mathbf u+e\mathbf v+\mathbf v \times \mat
 $$
 
 
-#### Pure quaternion
+### Pure quaternion
 
 the real part equals 0.
 
@@ -165,7 +165,7 @@ vu=[-\mathbf v\cdot\mathbf u, \mathbf v\times\mathbf u]
 $$
 
 
-#### Inverse
+### Inverse
 
 
 $$
@@ -173,7 +173,7 @@ qq^{-1} = q^{-1}q = 1
 $$
 
 
-#### Conjugate
+### Conjugate
 
 
 $$
@@ -199,7 +199,7 @@ $$
 $$
 
 
-### Quaternion for 3D Rotation
+## Quaternion for 3D Rotation
 
 A pure quaternion can represent a 3D vector: $v=[0, \mathbf v]$
 
@@ -240,13 +240,13 @@ $$
 $$
 
 
-#### Matrix form
+### Matrix form
 
 Very complicated form...
 
 ![image-20231120114151607](quaternion.assets/image-20231120114151607.png)
 
-#### Composition of rotation
+### Composition of rotation
 
 Just do it sequentially,
 
@@ -259,7 +259,7 @@ First apply $q_1$ then apply $q_2$ leads to equal rotation of $q_2q_1$.
 Note that the order matters! $q_1q_2 \ne q_2q_1$.
 
 
-#### Double cover
+### Double cover
 
 One 3D rotation can be represented with TWO quaternions: $q$ and $-q$.
 
@@ -274,7 +274,7 @@ $$
 Notice that the matrix form is exactly the same for $-q$ and $q$, since all of the elements are multiplication of two coefficients!
 
 
-#### Euler power form
+### Euler power form
 
 
 $$
@@ -283,7 +283,7 @@ v' = e^{\mathbf u \frac\theta 2} v e^{-\mathbf u \frac \theta 2}
 $$
 
 
-### Implementation
+## Implementation
 
 ```python
 import torch

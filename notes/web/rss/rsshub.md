@@ -19,7 +19,7 @@ npm start
 ```
 
 
-### configs
+## configs
 
 create `.env` file to write configs.
 
@@ -32,7 +32,7 @@ PORT=1888
 ```
 
 
-### [Nginx forward](https://gist.github.com/soheilhy/8b94347ff8336d971ad0)
+## [Nginx forward](https://gist.github.com/soheilhy/8b94347ff8336d971ad0)
 
 ```nginx
 server {

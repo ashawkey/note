@@ -1,6 +1,6 @@
 # PRT
 
-### Spherical Harmonics (SH)
+## Spherical Harmonics (SH)
 
 * Basis Functions: A set of orthonormal functions used to represent other functions via linear combination (like Polynomial series and Fourier series.).
 
@@ -48,7 +48,7 @@ $$
   ![image-20211012164731580](prt.assets/image-20211012164731580.png)
 
   
-### Precomputed Radiance Transfer
+## Precomputed Radiance Transfer
 
 * Basic idea:
 

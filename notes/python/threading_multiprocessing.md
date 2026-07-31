@@ -1,13 +1,13 @@
 # threading and multiprocessing
 
 
-### difference between threading and multiprocessing
+## difference between threading and multiprocessing
 
 * threading is limited by the GIL (for CPython), so only one python process can run at the same time.
 * object can be shared between threads (memory sharing), but **must be copied** per process.
 
 
-### GIL (Global Interpreter Lock)
+## GIL (Global Interpreter Lock)
 
 * What: a mutex that only allows one thread to access python objects at any time.
 
@@ -58,7 +58,7 @@
   ```
 
   
-### multiprocessing
+## multiprocessing
 
 thread start method
 
@@ -168,7 +168,7 @@ a.run()
 ```
 
 
-### threading
+## threading
 
 
 sender-receiver model

@@ -7,7 +7,7 @@ Usually, we install nvidia-driver first since it is necessary for GUI.
 CUDA is only used for high-performance computation.
 
 
-### install nvidia-driver
+## install nvidia-driver
 
 Always use the package manager!!!
 
@@ -65,7 +65,7 @@ nvidia-smi -> /etc/alternatives/x86_64-linux-gnu_nvidia_smi
 ```
 
 
-### switch between intel and nvidia driver
+## switch between intel and nvidia driver
 
 ```bash
 # in case prime-select is not found
@@ -80,7 +80,7 @@ sudo prime-select intel
 ```
 
 
-### uninstall nvidia-driver
+## uninstall nvidia-driver
 
 ```bash
 # pkg manager install
@@ -88,7 +88,7 @@ sudo apt purge nvidia*
 ```
 
 
-### install CUDA
+## install CUDA
 
 Recommend to use Runfile install. 
 
@@ -112,7 +112,7 @@ nvcc -V
 ```
 
 
-### switch between multiple CUDA versions
+## switch between multiple CUDA versions
 
 Globally: change the `/usr/local/cuda` soft link.
 
@@ -131,7 +131,7 @@ export LD_LIBRARY_PATH="/usr/local/cuda-10.1/lib64:$:LD_LIBRARY_PATH"
 ```
 
 
-### uninstall CUDA
+## uninstall CUDA
 
 Just REMOVE it.
 
@@ -146,7 +146,7 @@ sudo apt purge cuda*
 ```
 
 
-### pitfalls
+## pitfalls
 
 * for CUDA 10.1, install the update `10.1.243` directly, instead of the general release `10.1.105` !!! Or you can update from `105` to `243`, just run the new `runfile` and it will prompt.
 

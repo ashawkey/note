@@ -1,14 +1,14 @@
 # Paper Recommendation 2022
 
 
-### Tips: 
+## Tips: 
 
 * Check **[Project]/[Blog]** first for a brief understanding of the paper, and watch their introduction video if available.
 
 * Only about 2 papers are chosen for each area. If you find a paper interesting, please use [[Connected Papers]](https://www.connectedpapers.com/) to find related works!
 
 
-### Backbone
+## Backbone
 
 * [2015] **Deep Residual Learning for Image Recognition** [[Paper]](https://arxiv.org/abs/1512.03385)
 
@@ -23,15 +23,15 @@
   * [2021] **CLIP: Connecting Text and Images** [[Blog]](https://openai.com/blog/clip/) [[Code]](https://github.com/openai/CLIP) [[Paper]](https://arxiv.org/abs/2103.00020)
 
 
-### Perception (Classification, Segmentation, Detection)
+## Perception (Classification, Segmentation, Detection)
 
-#### 2D
+### 2D
 
 * [2014] **Fully Convolutional Networks for Semantic Segmentation** [[Paper]](https://arxiv.org/abs/1411.4038)
 
 * [2015] **You Only Look Once: Unified, Real-Time Object Detection** [[Paper]](https://arxiv.org/abs/1506.02640)
 
-#### 3D
+### 3D
 
 Different from 2D images, 3D data have many representations (voxel volumes, point clouds, meshes, and implicit functions). Since dense 3D convolutions are generally limited by GPU memory, an inevitable topic in 3D perception is to leverage the **sparsity** of 3D data.
 
@@ -52,7 +52,7 @@ Different from 2D images, 3D data have many representations (voxel volumes, poin
   * [2020] **Searching Efficient 3D Architectures with Sparse Point-Voxel Convolution** [[Paper]](https://arxiv.org/abs/2007.16100) [[Code]](https://github.com/mit-han-lab/torchsparse)
 
 
-### Generation
+## Generation
 
 * [2014] **Generative Adversarial Networks** [[Paper]](https://arxiv.org/abs/1406.2661)
 
@@ -69,7 +69,7 @@ Different from 2D images, 3D data have many representations (voxel volumes, poin
   Further readings: DALL-E 2, Imagen, Parti...
 
 
-### 3D Reconstruction
+## 3D Reconstruction
 
 * [2016] **COLMAP** [[Doc]](https://colmap.github.io/) [[Code]](https://github.com/colmap/colmap)
 

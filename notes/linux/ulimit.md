@@ -4,7 +4,7 @@ set user limits.
 
 The most common case is "Too Many Open Files" Error.
 
-### temporary fix
+## temporary fix
 
 ```bash
 # check all limits
@@ -18,7 +18,7 @@ ulimit -n 100000
 ```
 
 
-### permanent fix
+## permanent fix
 
 Modify `/etc/security/limits.conf`, and add:
 

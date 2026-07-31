@@ -1,4 +1,4 @@
-### How to start a conversation.
+# How to start a conversation.
 
 * Greetings
   * Hello / Hi.
@@ -52,7 +52,7 @@
   * Are you used to the life here?
 
 
-### Daily topics
+# Daily topics
 
 * family
 
@@ -73,7 +73,7 @@
     * [response] I like pop / rock / classical / jazz music.
 
 
-### End a topic
+# End a topic
 
 * goodbye
   * [mostly used by children] bye-bye

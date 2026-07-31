@@ -9,7 +9,7 @@ p {
 }
 ```
 
-### Usage
+## Usage
 
 * External
 
@@ -25,7 +25,7 @@ p {
   </style>
   ```
 
-### Selector
+## Selector
 
 ```css
 p {} /* <p> */
@@ -60,7 +60,7 @@ a[attr*=value] {} /* a with value in attr */
 * {}
 ```
 
-### Function
+## Function
 
 ```css
 .box {
@@ -72,7 +72,7 @@ a[attr*=value] {} /* a with value in attr */
 }
 ```
 
-### @ Rules
+## @ Rules
 
 ```css
 /* import from another file */
@@ -82,7 +82,7 @@ a[attr*=value] {} /* a with value in attr */
 ```
 
 
-### Cascading and Inheriting
+## Cascading and Inheriting
 
 * Cascading
 
@@ -165,7 +165,7 @@ a[attr*=value] {} /* a with value in attr */
   ```
 
   
-### References
+## References
 
 * `background`
 

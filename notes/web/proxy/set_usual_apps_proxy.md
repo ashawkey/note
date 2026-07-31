@@ -2,14 +2,14 @@
 
 Prefer setting globally (bash, powershell) rather than setting each individual program...
 
-### find the right port !!!
+## find the right port !!!
 
 clash defaults to `http://127.0.0.1:7890` and `socks5://127.0.0.1:7890`
 
 trojan-qt5 local client's socks port is in "入站设置", not "出站设置".	the default is `socks5://127.0.0.1:51837`.
 
 
-### powershell
+## powershell
 
 ```powershell
 # set
@@ -26,7 +26,7 @@ echo $Env:https_proxy
 ```
 
 
-### bash
+## bash
 
 ```bash
 # set
@@ -45,7 +45,7 @@ echo $http_proxy
 echo $https_proxy
 ```
 
-### wget
+## wget
 
 ```bash
 # use .wgetrc
@@ -58,7 +58,7 @@ use_proxy=on
 EOF
 ```
 
-### jupyter notebook
+## jupyter notebook
 
 It should use the system proxy, if not working, add this code block and run it:
 
@@ -68,7 +68,7 @@ os.environ['http_proxy'] = "http://127.0.0.1:1081"
 os.environ['https_proxy'] = "http://127.0.0.1:1081" 
 ```
 
-### git
+## git
 
 ```bash
 # set (do not need to set https.proxy!)
@@ -82,7 +82,7 @@ git config --global http.proxy
 ```
 
 
-### pip
+## pip
 
 by default, it will use http_proxy and https_proxy, so you can just set these env variables.
 
@@ -95,7 +95,7 @@ pip install pysocks
 ```
 
 
-### docker
+## docker
 
 * `docker build`
 
@@ -118,7 +118,7 @@ pip install pysocks
 * `docker run`
 
 
-### Authorization
+## Authorization
 
 ```bash
 # for authorization, use proxy like:

@@ -4,14 +4,14 @@
 import re
 ```
 
-### Raw string
+## Raw string
 
 ```python
 r'\s*'
 ```
 
 
-### Special Characters
+## Special Characters
 
 * `.`
 * `^`, `$`
@@ -40,7 +40,7 @@ r'\s*'
 * `\W`: [ ^a-zA-Z0-9_]
 
 
-### API
+## API
 
 ```python
 # search, anywhere
@@ -68,7 +68,7 @@ m.endpos
 ```
 
 
-### Examples
+## Examples
 
 ```python
 ## extract content inside parenthesis

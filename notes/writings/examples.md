@@ -1,18 +1,20 @@
-### Misc
+# Examples
+
+## Misc
 
 * w.l.o.g. = without loss of generality.
 * ... be prohibitive of ...
 * ... be prohibitively computational expensive ...
 
 
-### Abstract
+## Abstract
 
 * It is of increasing importance for ...  and draws increasing attention.
 * Further ablation study and analysis gives more insights into the proposed method and demonstrate the generalization capability and stability of our model.
 * Experiments on the ... dataset show that xxx outperforms the state-of-the-arts in xxx, especially for ...
 
 
-### Intro
+## Intro
 
 * ... remains an important open challenge in ...
 * Recently, there has been progress in ...
@@ -39,14 +41,14 @@
 * In contrast, ...
 
 
-### Contributions
+## Contributions
 
 * We present a new approach capable of ... from ...
 * We propose XXX, a novel ..., which ...
 * We demonstrate significant performance improvements of our approach compared to prior work.
 
 
-### Related work
+## Related work
 
 * We briefly describe related work in <two> major lines of research: ...
 * We are motivated to extend this line of research to a ... setting.
@@ -59,7 +61,7 @@
 * Compared to the xxx approaches, wherein the ... is often suboptimal, yyy approaches are more straightforward and have achieved promising performance.
 
 
-### Methods
+## Methods
 
 * (directly describe methods) In this section, we briefly summarize A, and then describe how we extend it to B.
 * (first describe problems) Given <the input data>, our goal is to ...
@@ -67,20 +69,20 @@
 * Our goal is .... In the following, we discuss the main components of our method. First, ... (See Sec~\ref{}). Next, ... Finally, ....
 
 
-### Experiments
+## Experiments
 
 * The improvements potentially come from the design of ... in our method, which can act as a ...
 * 
 
 
-### Appendix
+## Appendix
 
 * The proof is given in the Appendix.
 
 * The detailed derivation of this formula is given in the Appendix.
 
 
-### junction
+## junction
 
 * In this section we investigate the relationship between ...
 * In this section, we first verify the efficacy of ..., and then show that ...

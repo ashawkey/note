@@ -1,6 +1,6 @@
 # Background removal tools
 
-### kiuikit
+## kiuikit
 
 re-wrapped rembg:
 
@@ -19,7 +19,7 @@ remove_folder(input_folder, output_folder, return_mask=True)
 ```
 
 
-### [Carvekit](https://github.com/OPHoperHPO/image-background-remove-tool)
+## [Carvekit](https://github.com/OPHoperHPO/image-background-remove-tool)
 
 ```bash
 pip install carvekit
@@ -96,7 +96,7 @@ for img_path in tqdm.tqdm(img_paths):
 ```
 
 
-### [Rembg](https://github.com/danielgatis/rembg)
+## [Rembg](https://github.com/danielgatis/rembg)
 
 best quality.
 
@@ -123,7 +123,7 @@ cv2.imwrite('output.png', output)
 ```
 
 
-### [BackgroundRemover](https://github.com/nadermx/backgroundremover)
+## [BackgroundRemover](https://github.com/nadermx/backgroundremover)
 
 better than carvekit, but slightly worse than rembg.
 

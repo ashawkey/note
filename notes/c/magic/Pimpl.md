@@ -1,4 +1,4 @@
-## Pointer to implementation
+# Pointer to implementation
 reference: https://en.cppreference.com/w/cpp/language/pimpl
 
 A technique that **put the implementation of a class in a separate class**, to **construct stable ABI and reduce compile-time dependencies**.
@@ -20,7 +20,7 @@ struct widget::impl {
 ```
 
 
-### example
+## example
 ```cpp
 // ----------------------
 // interface (widget.hpp)

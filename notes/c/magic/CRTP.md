@@ -1,4 +1,4 @@
-## Curiously Recurring Template Pattern
+# Curiously Recurring Template Pattern
 
 形式：将子类作为父类的模板参数传入。
 

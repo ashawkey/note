@@ -1,11 +1,11 @@
 # K-means
 
-### Intended for:
+## Intended for:
 
 * all variables are of quantitative type
 * Squared Euclidean distance as the dissimilarity measure
 
-### Algorithm
+## Algorithm
 
 * Init centroids
 * iter until convergence:
@@ -13,7 +13,7 @@
   * update centroids
   * check convergence
 
-### Implementation
+## Implementation
 
 ```python
 import numpy as np
@@ -72,7 +72,7 @@ print('Accuracy:',max(np.sum(labels==y), np.sum(labels==(y+3)%3), np.sum(labels=
 
 ```
 
-### sklean
+## sklean
 
 ```python
 from sklearn.cluster import KMeans
@@ -97,7 +97,7 @@ other uses:
 ```
 
 
-### k-means++
+## k-means++
 
 select the initial centroids as far as possible:
 
@@ -115,7 +115,7 @@ def ppCent(data, k, dist=squareEucliDist):
 ```
 
 
-#### (Weighted) Kernel k-means
+### (Weighted) Kernel k-means
 
 One limit for k-means is that it always cluster by a hyperplane.
 
@@ -138,7 +138,7 @@ K_{ij} = (a_i \cdot a_j + c)^d
 $$
 
 
-#### Spherical k-means
+### Spherical k-means
 
 Used in document clustering, replace Euclidean Distance with Cosine Distance.
 

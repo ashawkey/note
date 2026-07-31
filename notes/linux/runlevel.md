@@ -17,7 +17,7 @@
 ```
 
 
-### check runlevel
+# check runlevel
 
 ```bash
 # show previous and current runlevel
@@ -28,7 +28,7 @@ sudo systemctl get-default
 ```
 
 
-### change current runlevel
+# change current runlevel
 
 ```bash
 # go runlevel 3
@@ -41,7 +41,7 @@ sudo telinit 5
 ```
 
 
-### set default runlevel
+# set default runlevel
 
 ```bash
 # go runlevel 3

@@ -1,7 +1,7 @@
 # htop
 
 
-### rank by 
+## rank by 
 
 press `F6` and select.
 

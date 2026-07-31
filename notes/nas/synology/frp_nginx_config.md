@@ -1,4 +1,4 @@
-### `frpc.ini`
+# `frpc.ini`
 
 ```ini
 [common]
@@ -17,14 +17,14 @@ local_port = 5000
 custom_domains = kiui.moe
 ```
 
-### `run_frpc.sh`
+# `run_frpc.sh`
 
 ```bash
 nohup /root/frp/frpc -c /root/frp/frpc.ini </dev/null >/root/frp/log.txt 2>&1 &
 ```
 
 
-### `frps.ini`
+# `frps.ini`
 
 ```ini
 [common]
@@ -38,7 +38,7 @@ dashboard_pwd = <pwd>
 ```
 
 
-### `nginx.conf`
+# `nginx.conf`
 
 ```nginx
 location /nas { # access at kiui.moe/nas/

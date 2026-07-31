@@ -1,4 +1,4 @@
-### Depth test
+# Depth test
 
 * Depth buffer: if we enable depth test, we should create a depth buffer to save the depth values.
 
@@ -71,7 +71,7 @@ $$
   There is no real solution for this (maybe set 32-bit depth buffer), so never place two triangles too close!
 
 
-### Stencil test (模板测试)
+# Stencil test (模板测试)
 
 * Stencil can be viewed as a **mask**, so we have more control on where to draw. For example, we can use it to highlight the edge of an object.
 
@@ -149,7 +149,7 @@ $$
   ```
 
 
-### Blending
+# Blending
 
 * alpha blending allows drawing (full or partial) transparent objects.
 
@@ -234,7 +234,7 @@ $$
   ```
 
 
-### Face Culling
+# Face Culling
 
 * A way to discard occluded faces (back facing), so we can save computation time.
 
@@ -256,7 +256,7 @@ $$
   ```
 
   
-### Frame Buffer Object (FBO)
+# Frame Buffer Object (FBO)
 
 * OpenGL use frame buffers to store color, depth, stencil, ... GLFW creates default color buffer, depth buffer, stencil buffer for us to use. 
 
@@ -466,7 +466,7 @@ $$
   ```
 
   
-### Cube map
+# Cube map
 
 * A cube map is another type of texture, which contains six 2D texture that makes a box. Cube maps can be helpful for environment texture (such as the sky box), and we can use a direction vector to sample it (like sampling a sphere).
 
@@ -601,7 +601,7 @@ $$
   To achieve **dynamic** environment mapping, we need to frame buffer all reflective faces and then render it to the object!
 
 
-### Advanced GLSL
+# Advanced GLSL
 
 * set the point size.
 
@@ -752,7 +752,7 @@ $$
   ```
 
 
-### Geometry Shader
+# Geometry Shader
 
 * `Vertex Shader --> [Geometry Shader] --> Fragment Shader`
 
@@ -954,7 +954,7 @@ $$
   ```
 
 
-### Instancing
+# Instancing
 
 * Instancing aims to **draw multiple instances of the same object within one GPU call**, instead of use a for loop, so we can save CPU/GPU communication cost.
 
@@ -1091,7 +1091,7 @@ $$
   ```
 
 
-### Anti-aliasing (AA)
+# Anti-aliasing (AA)
 
 * SSAA: super-resolution, render at a larger resolution and then resize. Very expensive, do not use.
 

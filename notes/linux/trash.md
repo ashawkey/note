@@ -3,7 +3,7 @@
 Cut my fingers if I `rm` a file accidentally again!!!
 
 
-### Usage
+## Usage
 
 ```bash
 # install
@@ -27,7 +27,7 @@ restore-trash # will show a list and let you choose id to restore
 ```
 
 
-### Details
+## Details
 
 `trash` literally moves the file to `<TrashDir>/files`, and create an info file at `<TrashDir>/infos`.
 

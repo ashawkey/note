@@ -1,9 +1,9 @@
-#### cluster
+# cluster
 
 * classes
 * functions
 
-#### datasets
+# datasets
 
 * loaders
 
@@ -34,9 +34,9 @@
 
 * generators
 
-#### decomposition
+# decomposition
 
-#### ensemble
+# ensemble
 
 ```python
 RandomForestRegressor()
@@ -44,11 +44,11 @@ RandomForestClassifier()
 ```
 
 
-#### feature_extraction
+# feature_extraction
 
-####  linear_model
+#  linear_model
 
-#### manifold
+# manifold
 
 ```python
 
@@ -56,7 +56,7 @@ RandomForestClassifier()
 ```
 
 
-#### metrics
+# metrics
 
 * classification metrics
 
@@ -81,7 +81,7 @@ RandomForestClassifier()
   ```
 
 
-#### model_selection
+# model_selection
 
 * Splitter classes
 
@@ -142,11 +142,11 @@ RandomForestClassifier()
   ```
 
 
-#### naive_bayes
+# naive_bayes
 
-#### pipeline
+# pipeline
 
-#### preprocessing
+# preprocessing
 
 ```python
 scaler = StandardScaler()

@@ -1,6 +1,6 @@
 # Triton
 
-###  install
+##  install
 
 Better to install from source since it is under active development:
 
@@ -11,7 +11,7 @@ pip install -e .
 ```
 
 
-### Questions
+## Questions
 
 * **how to debug, e.g., print from kernel?**
 
@@ -40,7 +40,7 @@ pip install -e .
   For example, I cannot think of a way to use triton to do raytracing/raymarching. It still requires blocked operation, but in this case each ray behaves differently, and cannot share in a block.
 
   
-### basics
+## basics
 
 There is no built doc for `triton.language`, search it [here](https://github.com/openai/triton/blob/master/python/triton/language/core.py).
 
@@ -175,7 +175,6 @@ benchmark.run(show_plots=False, print_data=True)
 ```
 
 
-> TODO: 
 
 Matrix-multiplication example:
 

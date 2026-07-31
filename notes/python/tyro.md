@@ -1,11 +1,11 @@
-## Tyro
+# Tyro
 
 Although `omegaconf`+`argparse` is great for a research project, it's not suitable for a python package CLI (we have no place to put all the config files).
 
 With `tyro`, we can write a package CLI elegantly!
 
 
-### Function
+## Function
 
 The simplest use case, turn a function into a CLI.
 
@@ -29,7 +29,7 @@ python main.py --x 1 --path wow
 ```
 
 
-### Dataclass
+## Dataclass
 
 For more complex configs.
 
@@ -137,7 +137,7 @@ usage: main.py [-h] --x INT --flag1 {True,False} [--path STR] [--shape INT [INT 
 ```
 
 
-### Hierarchical Configs
+## Hierarchical Configs
 
 For nesting configs.
 
@@ -187,7 +187,7 @@ usage: main.py [-h] [--optimizer.type {adam,sgd}] [--optimizer.lr FLOAT] [--seed
 ```
 
 
-### Subcommands
+## Subcommands
 
 ```python
 import tyro
@@ -243,7 +243,7 @@ usage: main.py train [-h] [--type {adam,sgd}] [--lr FLOAT] [--seed INT] [--itera
 ```
 
 
-### Subcommands for overriding default configs
+## Subcommands for overriding default configs
 
 This can reach the same effect as using multiple config files with `omegaconf`, but it's a little tricky...
 

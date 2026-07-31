@@ -1,4 +1,4 @@
-### brace expansion
+# brace expansion
 
 https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html
 
@@ -11,7 +11,7 @@ mkdir tmp/{a,b}/c
 ```
 
 
-### run & interrupt parallel commands
+# run & interrupt parallel commands
 
 https://stackoverflow.com/questions/3004811/how-do-you-run-multiple-programs-in-parallel-from-a-bash-script
 

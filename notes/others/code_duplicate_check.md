@@ -1,12 +1,12 @@
 # code duplicate check
 
-### nltk
+## nltk
 
 * word_tokenize
 
   extract English word from a string.
 
-### gensim
+## gensim
 
 * corpus
 
@@ -27,7 +27,7 @@
   compare similarity of vectors.
 
 
-### example
+## example
 
 ```python
 # check for duplicates

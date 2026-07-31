@@ -1,6 +1,6 @@
 # Golang
 
-### CLI
+## CLI
 
 ```bash
 go build test.go # generate binary at ./
@@ -9,7 +9,7 @@ go run test.go # build and run
 ```
 
 
-### Go Proxy
+## Go Proxy
 
 Correct way to download modules.
 
@@ -22,7 +22,7 @@ go get <pkg>
 ```
 
 
-### Go Modules
+## Go Modules
 
 ```bash
 # install packages
@@ -47,7 +47,7 @@ require github.com/gin-gonic/gin v1.6.3
 ```
 
 
-### Defer
+## Defer
 
 ```go
 func a() {
@@ -69,7 +69,7 @@ defer func() { fmt.Println("3") }()
 ```
 
 
-### The empty Interface
+## The empty Interface
 
 `interface{}` can hold values of any type. 
 
@@ -94,7 +94,7 @@ func main() {
 ```
 
 
-### Overview
+## Overview
 
 ```go
 package main
@@ -113,7 +113,7 @@ go run test.go
 ```
 
 
-### Types
+## Types
 
 * Pass-by-Value
 
@@ -129,7 +129,7 @@ go run test.go
   ```
 
   
-### Variables
+## Variables
 
 ```go
 var name type // default value is 0/nil
@@ -160,7 +160,7 @@ const (
 * Global variable may not be used.
 
 
-### Control
+## Control
 
 * `select`
 
@@ -183,14 +183,14 @@ const (
   ```
 
   
-### Function
+## Function
 
 ```go
 func name([param [type1], param2 [type2]]) [return type] {}
 ```
 
 
-### Array
+## Array
 
 ```go
 var name [size]type
@@ -202,7 +202,7 @@ func foo(arr [] int, size int) int {}
 ```
 
 
-### Pointer
+## Pointer
 
 ```go
 var ptr *type // nil
@@ -219,7 +219,7 @@ func swap (x* int, y* int) {
 ```
 
 
-### OOP
+## OOP
 
 * `struct`
 
@@ -246,7 +246,6 @@ func swap (x* int, y* int) {
       ...
   }
   ```
-```
   
 * define method
 

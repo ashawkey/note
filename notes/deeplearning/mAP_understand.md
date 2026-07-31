@@ -9,7 +9,7 @@ A metric usually used in object detection.
 And the calculation of AP is like the AUC of ROC in binary classification:
 
 
-### AP
+## AP
 
 ```python
 # for each class's `preds` and `gts`, assert both non empty.
@@ -19,13 +19,13 @@ matched = np.zeros(len(gts))
 tp = np.zeros(len(preds))
 fp = np.zeros(len(preds))
     
-preds = sorted(preds, key="confidence", decreasing=True)
+preds = sorted(preds, key=lambda p: p["confidence"], reverse=True)
 # for each pred
 for i, pred in enumerate(preds):
     max_iou = 0
     max_id = -1
     # brute-force enumerate gts of the same label!
-    for j, gt in enumearte(gts): 
+    for j, gt in enumerate(gts): 
         iou = get_iou(pred, gt)
 		if iou > max_iou:
             max_iou = iou
@@ -52,8 +52,8 @@ for t in np.arange(0, 1.1, 0.1):
 
 ### VOC after 2007, continuous AUC
 ap = 0
-recall = np.concatenate([0], recall, [1])
-precision = np.concatenate([0], precision, [0])
+recall = np.concatenate(([0], recall, [1]))
+precision = np.concatenate(([0], precision, [0]))
 # smooth out the zig-zag
 for i in range(len(precision)-1, 0, -1):
     precision[i-1] = np.maximum(precision[i-1], precision[i])
@@ -71,7 +71,7 @@ illustration of VOC after 07:
 ![](https://miro.medium.com/max/875/1*TAuQ3UOA8xh_5wI5hwLHcg.jpeg)
 
 
-### Other Notations
+## Other Notations
 
 usually used in COCO dataset:
 

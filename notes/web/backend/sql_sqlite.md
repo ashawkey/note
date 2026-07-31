@@ -2,14 +2,14 @@
 
 > SQL: Structured Query Language
 
-### Basics
+## Basics
 
 * `.sql` file
 
   contains a series of `sql` script.
 
 
-### Data Types
+## Data Types
 
 * NULL
 * INTEGER
@@ -18,9 +18,9 @@
 * BLOB: binary large object, can store any time of data. unlimited size.
 
 
-### Create Table
+## Create Table
 
-```sqlite
+```sql
 CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
 	column_1 data_type PRIMARY KEY,
    	column_2 data_type NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
 
 * `foreign key`:
 
-  ```sqlite
+  ```sql
   -- parent table
   CREATE TABLE supplier_groups (
   	group_id integer PRIMARY KEY,
@@ -57,7 +57,7 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
 
   when deleting & updating in `supplier_groups`:
 
-  ```sqlite
+  ```sql
   FOREIGN KEY (foreign_key_columns)
      REFERENCES parent_table(parent_key_columns)
         ON UPDATE action 
@@ -73,11 +73,11 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
   * restrict (Cannot delete `supplier_groups` key unless all `supplier` with this key has been deleted.)
   * cascade (Delete all `supplier` with this key too)
 
-### Operations
+## Operations
 
 * INSERT
 
-  ```sqlite
+  ```sql
   INSERT INTO table (column1,column2 ,..)
   VALUES(value1,	value2 ,...);
   VALUES(value1,	value2 ,...); -- second line
@@ -87,7 +87,7 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
   
 * DELETE
 
-  ```sqlite
+  ```sql
   DELETE FROM table
   WHERE search_condition;
   ```
@@ -95,7 +95,7 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
   
 * SELECT
 
-  ```sqlite
+  ```sql
   SELECT	1 + 1;
   
   SELECT column1, column2 FROM table;
@@ -116,13 +116,13 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
 
     remove duplicated results.
 
-    ```sqlite
+    ```sql
     SELECT DISTINCT city FROM customers ORDER BY city;
     ```
 
   * WHERE
 
-    ```sqlite
+    ```sql
     WHERE column_1 = 100;
     WHERE column_2 IN (1,2,3);
     WHERE column_3 LIKE '%pattern%';
@@ -152,7 +152,7 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
 
   used to change value of inserted row.
 
-  ```sqlite
+  ```sql
   UPDATE table
   SET column_1 = new_value_1,
       column_2 = new_value_2
@@ -163,16 +163,16 @@ CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
   ```
 
   
-### PRAGMA
+## PRAGMA
 
 Set default behavior.
 
-```sqlite
+```sql
 PRAGMA case_sensitive_like = true;
 ```
 
 
-### Full text search
+## Full text search
 
 We must use FTS5 virtual table to achieve full text search in SQLite.
 
@@ -208,7 +208,7 @@ ORDER BY rank;
 ```
 
 
-### Python API
+## Python API
 
 ```python
 import sqlite3

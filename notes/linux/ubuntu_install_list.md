@@ -1,6 +1,6 @@
-## Todo list to install ubuntu
+# Todo list to install ubuntu
 
-### Rufus USB booter
+## Rufus USB booter
 
 https://www.ubuntu.com/download
 
@@ -9,7 +9,7 @@ https://rufus.ie/
 Use the default settings are OK.
 
 
-### Restart the machine, enter boot manager.
+## Restart the machine, enter boot manager.
 
 Zlab servers: 
 
@@ -46,7 +46,7 @@ reboot
 
 
 
-### Install
+## Install
 
 Wait until you see graphics.
 
@@ -57,7 +57,7 @@ Usually Minimal Install is OK.
 
 
 
-### Setting up
+## Setting up
 
 * Network connection (cable or wifi)
 
@@ -353,7 +353,7 @@ Usually Minimal Install is OK.
   download the deb file to install.
 
 
-### Misc
+## Misc
 
 * I cannot open firefox or any other snap applications in nomachine virtual desktop...
 

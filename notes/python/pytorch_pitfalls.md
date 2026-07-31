@@ -1,6 +1,6 @@
 # pytorch pitfalls
 
-### `torch.gather(input, dim, index)`
+## `torch.gather(input, dim, index)`
 
 * `assert input.dim == index.dim`
 
@@ -74,7 +74,7 @@
   ```
 
 
-### ``torch.scatter(input, dim, index, src)``
+## ``torch.scatter(input, dim, index, src)``
 
 For the input specifications, it is very similar to `gather`.
 

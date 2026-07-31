@@ -1,6 +1,6 @@
 # Image Processing Basics
 
-### HSV
+## HSV
 
 Hue(360), Saturation(1), Value(1)
 
@@ -71,14 +71,14 @@ def HSV2BGR(_img, hsv):
 ```
 
 
-### Histogram
+## Histogram
 
 ```python
 plt.hist(img.ravel(), bins=255, rwidth=0.8, range=(0, 255))
 ```
 
 
-### Gamma Correction
+## Gamma Correction
 
 
 $$
@@ -101,7 +101,7 @@ def gamma_correction(img, c=1, g=2.2):
 ```
 
 
-### Interpolation
+## Interpolation
 
 * Nearest Neighbor
 
@@ -237,7 +237,7 @@ def gamma_correction(img, c=1, g=2.2):
   ```
 
 
-### Affine Transform
+## Affine Transform
 
 
 $$
@@ -459,7 +459,7 @@ $$
 $$
 
 
-### Fourier Transform
+## Fourier Transform
 
 
 $$
@@ -636,7 +636,7 @@ def idft(G):
   ```
 
   
-### JPEG Compression
+## JPEG Compression
 
 1. 将图像从RGB色彩空间变换到YCbCr色彩空间；
 2. 对YCbCr做DCT；
@@ -760,7 +760,7 @@ def JPEG(img):
 ```
 
 
-### Canny Edge Detector
+## Canny Edge Detector
 
 ```python
 def Canny(img):
@@ -961,7 +961,7 @@ def Canny(img):
 ```
 
 
-### Hough Transform (Line detection)
+## Hough Transform (Line detection)
 
 ```python
 def Hough_Line(edge, img):
@@ -1064,7 +1064,7 @@ def Hough_Line(edge, img):
 ```
 
 
-### Dilate
+## Dilate
 
 ```python
 # Morphology Dilate
@@ -1090,7 +1090,7 @@ def Morphology_Dilate(img, Erode_time=1):
 
 ```
 
-### Erode
+## Erode
 
 ```python
 # Morphology Erode
@@ -1115,11 +1115,11 @@ def Morphology_Erode(img, Dil_time=1):
 ```
 
 
-### Opening Operation
+## Opening Operation
 
 Dilate N times, Erode N times. ==> Remove isolated pixels.
 
-### Closing Operation
+## Closing Operation
 
 Erode N times, Dilate N times. ==> Connect discrete pixels.
 

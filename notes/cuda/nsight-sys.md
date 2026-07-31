@@ -2,7 +2,7 @@
 
 A CPU & CUDA profiler.
 
-### install
+## install
 
 Should be located in `/usr/local/cuda/bin/nsight-sys` if CUDA is successfully installed.
 
@@ -26,7 +26,7 @@ sudo sh -c 'echo 1 >/proc/sys/kernel/perf_event_paranoid'
 ```
 
 
-### Usage
+## Usage
 
 Pretty simple, just start the GUI, choose new project, and enter the **command line** that starts your program.
 

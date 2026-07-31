@@ -1,6 +1,6 @@
 # pytorch to onnx
 
-### export trained models to onnx format
+## export trained models to onnx format
 
 ```python
 model = Network()

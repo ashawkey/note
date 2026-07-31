@@ -1,6 +1,6 @@
 # template tutorial
 
-### basics
+## basics
 
 * 输入变量的自动类型推导
 
@@ -55,7 +55,7 @@
   ```
 
 
-### meta/generic programming
+## meta/generic programming
 
 功能类似于C中的MACRO，各种动态语言的duck typing，其目的是实现静态类型的抽象。
 
@@ -369,7 +369,7 @@
   ```
 
   
-### 其他
+## 其他
 
 * 反射（Reflection）：通过字符串的名称来调用函数、类等。
 

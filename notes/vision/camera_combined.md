@@ -1,6 +1,6 @@
 
 
-### Relationship between view / projection & intrinsic / extrinsic
+# Relationship between view / projection & intrinsic / extrinsic
 
 * The Extrinsic Matrix is equivalent to the View Matrix.
 
@@ -44,7 +44,7 @@ However, in most cases, the focal plane is not the near plane:
 ![enter image description here](camera_combined.assets/6wEgR.png)
 
 
-### implementation
+# implementation
 
 ```python
 
@@ -174,7 +174,7 @@ class Camera:
 ```
 
 
-### references
+# references
 
 * http://ksimek.github.io/2013/06/03/calibrated_cameras_in_opengl/
 * http://www.songho.ca/opengl/gl_projectionmatrix.html

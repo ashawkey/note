@@ -1,13 +1,13 @@
-## Sphinx
+# Sphinx
 
-### install
+## install
 
 ```bash
 pip install sphinx
 ```
 
 
-### Layout
+## Layout
 
 Run this at the root dir of your lib:
 
@@ -50,7 +50,7 @@ Then you can open the built index html (e.g., right click and openning by vs cod
 http://127.0.0.1:5500/docs/build/html/index.html
 
 
-### Write docs
+## Write docs
 
 By default sphinx uses **ReStructuredText (.rst)** mark up language, which is less common. But we can use `m2r2` extension to convert markdown (.md) to rst formats:
 
@@ -63,13 +63,13 @@ source_suffix = [".rst", ".md"]
 ```
 
 
-#### Narrative documentation
+### Narrative documentation
 
 Just create a new file under `docs/source`, like `index.md`.
 
 Remember to cross-reference it to `index.md` under `toctree`:
 
-```rst
+```rest
 .. table of content trees
 
 .. toctree::
@@ -92,7 +92,7 @@ Remember to cross-reference it to `index.md` under `toctree`:
 ```
 
 
-#### Automatic documentation
+### Automatic documentation
 
 To automatically document all APIs, use these extensions:
 
@@ -146,7 +146,7 @@ extensions = ['sphinx.ext.napoleon']
 
 To auto-generate the docs, you need to write in your doc file:
 
-```rst
+```rest
 .. autodoc a func
 .. autofunction:: kiui.func
 
@@ -164,7 +164,7 @@ Note that `autodoc` will import the file to doc it! Ensure there are no side eff
 Note the **number of spaces** before `:members:`! It must be **2 or 3 spaces**, and 4 spaces will complain `Explicit markup ends without a blank line; unexpected unindent` and won't correctly generate your doc!
 
 
-### Publish 
+## Publish 
 
 Use extension:
 
@@ -229,7 +229,7 @@ jobs:
 Push to your git repo and trigger the workflow. Don't forget to configure the github pages!
 
 
-### Theme
+## Theme
 
 For example:
 
@@ -281,7 +281,7 @@ html_logo = '_static/logo.png'
 ```
 
 
-### Example conf
+## Example conf
 
 ```python
 # -- Project information -----------------------------------------------------

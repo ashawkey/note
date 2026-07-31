@@ -1,13 +1,13 @@
 # mkdocs
 
-### install
+## install
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
 
-### setup
+## setup
 
 Init a workspace:
 
@@ -18,7 +18,7 @@ mkdocs new .
 Then add your markdowns to `docs`. Folder structure will be preserved in the navigation.
 
 
-### configuration
+## configuration
 
 edit `mkdocs.yml`, an example:
 
@@ -143,7 +143,7 @@ for file in files:
 ```
 
 
-### serve
+## serve
 
 At the root of workspace:
 
@@ -154,7 +154,7 @@ mkdocs serve
 by default it serves at `localhost:8000`
 
 
-### deploy
+## deploy
 
 Use github workflows to automatically deploy to github pages:
 

@@ -1,12 +1,12 @@
 # Community Applications: The Ultra Proxy Guide.
 
 
-### Problems
+## Problems
 
 Unraid plugins rely on GitHub. Specifically, it needs to access `github.com` and `raw.githubusercontent.com` to fetch data.
 
 
-### manually Install CA
+## manually Install CA
 
 * download the plugin in your PC:
 
@@ -24,7 +24,7 @@ Unraid plugins rely on GitHub. Specifically, it needs to access `github.com` and
 > Ref: https://post.smzdm.com/p/ad2dngvn/
 
 
-### Use docker to setup proxy
+## Use docker to setup proxy
 
 Since the terminal of unraid do not support package manager (and the alternative  `nerdpack` is also a plugin), we would like to use docker to setup `trojan` proxy.
 
@@ -121,7 +121,7 @@ Since the terminal of unraid do not support package manager (and the alternative
 * Turn on auto-restart of this container.
 
 
-### Configure proxy settings for CA
+## Configure proxy settings for CA
 
 * Apps Tab: use `curl` to fetch.
 

@@ -1,4 +1,4 @@
-### Airport
+# Airport
 
 * words
   * check in desk: 值机柜台
@@ -41,7 +41,7 @@
     * I'm here to see friends.
 
 
-### Hotel
+# Hotel
 
 * No appointment
   * Excuse me, I would like to reserve a room.

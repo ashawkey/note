@@ -3,7 +3,7 @@
 > We prefer not to write HTML directly. Instead, use code to generate HTML automatically.
 
 
-### Elements
+## Elements
 
 * `<a href='https://example.com'> Website </a>`
 * `<b> Bold </b>`: bold
@@ -33,7 +33,7 @@
 * `<header>` declare header, no factual effect.
 
 
-### Example
+## Example
 
 * Simple Document
 
@@ -53,7 +53,7 @@
   ```
 
   
-### Script
+## Script
 
 basics:
 

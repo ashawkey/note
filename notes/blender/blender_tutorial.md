@@ -1,6 +1,6 @@
 # blender tutorial
 
-### Pure white background
+## Pure white background
 
 First set transparent rendering:
 
@@ -15,13 +15,13 @@ Then open compositing window, and set use nodes, then add an "alpha over" layer 
 ![image-20230817121909364](blender_tutorial.assets/image-20230817121909364.png)
 
 
-### Add-on
+## Add-on
 
 `Edit --> Preferences --> Add-ons`
 Download the released zip file, and choose it from `install...` to install.
 (seems you need to manually enable add-ons every time when you start blender?)
 
-### obj sequence animation ([Stop-motion-OBJ](https://github.com/neverhood311/Stop-motion-OBJ))
+## obj sequence animation ([Stop-motion-OBJ](https://github.com/neverhood311/Stop-motion-OBJ))
 
 To animate a sequence of obj files.
 After enabling the add-on, choose `file --> import --> mesh sequence`.
@@ -34,7 +34,7 @@ name_002.obj
 in the same folder, and a name keyword is necessary.
 
 
-### Rigging and deforming
+## Rigging and deforming
 
 * load your ready-to-rig humanoid model.
 
@@ -62,11 +62,11 @@ in the same folder, and a name keyword is necessary.
 * Then go to pose mode, and you can move your bones to visualize the deformed poses!
 
 
-### How to render transparent background
+## How to render transparent background
 
 ![image-20230914130930948](blender_tutorial.assets/image-20230914130930948.png)
 
-### How to rotate camera/light by parenting
+## How to rotate camera/light by parenting
 
 * Add (`Shift + A`) a new empty object (plain axis), set its location to (0, 0, 0).
 * In 3D viewport, first select camera/light (child), then select the empty object (parent).
@@ -74,13 +74,13 @@ in the same folder, and a name keyword is necessary.
 * You could see in Outlier, the camera/light now belongs to the empty object.
 * Rotate the empty object, and the child will rotate too!
 
-### animation interpolation
+## animation interpolation
 
 default is some smoothing bezier curve.
 
 In Animation pannel, choose `channel --> extrapolation mode --> linear extrapolation`.
 
-### Render
+## Render
 
 `0` to toggle camera view. 
 
@@ -103,29 +103,29 @@ Set resolution & aspect:
 
 ![image-20230522151233612](blender_tutorial.assets/image-20230522151233612.png)
 
-### Animation
+## Animation
 
 In animation tab, set keyframe by clicking:
 
 ![image-20230305191530471](blender_tutorial.assets/image-20230305191530471.png)
 
-### Camera follow path animation
+## Camera follow path animation
 
 ![image-20230522160717435](blender_tutorial.assets/image-20230522160717435.png)
 
-### Ambient lighting
+## Ambient lighting
 
 In the world properties:
 
 ![image-20230305191716034](blender_tutorial.assets/image-20230305191716034.png)
 
 
-### Move object origin to mesh center (instead of global center 0,0,0)
+## Move object origin to mesh center (instead of global center 0,0,0)
 
 ![image-20230521220540588](blender_tutorial.assets/image-20230521220540588.png)
 
 
-### UI and shortcut key
+## UI and shortcut key
 
 * Middle Button (view control)
   * `Middle Button + Drag`: rotate
@@ -159,7 +159,7 @@ In the world properties:
 
 
 
-### Convert Trigs back to Quads
+## Convert Trigs back to Quads
 
 * Left-top: change Object Mode to **Edit Mode**
 * Press `A` to select all faces.
@@ -171,6 +171,6 @@ Although this is not a perfect solution.
 
 
 
-### Modeling: select connected component from a vertex
+## Modeling: select connected component from a vertex
 
 Click one vertex, and `Ctrl+L`, then all vertices belonging to the same CC is selected.

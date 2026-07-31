@@ -2,7 +2,7 @@
 
 Cheat sheet: https://devhints.io/xpath
 
-### Examples
+## Examples
 
 ```xquery
 # target                x
@@ -30,7 +30,7 @@ count                   //ul[count(li) > 2]
 ```
 
 
-### Selectors
+## Selectors
 
 ```
 name
@@ -57,7 +57,7 @@ node()
 ```
 
 
-### Built-in functions
+## Built-in functions
 
 ```
 name() # h1, h2, div, ...
@@ -74,7 +74,7 @@ substring(str, start, end)
 ```
 
 
-### Operators
+## Operators
 
 ```
 |
@@ -86,7 +86,7 @@ mod
 ```
 
 
-### Axis
+## Axis
 
 ```
 [default] = child::

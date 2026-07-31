@@ -3,7 +3,7 @@
 A note on https://github.com/ibraheemdev/modern-unix
 
 
-### `zoxide` (recommend!)
+## `zoxide` (recommend!)
 
 To replace `cd`
 
@@ -28,7 +28,7 @@ zi <dir>
 ```
 
 
-### `mcfly`  (recommend!)
+## `mcfly`  (recommend!)
 
 To replace `Ctrl + R`.
 
@@ -57,7 +57,7 @@ mcfly # it takes about one minute to read in history
 ```
 
 
-### `ag` (recommend!)
+## `ag` (recommend!)
 
 To replace `grep -rnw -e "pattern"`
 
@@ -76,7 +76,7 @@ ag -w "pattern" # whole word
 ```
 
 
-### `duf` (recommend!)
+## `duf` (recommend!)
 
 To replace `df`
 
@@ -93,7 +93,7 @@ duf
 ```
 
 
-### `dust` (recommend!)
+## `dust` (recommend!)
 
 To replace `du`
 
@@ -120,7 +120,7 @@ dust -d 1
 ```
 
 
-### `exa`
+## `exa`
 
 To replace `ls`
 
@@ -146,7 +146,7 @@ exa -lT # ls directory trees.
 ```
 
 
-### `bat`
+## `bat`
 
 To replace `cat`
 
@@ -170,7 +170,7 @@ bat <file>
 ```
 
 
-### `gdown`
+## `gdown`
 
 https://github.com/wkentaro/gdown
 

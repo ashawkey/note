@@ -1,6 +1,6 @@
 # docker-compose
 
-### install
+## install
 
 Follow https://docs.docker.com/compose/install/
 
@@ -10,7 +10,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```
 
 
-### usage
+## usage
 
 Run multiple containers (service) within one config (project).
 

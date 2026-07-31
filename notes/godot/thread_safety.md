@@ -1,4 +1,4 @@
-## Thread Safety
+# Thread Safety
 
 A very annoying design of godot is that you need to be very careful about race conditions, especially when we are operating the scene through code dynamically. (which is very common in fact, unless you are doing a simple platformer.)
 

@@ -1,6 +1,6 @@
-## Cursor tips
+# Cursor tips
 
-### Basics
+## Basics
 
 * `Tab` for AI completion as copilot.
 
