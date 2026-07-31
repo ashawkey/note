@@ -33,13 +33,20 @@ function supported(): boolean {
  * of each word is the cheap approximation that keeps the highlight and the result in
  * agreement, and it is why terms shorter than two characters are dropped rather than
  * highlighting a letter everywhere it appears.
+ *
+ * The stripping has to be Unicode-aware: `\W` is ASCII-only, so `^\W+|\W+$` eats every
+ * character of a CJK query — to an ASCII \W, a Han ideograph is a non-word — and leaves
+ * nothing to highlight. Stripping only what is neither letter nor number keeps 二叉树
+ * intact and also trims CJK quotes like 「」 that the splitter never sees. And because a
+ * single Han character is a real word in Chinese — unlike a stray Latin letter — it
+ * survives the length filter.
  */
 function terms(query: string): string[] {
   const words = query
     .toLowerCase()
     .split(/[\s,.;:!?()[\]{}"'`]+/)
-    .map((word) => word.replace(/^\W+|\W+$/g, ''))
-    .filter((word) => word.length >= 2)
+    .map((word) => word.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ''))
+    .filter((word) => word.length >= 2 || /^\p{Script=Han}$/u.test(word))
   return [...new Set(words)]
 }
 

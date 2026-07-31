@@ -1,6 +1,6 @@
-## Python migration
+# Python 迁移笔记
 
-### ACM-style IO
+## ACM 风格 I/O
 
 Input:
 
@@ -31,11 +31,9 @@ print(' '.join([str(x) for x in ls])) # "1 2 3"
 
 # print end
 print(x, end='') # do not append \n
-
 ```
 
-
-### list
+## list
 
 ```python
 l = []
@@ -52,7 +50,7 @@ l[::-1]
 
 # sort
 sorted(l) # small to large
-sorted(l, reversed=True) # large to small
+sorted(l, reverse=True) # large to small
 l.sort()
 
 # remove by index
@@ -61,16 +59,12 @@ v = l.pop(idx)
 
 # remove by value
 l.remove(val) # ValueError if not found
-l = [x in l if x != val]
+l = [x for x in l if x != val]
 ```
 
+* 在 for 循环中删除元素：支持不好，用列表推导式或 filter。
 
-* remove in for loop:
-
-  Not well supported. Use list comprehension or filter.
-
-  
-### set
+## set
 
 ```python
 s = set()
@@ -79,13 +73,12 @@ s.add(x)
 
 if x in s:
     print('YES')
-    
+
 s.remove(x) # ValueError if not found
 s.discard(x) # pass if not found.
 ```
 
-
-### dict
+## dict
 
 ```python
 d = {}
@@ -99,23 +92,20 @@ for k, v in d.items():
 
 for k in d:
     print(k, d[k])
-    
+
 if k in d:
-    print(d[k])    
+    print(d[k])
 ```
 
+## tricks
 
-### tricks
-
-* automatic memorizing recursion:
+* 自动记忆化递归：
 
   ```python
   from functools import lru_cache
-  
+
   @lru_cache(maxsize=None)
   def fib(n):
       if n < 2: return n
       return fib(n - 1) + fib(n - 2)
   ```
-
-  

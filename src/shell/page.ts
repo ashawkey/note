@@ -72,6 +72,24 @@ const ICON_THEME =
   'stroke-linecap="round"/></svg>'
 
 /*
+ * Expand all / collapse all for the navigation tree. Diverging chevrons for expand,
+ * converging for collapse — the branches opening outward and folding back in.
+ */
+const ICON_EXPAND =
+  '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">' +
+  '<path d="M8.5 5 3.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+  'stroke-linecap="round" stroke-linejoin="round"/>' +
+  '<path d="M11.5 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+  'stroke-linecap="round" stroke-linejoin="round"/></svg>'
+
+const ICON_COLLAPSE =
+  '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">' +
+  '<path d="M3.5 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+  'stroke-linecap="round" stroke-linejoin="round"/>' +
+  '<path d="M16.5 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+  'stroke-linecap="round" stroke-linejoin="round"/></svg>'
+
+/*
  * Applied before first paint, so a reader who has chosen a palette never sees the other one
  * flash. Deliberately does nothing when no choice has been stored: with no [data-theme]
  * attribute the stylesheet's own `prefers-color-scheme` rule decides, which means the site
@@ -138,7 +156,13 @@ export function renderPage(options: PageOptions): string {
 
 <div class="layout">
   <aside class="sidebar pane" id="sidebar" aria-label="Notes">
-    <p class="sidebar__heading">Notes</p>
+    <div class="sidebar__toolbar">
+      <span class="sidebar__heading">Notes</span>
+      <button class="icon-button" type="button" data-tree-expand
+              aria-label="Expand all folders">${ICON_EXPAND}</button>
+      <button class="icon-button" type="button" data-tree-collapse
+              aria-label="Collapse all folders">${ICON_COLLAPSE}</button>
+    </div>
     ${options.nav}
   </aside>
 

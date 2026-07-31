@@ -1,4 +1,4 @@
-### [有效的括号字符串](https://leetcode-cn.com/problems/valid-parenthesis-string/)
+## [有效的括号字符串](https://leetcode-cn.com/problems/valid-parenthesis-string/)
 
 > 给定一个只包含三种字符的字符串：（ ，） 和 *，写一个函数来检验这个字符串是否为有效字符串。有效字符串具有如下规则：
 >

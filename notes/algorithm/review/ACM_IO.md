@@ -1,7 +1,6 @@
-### ACM style I/O
+# ACM 风格 I/O
 
-
-### scanf/printf
+## scanf/printf
 
 Not recommended to use...
 
@@ -10,7 +9,7 @@ Not recommended to use...
 
 int main() {
     printf("int %d, float %f, double %lf, string %s, char %c, endl \n", 42, 3.141, 3.141, "string", 'c');
-    
+
     // float precision
     printf("float %.2f \n", 3.141); // 3.14
 }
@@ -22,23 +21,22 @@ int main() {
 int main() {
     int x;
     scanf("%d", &x);
-    
+
     int x, y;
-	scanf("%d%d", &x, &y);
-    
+    scanf("%d%d", &x, &y);
+
     float f;
     scanf("%f", &f);
-    
+
     char c;
     scanf("%c", &c); // this will scan spaces too!
     scanf(" %c", &c); // this will ignore all leading spaces...
 }
 ```
 
+## iostream
 
-### iostream
-
-Acceleration:
+加速：
 
 ```cpp
 #include <iostream>
@@ -51,8 +49,7 @@ int main() {
 }
 ```
 
-
-`cin >> x` are separated by spaces or line breaks. types are auto-casted.
+`cin >> x` 以空格或换行分隔，类型自动转换。
 
 ```cpp
 #include <iostream>
@@ -84,8 +81,7 @@ int main() {
 }
 ```
 
-
-If you want to get **a whole input line (may contain spaces)** to string:
+读取**一整行（可能含空格）**到 string：
 
 ```cpp
 #include <iostream>
@@ -95,12 +91,12 @@ If you want to get **a whole input line (may contain spaces)** to string:
 using namespace std;
 
 int main() {
-	string s;
-	getline(cin, s); // NOT cin.getline(c_str);
-    
+    string s;
+    getline(cin, s); // NOT cin.getline(c_str);
+
     // if s is a single int
     int x = stoi(s);
-    
+
     // if s is a list of int (unknown length), to extract them:
     istringstream iss(s);
     int x;
@@ -110,7 +106,7 @@ int main() {
 }
 ```
 
-Example of an input that contain N+1 lines, the first line is N, then the next N lines are integers of unknown length:
+输入共 N+1 行，第一行是 N，之后 N 行是长度未知的整数：
 
 ```cpp
 int N;
@@ -128,7 +124,7 @@ for (int i = 0; i < N; i++) {
 }
 ```
 
-`cout` precision:
+`cout` 精度：
 
 ```cpp
 #include <iostream>
@@ -140,9 +136,8 @@ int main() {
     double f = 3.1415926;
     // default, in total 5 effective numbers.
     cout << setprecision(5) << f << endl; // 3.1416
-    
+
     // fixed-point float notation, always 5 numbers after floating-point.
     cout << fixed << setprecision(5) << f << endl; // 3.14159
 }
 ```
-

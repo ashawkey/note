@@ -1,4 +1,4 @@
-### [solve sodoku](https://leetcode-cn.com/problems/sudoku-solver/)
+## [solve sodoku](https://leetcode-cn.com/problems/sudoku-solver/)
 
 DFS回溯即可，可以用bit操作优化`check()`，但没必要（
 

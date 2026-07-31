@@ -98,6 +98,25 @@ for (const folder of document.querySelectorAll<HTMLDetailsElement>('.nav-folder'
   })
 }
 
+/*
+ * The toolbar's expand-all / collapse-all. Setting `open` fires the same `toggle` events
+ * the loop above listens for, so the persisted set — and therefore the next page's tree —
+ * follows along with no extra bookkeeping. Collapsing everything also folds the current
+ * page's ancestors, which is the point of the button; the next page still server-renders
+ * them open, so orientation is never lost for long.
+ */
+const expandAll = document.querySelector('[data-tree-expand]')
+const collapseAll = document.querySelector('[data-tree-collapse]')
+
+function setAllFolders(open: boolean): void {
+  for (const folder of document.querySelectorAll<HTMLDetailsElement>('.nav-folder')) {
+    if (folder.open !== open) folder.open = open
+  }
+}
+
+expandAll?.addEventListener('click', () => setAllFolders(true))
+collapseAll?.addEventListener('click', () => setAllFolders(false))
+
 /* ── Keeping the reader's place in the tree ────────────────────────────────────────── */
 
 /*

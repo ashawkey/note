@@ -1,4 +1,4 @@
-#### [买卖股票的最佳时机Ⅰ](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+## [买卖股票的最佳时机Ⅰ](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 
 给定数组，第$i$个值为为一支股票在第$i$天的价格。
 

@@ -1,6 +1,10 @@
-### DJ set
+# Final Exam Prep
 
-##### food chain
+竞赛题解合集（按主题分类的 POJ / HDU 练习题）。
+
+## DJ set 并查集
+
+### food chain
 
 ```c++
 #include <iostream>
@@ -62,7 +66,7 @@ int main() {
 };
 ```
 
-##### cube stacking
+### cube stacking
 
 ```c++
 #define  _CRT_SECURE_NO_WARNINGS
@@ -127,7 +131,7 @@ int main() {
 }
 ```
 
-##### the suspects
+### the suspects
 
 ```c++
 #include <iostream>
@@ -181,9 +185,9 @@ int main() {
 ```
 
 
-### BIT
+## BIT 树状数组
 
-##### apple tree
+### apple tree
 
 ```c++
 #include <iostream>
@@ -244,7 +248,7 @@ int main() {
 }
 ```
 
-##### LIS`(NlgN BS+DP)`
+### LIS (NlgN BS+DP)
 
 ```c++
 #define _CRT_SECURE_NO_WARNINGS
@@ -274,9 +278,9 @@ int main() {
 ```
 
 
-### Segment Tree
+## Segment Tree 线段树
 
-##### Balanced Lineup 
+### Balanced Lineup 
 
 静态求区间最值。
 
@@ -350,7 +354,7 @@ int main() {
 ```
 
 
-##### integers
+### integers
 
 ```c++
 #define _CRT_SECURE_NO_WARNINGS
@@ -455,7 +459,7 @@ int main() {
 ```
 
 
-##### kth-Number
+### kth-Number
 
 ```c++
 #define _CRT_SECURE_NO_WARNINGS
@@ -540,7 +544,7 @@ int main() {
 ```
 
 
-##### Mayor's Poster
+### Mayor's Poster
 
 ```c++
 #define _CRT_SECURE_NO_WARNINGS
@@ -635,9 +639,9 @@ int main() {
 ```
 
 
-### Trie
+## Trie 字典树
 
-##### Proto
+### Proto
 
 ```c++
 #include <iostream>
@@ -728,9 +732,9 @@ int main() {
 ```
 
 
-### Directed Tarjan
+## Directed Tarjan 有向图强连通分量
 
-##### popular cows
+### popular cows
 
 ```c++
 #include <iostream>
@@ -831,9 +835,9 @@ int main() {
 ```
 
 
-### Shortest Path
+## Shortest Path 最短路
 
-###### candies
+### candies
 
 ```c++
 #define _CRT_SECURE_NO_WARNINGS
@@ -863,7 +867,7 @@ vector<edge> G[maxn];
 
 int dist[maxn];
 
-void dijstra(int s) {
+void dijkstra(int s) {
 	fill(dist, dist + N + 1, inf);
 	dist[s] = 0;
 	priority_queue<P, vector<P>, greater<P>> q;
@@ -883,7 +887,7 @@ void dijstra(int s) {
 }
 
 /*
-int dijstra(int s, int t) {
+int dijkstra(int s, int t) {
 	fill(dist, dist + N + 1, inf);
 	dist[s] = 0;
 	priority_queue<P, vector<P>, greater<P>> q;
@@ -913,13 +917,13 @@ int main() {
 		scanf("%d%d%d", &x, &y, &w);
 		G[x].push_back(edge(x, y, w));
 	}
-	dijstra(1);
+	dijkstra(1);
 	printf("%d\n", dist[N]);
 }
 ```
 
 
-##### currency exchange
+### currency exchange
 
 ```c++
 #include <iostream>
@@ -989,7 +993,7 @@ int main() {
 ```
 
 
-##### Warmholes
+### Wormholes
 
 ```c++
 #define _CRT_SECURE_NO_WARNINGS
@@ -1063,7 +1067,7 @@ int main() {
 ```
 
 
-##### cow contest
+### cow contest
 
 ```c++
 #define _CRT_SECURE_NO_WARNINGS
@@ -1142,14 +1146,13 @@ int main() {
 
 ----
 
-### Undirected Tarjan
+## Undirected Tarjan 无向图连通性
 
-···
+（待补充：割点、桥、点双连通分量、边双连通分量例题，可参考「图的连通性」笔记。）
 
+## Maximum Flow 最大流
 
-### Maximum Flow
-
-##### Alice's Chance
+### Alice's Chance
 
 build the graph...
 
@@ -1288,7 +1291,7 @@ int main() {
 }
 ```
 
-##### Asteroids
+### Asteroids
 
 bipartite
 
@@ -1408,9 +1411,9 @@ int main() {
 ```
 
 
-### Geometry
+## Geometry 计算几何
 
-##### TOYS
+### TOYS
 
 ```c++
 #include <iostream>    
@@ -1580,7 +1583,7 @@ int main() {
 }
 ```
 
-##### Space ant
+### Space ant
 
 极角排序。
 
@@ -1682,7 +1685,7 @@ int main() {
 }
 ```
 
-##### Line of Sight
+### Line of Sight
 
 区间合并很有趣。
 
@@ -1809,7 +1812,7 @@ int main(){
 }
 ```
 
-##### The Fortified Forest
+### The Fortified Forest
 
 凸包+状压。
 
@@ -1967,9 +1970,9 @@ int main() {
 ```
 
 
-### Suffix Array
+## Suffix Array 后缀数组
 
-##### Substrings
+### Substrings
 
 多字串最长公共子串背板。
 

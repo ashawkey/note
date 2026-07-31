@@ -1,4 +1,4 @@
-### [valid stack pop sequence](https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/)
+## [valid stack pop sequence](https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/)
 
 In fact a very simple simulation. 
 

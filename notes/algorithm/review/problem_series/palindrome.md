@@ -1,4 +1,4 @@
-### [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+## [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
 
 计算这个字符串中最长的回文子串（Substring，连续）。
 

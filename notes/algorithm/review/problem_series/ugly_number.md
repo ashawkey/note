@@ -1,4 +1,4 @@
-### [丑数](https://leetcode-cn.com/problems/ugly-number-ii/)
+## [丑数](https://leetcode-cn.com/problems/ugly-number-ii/)
 
 ```cpp
 // nlogn, priority_queue.

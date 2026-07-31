@@ -1,4 +1,4 @@
-### [get the median of a data stream](https://leetcode-cn.com/problems/find-median-from-data-stream/)
+## [get the median of a data stream](https://leetcode-cn.com/problems/find-median-from-data-stream/)
 
 最简单的做法是插入排序，但每次插入耗时$O(N)$。下面的两种方法均为$O(\log N)$的插入耗时。（查询耗时均为$O(1)$）
 

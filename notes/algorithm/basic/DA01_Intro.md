@@ -1,110 +1,85 @@
 # Introduction
 
-### Data Structure
+## Data Structure
 
-* **Logical Structure**
+### Logical Structure
 
-  $(K,R)$ : $K$ is the set of Nodes(basic datatype or complex structure), $R$ is the set of binary Relationships.
+$(K, R)$: $K$ is the set of Nodes (basic datatype or complex structure), $R$ is the set of binary Relationships.
 
-  Classification by $R$:
+Classification by $R$:
 
-  * set structure
+* **set structure**
+* **linear structure**
 
-  * linear structure
+  前驱关系。关系有向，满足全序性（两两节点可以比较先后）、单索性（每个节点存在唯一一个前驱和后继结点）。
 
-    前驱关系。关系有向，满足全序性（两两节点可以比较先后）、单索性（每个节点存在唯一一个前驱和后继结点）
+* **tree structure**
 
-  * tree structure
+  层次结构。直接前驱唯一，但可以有多个直接后继。根节点无前驱。
 
-    层次结构。直接前驱唯一，但可以有多个直接后继。
+* **graph structure**
 
-    根节点无前驱。
+  网络结构。没有任何关系约束。
 
-  * graph structure
+### Storage / Physical Structure
 
-    网络结构。没有任何关系约束。
+内存：空间相邻，随机访问。
 
-* **Storage/Physical Structure**
+存储结构实现逻辑到物理的映射（节点映射、**逻辑关系映射**）。
 
-  内存：空间相邻，随机访问。
+* **顺序**：数组。紧凑存储结构（不存储任何附加信息）。
+* **链接**：链表。易于增删，难于定位。
+* **索引**：顺序存储的推广。构造索引函数 $Y: Z \rightarrow D$，使得整数域映射到存储地址。
+* **散列**：索引方法的推广。构造散列函数 $h: S \rightarrow Z$，$S$ 为关键码。
 
-  存储结构实现逻辑到物理的映射（节点映射、**逻辑关系映射**）
+### ADT (Abstract Data Type)
 
-  * 顺序
+ADT = {数据对象 D，数据关系 S，数据操作 P}
 
-    数组。紧凑存储结构（不存储任何附加信息）
+eg. C++ 类模板。
 
-  * 链接
-
-    链表。易于增删，难于定位。
-
-  * 索引
-
-    顺序存储的推广。构造索引函数$Y:Z\rightarrow D$. 使得整数域映射到存储地址。
-
-  * 散列
-
-    索引方法的推广。构造散列函数$h:S\rightarrow Z$.  $S$ 为关键码。
-
-* ADT(Abstract Data Type)
-
-  ADT = {数据对象D，数据关系S，数据操作P}
-
-  eg. c++类模板。
-
-### Algorithm
+## Algorithm
 
 **Data Structure + Algorithm = Program**
 
-* Classification
+### Classification
 
-  * Enumeration
-  * Searching(BFS, DFS), Back Tracking
-  * Greedy
-  * Recursive, Divide and Conquer
-  * Dynamic Programming
+* Enumeration
+* Searching (BFS, DFS), Back Tracking
+* Greedy
+* Recursive, Divide and Conquer
+* Dynamic Programming
 
-* Analysis
+### Analysis
 
-  **Relationship between Algorithm Complexity and Input Scale.**
+**Relationship between Algorithm Complexity and Input Scale.**
 
-  Absolute time is also required but not the most important.
+Absolute time is also required but not the most important.
 
-  * $O()$ expression
-    
-
-$$
-    \exist C,N_0 \gt 0 \ \ s.t. \ \forall n \ge N_0:\\
-    f(n) \le C \cdot g(n) \\
-    \Rightarrow f(n) \in O(g(n))
-$$
-
-
-    We should choose the **tightest** $g(n)$ .
-
-    eg. $f(x) = n^2 + 2n$ is $O(n^2)$, but we can also say it's $O(n^3)$ or larger.
-
-  * $\Omega()$ expression
-    
+* $O()$ 记号
 
 $$
-    \exist C,N_0 \gt 0 \ \ s.t. \ \forall n \ge N_0:\\
-    f(n) \ge C \cdot g(n) \\
-    \Rightarrow f(n) \in \Omega(g(n))
+\exist C, N_0 \gt 0 \ s.t. \ \forall n \ge N_0: f(n) \le C \cdot g(n) \Rightarrow f(n) \in O(g(n))
 $$
 
+  应选择**最紧**的 $g(n)$。eg. $f(n) = n^2 + 2n$ 是 $O(n^2)$，但也可以说它是 $O(n^3)$ 或更大。
 
-    Choose the tightest.
-
-  * $\Theta()$ expression
-    
+* $\Omega()$ 记号
 
 $$
-    f(n) \in O(g(n)) \ and \ f(n) \in \Omega(g(n)) \\
-    \Rightarrow f(n) \in \Theta(g(n))
+\exist C, N_0 \gt 0 \ s.t. \ \forall n \ge N_0: f(n) \ge C \cdot g(n) \Rightarrow f(n) \in \Omega(g(n))
 $$
 
+  同样选择最紧的。
 
-  Best, Worst and Average Complexity analysis: For most Algorithms, the difference is only in the constants and coefficients.
+* $\Theta()$ 记号
 
-  Trade-off between Time and Space.
+$$
+f(n) \in O(g(n)) \ and \ f(n) \in \Omega(g(n)) \Rightarrow f(n) \in \Theta(g(n))
+$$
+
+* Best, Worst and Average Complexity
+
+  对多数算法三者只差常数或系数；但也有相差不止常数倍的（如快速排序 $O(n \log n)$ 对 $O(n^2)$），因此通常三者都要分析。
+
+* Trade-off between Time and Space.

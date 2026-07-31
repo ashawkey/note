@@ -1,4 +1,4 @@
-### [n个骰子投出x的概率](https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/)
+## [n个骰子投出x的概率](https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/)
 
 从数学上推导公式十分复杂，但满足动态规划的条件，具有递推性质。
 
